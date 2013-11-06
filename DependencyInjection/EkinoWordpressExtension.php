@@ -22,8 +22,31 @@ class EkinoWordpressExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
+        $config = $this->processConfiguration(new Configuration(), $configs);
+
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('orm.xml');
+        $loader->load('services.xml');
+
+        if (isset($config['table_prefix'])) {
+            $this->loadTablePrefix($container, $config['table_prefix']);
+        }
+    }
+
+    /**
+     * Loads table prefix from configuration to doctrine table prefix subscriber event
+     *
+     * @param ContainerBuilder $container Symfony dependency injection container
+     * @param string           $prefix    Wordpress table prefix
+     */
+    protected function loadTablePrefix(ContainerBuilder $container, $prefix)
+    {
+        $identifier = 'ekino.wordpress.listener.table_prefix_subscriber';
+
+        $serviceDefinition = $container->getDefinition($identifier);
+        $serviceDefinition->setArguments(array($prefix));
+
+        $container->setDefinition($identifier, $serviceDefinition);
     }
 
     /**

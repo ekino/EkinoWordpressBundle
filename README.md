@@ -18,7 +18,7 @@ Install your Wordpress project and/or get into your root project directory and i
 
 `php composer.phar create-project symfony/framework-standard-edition symfony/`
 
-### 2) Update your Symfony composer.json file to add ekino/wordpress-bundle
+### 2) Install ekino/wordpress-bundle into Symfony's project
 
 After, edit `symfony/composer.json` file to add the official Wordpress git repository:
 
@@ -46,6 +46,13 @@ Then, add the bundle into `symfony/AppKernel.php`:
 
         return $bundles;
     }
+```
+
+Optionnally, you can specify your Wordpress custom table prefix by adding this to your `app/config.yml`:
+
+```yml
+ekino_wordpress:
+    table_prefix: wp_
 ```
 
 ### 3) Update your Wordpress index.php file to load Symfony

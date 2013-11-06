@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
     <entity name="Ekino\WordpressBundle\Entity\Option"
-            table="wp_options"
+            table="options"
             repository-class="Ekino\WordpressBundle\Repository\OptionRepository">
 
         <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
