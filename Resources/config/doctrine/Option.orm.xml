@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="Ekino\WordpressBundle\Entity\Option"
+            table="wp_options"
+            repository-class="Ekino\WordpressBundle\Repository\OptionRepository">
+
+        <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+
+        <id name="id" type="integer" column="option_id">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="name" nullable="false"  type="string" length="64" column="option_name" />
+        <field name="value" nullable="false"  type="text" column="option_value" />
+        <field name="autoload" nullable="false"  type="string" length="20" column="autoload" />
+
+        <lifecycle-callbacks />
+
+    </entity>
+</doctrine-mapping>

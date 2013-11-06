@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="Ekino\WordpressBundle\Entity\UserMeta"
+            table="wp_usermeta"
+            repository-class="Ekino\WordpressBundle\Repository\UserMetaRepository">
+
+        <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+
+        <id name="id" type="integer" column="umeta_id">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="key" nullable="false"  type="string" length="255" column="meta_key" />
+        <field name="value" nullable="false"  type="text" column="meta_value" />
+
+        <many-to-one field="user" target-entity="Ekino\WordpressBundle\Entity\User">
+            <join-column name="user_id" referenced-column-name="ID" />
+        </many-to-one>
+
+        <lifecycle-callbacks />
+
+    </entity>
+</doctrine-mapping>

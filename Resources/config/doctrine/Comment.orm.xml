@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="Ekino\WordpressBundle\Entity\Comment"
+            table="wp_comments"
+            repository-class="Ekino\WordpressBundle\Repository\CommentRepository">
+
+        <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+
+        <id name="id" type="integer" column="comment_ID">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="author" nullable="false"  type="text" column="comment_author" />
+        <field name="authorEmail" nullable="false"  type="string" length="100" column="comment_author_email" />
+        <field name="authorUrl" nullable="false"  type="string" length="200" column="comment_author_url" />
+        <field name="authorIp" nullable="false"  type="string" length="100" column="comment_author_IP" />
+        <field name="date" nullable="false"  type="datetime" column="comment_date" />
+        <field name="dateGmt" nullable="false"  type="datetime" column="comment_date_gmt" />
+        <field name="content" nullable="false"  type="text" column="comment_content" />
+        <field name="karma" nullable="false"  type="integer" length="11" column="comment_karma" />
+        <field name="approved" nullable="false"  type="string" length="20" column="comment_approved" />
+        <field name="agent" nullable="false"  type="string" length="255" column="comment_agent" />
+        <field name="type" nullable="false"  type="string" length="20" column="comment_type" />
+
+        <many-to-one field="post" target-entity="Ekino\WordpressBundle\Entity\Post">
+            <join-column name="comment_post_ID" referenced-column-name="ID" />
+        </many-to-one>
+
+        <many-to-one field="user" target-entity="Ekino\WordpressBundle\Entity\User">
+            <join-column name="user_id" referenced-column-name="ID" />
+        </many-to-one>
+
+        <many-to-one field="parent" target-entity="Ekino\WordpressBundle\Entity\Comment">
+            <join-column name="comment_parent" referenced-column-name="comment_ID" />
+        </many-to-one>
+
+        <lifecycle-callbacks />
+
+    </entity>
+</doctrine-mapping>

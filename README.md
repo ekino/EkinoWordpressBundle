@@ -5,8 +5,9 @@ This bundle is used to bring some Symfony services into Wordpress.
 
 Here are some examples:
 
-* Use Symfony to manipulate Wordpress database
 * Use custom Symfony services into Wordpress,
+* Use Symfony to manipulate Wordpress database,
+* Create custom Symfony routes out of Wordpress
 
 Installation
 ------------
@@ -113,6 +114,38 @@ DirectoryIndex index.php
         RedirectMatch 302 ^/$ /index.php/
     </IfModule>
 </IfModule>
+```
+
+Use in Symfony
+----------------
+
+You can call Wordpress table managers in Symfony by calling the following services:
+
+- ekino.wordpress.manager.comment
+- ekino.wordpress.manager.comment_meta
+- ekino.wordpress.manager.link
+- ekino.wordpress.manager.option
+- ekino.wordpress.manager.post
+- ekino.wordpress.manager.post_meta
+- ekino.wordpress.manager.term
+- ekino.wordpress.manager.term_relationships
+- ekino.wordpress.manager.term_taxonomy
+- ekino.wordpress.manager.user
+- ekino.wordpress.manager.user_meta
+
+So in custom Symfony controllers, you can create / update / delete data in Wordpress database, like that:
+
+```php
+# Here an example that sets user #2 as author for post #1
+$postManager = $this->get('ekino.wordpress.manager.post');
+$userManager = $this->get('ekino.wordpress.manager.user');
+
+$user = $userManager->find(2);
+
+$post = $postManager->find(1);
+$post->setAuthor($user);
+
+$postManager->save($post);
 ```
 
 Use in Wordpress

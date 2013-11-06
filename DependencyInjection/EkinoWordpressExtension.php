@@ -7,6 +7,11 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Config\FileLocator;
 
+/**
+ * Class EkinoWordpressExtension
+ *
+ * This is the bundle Symfony extension class
+ */
 class EkinoWordpressExtension extends Extension
 {
     /**
@@ -17,7 +22,8 @@ class EkinoWordpressExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-
+        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('orm.xml');
     }
 
     /**

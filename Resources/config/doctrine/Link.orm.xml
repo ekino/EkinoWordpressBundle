@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="Ekino\WordpressBundle\Entity\Link"
+            table="wp_links"
+            repository-class="Ekino\WordpressBundle\Repository\CommentMetaRepository">
+
+        <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+
+        <id name="id" type="integer" column="link_id">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="url" nullable="false" type="string" length="255" column="link_url" />
+        <field name="name" nullable="false" type="string" length="255" column="link_name" />
+        <field name="image" nullable="false" type="string" length="255" column="link_image" />
+        <field name="target" nullable="false" type="string" length="255" column="link_target" />
+        <field name="description" nullable="false" type="string" length="255" column="link_description" />
+        <field name="visible" nullable="false" type="string" length="20" column="link_visible" />
+        <field name="owner" nullable="false" type="bigint" column="link_owner" />
+        <field name="rating" nullable="false" type="integer" column="link_rating" />
+        <field name="updated" nullable="false" type="datetime" column="link_updated" />
+        <field name="rel" nullable="false" type="string" length="25" column="link_rel" />
+        <field name="notes" nullable="false" type="string" length="255" column="link_notes" />
+        <field name="rss" nullable="false" type="string" length="255" column="link_rss" />
+
+        <lifecycle-callbacks />
+
+    </entity>
+</doctrine-mapping>

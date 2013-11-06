@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="Ekino\WordpressBundle\Entity\TermRelationships"
+            table="wp_term_relationships"
+            repository-class="Ekino\WordpressBundle\Repository\TermRelationshipsRepository">
+
+        <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+
+        <id name="id" type="integer" column="object_id">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="termOrder" nullable="false"  type="integer" length="11" column="term_order" />
+
+        <many-to-one field="taxonomy" target-entity="Ekino\WordpressBundle\Entity\TermTaxonomy">
+            <join-column name="term_taxonomy_id" referenced-column-name="term_taxonomy_id" />
+        </many-to-one>
+
+        <lifecycle-callbacks />
+
+    </entity>
+</doctrine-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="Ekino\WordpressBundle\Entity\TermTaxonomy"
+            table="wp_term_taxonomy"
+            repository-class="Ekino\WordpressBundle\Repository\TermTaxonomyRepository">
+
+        <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+
+        <id name="id" type="integer" column="term_taxonomy_id">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="taxonomy" nullable="false" type="string" length="32" column="taxonomy" />
+        <field name="description" nullable="false" type="text" column="desription" />
+        <field name="count" nullable="false" type="integer" length="20" column="count" />
+
+        <many-to-one field="term" target-entity="Ekino\WordpressBundle\Entity\Term">
+            <join-column name="term_id" referenced-column-name="term_id" />
+        </many-to-one>
+
+        <many-to-one field="parent" target-entity="Ekino\WordpressBundle\Entity\TermTaxonomy">
+            <join-column name="parent" referenced-column-name="term_taxonomy_id" />
+        </many-to-one>
+
+        <lifecycle-callbacks />
+
+    </entity>
+</doctrine-mapping>

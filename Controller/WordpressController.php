@@ -23,14 +23,4 @@ class WordpressController extends Controller
     {
         return new WordpressResponse();
     }
-
-    /**
-     * Wordpress custom route test
-     *
-     * @return Response
-     */
-    public function customAction()
-    {
-        return $this->render('EkinoWordpressBundle:Wordpress:custom.html.twig');
-    }
 }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="Ekino\WordpressBundle\Entity\User"
+            table="wp_users"
+            repository-class="Ekino\WordpressBundle\Repository\UserRepository">
+
+        <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+
+        <id name="id" type="integer" column="ID">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="login" nullable="false" type="string" length="60" column="user_login" />
+        <field name="pass" nullable="false" type="string" length="64" column="user_pass" />
+        <field name="nicename" nullable="false" type="string" length="50" column="user_nicename" />
+        <field name="email" nullable="false" type="string" length="100" column="user_email" />
+        <field name="url" nullable="false" type="string" length="100" column="user_url" />
+        <field name="registered" nullable="false" type="datetime" column="user_registered" />
+        <field name="activationKey" nullable="false" type="string" length="60" column="user_activation_key" />
+        <field name="status" nullable="false" type="integer" length="11" column="user_status" />
+        <field name="displayName" nullable="false" type="string" length="250" column="display_name" />
+
+        <lifecycle-callbacks />
+
+    </entity>
+</doctrine-mapping>
