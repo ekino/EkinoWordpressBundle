@@ -77,19 +77,21 @@ class WordpressResponseListener
 
         // Is not logged in Symfony security context, login (with session token if found)
         if (!$this->securityContext->getToken()) {
-            if ($session->has('token')) {
+            $login = stristr($cookie, '|', true);
+
+            if ($session->has('token') && $login == $session->get('wordpress_login')) {
                 $token = $session->get('token');
                 $this->securityContext->setToken($token);
 
                 return;
             }
 
-            $login = stristr($cookie, '|', true);
             $user = $this->userManager->findOneBy(array('login' => $login));
 
             $token = new UsernamePasswordToken($user, null, 'secured_area', $user->getRoles());
             $this->securityContext->setToken($token);
 
+            $request->getSession()->set('wordpress_login', $user->getLogin());
             $request->getSession()->set('token', $token);
         }
     }
