@@ -2,6 +2,8 @@
 
 namespace Ekino\WordpressBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -63,6 +65,19 @@ class User implements UserInterface
      */
     protected $displayName;
 
+    /**
+     * @var ArrayCollection
+     */
+    protected $metas;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->metas = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -214,6 +229,22 @@ class User implements UserInterface
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * @param ArrayCollection $metas
+     */
+    public function setMetas(ArrayCollection $metas)
+    {
+        $this->metas = $metas;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getMetas()
+    {
+        return $this->metas;
     }
 
     /**

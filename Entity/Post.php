@@ -2,6 +2,8 @@
 
 namespace Ekino\WordpressBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 use Ekino\WordpressBundle\Entity\User;
 
 /**
@@ -128,6 +130,19 @@ class Post
      */
     protected $commentCount;
 
+    /**
+     * @var ArrayCollection
+     */
+    protected $metas;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->metas = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -487,5 +502,21 @@ class Post
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * @param ArrayCollection $metas
+     */
+    public function setMetas(ArrayCollection $metas)
+    {
+        $this->metas = $metas;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getMetas()
+    {
+        return $this->metas;
     }
 }

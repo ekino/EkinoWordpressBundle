@@ -39,6 +39,8 @@
             <join-column name="post_parent" referenced-column-name="ID" />
         </many-to-one>
 
+        <one-to-many field="metas" target-entity="Ekino\WordpressBundle\Entity\PostMeta" mapped-by="post" />
+
         <lifecycle-callbacks />
 
     </entity>

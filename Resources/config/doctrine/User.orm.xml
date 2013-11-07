@@ -20,6 +20,8 @@
         <field name="status" nullable="false" type="integer" length="11" column="user_status" />
         <field name="displayName" nullable="false" type="string" length="250" column="display_name" />
 
+        <one-to-many field="metas" target-entity="Ekino\WordpressBundle\Entity\UserMeta" mapped-by="user" />
+
         <lifecycle-callbacks />
 
     </entity>

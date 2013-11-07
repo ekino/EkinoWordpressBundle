@@ -13,7 +13,7 @@
         <field name="key" nullable="false"  type="string" length="255" column="meta_key" />
         <field name="value" nullable="false"  type="text" column="meta_value" />
 
-        <many-to-one field="post" target-entity="Ekino\WordpressBundle\Entity\Post">
+        <many-to-one field="post" target-entity="Ekino\WordpressBundle\Entity\Post" inversed-by="metas">
             <join-column name="post_id" referenced-column-name="ID" />
         </many-to-one>
 
