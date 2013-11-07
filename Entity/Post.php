@@ -8,6 +8,8 @@ use Ekino\WordpressBundle\Entity\User;
  * Class Post
  *
  * This is the Post entity
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class Post
 {

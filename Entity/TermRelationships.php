@@ -8,6 +8,8 @@ use Ekino\WordpressBundle\Entity\TermTaxonomy;
  * Class TermRelationships
  *
  * This is the TermRelationships entity
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class TermRelationships
 {

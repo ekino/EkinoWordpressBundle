@@ -9,6 +9,8 @@ use Ekino\WordpressBundle\Entity\User;
  * Class Comment
  *
  * This is the Comment entity
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class Comment
 {

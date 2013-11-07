@@ -6,6 +6,8 @@ namespace Ekino\WordpressBundle\Entity;
  * Class Option
  *
  * This is the Option entity
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class Option
 {

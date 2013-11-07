@@ -8,6 +8,8 @@ use Ekino\WordpressBundle\Entity\Post;
  * Class PostMeta
  *
  * This is the PostMeta entity
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class PostMeta
 {

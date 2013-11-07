@@ -8,6 +8,8 @@ use Doctrine\ORM\EntityManager;
  * Class BaseManager
  *
  * This is the base manager
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class BaseManager
 {

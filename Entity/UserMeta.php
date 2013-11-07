@@ -8,6 +8,8 @@ use Ekino\WordpressBundle\Entity\User;
  * Class UserMeta
  *
  * This is the UserMeta entity
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class UserMeta
 {

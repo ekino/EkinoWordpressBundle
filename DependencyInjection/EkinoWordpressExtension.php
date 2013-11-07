@@ -11,6 +11,8 @@ use Symfony\Component\Config\FileLocator;
  * Class EkinoWordpressExtension
  *
  * This is the bundle Symfony extension class
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class EkinoWordpressExtension extends Extension
 {

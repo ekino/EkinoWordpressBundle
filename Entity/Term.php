@@ -6,6 +6,8 @@ namespace Ekino\WordpressBundle\Entity;
  * Class Term
  *
  * This is the Term entity
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class Term
 {

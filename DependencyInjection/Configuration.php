@@ -9,6 +9,8 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  * Configuration
  *
  * This class generates configuration settings tree
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class Configuration implements ConfigurationInterface
 {

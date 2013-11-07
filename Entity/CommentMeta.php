@@ -8,6 +8,8 @@ use Ekino\WordpressBundle\Entity\Comment;
  * Class CommentMeta
  *
  * This is the CommentMeta entity
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class CommentMeta
 {

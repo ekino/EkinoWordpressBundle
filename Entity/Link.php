@@ -6,6 +6,8 @@ namespace Ekino\WordpressBundle\Entity;
  * Class Link
  *
  * This is the Link entity
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class Link
 {
