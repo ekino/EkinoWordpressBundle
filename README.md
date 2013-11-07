@@ -8,6 +8,7 @@ Here are some examples:
 * Use custom Symfony services into Wordpress,
 * Use Symfony to manipulate Wordpress database,
 * Create custom Symfony routes out of Wordpress
+* When authenticated on Wordpress, authenticated on Symfony too
 
 Installation
 ------------
