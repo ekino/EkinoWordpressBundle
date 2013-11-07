@@ -12,5 +12,12 @@
             <argument />
         </service>
 
+        <service id="ekino.wordpress.listener.wordpress_response" class="Ekino\WordpressBundle\Listener\WordpressResponseListener" public="true">
+            <tag name="kernel.event_listener" event="kernel.response" method="onKernelResponse" />
+
+            <argument type="service" id="security.context" />
+            <argument type="service" id="ekino.wordpress.manager.user" />
+        </service>
+
     </services>
 </container>

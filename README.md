@@ -60,15 +60,16 @@ ekino_wordpress:
 ```php
 <?php
 
-use Ekino\WordpressBundle\Wordpress\WordpressResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Debug\Debug;
 
 $loader = require_once __DIR__.'/symfony/app/bootstrap.php.cache';
+Debug::enable();
 
 // Load application kernel
 require_once __DIR__.'/symfony/app/AppKernel.php';
 
-$sfKernel = new AppKernel('prod', false);
+$sfKernel = new AppKernel('dev', true);
 $sfKernel->loadClassCache();
 $sfKernel->boot();
 
@@ -77,17 +78,9 @@ global $sfContainer;
 
 $sfContainer = $sfKernel->getContainer();
 
-// Handle request to return a Response or a WordpressResponse
 $sfRequest = Request::createFromGlobals();
 $sfResponse = $sfKernel->handle($sfRequest);
-
-if ($sfResponse instanceof WordpressResponse) {
-    define('WP_USE_THEMES', true);
-
-    require( dirname( __FILE__ ) . '/wp-blog-header.php' );
-} else {
-    $sfResponse->send();
-}
+$sfResponse->send();
 
 $sfKernel->terminate($sfRequest, $sfResponse);
 ```

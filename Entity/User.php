@@ -2,12 +2,16 @@
 
 namespace Ekino\WordpressBundle\Entity;
 
+use Symfony\Component\Security\Core\User\UserInterface;
+
 /**
  * Class User
  *
  * This is the User entity
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var integer
@@ -210,5 +214,45 @@ class User
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPassword()
+    {
+        return $this->getPass();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSalt()
+    {
+        return null;
+    }
+
+    /**
+     * {@inheritdoc}e
+     */
+    public function getUsername()
+    {
+        return $this->getLogin();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function eraseCredentials()
+    {
+
     }
 }

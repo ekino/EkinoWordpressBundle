@@ -3,11 +3,14 @@
 namespace Ekino\WordpressBundle\Subscriber;
 
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
+use Doctrine\ORM\Mapping\ClassMetadataInfo;
 
 /**
  * Class TablePrefixSubscriber
  *
  * Doctrine event to prefix tables
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class TablePrefixSubscriber implements \Doctrine\Common\EventSubscriber
 {
@@ -54,7 +57,7 @@ class TablePrefixSubscriber implements \Doctrine\Common\EventSubscriber
         $classMetadata->setTableName($this->prefix . $classMetadata->getTableName());
 
         foreach ($classMetadata->getAssociationMappings() as $fieldName => $mapping) {
-            if ($mapping['type'] == \Doctrine\ORM\Mapping\ClassMetadataInfo::MANY_TO_MANY) {
+            if ($mapping['type'] == ClassMetadataInfo::MANY_TO_MANY) {
                 $mappedTableName = $classMetadata->associationMappings[$fieldName]['joinTable']['name'];
                 $classMetadata->associationMappings[$fieldName]['joinTable']['name'] = $this->prefix . $mappedTableName;
             }
