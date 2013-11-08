@@ -34,12 +34,4 @@ class WordpressController extends Controller
     {
         return $this->get('ekino.wordpress.wordpress');
     }
-
-    public function customAction()
-    {
-        $this->getWordpress()->getContent();
-
-        global $wp;
-        var_dump($wp); exit;
-    }
 }
