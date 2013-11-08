@@ -1,0 +1,70 @@
+<?php
+
+namespace Ekino\WordpressBundle\Tests\Controller;
+
+use Ekino\WordpressBundle\Controller\WordpressController;
+
+/**
+ * Class WordpressControllerTest
+ *
+ * This is the Wordpress bundle controller test
+ */
+class WordpressControllerTest extends \PHPUnit_Framework_TestCase
+{
+    /**
+     * @var \Ekino\WordpressBundle\Wordpress\Wordpress
+     */
+    protected $wordpress;
+
+    /**
+     * Set up required mocks for Wordpress controller class
+     */
+    protected function setUp()
+    {
+        // Set up Wordpress instance mock
+        $this->wordpress = $this->getWordpressMock();
+
+        $this->wordpress->expects($this->any())
+            ->method('getContent')
+            ->will($this->returnValue('<html><body>My fake Wordpress content</body></html>'));
+
+        $this->wordpress->initialize();
+    }
+
+    /**
+     * Test catchAllAction() method
+     */
+    public function testCatchAllAction()
+    {
+        $controller = $this->getMock('\Ekino\WordpressBundle\Controller\WordpressController', array('getWordpress'));
+        $controller->expects($this->any())->method('getWordpress')->will($this->returnValue($this->wordpress));
+
+        $response = $controller->catchAllAction();
+
+        $this->assertInstanceOf('\Ekino\WordpressBundle\Wordpress\WordpressResponse', $response, 'Should returns a WordpressResponse instance');
+    }
+
+    /**
+     * Returns a mock of Wordpress class
+     *
+     * @return \Ekino\WordpressBundle\Wordpress\Wordpress
+     */
+    protected function getWordpressMock()
+    {
+        $kernel = $this->getKernelMock();
+
+        return $this->getMock('\Ekino\WordpressBundle\Wordpress\Wordpress', array('getContent'), array($kernel));
+    }
+
+    /**
+     * Returns a mock of Symfony kernel
+     *
+     * @return \Symfony\Component\HttpKernel\Kernel
+     */
+    protected function getKernelMock()
+    {
+        return $this->getMockBuilder('\Symfony\Component\HttpKernel\Kernel')
+            ->disableOriginalConstructor()
+            ->getMock();
+    }
+}

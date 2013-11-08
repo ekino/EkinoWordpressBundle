@@ -70,7 +70,7 @@ class WordpressRequestListener
     {
         $session = $request->getSession();
 
-        $identifier = wp_validate_auth_cookie($request->cookies->get(LOGGED_IN_COOKIE), 'logged_in');
+        $identifier = $this->getWordpressLoggedIdentifier($request);
 
         // If no user logged in Wordpress, logout user into Symfony
         if (false === $identifier) {
@@ -102,5 +102,17 @@ class WordpressRequestListener
             $session->set('wordpress_user_id', $identifier);
             $session->set('token', $token);
         }
+    }
+
+    /**
+     * Returns Wordpress loged in user identifier if logged otherwise returns false
+     *
+     * @param Request $request
+     *
+     * @return bool|int
+     */
+    protected function getWordpressLoggedIdentifier(Request $request)
+    {
+        return wp_validate_auth_cookie($request->cookies->get(LOGGED_IN_COOKIE), 'logged_in');
     }
 }

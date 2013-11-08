@@ -1,0 +1,18 @@
+<?php
+
+// if the bundle is in a Symfony project
+$symfonyAutoloader = __DIR__.'/../../../../app/autoload.php';
+
+// if the bundle is not in a Symfony project, load composer autoloader
+$composerAutoloader = __DIR__.'/../vendor/autoload.php';
+
+if (is_file($symfonyAutoloader)) {
+    include $symfonyAutoloader;
+} else if (is_file($composerAutoloader)) {
+    include $composerAutoloader;
+} else {
+    die('Unable to find autoload.php. Please run:
+
+wget http://getcomposer.org/composer.phar
+php composer.phar install');
+}
