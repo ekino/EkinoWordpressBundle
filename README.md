@@ -124,7 +124,7 @@ You're ready to go.
 ---
 
 Use in Symfony
-----------------
+--------------
 
 You can call Wordpress table managers in Symfony by calling the following services:
 
