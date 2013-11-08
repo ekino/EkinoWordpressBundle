@@ -26,7 +26,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('table_prefix')->defaultValue('wp_')->end()
+                ->scalarNode('table_prefix')->end()
             ->end()
         ;
 
