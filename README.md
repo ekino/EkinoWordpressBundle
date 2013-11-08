@@ -1,14 +1,14 @@
 EkinoWordpressBundle
 ####################
 
-This bundle is used to bring some Symfony services into Wordpress.
+This bundle is used to bring some Symfony services into Wordpress and manipulates Wordpress using Symfony.
 
-Here are some examples:
+Here are some features:
 
 * Use custom Symfony services into Wordpress,
 * Use Symfony to manipulate Wordpress database,
-* Create custom Symfony routes out of Wordpress
-* When authenticated on Wordpress, authenticated on Symfony too
+* Create custom Symfony routes out of Wordpress,
+* When authenticated on Wordpress, authenticated on Symfony too with correct user roles.
 
 Installation
 ------------
