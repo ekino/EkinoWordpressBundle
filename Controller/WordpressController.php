@@ -24,6 +24,18 @@ class WordpressController extends Controller
      */
     public function catchAllAction()
     {
+        $content = $this->getWordpressContent();
+
+        return new WordpressResponse($content);
+    }
+
+    /**
+     * Returns Wordpress content
+     *
+     * @return string
+     */
+    protected function getWordpressContent()
+    {
         ob_start();
 
         define('WP_USE_THEMES', true);
@@ -32,7 +44,7 @@ class WordpressController extends Controller
 
         require_once $this->getRootDir() . '/../../wp-blog-header.php';
 
-        return new WordpressResponse(ob_get_clean());
+        return ob_get_clean();
     }
 
     /**

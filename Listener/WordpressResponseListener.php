@@ -65,34 +65,37 @@ class WordpressResponseListener
     {
         $session = $request->getSession();
 
-        $cookie = $request->cookies->get(sprintf('wordpress_logged_in_%s', md5(site_url())));
+        $identifier = wp_validate_auth_cookie($request->cookies->get(LOGGED_IN_COOKIE), 'logged_in');
 
-        // Checks if user is logged on Wordpress application
-        if (null === $cookie) {
+        // If no user logged in Wordpress, logout user into Symfony
+        if (false === $identifier) {
             $this->securityContext->setToken(null);
             $session->clear();
 
             return;
         }
 
-        // Is not logged in Symfony security context, login (with session token if found)
+        // Is not logged into Symfony security context, login (with session token if found)
         if (!$this->securityContext->getToken()) {
-            $login = stristr($cookie, '|', true);
-
-            if ($session->has('token') && $login == $session->get('wordpress_login')) {
+            if ($session->has('token') && $identifier == $session->get('wordpress_user_id')) {
                 $token = $session->get('token');
                 $this->securityContext->setToken($token);
 
                 return;
             }
 
-            $user = $this->userManager->findOneBy(array('login' => $login));
+            // Find user and sets Wordpress role as Symfony role
+            $user = $this->userManager->find($identifier);
+
+            $capabilities = $user->getMetaValue('wp_capabilities');
+            $roles = array_keys(unserialize($capabilities));
+            $user->setRoles($roles);
 
             $token = new UsernamePasswordToken($user, null, 'secured_area', $user->getRoles());
             $this->securityContext->setToken($token);
 
-            $request->getSession()->set('wordpress_login', $user->getLogin());
-            $request->getSession()->set('token', $token);
+            $session->set('wordpress_user_id', $identifier);
+            $session->set('token', $token);
         }
     }
 }

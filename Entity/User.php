@@ -70,6 +70,11 @@ class User implements UserInterface
      */
     protected $metas;
 
+    /**
+     * @var array
+     */
+    protected $roles;
+
 
     /**
      * Constructor
@@ -240,6 +245,24 @@ class User implements UserInterface
     }
 
     /**
+     * Returns user meta value from a meta key name
+     *
+     * @param string $name
+     *
+     * @return string|null
+     */
+    public function getMetaValue($name)
+    {
+        foreach ($this->getMetas() as $meta) {
+            if ($name == $meta->getKey()) {
+                return $meta->getValue();
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * @return ArrayCollection
      */
     public function getMetas()
@@ -248,11 +271,25 @@ class User implements UserInterface
     }
 
     /**
+     * Sets user roles
+     *
+     * @param array|string $roles
+     */
+    public function setRoles($roles)
+    {
+        if (!is_array($roles)) {
+            $roles = array($roles);
+        }
+
+        $this->roles = $roles;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getRoles()
     {
-        return array('ROLE_USER');
+        return $this->roles ? $this->roles : array();
     }
 
     /**
