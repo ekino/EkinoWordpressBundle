@@ -27,6 +27,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('table_prefix')->end()
+                ->scalarNode('wordpress_directory')->end()
             ->end()
         ;
 

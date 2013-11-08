@@ -33,6 +33,10 @@ class EkinoWordpressExtension extends Extension
         if (isset($config['table_prefix'])) {
             $this->loadTablePrefix($container, $config['table_prefix']);
         }
+
+        if (isset($config['wordpress_directory'])) {
+            $this->loadWordpressDirectory($container, $config['wordpress_directory']);
+        }
     }
 
     /**
@@ -47,6 +51,22 @@ class EkinoWordpressExtension extends Extension
 
         $serviceDefinition = $container->getDefinition($identifier);
         $serviceDefinition->setArguments(array($prefix));
+
+        $container->setDefinition($identifier, $serviceDefinition);
+    }
+
+    /**
+     * Loads Wordpress directory from configuration
+     *
+     * @param ContainerBuilder $container Symfony dependency injection container
+     * @param string           $directory Wordpress directory
+     */
+    protected function loadWordpressDirectory(ContainerBuilder $container, $directory)
+    {
+        $identifier = 'ekino.wordpress.wordpress';
+
+        $serviceDefinition = $container->getDefinition($identifier);
+        $serviceDefinition->addArgument($directory);
 
         $container->setDefinition($identifier, $serviceDefinition);
     }

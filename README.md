@@ -51,11 +51,12 @@ Then, add the bundle into `symfony/AppKernel.php`:
     }
 ```
 
-Optionnally, you can specify your Wordpress custom table prefix by adding this to your `app/config.yml`:
+Optionnally, you can specify the following options in your `app/config.yml`:
 
 ```yml
 ekino_wordpress:
-    table_prefix: wp_
+    table_prefix: wp_ # If you have a specific Wordpress table prefix
+    wordpress_directory: /my/wordpress/directory # If you have a specific Wordpress directory structure
 ```
 
 ### 3) Update your Wordpress index.php file to load Symfony
