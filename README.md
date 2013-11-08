@@ -10,6 +10,8 @@ Here are some features:
 * Create custom Symfony routes out of Wordpress,
 * When authenticated on Wordpress, authenticated on Symfony too with correct user roles.
 
+---
+
 Installation
 ------------
 
@@ -119,6 +121,8 @@ DirectoryIndex index.php
 
 You're ready to go.
 
+---
+
 Use in Symfony
 ----------------
 
@@ -152,6 +156,8 @@ $post->setAuthor($user);
 
 $postManager->save($post);
 ```
+
+---
 
 Use in Wordpress
 ----------------
