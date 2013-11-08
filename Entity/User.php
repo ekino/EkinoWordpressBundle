@@ -285,6 +285,21 @@ class User implements UserInterface
     }
 
     /**
+     * Sets Wordpress user roles by prefixing them
+     *
+     * @param array  $roles  An array of roles
+     * @param string $prefix A role prefix
+     */
+    public function setWordpressRoles(array $roles, $prefix = 'ROLE_WP_')
+    {
+        foreach ($roles as $key => $role) {
+            $roles[$key] = $prefix . strtoupper($role);
+        }
+
+        $this->setRoles($roles);
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getRoles()

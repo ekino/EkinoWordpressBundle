@@ -43,7 +43,7 @@ class EkinoWordpressExtension extends Extension
      */
     protected function loadTablePrefix(ContainerBuilder $container, $prefix)
     {
-        $identifier = 'ekino.wordpress.listener.table_prefix_subscriber';
+        $identifier = 'ekino.wordpress.subscriber.table_prefix_subscriber';
 
         $serviceDefinition = $container->getDefinition($identifier);
         $serviceDefinition->setArguments(array($prefix));

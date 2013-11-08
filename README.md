@@ -117,22 +117,26 @@ DirectoryIndex index.php
 </IfModule>
 ```
 
+You're ready to go.
+
 Use in Symfony
 ----------------
 
 You can call Wordpress table managers in Symfony by calling the following services:
 
-- ekino.wordpress.manager.comment
-- ekino.wordpress.manager.comment_meta
-- ekino.wordpress.manager.link
-- ekino.wordpress.manager.option
-- ekino.wordpress.manager.post
-- ekino.wordpress.manager.post_meta
-- ekino.wordpress.manager.term
-- ekino.wordpress.manager.term_relationships
-- ekino.wordpress.manager.term_taxonomy
-- ekino.wordpress.manager.user
-- ekino.wordpress.manager.user_meta
+*Service identifier* | *Type*
+--- | ---
+ekino.wordpress.manager.comment | Wordpress comment manager
+ekino.wordpress.manager.comment_meta | Wordpress comment metas manager
+ekino.wordpress.manager.link | Wordpress link manager
+ekino.wordpress.manager.option | Wordpress option manager
+ekino.wordpress.manager.post | Wordpress post manager
+ekino.wordpress.manager.post_meta | Wordpress post metas manager
+ekino.wordpress.manager.term | Wordpress term manager
+ekino.wordpress.manager.term_relationships | Wordpress term relationships manager
+ekino.wordpress.manager.term_taxonomy | Wordpress taxonomy manager
+ekino.wordpress.manager.user | Wordpress user manager
+ekino.wordpress.manager.user_meta | Wordpress user metas manager
 
 So in custom Symfony controllers, you can create / update / delete data in Wordpress database, like that:
 

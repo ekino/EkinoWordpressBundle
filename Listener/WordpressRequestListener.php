@@ -3,22 +3,27 @@
 namespace Ekino\WordpressBundle\Listener;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 
 use Ekino\WordpressBundle\Manager\UserManager;
-use Ekino\WordpressBundle\Wordpress\WordpressResponse;
+use Ekino\WordpressBundle\Wordpress\Wordpress;
 
 /**
- * Class WordpressResponseListener
+ * Class WordpressRequestListener
  *
- * This is a listener that interacts with WordpressResponse response types
+ * This is a listener that loads Wordpress application on kernel request
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class WordpressResponseListener
+class WordpressRequestListener
 {
+    /**
+     * @var Wordpress
+     */
+    protected $wordpress;
+
     /**
      * @var UserManager
      */
@@ -32,28 +37,28 @@ class WordpressResponseListener
     /**
      * Constructor
      *
-     * @param SecurityContextInterface $securityContext Symfony security context service
+     * @param Wordpress                $wordpress       Wordpress service
      * @param UserManager              $userManager     Wordpress user manager
+     * @param SecurityContextInterface $securityContext Symfony security context service
      */
-    public function __construct(SecurityContextInterface $securityContext, UserManager $userManager)
+    public function __construct(Wordpress $wordpress, UserManager $userManager, SecurityContextInterface $securityContext)
     {
-        $this->securityContext = $securityContext;
+        $this->wordpress       = $wordpress;
         $this->userManager     = $userManager;
+        $this->securityContext = $securityContext;
     }
 
     /**
-     * On kernel response method
+     * On kernel request method
      *
-     * @param FilterResponseEvent $event
+     * @param GetResponseEvent $event
      */
-    public function onKernelResponse(FilterResponseEvent $event)
+    public function onKernelRequest(GetResponseEvent $event)
     {
-        $request  = $event->getRequest();
-        $response = $event->getResponse();
+        $this->wordpress->initialize();
 
-        if ($response instanceof WordpressResponse) {
-            $this->checkAuthentication($request);
-        }
+        $request = $event->getRequest();
+        $this->checkAuthentication($request);
     }
 
     /**
@@ -89,7 +94,7 @@ class WordpressResponseListener
 
             $capabilities = $user->getMetaValue('wp_capabilities');
             $roles = array_keys(unserialize($capabilities));
-            $user->setRoles($roles);
+            $user->setWordpressRoles($roles);
 
             $token = new UsernamePasswordToken($user, null, 'secured_area', $user->getRoles());
             $this->securityContext->setToken($token);

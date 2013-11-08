@@ -6,17 +6,28 @@
 
     <services>
 
-        <service id="ekino.wordpress.listener.table_prefix_subscriber" class="Ekino\WordpressBundle\Subscriber\TablePrefixSubscriber">
+        <!-- Services -->
+
+        <service id="ekino.wordpress.wordpress" class="Ekino\WordpressBundle\Wordpress\Wordpress">
+            <argument type="service" id="kernel" />
+        </service>
+
+        <!-- Subscribers -->
+
+        <service id="ekino.wordpress.subscriber.table_prefix_subscriber" class="Ekino\WordpressBundle\Subscriber\TablePrefixSubscriber">
             <tag name="doctrine.event_subscriber" />
 
             <argument />
         </service>
 
-        <service id="ekino.wordpress.listener.wordpress_response" class="Ekino\WordpressBundle\Listener\WordpressResponseListener" public="true">
-            <tag name="kernel.event_listener" event="kernel.response" method="onKernelResponse" />
+        <!-- Listeners -->
 
-            <argument type="service" id="security.context" />
+        <service id="ekino.wordpress.listener.wordpress_request" class="Ekino\WordpressBundle\Listener\WordpressRequestListener" public="true">
+            <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" />
+
+            <argument type="service" id="ekino.wordpress.wordpress" />
             <argument type="service" id="ekino.wordpress.manager.user" />
+            <argument type="service" id="security.context" />
         </service>
 
     </services>

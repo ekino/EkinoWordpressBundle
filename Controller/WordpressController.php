@@ -3,10 +3,8 @@
 namespace Ekino\WordpressBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
 
-use Ekino\WordpressBundle\Wordpress\WordpressResponse;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Ekino\WordpressBundle\Wordpress\Wordpress;
 
 /**
  * Class WordpressController
@@ -24,36 +22,24 @@ class WordpressController extends Controller
      */
     public function catchAllAction()
     {
-        $content = $this->getWordpressContent();
-
-        return new WordpressResponse($content);
+        return $this->getWordpress()->getResponse();
     }
 
     /**
-     * Returns Wordpress content
+     * Returns Wordpress service
      *
-     * @return string
+     * @return Wordpress
      */
-    protected function getWordpressContent()
+    protected function getWordpress()
     {
-        ob_start();
-
-        define('WP_USE_THEMES', true);
-
-        global $wp, $wp_the_query, $wp_query, $allowedentitynames;
-
-        require_once $this->getRootDir() . '/../../wp-blog-header.php';
-
-        return ob_get_clean();
+        return $this->get('ekino.wordpress.wordpress');
     }
 
-    /**
-     * Returns Symfony kernel root directory
-     *
-     * @return string
-     */
-    protected function getRootDir()
+    public function customAction()
     {
-        return $this->get('kernel')->getRootDir();
+        $this->getWordpress()->getContent();
+
+        global $wp;
+        var_dump($wp); exit;
     }
 }
