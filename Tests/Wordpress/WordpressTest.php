@@ -2,6 +2,8 @@
 
 namespace Ekino\WordpressBundle\Tests\Wordpress;
 
+use Ekino\WordpressBundle\Wordpress\Wordpress;
+
 /**
  * Class WordpressTest
  *
@@ -60,6 +62,17 @@ class WordpressTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('\Ekino\WordpressBundle\Wordpress\WordpressResponse', $response, 'Should return a WordpressResponse instance');
         $this->assertEquals($this->content, $response->getContent(), 'Wordpress content should be returned');
+    }
+
+    /**
+     * Returns an exception when specified Wordpress directory is not found
+     */
+    public function testExceptionWhenDirectoryNotFound()
+    {
+        $this->setExpectedException('InvalidArgumentException');
+
+        $wordpress = new Wordpress($this->getKernelMock(), '/a/path/that/does/not/exists');
+        $wordpress->initialize();
     }
 
     /**
