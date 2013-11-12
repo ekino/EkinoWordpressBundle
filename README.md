@@ -1,5 +1,4 @@
-EkinoWordpressBundle
-####################
+# EkinoWordpressBundle
 
 This bundle is used to bring some Symfony services into Wordpress and manipulates Wordpress using Symfony.
 
@@ -12,8 +11,7 @@ Here are some features:
 
 ---
 
-Installation
-------------
+## Installation
 
 ### 1) Install Symfony into your Wordpress project
 
@@ -132,8 +130,7 @@ You're ready to go.
 
 ---
 
-Use in Symfony
---------------
+## Use in Symfony
 
 You can call Wordpress table managers in Symfony by calling the following services:
 
@@ -168,8 +165,7 @@ $postManager->save($post);
 
 ---
 
-Use in Wordpress
-----------------
+## Use in Wordpress
 
 ### Call a service from Symfony container
 
