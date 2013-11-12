@@ -113,6 +113,6 @@ class WordpressRequestListener
      */
     protected function getWordpressLoggedIdentifier(Request $request)
     {
-        return wp_validate_auth_cookie($request->cookies->get(LOGGED_IN_COOKIE), 'logged_in');
+        return \wp_validate_auth_cookie($request->cookies->get(LOGGED_IN_COOKIE), 'logged_in');
     }
 }

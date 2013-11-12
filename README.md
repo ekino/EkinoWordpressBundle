@@ -51,6 +51,14 @@ Then, add the bundle into `symfony/AppKernel.php`:
     }
 ```
 
+Add the WordpressBundle routing file in your routing.yml, after your custom routes to catch all Wordpress routes:
+
+```yml
+...
+ekino_wordpress:
+    resource: "@EkinoWordpressBundle/Resources/config/routing.xml"
+```
+
 Optionnally, you can specify the following options in your `app/config.yml`:
 
 ```yml
