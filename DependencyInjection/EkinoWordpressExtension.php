@@ -37,6 +37,7 @@ class EkinoWordpressExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('orm.xml');
         $loader->load('services.xml');
+        $loader->load('hooks.xml');
 
         if (isset($config['table_prefix'])) {
             $this->loadTablePrefix($container, $config['table_prefix']);

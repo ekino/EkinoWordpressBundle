@@ -52,12 +52,16 @@ class Wordpress
     }
 
     /**
-     * Initialize Wordpress
+     * Initializes Wordpress
+     *
+     * @return $this
      */
     public function initialize()
     {
         $content = $this->getContent();
         $this->response = new WordpressResponse($content);
+
+        return $this;
     }
 
     /**

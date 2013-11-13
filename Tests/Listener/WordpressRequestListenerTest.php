@@ -10,12 +10,14 @@
 
 namespace Ekino\WordpressBundle\Tests\Listener;
 
+use Ekino\WordpressBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContext;
 
 /**
@@ -40,21 +42,11 @@ class WordpressRequestListenerTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        // Set up Wordpress instance mock
-        $wordpress = $this->getWordpressMock();
-
-        $wordpress->expects($this->any())
-            ->method('getContent')
-            ->will($this->returnValue('<html><body>My fake Wordpress content</body></html>'));
-
         // Set up a fake User to be returned by UserManager mocked below
         $userMock = $this->getMock('\Ekino\WordpressBundle\Entity\User', array('getMetaValue'));
         $userMock->expects($this->any())->method('getMetaValue')->will(
             $this->returnValue(serialize(array('administrator' => true)))
         );
-
-        $userManager = $this->getUserManagerMock();
-        $userManager->expects($this->any())->method('find')->will($this->returnValue($userMock));
 
         // Set up a security context mock for listener mock below
         $this->securityContext = $this->getSecurityContextMock();
@@ -62,24 +54,14 @@ class WordpressRequestListenerTest extends \PHPUnit_Framework_TestCase
         $this->listener = $this->getMock(
             '\Ekino\WordpressBundle\Listener\WordpressRequestListener',
             array('getWordpressLoggedIdentifier'),
-            array($wordpress, $userManager, $this->securityContext)
+            array($this->securityContext)
         );
-    }
-
-    /**
-     * Test onKernelResponse() method with no user logged in
-     */
-    public function testOnKernelRequestNotUserLogged()
-    {
-        $this->listener->expects($this->any())->method('getWordpressLoggedIdentifier')->will($this->returnValue(false));
-
-        $this->assertNull($this->securityContext->getToken(), 'Should returns no token');
     }
 
     /**
      * Test onKernelResponse() & checkAuthentication() methods with a user logged in
      *
-     * Should authenticate user and returns correct role
+     * Should sets user token in security context if session key 'token' exists
      */
     public function testOnKernelRequestUserLogged()
     {
@@ -98,52 +80,14 @@ class WordpressRequestListenerTest extends \PHPUnit_Framework_TestCase
         );
 
         // Run onKernelRequest() method
+        $this->assertEquals(null, $this->securityContext->getToken(), 'Should returns no token');
+
+        $user = new User();
+        $token = new UsernamePasswordToken($user, $user->getPass(), 'secured_area', $user->getRoles());
+        $getResponseEvent->getRequest()->getSession()->set('token', $token);
         $this->listener->onKernelRequest($getResponseEvent);
 
-        $this->assertNotNull($this->securityContext->getToken(), 'Should returns no token');
-
-        $this->assertEquals(1, $request->getSession()->get('wordpress_user_id'), 'Should return identifier stored in session');
-        $this->assertEquals($this->securityContext->getToken(), $request->getSession()->get('token'), 'Should return token stored in session');
-
-        $user = $this->securityContext->getToken()->getUser();
-
-        $this->assertEquals(array('ROLE_WP_ADMINISTRATOR'), $user->getRoles());
-    }
-
-    /**
-     * Returns a mock of Wordpress class
-     *
-     * @return \Ekino\WordpressBundle\Wordpress\Wordpress
-     */
-    protected function getWordpressMock()
-    {
-        $kernel = $this->getKernelMock();
-
-        return $this->getMock('\Ekino\WordpressBundle\Wordpress\Wordpress', array('getContent'), array($kernel));
-    }
-
-    /**
-     * Returns a mock of Symfony kernel
-     *
-     * @return \Symfony\Component\HttpKernel\Kernel
-     */
-    protected function getKernelMock()
-    {
-        return $this->getMockBuilder('\Symfony\Component\HttpKernel\Kernel')
-            ->disableOriginalConstructor()
-            ->getMock();
-    }
-
-    /**
-     * Returns a mock of user manager
-     *
-     * @return \Ekino\WordpressBundle\Manager\UserManager
-     */
-    protected function getUserManagerMock()
-    {
-        return $this->getMockBuilder('\Ekino\WordpressBundle\Manager\UserManager')
-            ->disableOriginalConstructor()
-            ->getMock();
+        $this->assertEquals($token, $this->securityContext->getToken(), 'Should returns previous token initialized');
     }
 
     /**

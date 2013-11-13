@@ -30,7 +30,7 @@ class WordpressController extends Controller
      */
     public function catchAllAction()
     {
-        return $this->getWordpress()->getResponse();
+        return $this->getWordpress()->initialize()->getResponse();
     }
 
     /**
