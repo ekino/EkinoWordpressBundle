@@ -7,8 +7,8 @@ Here are some features:
 * Use custom Symfony services into Wordpress,
 * Use Symfony to manipulate Wordpress database,
 * Create custom Symfony routes out of Wordpress,
-* When authenticated on Wordpress, authenticated on Symfony too with correct user roles.
-* Catch some Wordpress hooks to be dispatched by Symfony EventDispatcher
+* When authenticated on Wordpress, authenticated on Symfony too with correct user roles. *(requires ekino-wordpress-symfony Wordpress plugin)*
+* Catch some Wordpress hooks to be dispatched by Symfony EventDispatcher *(requires ekino-wordpress-symfony Wordpress plugin)*
 
 ---
 
