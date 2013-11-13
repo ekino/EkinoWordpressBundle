@@ -16,6 +16,8 @@ use Ekino\WordpressBundle\Entity\Option;
  * Class OptionTest
  *
  * This is the Wordpress option entity test
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class OptionTest extends \PHPUnit_Framework_TestCase
 {

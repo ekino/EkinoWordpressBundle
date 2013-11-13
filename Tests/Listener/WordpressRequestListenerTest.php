@@ -24,6 +24,8 @@ use Symfony\Component\Security\Core\SecurityContext;
  * Class WordpressRequestListenerTest
  *
  * This is the test class for the WordpressRequestListener that initializes the Wordpress application
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class WordpressRequestListenerTest extends \PHPUnit_Framework_TestCase
 {

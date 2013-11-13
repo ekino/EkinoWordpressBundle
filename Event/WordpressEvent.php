@@ -16,6 +16,8 @@ use Symfony\Component\EventDispatcher\Event;
  * Class WordpressEvent
  *
  * This is the Wordpress event class
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class WordpressEvent extends Event
 {

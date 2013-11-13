@@ -8,6 +8,7 @@ Here are some features:
 * Use Symfony to manipulate Wordpress database,
 * Create custom Symfony routes out of Wordpress,
 * When authenticated on Wordpress, authenticated on Symfony too with correct user roles.
+* Catch some Wordpress hooks to be dispatched by Symfony EventDispatcher
 
 ---
 

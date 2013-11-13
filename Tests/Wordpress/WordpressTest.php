@@ -16,6 +16,8 @@ use Ekino\WordpressBundle\Wordpress\Wordpress;
  * Class WordpressTest
  *
  * This is the test class for the Wordpress class
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class WordpressTest extends \PHPUnit_Framework_TestCase
 {

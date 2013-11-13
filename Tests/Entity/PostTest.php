@@ -19,6 +19,8 @@ use Ekino\WordpressBundle\Entity\User;
  * Class PostTest
  *
  * This is the Wordpress post entity test
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class PostTest extends \PHPUnit_Framework_TestCase
 {

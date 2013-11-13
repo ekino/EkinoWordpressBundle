@@ -17,6 +17,8 @@ use Ekino\WordpressBundle\Entity\UserMeta;
  * Class UserMetaTest
  *
  * This is the Wordpress user meta entity test
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class UserMetaTest extends \PHPUnit_Framework_TestCase
 {

@@ -17,6 +17,8 @@ use Ekino\WordpressBundle\Entity\TermTaxonomy;
  * Class TermRelationshipsTest
  *
  * This is the Wordpress term relationships entity test
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class TermRelationshipsTest extends \PHPUnit_Framework_TestCase
 {

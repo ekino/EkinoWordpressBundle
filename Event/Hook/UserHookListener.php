@@ -23,6 +23,8 @@ use Ekino\WordpressBundle\Manager\UserManager;
  * Class UserHookListener
  *
  * This is a hook class that catch some user events fired by Wordpress
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class UserHookListener
 {

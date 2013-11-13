@@ -16,6 +16,8 @@ use Ekino\WordpressBundle\Entity\Term;
  * Class TermTest
  *
  * This is the Wordpress term entity test
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class TermTest extends \PHPUnit_Framework_TestCase
 {

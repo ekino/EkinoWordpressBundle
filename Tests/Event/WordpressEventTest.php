@@ -16,6 +16,8 @@ use Ekino\WordpressBundle\Event\WordpressEvent;
  * Class WordpressEventTest
  *
  * This is the test class for the Wordpress event class
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class WordpressEventTest extends \PHPUnit_Framework_TestCase
 {

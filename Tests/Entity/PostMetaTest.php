@@ -17,6 +17,8 @@ use Ekino\WordpressBundle\Entity\PostMeta;
  * Class PostMetaTest
  *
  * This is the Wordpress post meta entity test
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class PostMetaTest extends \PHPUnit_Framework_TestCase
 {

@@ -10,12 +10,12 @@
 
 namespace Ekino\WordpressBundle\Tests\Controller;
 
-use Ekino\WordpressBundle\Controller\WordpressController;
-
 /**
  * Class WordpressControllerTest
  *
  * This is the Wordpress bundle controller test
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class WordpressControllerTest extends \PHPUnit_Framework_TestCase
 {

@@ -16,6 +16,8 @@ use Ekino\WordpressBundle\Entity\Link;
  * Class LinkTest
  *
  * This is the Wordpress link entity test
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class LinkTest extends \PHPUnit_Framework_TestCase
 {

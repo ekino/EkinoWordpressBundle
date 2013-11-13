@@ -17,6 +17,8 @@ use Ekino\WordpressBundle\Entity\TermTaxonomy;
  * Class TermTaxonomyTest
  *
  * This is the Wordpress term taxonomy entity test
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class TermTaxonomyTest extends \PHPUnit_Framework_TestCase
 {

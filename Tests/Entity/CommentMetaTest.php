@@ -17,6 +17,8 @@ use Ekino\WordpressBundle\Entity\CommentMeta;
  * Class CommentMetaTest
  *
  * This is the Wordpress comment meta entity test
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class CommentMetaTest extends \PHPUnit_Framework_TestCase
 {

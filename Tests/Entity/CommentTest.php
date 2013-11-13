@@ -18,6 +18,8 @@ use Ekino\WordpressBundle\Entity\User;
  * Class CommentTest
  *
  * This is the Wordpress comment entity test
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class CommentTest extends \PHPUnit_Framework_TestCase
 {

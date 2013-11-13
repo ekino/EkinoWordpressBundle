@@ -18,6 +18,8 @@ use Ekino\WordpressBundle\Entity\UserMeta;
  * Class UserTest
  *
  * This is the Wordpress user entity test
+ *
+ * @author Vincent Composieux <composieux@ekino.com>
  */
 class UserTest extends \PHPUnit_Framework_TestCase
 {
