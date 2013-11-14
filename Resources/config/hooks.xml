@@ -7,8 +7,8 @@
     <services>
 
         <service id="ekino.wordpress.event.hook.user" class="Ekino\WordpressBundle\Event\Hook\UserHookListener" scope="request">
-            <tag name="kernel.event_listener" event="wordpress.user_login" method="onLogin" priority="64"/>
-            <tag name="kernel.event_listener" event="wordpress.user_logout" method="onLogout" priority="64"/>
+            <tag name="kernel.event_listener" event="ekino.wordpress.user_login" method="onLogin" priority="64"/>
+            <tag name="kernel.event_listener" event="ekino.wordpress.user_logout" method="onLogout" priority="64"/>
 
             <argument type="service" id="ekino.wordpress.manager.user" />
             <argument type="service" id="logger" />
