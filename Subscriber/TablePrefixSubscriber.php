@@ -62,7 +62,7 @@ class TablePrefixSubscriber implements \Doctrine\Common\EventSubscriber
             return;
         }
 
-        $classMetadata->setTableName($this->prefix . $classMetadata->getTableName());
+        $classMetadata->setPrimaryTable(array('name' => $this->prefix . $classMetadata->getTableName()));
 
         foreach ($classMetadata->getAssociationMappings() as $fieldName => $mapping) {
             if ($mapping['type'] == ClassMetadataInfo::MANY_TO_MANY) {
