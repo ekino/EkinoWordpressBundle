@@ -1,4 +1,7 @@
-# EkinoWordpressBundle
+EkinoWordpressBundle
+====================
+
+[![Build Status](https://secure.travis-ci.org/ekino/EkinoWordpressBundle.png?branch=master)](http://travis-ci.org/ekino/EkinoWordpressBundle)
 
 This bundle is used to bring some Symfony services into Wordpress and manipulates Wordpress using Symfony.
 
