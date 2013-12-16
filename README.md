@@ -22,7 +22,7 @@ Install your Wordpress project and/or get into your root project directory and i
 
 ### 2) Install ekino/wordpress-bundle into Symfony's project
 
-After, edit `symfony/composer.json` file to add the official Wordpress git repository:
+After, edit `symfony/composer.json` file to add this bundle package:
 
 ```yml
 "require": {
