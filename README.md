@@ -69,7 +69,7 @@ ekino_wordpress:
     wordpress_directory: /my/wordpress/directory # If you have a specific Wordpress directory structure
 ```
 
-### 3) Update your Wordpress index.php file to load Symfony
+### 3) Update your Wordpress index.php file to load Symfony libraries
 
 ```php
 <?php
