@@ -20,3 +20,7 @@ script: phpunit
 notifications:
   email:
     - composieux@ekino.com
+
+matrix:
+  allow_failures:
+    - php: hhvm
