@@ -77,6 +77,20 @@ ekino_wordpress:
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Debug\Debug;
 
+/**
+ * Retrieves or sets the Symfony Dependency Injection container
+ *
+ * @param ContainerInterface|null $sfContainer
+ *
+ * @return ContainerInterface
+ */
+function symfony_container($sfContainer = null)
+{
+    static $container;
+
+    return $container = $sfContainer ?: $container;
+}
+
 $loader = require_once __DIR__.'/symfony/app/bootstrap.php.cache';
 Debug::enable();
 
@@ -88,9 +102,10 @@ $sfKernel->loadClassCache();
 $sfKernel->boot();
 
 // Add Symfony container as a global variable to be used in Wordpress
-global $sfContainer;
-
 $sfContainer = $sfKernel->getContainer();
+$sfContainer->enterScope('request');
+
+symfony_container($sfContainer);
 
 $sfRequest = Request::createFromGlobals();
 $sfResponse = $sfKernel->handle($sfRequest);
