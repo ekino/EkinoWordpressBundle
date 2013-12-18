@@ -76,19 +76,25 @@ ekino_wordpress:
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Debug\Debug;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Retrieves or sets the Symfony Dependency Injection container
  *
- * @param ContainerInterface|null $sfContainer
+ * @param ContainerInterface|string $id
  *
- * @return ContainerInterface
+ * @return mixed
  */
-function symfony_container($sfContainer = null)
+function symfony($id)
 {
     static $container;
 
-    return $container = $sfContainer ?: $container;
+    if ($id instanceof ContainerInterface) {
+        $container = $id;
+        return;
+    }
+
+    return $container->get($id);
 }
 
 $loader = require_once __DIR__.'/symfony/app/bootstrap.php.cache';
@@ -105,7 +111,7 @@ $sfKernel->boot();
 $sfContainer = $sfKernel->getContainer();
 $sfContainer->enterScope('request');
 
-symfony_container($sfContainer);
+symfony($sfContainer);
 
 $sfRequest = Request::createFromGlobals();
 $sfResponse = $sfKernel->handle($sfRequest);
