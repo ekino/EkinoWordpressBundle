@@ -37,7 +37,7 @@ class Wordpress
     /**
      * @var string
      */
-    protected $wordpressDirectory;
+    protected $directory;
 
     /**
      * Constructor
