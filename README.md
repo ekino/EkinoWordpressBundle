@@ -194,8 +194,8 @@ $postManager->save($post);
 
 ### Call a service from Symfony container
 
-Simply use the `$sfContainer` global variable and call your custom service like that:
+Simply use the `symfony()` method and call your custom service like that:
 
 ```php
-$service = $sfContainer->get('my.custom.symfony.service');
+$service = symfony('my.custom.symfony.service');
 ```
