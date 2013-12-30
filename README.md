@@ -36,7 +36,7 @@ After, edit `symfony/composer.json` file to add this bundle package:
 
 Run `php composer.phar update ekino/wordpress-bundle`
 
-Then, add the bundle into `symfony/AppKernel.php`:
+Then, add the bundle into `symfony/app/AppKernel.php`:
 
 ```php
 <?php
@@ -53,7 +53,7 @@ Then, add the bundle into `symfony/AppKernel.php`:
     }
 ```
 
-Add the WordpressBundle routing file in your routing.yml, after your custom routes to catch all Wordpress routes:
+Add the WordpressBundle routing file in your `symfony/app/config/routing.yml`, after your custom routes to catch all Wordpress routes:
 
 ```yml
 ...
