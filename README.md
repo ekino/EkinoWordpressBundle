@@ -69,6 +69,15 @@ ekino_wordpress:
     wordpress_directory: /my/wordpress/directory # If you have a specific Wordpress directory structure
 ```
 
+Also optionnally, if you want to use `UserHook` to authenticate on Symfony, you should add this configuration to your `app/security.yml`:
+
+```yml
+security:
+    providers:
+        main:
+            entity: { class: Ekino\WordpressBundle\Entity\User, property: login }
+```
+
 ### 3) Update your Wordpress index.php file to load Symfony libraries
 
 ```php
