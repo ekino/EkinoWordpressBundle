@@ -12,6 +12,7 @@ namespace Ekino\WordpressBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Config\FileLocator;
 
@@ -46,6 +47,10 @@ class EkinoWordpressExtension extends Extension
         if (isset($config['wordpress_directory'])) {
             $this->loadWordpressDirectory($container, $config['wordpress_directory']);
         }
+
+        if (isset($config['entity_manager'])) {
+            $this->loadEntityManager($container, $config['entity_manager']);
+        }
     }
 
     /**
@@ -78,6 +83,23 @@ class EkinoWordpressExtension extends Extension
         $serviceDefinition->addArgument($directory);
 
         $container->setDefinition($identifier, $serviceDefinition);
+    }
+
+    protected function loadEntityManager(ContainerBuilder $container, $em)
+    {
+        $reference = new Reference(sprintf('doctrine.orm.%s_entity_manager', $em));
+
+        $container->getDefinition('ekino.wordpress.manager.comment')->replaceArgument(0, $reference);
+        $container->getDefinition('ekino.wordpress.manager.comment_meta')->replaceArgument(0, $reference);
+        $container->getDefinition('ekino.wordpress.manager.link')->replaceArgument(0, $reference);
+        $container->getDefinition('ekino.wordpress.manager.option')->replaceArgument(0, $reference);
+        $container->getDefinition('ekino.wordpress.manager.post')->replaceArgument(0, $reference);
+        $container->getDefinition('ekino.wordpress.manager.post_meta')->replaceArgument(0, $reference);
+        $container->getDefinition('ekino.wordpress.manager.term')->replaceArgument(0, $reference);
+        $container->getDefinition('ekino.wordpress.manager.term_relationships')->replaceArgument(0, $reference);
+        $container->getDefinition('ekino.wordpress.manager.term_taxonomy')->replaceArgument(0, $reference);
+        $container->getDefinition('ekino.wordpress.manager.user')->replaceArgument(0, $reference);
+        $container->getDefinition('ekino.wordpress.manager.user_meta')->replaceArgument(0, $reference);
     }
 
     /**

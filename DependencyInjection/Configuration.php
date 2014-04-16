@@ -36,6 +36,7 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->scalarNode('table_prefix')->end()
                 ->scalarNode('wordpress_directory')->end()
+                ->scalarNode('entity_manager')->end()
             ->end()
         ;
 
