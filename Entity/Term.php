@@ -17,7 +17,7 @@ namespace Ekino\WordpressBundle\Entity;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class Term
+class Term implements WordpressEntityInterface
 {
     /**
      * @var integer

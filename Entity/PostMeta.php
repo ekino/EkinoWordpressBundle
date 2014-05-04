@@ -10,8 +10,6 @@
 
 namespace Ekino\WordpressBundle\Entity;
 
-use Ekino\WordpressBundle\Entity\Post;
-
 /**
  * Class PostMeta
  *
@@ -19,7 +17,7 @@ use Ekino\WordpressBundle\Entity\Post;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class PostMeta
+class PostMeta implements WordpressEntityInterface
 {
     /**
      * @var integer

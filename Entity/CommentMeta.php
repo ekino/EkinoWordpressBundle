@@ -10,8 +10,6 @@
 
 namespace Ekino\WordpressBundle\Entity;
 
-use Ekino\WordpressBundle\Entity\Comment;
-
 /**
  * Class CommentMeta
  *
@@ -19,7 +17,7 @@ use Ekino\WordpressBundle\Entity\Comment;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class CommentMeta
+class CommentMeta implements WordpressEntityInterface
 {
     /**
      * @var integer

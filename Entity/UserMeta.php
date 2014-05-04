@@ -10,8 +10,6 @@
 
 namespace Ekino\WordpressBundle\Entity;
 
-use Ekino\WordpressBundle\Entity\User;
-
 /**
  * Class UserMeta
  *
@@ -19,7 +17,7 @@ use Ekino\WordpressBundle\Entity\User;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class UserMeta
+class UserMeta implements WordpressEntityInterface
 {
     /**
      * @var integer

@@ -13,6 +13,8 @@ namespace Ekino\WordpressBundle\Subscriber;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 
+use Ekino\WordpressBundle\Entity\WordpressEntityInterface;
+
 /**
  * Class TablePrefixSubscriber
  *
@@ -62,12 +64,16 @@ class TablePrefixSubscriber implements \Doctrine\Common\EventSubscriber
             return;
         }
 
-        $classMetadata->setPrimaryTable(array('name' => $this->prefix . $classMetadata->getTableName()));
+        $entity = $classMetadata->newInstance();
 
-        foreach ($classMetadata->getAssociationMappings() as $fieldName => $mapping) {
-            if ($mapping['type'] == ClassMetadataInfo::MANY_TO_MANY) {
-                $mappedTableName = $classMetadata->associationMappings[$fieldName]['joinTable']['name'];
-                $classMetadata->associationMappings[$fieldName]['joinTable']['name'] = $this->prefix . $mappedTableName;
+        if ($entity instanceof WordpressEntityInterface) {
+            $classMetadata->setPrimaryTable(array('name' => $this->prefix . $classMetadata->getTableName()));
+
+            foreach ($classMetadata->getAssociationMappings() as $fieldName => $mapping) {
+                if ($mapping['type'] == ClassMetadataInfo::MANY_TO_MANY) {
+                    $mappedTableName = $classMetadata->associationMappings[$fieldName]['joinTable']['name'];
+                    $classMetadata->associationMappings[$fieldName]['joinTable']['name'] = $this->prefix . $mappedTableName;
+                }
             }
         }
     }

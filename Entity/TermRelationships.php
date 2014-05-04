@@ -10,8 +10,6 @@
 
 namespace Ekino\WordpressBundle\Entity;
 
-use Ekino\WordpressBundle\Entity\TermTaxonomy;
-
 /**
  * Class TermRelationships
  *
@@ -19,7 +17,7 @@ use Ekino\WordpressBundle\Entity\TermTaxonomy;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class TermRelationships
+class TermRelationships implements WordpressEntityInterface
 {
     /**
      * @var integer

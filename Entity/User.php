@@ -21,7 +21,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class User implements UserInterface
+class User implements UserInterface, WordpressEntityInterface
 {
     /**
      * @var integer

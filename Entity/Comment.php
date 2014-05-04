@@ -10,9 +10,6 @@
 
 namespace Ekino\WordpressBundle\Entity;
 
-use Ekino\WordpressBundle\Entity\Post;
-use Ekino\WordpressBundle\Entity\User;
-
 /**
  * Class Comment
  *
@@ -20,7 +17,7 @@ use Ekino\WordpressBundle\Entity\User;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class Comment
+class Comment implements WordpressEntityInterface
 {
     /**
      * @var integer

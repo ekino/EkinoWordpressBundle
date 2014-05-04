@@ -12,8 +12,6 @@ namespace Ekino\WordpressBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
-use Ekino\WordpressBundle\Entity\User;
-
 /**
  * Class Post
  *
@@ -21,7 +19,7 @@ use Ekino\WordpressBundle\Entity\User;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class Post
+class Post implements WordpressEntityInterface
 {
     /**
      * @var integer
