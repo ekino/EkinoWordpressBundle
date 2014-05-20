@@ -11,7 +11,7 @@
         </id>
 
         <field name="taxonomy" nullable="false" type="string" length="32" column="taxonomy" />
-        <field name="description" nullable="false" type="text" column="desription" />
+        <field name="description" nullable="false" type="text" column="description" />
         <field name="count" nullable="false" type="integer" length="20" column="count" />
 
         <many-to-one field="term" target-entity="Ekino\WordpressBundle\Entity\Term">
