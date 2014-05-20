@@ -12,8 +12,7 @@ namespace Ekino\WordpressBundle\Subscriber;
 
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
-
-use Ekino\WordpressBundle\Entity\WordpressEntityInterface;
+use Doctrine\Common\EventSubscriber;
 
 /**
  * Class TablePrefixSubscriber
@@ -22,7 +21,7 @@ use Ekino\WordpressBundle\Entity\WordpressEntityInterface;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class TablePrefixSubscriber implements \Doctrine\Common\EventSubscriber
+class TablePrefixSubscriber implements EventSubscriber
 {
     /**
      * Prefix value
@@ -34,7 +33,7 @@ class TablePrefixSubscriber implements \Doctrine\Common\EventSubscriber
     /**
      * Constructor
      *
-     * @param stirng $prefix
+     * @param string $prefix
      */
     public function __construct($prefix)
     {
@@ -64,9 +63,7 @@ class TablePrefixSubscriber implements \Doctrine\Common\EventSubscriber
             return;
         }
 
-        $entity = $classMetadata->newInstance();
-
-        if ($entity instanceof WordpressEntityInterface) {
+        if ($classMetadata->getReflectionClass()->implementsInterface('Ekino\\WordpressBundle\\Entity\\WordpressEntityInterface')) {
             $classMetadata->setPrimaryTable(array('name' => $this->prefix . $classMetadata->getTableName()));
 
             foreach ($classMetadata->getAssociationMappings() as $fieldName => $mapping) {
