@@ -17,7 +17,7 @@ namespace Ekino\WordpressBundle\Entity;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class Comment implements WordpressEntityInterface
+class Comment implements WordpressEntityInterface, WordpressContentInterface
 {
     /**
      * @var integer
@@ -105,10 +105,14 @@ class Comment implements WordpressEntityInterface
 
     /**
      * @param string $agent
+     *
+     * @return Comment
      */
     public function setAgent($agent)
     {
         $this->agent = $agent;
+
+        return $this;
     }
 
     /**
@@ -121,10 +125,14 @@ class Comment implements WordpressEntityInterface
 
     /**
      * @param string $approved
+     *
+     * @return Comment
      */
     public function setApproved($approved)
     {
         $this->approved = $approved;
+
+        return $this;
     }
 
     /**
@@ -137,10 +145,14 @@ class Comment implements WordpressEntityInterface
 
     /**
      * @param string $author
+     *
+     * @return Comment
      */
     public function setAuthor($author)
     {
         $this->author = $author;
+
+        return $this;
     }
 
     /**
@@ -153,10 +165,14 @@ class Comment implements WordpressEntityInterface
 
     /**
      * @param string $authorEmail
+     *
+     * @return Comment
      */
     public function setAuthorEmail($authorEmail)
     {
         $this->authorEmail = $authorEmail;
+
+        return $this;
     }
 
     /**
@@ -169,10 +185,14 @@ class Comment implements WordpressEntityInterface
 
     /**
      * @param string $authorIp
+     *
+     * @return Comment
      */
     public function setAuthorIp($authorIp)
     {
         $this->authorIp = $authorIp;
+
+        return $this;
     }
 
     /**
@@ -185,10 +205,14 @@ class Comment implements WordpressEntityInterface
 
     /**
      * @param string $authorUrl
+     *
+     * @return Comment
      */
     public function setAuthorUrl($authorUrl)
     {
         $this->authorUrl = $authorUrl;
+
+        return $this;
     }
 
     /**
@@ -201,10 +225,14 @@ class Comment implements WordpressEntityInterface
 
     /**
      * @param string $content
+     *
+     * @return Comment
      */
     public function setContent($content)
     {
         $this->content = $content;
+
+        return $this;
     }
 
     /**
@@ -217,10 +245,14 @@ class Comment implements WordpressEntityInterface
 
     /**
      * @param \DateTime $date
+     *
+     * @return Comment
      */
     public function setDate($date)
     {
         $this->date = $date;
+
+        return $this;
     }
 
     /**
@@ -233,10 +265,14 @@ class Comment implements WordpressEntityInterface
 
     /**
      * @param \DateTime $dateGmt
+     *
+     * @return Comment
      */
     public function setDateGmt($dateGmt)
     {
         $this->dateGmt = $dateGmt;
+
+        return $this;
     }
 
     /**
@@ -249,10 +285,14 @@ class Comment implements WordpressEntityInterface
 
     /**
      * @param int $karma
+     *
+     * @return Comment
      */
     public function setKarma($karma)
     {
         $this->karma = $karma;
+
+        return $this;
     }
 
     /**
@@ -265,10 +305,14 @@ class Comment implements WordpressEntityInterface
 
     /**
      * @param Comment $parent
+     *
+     * @return Comment
      */
     public function setParent(Comment $parent)
     {
         $this->parent = $parent;
+
+        return $this;
     }
 
     /**
@@ -281,10 +325,14 @@ class Comment implements WordpressEntityInterface
 
     /**
      * @param Post $post
+     *
+     * @return Comment
      */
     public function setPost(Post $post)
     {
         $this->post = $post;
+
+        return $this;
     }
 
     /**
@@ -297,10 +345,14 @@ class Comment implements WordpressEntityInterface
 
     /**
      * @param string $type
+     *
+     * @return Comment
      */
     public function setType($type)
     {
         $this->type = $type;
+
+        return $this;
     }
 
     /**
@@ -313,10 +365,14 @@ class Comment implements WordpressEntityInterface
 
     /**
      * @param User $user
+     *
+     * @return Comment
      */
     public function setUser(User $user)
     {
         $this->user = $user;
+
+        return $this;
     }
 
     /**

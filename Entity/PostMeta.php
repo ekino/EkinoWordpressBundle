@@ -50,10 +50,14 @@ class PostMeta implements WordpressEntityInterface
 
     /**
      * @param string $key
+     *
+     * @return PostMeta
      */
     public function setKey($key)
     {
         $this->key = $key;
+
+        return $this;
     }
 
     /**
@@ -66,10 +70,14 @@ class PostMeta implements WordpressEntityInterface
 
     /**
      * @param Post $post
+     *
+     * @return PostMeta
      */
     public function setPost(Post $post)
     {
         $this->post = $post;
+
+        return $this;
     }
 
     /**
@@ -82,10 +90,14 @@ class PostMeta implements WordpressEntityInterface
 
     /**
      * @param string $value
+     *
+     * @return PostMeta
      */
     public function setValue($value)
     {
         $this->value = $value;
+
+        return $this;
     }
 
     /**

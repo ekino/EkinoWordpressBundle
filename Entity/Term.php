@@ -50,10 +50,14 @@ class Term implements WordpressEntityInterface
 
     /**
      * @param int $group
+     *
+     * @return Term
      */
     public function setGroup($group)
     {
         $this->group = $group;
+
+        return $this;
     }
 
     /**
@@ -66,10 +70,14 @@ class Term implements WordpressEntityInterface
 
     /**
      * @param string $slug
+     *
+     * @return Term
      */
     public function setSlug($slug)
     {
         $this->slug = $slug;
+
+        return $this;
     }
 
     /**
@@ -82,10 +90,14 @@ class Term implements WordpressEntityInterface
 
     /**
      * @param string $name
+     *
+     * @return Term
      */
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**

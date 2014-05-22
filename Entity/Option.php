@@ -50,10 +50,14 @@ class Option implements WordpressEntityInterface
 
     /**
      * @param string $autoload
+     *
+     * @return Option
      */
     public function setAutoload($autoload)
     {
         $this->autoload = $autoload;
+
+        return $this;
     }
 
     /**
@@ -66,10 +70,14 @@ class Option implements WordpressEntityInterface
 
     /**
      * @param string $name
+     *
+     * @return Option
      */
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -82,10 +90,14 @@ class Option implements WordpressEntityInterface
 
     /**
      * @param string $value
+     *
+     * @return Option
      */
     public function setValue($value)
     {
         $this->value = $value;
+
+        return $this;
     }
 
     /**

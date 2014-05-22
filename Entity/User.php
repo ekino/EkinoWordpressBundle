@@ -102,10 +102,14 @@ class User implements UserInterface, WordpressEntityInterface
 
     /**
      * @param string $activationKey
+     *
+     * @return User
      */
     public function setActivationKey($activationKey)
     {
         $this->activationKey = $activationKey;
+
+        return $this;
     }
 
     /**
@@ -118,10 +122,14 @@ class User implements UserInterface, WordpressEntityInterface
 
     /**
      * @param string $displayName
+     *
+     * @return User
      */
     public function setDisplayName($displayName)
     {
         $this->displayName = $displayName;
+
+        return $this;
     }
 
     /**
@@ -134,10 +142,14 @@ class User implements UserInterface, WordpressEntityInterface
 
     /**
      * @param string $email
+     *
+     * @return User
      */
     public function setEmail($email)
     {
         $this->email = $email;
+
+        return $this;
     }
 
     /**
@@ -150,10 +162,14 @@ class User implements UserInterface, WordpressEntityInterface
 
     /**
      * @param string $login
+     *
+     * @return User
      */
     public function setLogin($login)
     {
         $this->login = $login;
+
+        return $this;
     }
 
     /**
@@ -166,10 +182,14 @@ class User implements UserInterface, WordpressEntityInterface
 
     /**
      * @param string $nicename
+     *
+     * @return User
      */
     public function setNicename($nicename)
     {
         $this->nicename = $nicename;
+
+        return $this;
     }
 
     /**
@@ -182,10 +202,14 @@ class User implements UserInterface, WordpressEntityInterface
 
     /**
      * @param string $pass
+     *
+     * @return User
      */
     public function setPass($pass)
     {
         $this->pass = $pass;
+
+        return $this;
     }
 
     /**
@@ -198,10 +222,14 @@ class User implements UserInterface, WordpressEntityInterface
 
     /**
      * @param \DateTime $registered
+     *
+     * @return User
      */
     public function setRegistered($registered)
     {
         $this->registered = $registered;
+
+        return $this;
     }
 
     /**
@@ -214,10 +242,14 @@ class User implements UserInterface, WordpressEntityInterface
 
     /**
      * @param int $status
+     *
+     * @return User
      */
     public function setStatus($status)
     {
         $this->status = $status;
+
+        return $this;
     }
 
     /**
@@ -230,10 +262,14 @@ class User implements UserInterface, WordpressEntityInterface
 
     /**
      * @param string $url
+     *
+     * @return User
      */
     public function setUrl($url)
     {
         $this->url = $url;
+
+        return $this;
     }
 
     /**
@@ -246,10 +282,14 @@ class User implements UserInterface, WordpressEntityInterface
 
     /**
      * @param ArrayCollection $metas
+     *
+     * @return User
      */
     public function setMetas(ArrayCollection $metas)
     {
         $this->metas = $metas;
+
+        return $this;
     }
 
     /**
@@ -282,6 +322,8 @@ class User implements UserInterface, WordpressEntityInterface
      * Sets user roles
      *
      * @param array|string $roles
+     *
+     * @return User
      */
     public function setRoles($roles)
     {
@@ -290,6 +332,8 @@ class User implements UserInterface, WordpressEntityInterface
         }
 
         $this->roles = $roles;
+
+        return $this;
     }
 
     /**
@@ -297,6 +341,8 @@ class User implements UserInterface, WordpressEntityInterface
      *
      * @param array  $roles  An array of roles
      * @param string $prefix A role prefix
+     *
+     * @return User
      */
     public function setWordpressRoles(array $roles, $prefix = 'ROLE_WP_')
     {
@@ -305,6 +351,8 @@ class User implements UserInterface, WordpressEntityInterface
         }
 
         $this->setRoles($roles);
+
+        return $this;
     }
 
     /**
@@ -332,7 +380,7 @@ class User implements UserInterface, WordpressEntityInterface
     }
 
     /**
-     * {@inheritdoc}e
+     * {@inheritdoc}
      */
     public function getUsername()
     {
@@ -344,6 +392,6 @@ class User implements UserInterface, WordpressEntityInterface
      */
     public function eraseCredentials()
     {
-
+        return $this;
     }
 }

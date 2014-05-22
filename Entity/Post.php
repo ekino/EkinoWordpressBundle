@@ -11,6 +11,7 @@
 namespace Ekino\WordpressBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
 
 /**
  * Class Post
@@ -19,7 +20,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class Post implements WordpressEntityInterface
+class Post implements WordpressEntityInterface, WordpressContentInterface
 {
     /**
      * @var integer
@@ -141,6 +142,15 @@ class Post implements WordpressEntityInterface
      */
     protected $metas;
 
+    /**
+     * @var ArrayCollection
+     */
+    protected $comments;
+
+    /**
+     * @var ArrayCollection
+     */
+    protected $termRelationships;
 
     /**
      * Constructor
@@ -148,6 +158,8 @@ class Post implements WordpressEntityInterface
     public function __construct()
     {
         $this->metas = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+        $this->termRelationships = new ArrayCollection();
     }
 
     /**
@@ -160,10 +172,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param User $author
+     *
+     * @return Post
      */
     public function setAuthor(User $author)
     {
         $this->author = $author;
+
+        return $this;
     }
 
     /**
@@ -176,10 +192,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param int $commentCount
+     *
+     * @return Post
      */
     public function setCommentCount($commentCount)
     {
         $this->commentCount = $commentCount;
+
+        return $this;
     }
 
     /**
@@ -192,10 +212,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param string $content
+     *
+     * @return Post
      */
     public function setContent($content)
     {
         $this->content = $content;
+
+        return $this;
     }
 
     /**
@@ -208,10 +232,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param string $contentFiltered
+     *
+     * @return Post
      */
     public function setContentFiltered($contentFiltered)
     {
         $this->contentFiltered = $contentFiltered;
+
+        return $this;
     }
 
     /**
@@ -224,10 +252,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param \DateTime $date
+     *
+     * @return Post
      */
     public function setDate($date)
     {
         $this->date = $date;
+
+        return $this;
     }
 
     /**
@@ -240,10 +272,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param \DateTime $dateGmt
+     *
+     * @return Post
      */
     public function setDateGmt($dateGmt)
     {
         $this->dateGmt = $dateGmt;
+
+        return $this;
     }
 
     /**
@@ -256,10 +292,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param string $excerpt
+     *
+     * @return Post
      */
     public function setExcerpt($excerpt)
     {
         $this->excerpt = $excerpt;
+
+        return $this;
     }
 
     /**
@@ -272,10 +312,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param string $guid
+     *
+     * @return Post
      */
     public function setGuid($guid)
     {
         $this->guid = $guid;
+
+        return $this;
     }
 
     /**
@@ -288,10 +332,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param int $menuOrder
+     *
+     * @return Post
      */
     public function setMenuOrder($menuOrder)
     {
         $this->menuOrder = $menuOrder;
+
+        return $this;
     }
 
     /**
@@ -304,10 +352,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param string $mimeType
+     *
+     * @return Post
      */
     public function setMimeType($mimeType)
     {
         $this->mimeType = $mimeType;
+
+        return $this;
     }
 
     /**
@@ -320,10 +372,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param \DateTime $modified
+     *
+     * @return Post
      */
     public function setModified($modified)
     {
         $this->modified = $modified;
+
+        return $this;
     }
 
     /**
@@ -336,10 +392,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param \DateTime $modifiedGmt
+     *
+     * @return Post
      */
     public function setModifiedGmt($modifiedGmt)
     {
         $this->modifiedGmt = $modifiedGmt;
+
+        return $this;
     }
 
     /**
@@ -352,10 +412,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param string $name
+     *
+     * @return Post
      */
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -368,10 +432,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param Post $parent
+     *
+     * @return Post
      */
     public function setParent(Post $parent)
     {
         $this->parent = $parent;
+
+        return $this;
     }
 
     /**
@@ -384,10 +452,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param string $password
+     *
+     * @return Post
      */
     public function setPassword($password)
     {
         $this->password = $password;
+
+        return $this;
     }
 
     /**
@@ -400,10 +472,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param string $status
+     *
+     * @return Post
      */
     public function setStatus($status)
     {
         $this->status = $status;
+
+        return $this;
     }
 
     /**
@@ -416,10 +492,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param string $commentStatus
+     *
+     * @return Post
      */
     public function setCommentStatus($commentStatus)
     {
         $this->commentStatus = $commentStatus;
+
+        return $this;
     }
 
     /**
@@ -432,10 +512,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param string $pingStatus
+     *
+     * @return Post
      */
     public function setPingStatus($pingStatus)
     {
         $this->pingStatus = $pingStatus;
+
+        return $this;
     }
 
     /**
@@ -448,10 +532,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param string $pinged
+     *
+     * @return Post
      */
     public function setPinged($pinged)
     {
         $this->pinged = $pinged;
+
+        return $this;
     }
 
     /**
@@ -464,10 +552,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param string $title
+     *
+     * @return Post
      */
     public function setTitle($title)
     {
         $this->title = $title;
+
+        return $this;
     }
 
     /**
@@ -480,10 +572,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param string $toPing
+     *
+     * @return Post
      */
     public function setToPing($toPing)
     {
         $this->toPing = $toPing;
+
+        return $this;
     }
 
     /**
@@ -496,10 +592,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param string $type
+     *
+     * @return Post
      */
     public function setType($type)
     {
         $this->type = $type;
+
+        return $this;
     }
 
     /**
@@ -512,10 +612,14 @@ class Post implements WordpressEntityInterface
 
     /**
      * @param ArrayCollection $metas
+     *
+     * @return Post
      */
     public function setMetas(ArrayCollection $metas)
     {
         $this->metas = $metas;
+
+        return $this;
     }
 
     /**
@@ -525,4 +629,172 @@ class Post implements WordpressEntityInterface
     {
         return $this->metas;
     }
+
+    /**
+     * @param PostMeta $meta
+     *
+     * @return Post
+     */
+    public function addMeta(PostMeta $meta)
+    {
+        $this->metas[] = $meta;
+
+        return $this;
+    }
+
+    /**
+     * @param PostMeta $meta
+     *
+     * @return Post
+     */
+    public function removeMeta(PostMeta $meta)
+    {
+        if ($this->metas->contains($meta)) {
+            $this->metas->remove($meta);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMetaByKey($name)
+    {
+        $criteria = Criteria::create();
+        $criteria->where(Criteria::expr()->eq('key', $name));
+
+        return $this->metas->matching($criteria);
+    }
+
+    /**
+     * Returns user meta value from a meta key name
+     *
+     * @param string $name
+     *
+     * @return string|null
+     */
+    public function getMetaValue($name)
+    {
+        /** @var PostMeta $meta */
+        foreach ($this->getMetas() as $meta) {
+            if ($name == $meta->getKey()) {
+                return $meta->getValue();
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param Comment $comment
+     *
+     * @return Post
+     */
+    public function addComment(Comment $comment)
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Comment $comment
+     *
+     * @return Post
+     */
+    public function removeComment(Comment $comment)
+    {
+        $this->comments->remove($comment);
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getTermRelationships()
+    {
+        return $this->termRelationships;
+    }
+
+    /**
+     * @param TermRelationships $relationship
+     *
+     * @return Post
+     */
+    public function addTermRelationship(TermRelationships $relationship)
+    {
+        $this->termRelationships[] = $relationship;
+
+        return $this;
+    }
+
+    /**
+     * @param TermRelationships $relationship
+     *
+     * @return Post
+     */
+    public function removeTermRelationship(TermRelationships $relationship)
+    {
+        $this->termRelationships->remove($relationship);
+
+        return $this;
+    }
+
+    /**
+     * @param string $type
+     *
+     * @return ArrayCollection
+     */
+    public function getTaxonomiesByType($type)
+    {
+        $taxonomies = new ArrayCollection();
+
+        /** @var TermRelationships $relationship */
+        foreach ($this->getTermRelationships() as $relationship) {
+            if ($type === $relationship->getTaxonomy()->getTaxonomy()) {
+                $taxonomies[] = $relationship->getTaxonomy()->getTerm();
+            }
+        }
+
+        return ($taxonomies->count() == 0) ? null : $taxonomies;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getTags()
+    {
+        return $this->getTaxonomiesByType('post_tag');
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getCategories()
+    {
+        return $this->getTaxonomiesByType('category');
+    }
+
+    /**
+     * @return Term
+     */
+    public function getCategory()
+    {
+        return $this->getCategories() ? $this->getCategories()->first() : null;
+    }
+
 }

@@ -2,9 +2,8 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
     <entity name="Ekino\WordpressBundle\Entity\User"
             table="users"
-            repository-class="Ekino\WordpressBundle\Repository\UserRepository">
-
-        <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+            repository-class="Ekino\WordpressBundle\Repository\UserRepository"
+            change-tracking-policy="DEFERRED_IMPLICIT">
 
         <id name="id" type="integer" column="ID">
             <generator strategy="AUTO"/>
@@ -21,8 +20,6 @@
         <field name="displayName" nullable="false" type="string" length="250" column="display_name" />
 
         <one-to-many field="metas" target-entity="Ekino\WordpressBundle\Entity\UserMeta" mapped-by="user" />
-
-        <lifecycle-callbacks />
 
     </entity>
 </doctrine-mapping>

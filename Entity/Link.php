@@ -95,10 +95,14 @@ class Link implements WordpressEntityInterface
 
     /**
      * @param string $description
+     *
+     * @return Link
      */
     public function setDescription($description)
     {
         $this->description = $description;
+
+        return $this;
     }
 
     /**
@@ -111,10 +115,14 @@ class Link implements WordpressEntityInterface
 
     /**
      * @param string $image
+     *
+     * @return Link
      */
     public function setImage($image)
     {
         $this->image = $image;
+
+        return $this;
     }
 
     /**
@@ -127,10 +135,14 @@ class Link implements WordpressEntityInterface
 
     /**
      * @param string $name
+     *
+     * @return Link
      */
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -143,10 +155,14 @@ class Link implements WordpressEntityInterface
 
     /**
      * @param string $notes
+     *
+     * @return Link
      */
     public function setNotes($notes)
     {
         $this->notes = $notes;
+
+        return $this;
     }
 
     /**
@@ -159,10 +175,14 @@ class Link implements WordpressEntityInterface
 
     /**
      * @param int $owner
+     *
+     * @return Link
      */
     public function setOwner($owner)
     {
         $this->owner = $owner;
+
+        return $this;
     }
 
     /**
@@ -175,10 +195,14 @@ class Link implements WordpressEntityInterface
 
     /**
      * @param int $rating
+     *
+     * @return Link
      */
     public function setRating($rating)
     {
         $this->rating = $rating;
+
+        return $this;
     }
 
     /**
@@ -191,10 +215,14 @@ class Link implements WordpressEntityInterface
 
     /**
      * @param string $rel
+     *
+     * @return Link
      */
     public function setRel($rel)
     {
         $this->rel = $rel;
+
+        return $this;
     }
 
     /**
@@ -207,10 +235,14 @@ class Link implements WordpressEntityInterface
 
     /**
      * @param string $rss
+     *
+     * @return Link
      */
     public function setRss($rss)
     {
         $this->rss = $rss;
+
+        return $this;
     }
 
     /**
@@ -223,10 +255,14 @@ class Link implements WordpressEntityInterface
 
     /**
      * @param string $target
+     *
+     * @return Link
      */
     public function setTarget($target)
     {
         $this->target = $target;
+
+        return $this;
     }
 
     /**
@@ -239,10 +275,14 @@ class Link implements WordpressEntityInterface
 
     /**
      * @param \DateTime $updated
+     *
+     * @return Link
      */
     public function setUpdated($updated)
     {
         $this->updated = $updated;
+
+        return $this;
     }
 
     /**
@@ -255,10 +295,14 @@ class Link implements WordpressEntityInterface
 
     /**
      * @param string $url
+     *
+     * @return Link
      */
     public function setUrl($url)
     {
         $this->url = $url;
+
+        return $this;
     }
 
     /**
@@ -271,10 +315,14 @@ class Link implements WordpressEntityInterface
 
     /**
      * @param string $visible
+     *
+     * @return Link
      */
     public function setVisible($visible)
     {
         $this->visible = $visible;
+
+        return $this;
     }
 
     /**

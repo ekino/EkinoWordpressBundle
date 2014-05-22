@@ -2,9 +2,8 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
     <entity name="Ekino\WordpressBundle\Entity\Term"
             table="terms"
-            repository-class="Ekino\WordpressBundle\Repository\TermRepository">
-
-        <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+            repository-class="Ekino\WordpressBundle\Repository\TermRepository"
+            change-tracking-policy="DEFERRED_IMPLICIT">
 
         <id name="id" type="integer" column="term_id">
             <generator strategy="AUTO"/>
@@ -13,8 +12,6 @@
         <field name="name" nullable="false"  type="string" length="200" column="name" />
         <field name="slug" nullable="false"  type="string" length="200" column="slug" />
         <field name="group" nullable="false"  type="bigint" length="10" column="term_group" />
-
-        <lifecycle-callbacks />
 
     </entity>
 </doctrine-mapping>
