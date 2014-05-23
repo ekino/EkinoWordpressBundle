@@ -2,9 +2,8 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
     <entity name="Ekino\WordpressBundle\Entity\Link"
             table="links"
-            repository-class="Ekino\WordpressBundle\Repository\CommentMetaRepository">
-
-        <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+            repository-class="Ekino\WordpressBundle\Repository\CommentMetaRepository"
+            change-tracking-policy="DEFERRED_IMPLICIT">
 
         <id name="id" type="integer" column="link_id">
             <generator strategy="AUTO"/>
@@ -22,8 +21,6 @@
         <field name="rel" nullable="false" type="string" length="25" column="link_rel" />
         <field name="notes" nullable="false" type="string" length="255" column="link_notes" />
         <field name="rss" nullable="false" type="string" length="255" column="link_rss" />
-
-        <lifecycle-callbacks />
 
     </entity>
 </doctrine-mapping>

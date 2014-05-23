@@ -2,21 +2,21 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
     <entity name="Ekino\WordpressBundle\Entity\TermRelationships"
             table="term_relationships"
-            repository-class="Ekino\WordpressBundle\Repository\TermRelationshipsRepository">
+            repository-class="Ekino\WordpressBundle\Repository\TermRelationshipsRepository"
+            change-tracking-policy="DEFERRED_IMPLICIT">
 
-        <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+        <id name="post" association-key="true" />
+        <id name="taxonomy" association-key="true" />
 
-        <id name="id" type="integer" column="object_id">
-            <generator strategy="AUTO"/>
-        </id>
-
-        <field name="termOrder" nullable="false"  type="integer" length="11" column="term_order" />
+        <field name="termOrder" type="integer" length="11" column="term_order" />
 
         <many-to-one field="taxonomy" target-entity="Ekino\WordpressBundle\Entity\TermTaxonomy">
             <join-column name="term_taxonomy_id" referenced-column-name="term_taxonomy_id" />
         </many-to-one>
 
-        <lifecycle-callbacks />
+        <many-to-one field="post" target-entity="Ekino\WordpressBundle\Entity\Post" inversed-by="termRelationships">
+            <join-column name="object_id" referenced-column-name="ID" />
+        </many-to-one>
 
     </entity>
 </doctrine-mapping>

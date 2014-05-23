@@ -50,10 +50,14 @@ class UserMeta implements WordpressEntityInterface
 
     /**
      * @param string $key
+     *
+     * @return UserMeta
      */
     public function setKey($key)
     {
         $this->key = $key;
+
+        return $this;
     }
 
     /**
@@ -66,10 +70,14 @@ class UserMeta implements WordpressEntityInterface
 
     /**
      * @param User $user
+     *
+     * @return UserMeta
      */
     public function setUser(User $user)
     {
         $this->user = $user;
+
+        return $this;
     }
 
     /**
@@ -82,10 +90,14 @@ class UserMeta implements WordpressEntityInterface
 
     /**
      * @param string $value
+     *
+     * @return UserMeta
      */
     public function setValue($value)
     {
         $this->value = $value;
+
+        return $this;
     }
 
     /**

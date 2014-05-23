@@ -2,9 +2,8 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
     <entity name="Ekino\WordpressBundle\Entity\UserMeta"
             table="usermeta"
-            repository-class="Ekino\WordpressBundle\Repository\UserMetaRepository">
-
-        <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+            repository-class="Ekino\WordpressBundle\Repository\UserMetaRepository"
+            change-tracking-policy="DEFERRED_IMPLICIT">
 
         <id name="id" type="integer" column="umeta_id">
             <generator strategy="AUTO"/>
@@ -16,8 +15,6 @@
         <many-to-one field="user" target-entity="Ekino\WordpressBundle\Entity\User" inversed-by="metas">
             <join-column name="user_id" referenced-column-name="ID" />
         </many-to-one>
-
-        <lifecycle-callbacks />
 
     </entity>
 </doctrine-mapping>

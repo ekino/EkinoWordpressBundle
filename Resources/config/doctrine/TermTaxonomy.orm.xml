@@ -2,9 +2,8 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
     <entity name="Ekino\WordpressBundle\Entity\TermTaxonomy"
             table="term_taxonomy"
-            repository-class="Ekino\WordpressBundle\Repository\TermTaxonomyRepository">
-
-        <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+            repository-class="Ekino\WordpressBundle\Repository\TermTaxonomyRepository"
+            change-tracking-policy="DEFERRED_IMPLICIT">
 
         <id name="id" type="integer" column="term_taxonomy_id">
             <generator strategy="AUTO"/>
@@ -21,8 +20,6 @@
         <many-to-one field="parent" target-entity="Ekino\WordpressBundle\Entity\TermTaxonomy">
             <join-column name="parent" referenced-column-name="term_taxonomy_id" />
         </many-to-one>
-
-        <lifecycle-callbacks />
 
     </entity>
 </doctrine-mapping>

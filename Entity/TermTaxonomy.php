@@ -60,10 +60,14 @@ class TermTaxonomy implements WordpressEntityInterface
 
     /**
      * @param int $count
+     *
+     * @return TermTaxonomy
      */
     public function setCount($count)
     {
         $this->count = $count;
+
+        return $this;
     }
 
     /**
@@ -76,10 +80,14 @@ class TermTaxonomy implements WordpressEntityInterface
 
     /**
      * @param string $description
+     *
+     * @return TermTaxonomy
      */
     public function setDescription($description)
     {
         $this->description = $description;
+
+        return $this;
     }
 
     /**
@@ -92,10 +100,14 @@ class TermTaxonomy implements WordpressEntityInterface
 
     /**
      * @param TermTaxonomy $parent
+     *
+     * @return TermTaxonomy
      */
     public function setParent(TermTaxonomy $parent)
     {
         $this->parent = $parent;
+
+        return $this;
     }
 
     /**
@@ -108,10 +120,14 @@ class TermTaxonomy implements WordpressEntityInterface
 
     /**
      * @param string $taxonomy
+     *
+     * @return TermTaxonomy
      */
     public function setTaxonomy($taxonomy)
     {
         $this->taxonomy = $taxonomy;
+
+        return $this;
     }
 
     /**
@@ -124,10 +140,14 @@ class TermTaxonomy implements WordpressEntityInterface
 
     /**
      * @param Term $term
+     *
+     * @return TermTaxonomy
      */
     public function setTerm(Term $term)
     {
         $this->term = $term;
+
+        return $this;
     }
 
     /**

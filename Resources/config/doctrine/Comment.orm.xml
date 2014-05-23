@@ -2,9 +2,8 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
     <entity name="Ekino\WordpressBundle\Entity\Comment"
             table="comments"
-            repository-class="Ekino\WordpressBundle\Repository\CommentRepository">
-
-        <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+            repository-class="Ekino\WordpressBundle\Repository\CommentRepository"
+            change-tracking-policy="DEFERRED_IMPLICIT">
 
         <id name="id" type="integer" column="comment_ID">
             <generator strategy="AUTO"/>
@@ -22,7 +21,7 @@
         <field name="agent" nullable="false"  type="string" length="255" column="comment_agent" />
         <field name="type" nullable="false"  type="string" length="20" column="comment_type" />
 
-        <many-to-one field="post" target-entity="Ekino\WordpressBundle\Entity\Post">
+        <many-to-one field="post" target-entity="Ekino\WordpressBundle\Entity\Post" inversed-by="comments">
             <join-column name="comment_post_ID" referenced-column-name="ID" />
         </many-to-one>
 
@@ -33,8 +32,6 @@
         <many-to-one field="parent" target-entity="Ekino\WordpressBundle\Entity\Comment">
             <join-column name="comment_parent" referenced-column-name="comment_ID" />
         </many-to-one>
-
-        <lifecycle-callbacks />
 
     </entity>
 </doctrine-mapping>

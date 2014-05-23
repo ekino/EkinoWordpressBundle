@@ -50,10 +50,14 @@ class CommentMeta implements WordpressEntityInterface
 
     /**
      * @param Comment $comment
+     *
+     * @return CommentMeta
      */
     public function setComment(Comment $comment)
     {
         $this->comment = $comment;
+
+        return $this;
     }
 
     /**
@@ -66,10 +70,14 @@ class CommentMeta implements WordpressEntityInterface
 
     /**
      * @param string $key
+     *
+     * @return CommentMeta
      */
     public function setKey($key)
     {
         $this->key = $key;
+
+        return $this;
     }
 
     /**
@@ -82,10 +90,14 @@ class CommentMeta implements WordpressEntityInterface
 
     /**
      * @param string $value
+     *
+     * @return CommentMeta
      */
     public function setValue($value)
     {
         $this->value = $value;
+
+        return $this;
     }
 
     /**

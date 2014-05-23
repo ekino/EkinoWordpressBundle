@@ -2,9 +2,8 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
     <entity name="Ekino\WordpressBundle\Entity\Post"
             table="posts"
-            repository-class="Ekino\WordpressBundle\Repository\PostRepository">
-
-        <change-tracking-policy>DEFERRED_IMPLICIT</change-tracking-policy>
+            repository-class="Ekino\WordpressBundle\Repository\PostRepository"
+            change-tracking-policy="DEFERRED_IMPLICIT">
 
         <id name="id" type="integer" column="ID">
             <generator strategy="AUTO"/>
@@ -41,7 +40,9 @@
 
         <one-to-many field="metas" target-entity="Ekino\WordpressBundle\Entity\PostMeta" mapped-by="post" />
 
-        <lifecycle-callbacks />
+        <one-to-many field="comments" target-entity="Ekino\WordpressBundle\Entity\Comment" mapped-by="post" />
+
+        <one-to-many field="termRelationships" target-entity="Ekino\WordpressBundle\Entity\TermRelationships" mapped-by="post" />
 
     </entity>
 </doctrine-mapping>
