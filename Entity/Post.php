@@ -757,7 +757,7 @@ class Post implements WordpressEntityInterface, WordpressContentInterface
     /**
      * @param string $type
      *
-     * @return ArrayCollection
+     * @return ArrayCollection|null
      */
     public function getTaxonomiesByType($type)
     {
@@ -766,7 +766,7 @@ class Post implements WordpressEntityInterface, WordpressContentInterface
         /** @var TermRelationships $relationship */
         foreach ($this->getTermRelationships() as $relationship) {
             if ($type === $relationship->getTaxonomy()->getTaxonomy()) {
-                $taxonomies[] = $relationship->getTaxonomy()->getTerm();
+                $taxonomies[] = $relationship->getTaxonomy();
             }
         }
 
@@ -774,11 +774,32 @@ class Post implements WordpressEntityInterface, WordpressContentInterface
     }
 
     /**
+     * @param $type
+     *
+     * @return ArrayCollection|null
+     */
+    public function getTermsByType($type)
+    {
+        $terms = new ArrayCollection();
+        $taxonomies = $this->getTaxonomiesByType($type);
+
+        /** @var TermTaxonomy $taxonomy */
+        if ($taxonomies !== null) {
+            foreach ($taxonomies as $taxonomy) {
+                $terms[] = $taxonomy->getTerm();
+            }
+        }
+
+        return ($terms->count() == 0) ? null : $terms;
+    }
+
+
+    /**
      * @return ArrayCollection
      */
     public function getTags()
     {
-        return $this->getTaxonomiesByType('post_tag');
+        return $this->getTermsByType('post_tag');
     }
 
     /**
@@ -794,7 +815,9 @@ class Post implements WordpressEntityInterface, WordpressContentInterface
      */
     public function getCategory()
     {
-        return $this->getCategories() ? $this->getCategories()->first() : null;
+        $taxonomy = $this->getCategories() ? $this->getCategories()->first() : null;
+
+        return $taxonomy ? $taxonomy->getTerm() : null;
     }
 
 }
