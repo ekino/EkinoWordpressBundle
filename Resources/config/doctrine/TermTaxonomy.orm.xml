@@ -13,7 +13,7 @@
         <field name="description" nullable="false" type="text" column="description" />
         <field name="count" nullable="false" type="integer" length="20" column="count" />
 
-        <many-to-one field="term" target-entity="Ekino\WordpressBundle\Entity\Term">
+        <many-to-one field="term" target-entity="Ekino\WordpressBundle\Entity\Term" inversed-by="taxonomies">
             <join-column name="term_id" referenced-column-name="term_id" />
         </many-to-one>
 
