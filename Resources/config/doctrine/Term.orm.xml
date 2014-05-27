@@ -13,5 +13,7 @@
         <field name="slug" nullable="false"  type="string" length="200" column="slug" />
         <field name="group" nullable="false"  type="bigint" length="10" column="term_group" />
 
+        <one-to-many field="taxonomies" target-entity="Ekino\WordpressBundle\Entity\TermTaxonomy" mapped-by="term" />
+
     </entity>
 </doctrine-mapping>
