@@ -793,7 +793,6 @@ class Post implements WordpressEntityInterface, WordpressContentInterface
         return ($terms->count() == 0) ? null : $terms;
     }
 
-
     /**
      * @return ArrayCollection
      */
