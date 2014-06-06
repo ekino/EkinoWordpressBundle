@@ -29,13 +29,10 @@
         <field name="type" nullable="false"  type="string" length="20" column="post_type" />
         <field name="mimeType" nullable="false"  type="string" length="100" column="post_mime_type" />
         <field name="commentCount" nullable="false"  type="bigint" length="20" column="comment_count" />
+        <field name="parent" column="post_parent" nullable="false" type="integer" length="11" />
 
         <many-to-one field="author" target-entity="Ekino\WordpressBundle\Entity\User">
             <join-column name="post_author" referenced-column-name="ID" />
-        </many-to-one>
-
-        <many-to-one field="parent" target-entity="Ekino\WordpressBundle\Entity\Post">
-            <join-column name="post_parent" referenced-column-name="ID" />
         </many-to-one>
 
         <one-to-many field="metas" target-entity="Ekino\WordpressBundle\Entity\PostMeta" mapped-by="post" />

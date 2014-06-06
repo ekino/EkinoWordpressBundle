@@ -12,14 +12,14 @@
         <field name="taxonomy" nullable="false" type="string" length="32" column="taxonomy" />
         <field name="description" nullable="false" type="text" column="description" />
         <field name="count" nullable="false" type="integer" length="20" column="count" />
+        <field name="parent" nullable="false" type="integer" length="20" column="parent" />
 
         <many-to-one field="term" target-entity="Ekino\WordpressBundle\Entity\Term" inversed-by="taxonomies">
             <join-column name="term_id" referenced-column-name="term_id" />
         </many-to-one>
 
-        <many-to-one field="parent" target-entity="Ekino\WordpressBundle\Entity\TermTaxonomy">
-            <join-column name="parent" referenced-column-name="term_taxonomy_id" />
-        </many-to-one>
+        <one-to-many target-entity="Ekino\WordpressBundle\Entity\TermRelationships" mapped-by="taxonomy"
+                     field="relationships" />
 
     </entity>
 </doctrine-mapping>
