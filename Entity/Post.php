@@ -108,9 +108,9 @@ class Post implements WordpressEntityInterface, WordpressContentInterface
     protected $contentFiltered;
 
     /**
-     * @var Post
+     * @var integer
      */
-    protected $parent;
+    protected $parent = 0;
 
     /**
      * @var string
@@ -431,11 +431,11 @@ class Post implements WordpressEntityInterface, WordpressContentInterface
     }
 
     /**
-     * @param Post $parent
+     * @param integer $parent
      *
      * @return Post
      */
-    public function setParent(Post $parent)
+    public function setParent($parent)
     {
         $this->parent = $parent;
 
@@ -443,7 +443,7 @@ class Post implements WordpressEntityInterface, WordpressContentInterface
     }
 
     /**
-     * @return Post
+     * @return integer
      */
     public function getParent()
     {

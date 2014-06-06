@@ -9,6 +9,7 @@
  */
 
 namespace Ekino\WordpressBundle\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Class TermTaxonomy
@@ -25,7 +26,7 @@ class TermTaxonomy implements WordpressEntityInterface
     protected $id;
 
     /**
-     * @var integer
+     * @var Term
      */
     protected $term;
 
@@ -45,10 +46,22 @@ class TermTaxonomy implements WordpressEntityInterface
     protected $parent;
 
     /**
+     * @var ArrayCollection
+     */
+    protected $relationships;
+
+    /**
      * @var integer
      */
     protected $count;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->relationships = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -99,11 +112,11 @@ class TermTaxonomy implements WordpressEntityInterface
     }
 
     /**
-     * @param TermTaxonomy $parent
+     * @param integer $parent
      *
      * @return TermTaxonomy
      */
-    public function setParent(TermTaxonomy $parent)
+    public function setParent($parent)
     {
         $this->parent = $parent;
 
@@ -111,7 +124,7 @@ class TermTaxonomy implements WordpressEntityInterface
     }
 
     /**
-     * @return TermTaxonomy
+     * @return integer
      */
     public function getParent()
     {
@@ -157,4 +170,41 @@ class TermTaxonomy implements WordpressEntityInterface
     {
         return $this->term;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getRelationships()
+    {
+        return $this->relationships;
+    }
+
+    /**
+     * @param TermRelationships $relationship
+     *
+     * @return Term
+     */
+    public function addRelationship(TermRelationships $relationship)
+    {
+        if (!$this->relationships->contains($relationship)) {
+            $this->relationships[] = $relationship;
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param TermRelationships $relationship
+     *
+     * @return Term
+     */
+    public function removeRelationship(TermRelationships $relationship)
+    {
+        if ($this->relationships->contains($relationship)) {
+            $this->relationships->remove($relationship);
+        }
+
+        return $this;
+    }
+
 }

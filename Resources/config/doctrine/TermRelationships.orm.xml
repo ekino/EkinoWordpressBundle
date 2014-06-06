@@ -10,7 +10,7 @@
 
         <field name="termOrder" type="integer" length="11" column="term_order" />
 
-        <many-to-one field="taxonomy" target-entity="Ekino\WordpressBundle\Entity\TermTaxonomy">
+        <many-to-one field="taxonomy" target-entity="Ekino\WordpressBundle\Entity\TermTaxonomy" inversed-by="relationships">
             <join-column name="term_taxonomy_id" referenced-column-name="term_taxonomy_id" />
         </many-to-one>
 
