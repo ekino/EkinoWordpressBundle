@@ -21,5 +21,13 @@ use Ekino\WordpressBundle\Manager\BaseManager;
  */
 class OptionManager extends BaseManager
 {
-
+    /**
+     * @param string $optionName
+     *
+     * @return mixed
+     */
+    public function findOneByOptionName($optionName)
+    {
+        return $this->findOneBy(array('name' => $optionName));
+    }
 }

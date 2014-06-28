@@ -9,7 +9,7 @@
             <generator strategy="AUTO"/>
         </id>
 
-        <field name="name" nullable="false"  type="string" length="64" column="option_name" />
+        <field name="name" nullable="false"  type="string" length="64" column="option_name" unique="true" />
         <field name="value" nullable="false"  type="text" column="option_value" />
         <field name="autoload" nullable="false"  type="string" length="20" column="autoload" />
 
