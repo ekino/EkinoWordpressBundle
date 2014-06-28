@@ -10,8 +10,6 @@
 
 namespace Ekino\WordpressBundle\Manager;
 
-use Ekino\WordpressBundle\Manager\BaseManager;
-
 /**
  * Class OptionManager
  *
