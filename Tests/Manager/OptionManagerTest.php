@@ -1,12 +1,35 @@
 <?php
+/*
+ * This file is part of the Ekino Wordpress package.
+ *
+ * (c) 2013 Ekino
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Ekino\WordpressBundle\Tests\Manager;
 
-use Ekino\WordpressBundle\Manager\OptionManager;
+use Doctrine\ORM\EntityManager;
 
+use Ekino\WordpressBundle\Manager\OptionManager;
+use Ekino\WordpressBundle\Repository\OptionRepository;
+
+/**
+ * Class OptionManagerTest
+ *
+ * @author Xavier Coureau <xav.is@2cool4school.fr>
+ */
 class OptionManagerTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @var EntityManager
+     */
     protected $entityManager;
+
+    /**
+     * @var OptionRepository
+     */
     protected $repository;
 
     /**
@@ -14,6 +37,9 @@ class OptionManagerTest extends \PHPUnit_Framework_TestCase
      */
     protected $manager;
 
+    /**
+     * Sets up a OptionManager instance
+     */
     protected function setUp()
     {
         $this->entityManager = $this->getMockBuilder('Doctrine\ORM\EntityManager')->disableOriginalConstructor()->getMock();
