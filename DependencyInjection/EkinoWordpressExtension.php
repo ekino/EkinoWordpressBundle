@@ -52,7 +52,9 @@ class EkinoWordpressExtension extends Extension
             $this->loadEntityManager($container, $config['entity_manager']);
         }
 
-        $this->loadTwigExtensions($loader);
+        if ($config['load_twig_extension']) {
+            $loader->load('twig.xml');
+        }
     }
 
     /**
@@ -102,18 +104,6 @@ class EkinoWordpressExtension extends Extension
         $container->getDefinition('ekino.wordpress.manager.term_taxonomy')->replaceArgument(0, $reference);
         $container->getDefinition('ekino.wordpress.manager.user')->replaceArgument(0, $reference);
         $container->getDefinition('ekino.wordpress.manager.user_meta')->replaceArgument(0, $reference);
-    }
-
-    /**
-     * Will load twig extensions if enabled
-     *
-     * @param XmlFileLoader $loader
-     */
-    protected function loadTwigExtensions(XmlFileLoader $loader)
-    {
-        if (class_exists('\Twig_Extension')) {
-            $loader->load('twig.xml');
-        }
     }
 
     /**

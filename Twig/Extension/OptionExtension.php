@@ -22,7 +22,7 @@ class OptionExtension extends \Twig_Extension
     /**
      * @param OptionManager $optionManager
      */
-    public function __contruct(OptionManager $optionManager)
+    public function __construct(OptionManager $optionManager)
     {
         $this->optionManager = $optionManager;
     }
@@ -33,7 +33,7 @@ class OptionExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_SimpleFunction('get_option', array($this, 'getOption')),
+            new \Twig_SimpleFunction('wp_get_option', array($this, 'getOption')),
         );
     }
 
