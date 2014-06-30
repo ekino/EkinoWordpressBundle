@@ -51,6 +51,10 @@ class EkinoWordpressExtension extends Extension
         if (isset($config['entity_manager'])) {
             $this->loadEntityManager($container, $config['entity_manager']);
         }
+
+        if ($config['load_twig_extension']) {
+            $loader->load('twig.xml');
+        }
     }
 
     /**

@@ -37,6 +37,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('table_prefix')->end()
                 ->scalarNode('wordpress_directory')->end()
                 ->scalarNode('entity_manager')->end()
+                ->booleanNode('load_twig_extension')->defaultFalse()->end()
             ->end()
         ;
 
