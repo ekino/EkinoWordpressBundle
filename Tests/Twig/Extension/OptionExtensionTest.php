@@ -40,6 +40,16 @@ class OptionExtensionTest extends \PHPUnit_Framework_TestCase
         $this->extension = new OptionExtension($this->optionManager);
     }
 
+    public function testGetName()
+    {
+        $this->assertEquals('ekino_wordpress_option', $this->extension->getName());
+    }
+
+    public function testGetFunctions()
+    {
+        $this->assertContainsOnly('\Twig_SimpleFunction', $this->extension->getFunctions());
+    }
+
     /**
      * Check the correct result for an existing option
      */

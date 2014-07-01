@@ -10,8 +10,6 @@
 
 namespace Ekino\WordpressBundle\Manager;
 
-use Ekino\WordpressBundle\Manager\BaseManager;
-
 /**
  * Class PostMetaManager
  *
@@ -21,5 +19,17 @@ use Ekino\WordpressBundle\Manager\BaseManager;
  */
 class PostMetaManager extends BaseManager
 {
+    /**
+     * @param int $postId
+     * @param string $metaName
+     * @param bool $fetchOneResult
+     *
+     * @return array|\Ekino\WordpressBundle\Entity\PostMeta
+     */
+    public function getPostMeta($postId, $metaName, $fetchOneResult = false)
+    {
+        $query = $this->repository->getPostMetaQuery($postId, $metaName);
 
+        return $fetchOneResult ? $query->getOneOrNullResult() : $query->getResult();
+    }
 }

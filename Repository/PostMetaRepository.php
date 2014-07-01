@@ -21,5 +21,20 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostMetaRepository extends EntityRepository
 {
-
+    /**
+     * @param int $postId
+     * @param string $metaName
+     *
+     * @return \Doctrine\ORM\Query
+     */
+    public function getPostMetaQuery($postId, $metaName)
+    {
+        return $this->createQueryBuilder('m')
+            ->innerJoin('m.post', 'p')
+            ->where('p.id = :postId')
+            ->andWhere('m.key = :metaName')
+            ->setParameter('postId', $postId)
+            ->setParameter('metaName', $metaName)
+            ->getQuery();
+    }
 }
