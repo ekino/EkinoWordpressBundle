@@ -6,6 +6,8 @@
 
     <parameters>
         <parameter key="ekino.wordpress.twig.extension.option.class">Ekino\WordpressBundle\Twig\Extension\OptionExtension</parameter>
+        <parameter key="ekino.wordpress.twig.extension.post.class">Ekino\WordpressBundle\Twig\Extension\PostExtension</parameter>
+        <parameter key="ekino.wordpress.twig.extension.post_meta.class">Ekino\WordpressBundle\Twig\Extension\PostMetaExtension</parameter>
     </parameters>
 
     <services>
@@ -13,6 +15,19 @@
             <tag name="twig.extension" />
 
             <argument type="service" id="ekino.wordpress.manager.option" />
+        </service>
+
+        <service id="ekino.wordpress.twig.extension.post" class="%ekino.wordpress.twig.extension.post.class%">
+            <tag name="twig.extension" />
+
+            <argument type="service" id="ekino.wordpress.manager.post" />
+            <argument type="service" id="ekino.wordpress.twig.extension.option" />
+        </service>
+
+        <service id="ekino.wordpress.twig.extension.post_meta" class="%ekino.wordpress.twig.extension.post_meta.class%">
+            <tag name="twig.extension" />
+
+            <argument type="service" id="ekino.wordpress.manager.post_meta" />
         </service>
 
     </services>
