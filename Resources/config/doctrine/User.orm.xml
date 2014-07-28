@@ -5,19 +5,18 @@
             repository-class="Ekino\WordpressBundle\Repository\UserRepository"
             change-tracking-policy="DEFERRED_IMPLICIT">
 
-        <id name="id" type="integer" column="ID">
-            <generator strategy="AUTO"/>
-        </id>
+        <!-- Mapped super classes won't support indexes -->
+        <indexes>
+            <index columns="user_login"/>
+            <index columns="user_nicename"/>
+        </indexes>
 
-        <field name="login" nullable="false" type="string" length="60" column="user_login" />
-        <field name="pass" nullable="false" type="string" length="64" column="user_pass" />
-        <field name="nicename" nullable="false" type="string" length="50" column="user_nicename" />
-        <field name="email" nullable="false" type="string" length="100" column="user_email" />
-        <field name="url" nullable="false" type="string" length="100" column="user_url" />
-        <field name="registered" nullable="false" type="datetime" column="user_registered" />
-        <field name="activationKey" nullable="false" type="string" length="60" column="user_activation_key" />
-        <field name="status" nullable="false" type="integer" length="11" column="user_status" />
-        <field name="displayName" nullable="false" type="string" length="250" column="display_name" />
+        <id name="id" type="bigint" column="ID">
+            <generator strategy="AUTO"/>
+            <options>
+                <option name="unsigned">true</option>
+            </options>
+        </id>
 
         <one-to-many field="metas" target-entity="Ekino\WordpressBundle\Entity\UserMeta" mapped-by="user" />
 

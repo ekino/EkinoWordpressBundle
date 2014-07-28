@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <mapped-superclass name="Ekino\WordpressBundle\Model\User">
+        <field name="login" type="string" length="60" column="user_login">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+        <field name="pass" type="string" length="64" column="user_pass">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+        <field name="nicename" type="string" length="50" column="user_nicename">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+        <field name="email" type="string" length="100" column="user_email">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+        <field name="url" type="string" length="100" column="user_url">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+        <field name="registered" type="datetime" column="user_registered">
+            <options>
+                <option name="default">0000-00-00 00:00:00</option>
+            </options>
+        </field>
+        <field name="activationKey" type="string" length="60" column="user_activation_key">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+        <field name="status" type="integer" length="11" column="user_status">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="displayName" type="string" length="250" column="display_name">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+    </mapped-superclass>
+</doctrine-mapping>

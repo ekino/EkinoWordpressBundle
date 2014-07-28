@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <mapped-superclass name="Ekino\WordpressBundle\Model\Post">
+        <field name="date" type="datetime" column="post_date">
+            <options>
+                <option name="default">0000-00-00 00:00:00</option>
+            </options>
+        </field>
+        <field name="dateGmt" type="datetime" column="post_date_gmt">
+            <options>
+                <option name="default">0000-00-00 00:00:00</option>
+            </options>
+        </field>
+        <field name="content" type="text" column="post_content" />
+        <field name="title" type="text" column="post_title" />
+        <field name="excerpt" type="text" column="post_excerpt" />
+        <field name="status" type="string" length="20" column="post_status">
+            <options>
+                <option name="default">publish</option>
+            </options>
+        </field>
+        <field name="commentStatus" type="string" length="20" column="comment_status">
+            <options>
+                <option name="default">open</option>
+            </options>
+        </field>
+        <field name="pingStatus" type="string" length="20" column="ping_status">
+            <options>
+                <option name="default">open</option>
+            </options>
+        </field>
+        <field name="password" type="string" length="20" column="post_password">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+        <field name="name" type="string" length="200" column="post_name">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+        <field name="toPing" type="text" column="to_ping" />
+        <field name="pinged" type="text" column="pinged" />
+        <field name="modified" type="datetime" column="post_modified">
+            <options>
+                <option name="default">0000-00-00 00:00:00</option>
+            </options>
+        </field>
+        <field name="modifiedGmt" type="datetime" column="post_modified_gmt">
+            <options>
+                <option name="default">0000-00-00 00:00:00</option>
+            </options>
+        </field>
+        <field name="contentFiltered" type="text" column="post_content_filtered" />
+        <field name="guid" type="string" length="255" column="guid">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+        <field name="menuOrder" type="integer" length="11" column="menu_order">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="type" type="string" length="20" column="post_type">
+            <options>
+                <option name="default">post</option>
+            </options>
+        </field>
+        <field name="mimeType" type="string" length="100" column="post_mime_type">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+        <field name="commentCount" type="bigint" length="20" column="comment_count">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="parent" type="bigint" length="20" column="post_parent">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+    </mapped-superclass>
+</doctrine-mapping>

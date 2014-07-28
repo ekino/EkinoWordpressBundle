@@ -55,6 +55,8 @@ class EkinoWordpressExtension extends Extension
         if ($config['load_twig_extension']) {
             $loader->load('twig.xml');
         }
+
+        $container->setParameter($this->getAlias() . '.backend_type_orm', true);
     }
 
     /**

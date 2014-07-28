@@ -5,15 +5,18 @@
             repository-class="Ekino\WordpressBundle\Repository\TermRepository"
             change-tracking-policy="DEFERRED_IMPLICIT">
 
-        <id name="id" type="integer" column="term_id">
+        <!-- Mapped super classes won't support indexes -->
+        <indexes>
+            <index columns="name"/>
+        </indexes>
+
+        <id name="id" type="bigint" column="term_id">
             <generator strategy="AUTO"/>
+            <options>
+                <option name="unsigned">true</option>
+            </options>
         </id>
 
-        <field name="name" nullable="false"  type="string" length="200" column="name" />
-        <field name="slug" nullable="false"  type="string" length="200" column="slug" />
-        <field name="group" nullable="false"  type="bigint" length="10" column="term_group" />
-
         <one-to-many field="taxonomies" target-entity="Ekino\WordpressBundle\Entity\TermTaxonomy" mapped-by="term" />
-
     </entity>
 </doctrine-mapping>

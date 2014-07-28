@@ -1,6 +1,6 @@
 <?php
 
-namespace Ekino\WordpressBundle\Entity;
+namespace Ekino\WordpressBundle\Model;
 
 /**
  * Interface WordpressContentInterface
