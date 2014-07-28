@@ -108,7 +108,6 @@ function symfony($id)
 }
 
 $loader = require_once __DIR__.'/symfony/app/bootstrap.php.cache';
-Debug::enable();
 
 // Load application kernel
 require_once __DIR__.'/symfony/app/AppKernel.php';
@@ -119,6 +118,11 @@ $sfKernel->boot();
 
 // Add Symfony container as a global variable to be used in Wordpress
 $sfContainer = $sfKernel->getContainer();
+
+if (true === $sfContainer->getParameter('kernel.debug', false)) {
+    Debug::enable();
+}
+
 $sfContainer->enterScope('request');
 
 symfony($sfContainer);
