@@ -5,13 +5,11 @@
             repository-class="Ekino\WordpressBundle\Repository\OptionRepository"
             change-tracking-policy="DEFERRED_IMPLICIT">
 
-        <id name="id" type="integer" column="option_id">
+        <id name="id" type="bigint" column="option_id">
             <generator strategy="AUTO"/>
+            <options>
+                <option name="unsigned">true</option>
+            </options>
         </id>
-
-        <field name="name" nullable="false"  type="string" length="64" column="option_name" unique="true" />
-        <field name="value" nullable="false"  type="text" column="option_value" />
-        <field name="autoload" nullable="false"  type="string" length="20" column="autoload" />
-
     </entity>
 </doctrine-mapping>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <mapped-superclass name="Ekino\WordpressBundle\Model\Option">
+        <field name="name" type="string" length="64" column="option_name" unique="true">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+        <field name="value" type="text" column="option_value" />
+        <field name="autoload" type="string" length="20" column="autoload">
+            <options>
+                <option name="default">yes</option>
+            </options>
+        </field>
+    </mapped-superclass>
+</doctrine-mapping>

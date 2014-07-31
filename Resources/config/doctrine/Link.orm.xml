@@ -5,22 +5,20 @@
             repository-class="Ekino\WordpressBundle\Repository\CommentMetaRepository"
             change-tracking-policy="DEFERRED_IMPLICIT">
 
-        <id name="id" type="integer" column="link_id">
+        <!-- Mapped super classes won't support indexes -->
+        <indexes>
+            <index columns="link_visible"/>
+        </indexes>
+
+        <id name="id" type="bigint" column="link_id">
             <generator strategy="AUTO"/>
+            <options>
+                <option name="unsigned">true</option>
+            </options>
         </id>
 
-        <field name="url" nullable="false" type="string" length="255" column="link_url" />
-        <field name="name" nullable="false" type="string" length="255" column="link_name" />
-        <field name="image" nullable="false" type="string" length="255" column="link_image" />
-        <field name="target" nullable="false" type="string" length="255" column="link_target" />
-        <field name="description" nullable="false" type="string" length="255" column="link_description" />
-        <field name="visible" nullable="false" type="string" length="20" column="link_visible" />
-        <field name="owner" nullable="false" type="bigint" column="link_owner" />
-        <field name="rating" nullable="false" type="integer" column="link_rating" />
-        <field name="updated" nullable="false" type="datetime" column="link_updated" />
-        <field name="rel" nullable="false" type="string" length="25" column="link_rel" />
-        <field name="notes" nullable="false" type="string" length="255" column="link_notes" />
-        <field name="rss" nullable="false" type="string" length="255" column="link_rss" />
-
+        <many-to-one target-entity="User" field="owner">
+            <join-column name="link_owner" referenced-column-name="ID" nullable="false"/>
+        </many-to-one>
     </entity>
 </doctrine-mapping>

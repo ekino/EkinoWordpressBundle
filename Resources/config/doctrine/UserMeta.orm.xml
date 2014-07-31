@@ -5,12 +5,17 @@
             repository-class="Ekino\WordpressBundle\Repository\UserMetaRepository"
             change-tracking-policy="DEFERRED_IMPLICIT">
 
+        <!-- Mapped super classes won't support indexes -->
+        <indexes>
+            <index columns="meta_key"/>
+        </indexes>
+
         <id name="id" type="integer" column="umeta_id">
             <generator strategy="AUTO"/>
+            <options>
+                <option name="unsigned">true</option>
+            </options>
         </id>
-
-        <field name="key" nullable="false"  type="string" length="255" column="meta_key" />
-        <field name="value" nullable="false"  type="text" column="meta_value" />
 
         <many-to-one field="user" target-entity="Ekino\WordpressBundle\Entity\User" inversed-by="metas">
             <join-column name="user_id" referenced-column-name="ID" />
