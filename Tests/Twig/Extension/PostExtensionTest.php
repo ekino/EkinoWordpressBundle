@@ -16,6 +16,10 @@ class PostExtensionTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
+        if (!class_exists('\Twig_Extension')) {
+            $this->markTestSkipped('Twig is not enabled');
+        }
+
         $this->postManager = $this->getMockBuilder('Ekino\WordpressBundle\Manager\PostManager')->disableOriginalConstructor()->getMock();
         $this->optionExtension = $this->getMockBuilder('Ekino\WordpressBundle\Twig\Extension\OptionExtension')->disableOriginalConstructor()->getMock();
 
