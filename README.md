@@ -209,3 +209,52 @@ Simply use the `symfony()` method and call your custom service like that:
 ```php
 $service = symfony('my.custom.symfony.service');
 ```
+
+# Extra
+## Enable cross application I18n support
+
+If you already have a wordpress plugin to handle I18n, EkinoWordpressBundle allow to persist language toggle between Symfony and wordpress.
+To do so, just grab the cookie name from the wordpress plugin used and provide its name in the configuration as follow :
+
+```yml
+ekino_wordpress:
+    i18n_cookie_name: pll_language # This value is the one used in "polylang" WP plugin
+```
+
+Also, you can implement your own language switcher in Symfony that work cross application. For instance :
+
+```php
+<?php
+
+namespace Acme\DemoBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Cookie;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+
+class LanguageController extends Controller
+{
+    /**
+     * @param Request $request
+     * @param string $locale
+     *
+     * @return RedirectResponse
+     */
+    public function toggleLocaleAction(Request $request, $locale)
+    {
+        $response = new RedirectResponse($this->generateUrl('homepage'));
+        $response->headers->setCookie(new Cookie($this->getWpCookieName(), $locale, time() + 31536000, '/', $request->getHost()));
+
+        return $response;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getWpCookieName()
+    {
+        return $this->container->getParameter('ekino.wordpress.i18n_cookie_name');
+    }
+}
+```
