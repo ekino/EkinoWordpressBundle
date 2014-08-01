@@ -17,13 +17,11 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 
 /**
- * Forward compatibility class in case FOSUserBundle is used with older
- * versions of Symfony2 or the doctrine bundles that do not provide the
- * register mappings compiler pass yet.
+ * Class EkinoWordpressExtension
  *
- * @deprecated Compatibility class to make the bundle work with Symfony < 2.3.
- * To be removed when this bundle drops support for Symfony < 2.3
+ * This is the bundle Symfony extension class
  *
+ * @author Xavier Coureau <xav@takeatea.com>
  * @author David Buchmann <david@liip.ch>
  */
 class RegisterMappingsPass implements CompilerPassInterface

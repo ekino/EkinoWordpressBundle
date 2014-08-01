@@ -24,6 +24,9 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class EkinoWordpressBundle extends Bundle
 {
+    /**
+     * @param ContainerBuilder $container
+     */
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
@@ -31,6 +34,9 @@ class EkinoWordpressBundle extends Bundle
         $this->addRegisterMappingPass($container);
     }
 
+    /**
+     * @param ContainerBuilder $containerBuilder
+     */
     public function addRegisterMappingPass(ContainerBuilder $containerBuilder)
     {
         $mappings = array(
