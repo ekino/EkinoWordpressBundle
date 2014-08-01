@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="ekino.wordpress.i18n.request_subscriber.class">Ekino\WordpressBundle\Event\Subscriber\I18n\I18nSubscriber</parameter>
+    </parameters>
+
+    <services>
+
+        <service id="ekino.wordpress.i18n.request_subscriber" class="%ekino.wordpress.i18n.request_subscriber.class%">
+            <tag name="kernel.event_subscriber" />
+
+            <argument>%kernel.default_locale%</argument>
+            <argument>%ekino.wordpress.i18n_cookie_name%</argument>
+        </service>
+
+    </services>
+</container>

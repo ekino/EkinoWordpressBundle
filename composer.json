@@ -19,6 +19,9 @@
         "doctrine/doctrine-bundle": "~1.0",
         "doctrine/orm": "~2.2"
     },
+    "suggest": {
+        "twig/twig": ""
+    },
     "autoload": {
         "psr-4": { "Ekino\\WordpressBundle\\": "" }
     },

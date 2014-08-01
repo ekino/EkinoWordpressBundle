@@ -56,6 +56,11 @@ class EkinoWordpressExtension extends Extension
             $loader->load('twig.xml');
         }
 
+        if ($config['i18n_cookie_name']) {
+            $container->setParameter('ekino.wordpress.i18n_cookie_name', $config['i18n_cookie_name']);
+            $loader->load('i18n.xml');
+        }
+
         $container->setParameter($this->getAlias() . '.backend_type_orm', true);
     }
 
