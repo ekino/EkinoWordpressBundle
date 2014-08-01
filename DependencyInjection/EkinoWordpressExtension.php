@@ -10,6 +10,7 @@
 
 namespace Ekino\WordpressBundle\DependencyInjection;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
@@ -96,6 +97,10 @@ class EkinoWordpressExtension extends Extension
         $container->setDefinition($identifier, $serviceDefinition);
     }
 
+    /**
+     * @param ContainerBuilder $container
+     * @param EntityManagerInterface $em
+     */
     protected function loadEntityManager(ContainerBuilder $container, $em)
     {
         $reference = new Reference(sprintf('doctrine.orm.%s_entity_manager', $em));

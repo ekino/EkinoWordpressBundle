@@ -26,18 +26,37 @@ use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
  */
 class RegisterMappingsPass implements CompilerPassInterface
 {
+    /**
+     * @var \Symfony\Component\DependencyInjection\Definition
+     */
     private $driver;
+
+    /**
+     * @var string
+     */
     private $driverPattern;
+
+    /**
+     * @var array
+     */
     private $namespaces;
+
+    /**
+     * @var string
+     */
     private $enabledParameter;
+
+    /**
+     * @var string
+     */
     private $fallbackManagerParameter;
 
     /**
-     * @param $driver
-     * @param $driverPattern
-     * @param $namespaces
-     * @param $enabledParameter
-     * @param $fallbackManagerParameter
+     * @param Definition $driver
+     * @param string $driverPattern
+     * @param array $namespaces
+     * @param string $enabledParameter
+     * @param string $fallbackManagerParameter
      */
     public function __construct($driver, $driverPattern, $namespaces, $enabledParameter, $fallbackManagerParameter)
     {
@@ -61,6 +80,7 @@ class RegisterMappingsPass implements CompilerPassInterface
 
         $chainDriverDefService = $this->getChainDriverServiceName($container);
         $chainDriverDef = $container->getDefinition($chainDriverDefService);
+
         foreach ($this->namespaces as $namespace) {
             $chainDriverDef->addMethodCall('addDriver', array($this->driver, $namespace));
         }
