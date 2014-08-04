@@ -10,10 +10,7 @@
 
 namespace Ekino\WordpressBundle\Controller;
 
-use Ekino\WordpressBundle\Wordpress\WordpressResponse;
-use Ekino\WordpressBundle\Wordpress\Wordpress;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpKernel\Exception\NotAcceptableHttpException;
 
 /**
  * Class WordpressController
@@ -27,27 +24,17 @@ class WordpressController extends Controller
     /**
      * Wordpress catch-all route action
      *
-     * @return WordpressResponse
-     *
-     * @throws NotAcceptableHttpException
+     * @return \Ekino\WordpressBundle\Wordpress\WordpressResponse
      */
     public function catchAllAction()
     {
-        $content = $this->getWordpress()->getContent();
-
-        global $wp_query;
-
-        if (!$wp_query) {
-            throw new NotAcceptableHttpException('The "$wp_query" wordpress global variable is not defined');
-        }
-
-        return new WordpressResponse($content, $wp_query->is_404() ? WordpressResponse::HTTP_NOT_FOUND : WordpressResponse::HTTP_OK);
+        return $this->getWordpress()->initialize()->getResponse();
     }
 
     /**
      * Returns Wordpress service
      *
-     * @return Wordpress
+     * @return \Ekino\WordpressBundle\Wordpress\Wordpress
      */
     protected function getWordpress()
     {

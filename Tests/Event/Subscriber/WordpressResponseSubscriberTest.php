@@ -1,0 +1,170 @@
+<?php
+
+namespace Ekino\WordpressBundle\Tests\Event\Subscriber;
+
+use Ekino\WordpressBundle\Event\Subscriber\WordpressResponseSubscriber;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Symfony\Component\HttpKernel\KernelEvents;
+
+class WordpressResponseSubscriberTest extends \PHPUnit_Framework_TestCase
+{
+    protected $event;
+    protected $request;
+    protected $response;
+
+    /**
+     * @var WordpressResponseSubscriber
+     */
+    protected $subscriber;
+
+    protected function setUp()
+    {
+        $this->event = $this->getMockBuilder('Symfony\Component\HttpKernel\Event\FilterResponseEvent')->disableOriginalConstructor()->getMock();
+        $this->response = $this->getMockBuilder('Ekino\WordpressBundle\Wordpress\WordpressResponse')->disableOriginalConstructor()->getMock();
+        $this->request = $this->getMockBuilder('Symfony\Component\HttpFoundation\Request')->disableOriginalConstructor()->getMock();
+
+        $this->subscriber = new WordpressResponseSubscriber();
+    }
+
+    public function testGetSubscribedEvents()
+    {
+        $expected = array(
+            KernelEvents::RESPONSE => array('onKernelResponse'),
+        );
+
+        $this->assertEquals($expected, WordpressResponseSubscriber::getSubscribedEvents());
+    }
+
+    public function testGetHttpHeadersCallback()
+    {
+        $this->assertEquals('wp_get_http_headers', $this->subscriber->getHttpHeadersCallback());
+    }
+
+    public function testOnKernelResponseNoWordpressResponse()
+    {
+        $event = $this->getMockBuilder('Symfony\Component\HttpKernel\Event\FilterResponseEvent')->disableOriginalConstructor()->getMock();
+        $response = $this->getMockBuilder('Symfony\Component\HttpFoundation\Response')->disableOriginalConstructor()->getMock();
+
+        $event->expects($this->once())
+            ->method('getResponse')
+            ->will($this->returnValue($response));
+
+        $response->expects($this->never())
+            ->method('getUri');
+
+        $this->subscriber->onKernelResponse($event);
+    }
+
+    public function testOnKernelResponseNoMasterRequest()
+    {
+        $this->event->expects($this->once())
+            ->method('getResponse')
+            ->will($this->returnValue($this->response));
+        $this->event->expects($this->once())
+            ->method('getRequestType')
+            ->will($this->returnValue(HttpKernelInterface::SUB_REQUEST));
+
+        $this->response->expects($this->never())
+            ->method('getUri');
+
+        $this->subscriber->onKernelResponse($this->event);
+    }
+
+    public function testOnKernelResponseNoWpQuery()
+    {
+        $this->event->expects($this->once())
+            ->method('getResponse')
+            ->will($this->returnValue($this->response));
+        $this->event->expects($this->once())
+            ->method('getRequestType')
+            ->will($this->returnValue(HttpKernelInterface::MASTER_REQUEST));
+
+        $this->request->expects($this->never())
+            ->method('getUri');
+
+        $this->subscriber->onKernelResponse($this->event);
+    }
+
+    public function testOnKernelResponseNo404()
+    {
+        $subscriber = new WordpressResponseSubscriberMock();
+
+        $this->event->expects($this->once())
+            ->method('getRequest')
+            ->will($this->returnValue($this->request));
+        $this->event->expects($this->once())
+            ->method('getResponse')
+            ->will($this->returnValue($this->response));
+
+        $this->event->expects($this->once())
+            ->method('getRequestType')
+            ->will($this->returnValue(HttpKernelInterface::MASTER_REQUEST));
+
+        global $wp_query;
+        $wp_query = new WP_QueryMock(false);
+
+        $this->request->expects($this->once())
+            ->method('getUri')
+            ->will($this->returnValue('http://wwww.test.com/random-test'));
+
+        $subscriber->onKernelResponse($this->event);
+    }
+
+    public function testOnKernelResponse()
+    {
+        $subscriber = new WordpressResponseSubscriberMock();
+
+        $this->event->expects($this->once())
+            ->method('getRequest')
+            ->will($this->returnValue($this->request));
+        $this->event->expects($this->once())
+            ->method('getResponse')
+            ->will($this->returnValue($this->response));
+
+        $this->event->expects($this->once())
+            ->method('getRequestType')
+            ->will($this->returnValue(HttpKernelInterface::MASTER_REQUEST));
+
+        global $wp_query;
+        $wp_query = new WP_QueryMock(true);
+
+        $this->request->expects($this->once())
+            ->method('getUri')
+            ->will($this->returnValue('http://wwww.test.com/random-test'));
+        $this->response->expects($this->once())
+            ->method('setStatusCode')
+            ->with($this->equalTo(404));
+
+        $subscriber->onKernelResponse($this->event);
+    }
+}
+
+final class WordpressResponseSubscriberMock extends WordpressResponseSubscriber
+{
+    public function getHttpHeadersCallback()
+    {
+        return array($this, 'getHeaders');
+    }
+
+    public function getHeaders($uri)
+    {
+        return array();
+    }
+}
+
+class WP_QueryMock {
+    /**
+     * @var bool
+     */
+    protected $is404;
+
+    public function __construct($is404 = false)
+    {
+        $this->is404 = $is404;
+    }
+
+    public function is_404()
+    {
+        return $this->is404;
+    }
+}
