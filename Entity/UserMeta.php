@@ -10,6 +10,7 @@
 
 namespace Ekino\WordpressBundle\Entity;
 
+use Ekino\WordpressBundle\Model\UserMeta as UserMetaModel;
 /**
  * Class UserMeta
  *
@@ -17,94 +18,7 @@ namespace Ekino\WordpressBundle\Entity;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class UserMeta implements WordpressEntityInterface
+class UserMeta extends UserMetaModel
 {
-    /**
-     * @var integer
-     */
-    protected $id;
 
-    /**
-     * @var User
-     */
-    protected $user;
-
-    /**
-     * @var string
-     */
-    protected $key;
-
-    /**
-     * @var string
-     */
-    protected $value;
-
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param string $key
-     *
-     * @return UserMeta
-     */
-    public function setKey($key)
-    {
-        $this->key = $key;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getKey()
-    {
-        return $this->key;
-    }
-
-    /**
-     * @param User $user
-     *
-     * @return UserMeta
-     */
-    public function setUser(User $user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * @return User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return UserMeta
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getValue()
-    {
-        return $this->value;
-    }
 }

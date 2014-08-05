@@ -5,21 +5,25 @@
             repository-class="Ekino\WordpressBundle\Repository\TermTaxonomyRepository"
             change-tracking-policy="DEFERRED_IMPLICIT">
 
-        <id name="id" type="integer" column="term_taxonomy_id">
+        <!-- Mapped super classes won't support indexes -->
+        <indexes>
+            <index columns="taxonomy"/>
+        </indexes>
+        <unique-constraints>
+            <unique-constraint columns="term_id,taxonomy"/>
+        </unique-constraints>
+
+        <id name="id" type="bigint" column="term_taxonomy_id">
             <generator strategy="AUTO"/>
+            <options>
+                <option name="unsigned">true</option>
+            </options>
         </id>
 
-        <field name="taxonomy" nullable="false" type="string" length="32" column="taxonomy" />
-        <field name="description" nullable="false" type="text" column="description" />
-        <field name="count" nullable="false" type="integer" length="20" column="count" />
-        <field name="parent" nullable="false" type="integer" length="20" column="parent" />
+        <one-to-many target-entity="Ekino\WordpressBundle\Entity\TermRelationships" mapped-by="taxonomy" field="relationships" />
 
         <many-to-one field="term" target-entity="Ekino\WordpressBundle\Entity\Term" inversed-by="taxonomies">
-            <join-column name="term_id" referenced-column-name="term_id" />
+            <join-column name="term_id" referenced-column-name="term_id" nullable="false" />
         </many-to-one>
-
-        <one-to-many target-entity="Ekino\WordpressBundle\Entity\TermRelationships" mapped-by="taxonomy"
-                     field="relationships" />
-
     </entity>
 </doctrine-mapping>

@@ -5,41 +5,26 @@
             repository-class="Ekino\WordpressBundle\Repository\PostRepository"
             change-tracking-policy="DEFERRED_IMPLICIT">
 
-        <id name="id" type="integer" column="ID">
+        <!-- Mapped super classes won't support indexes -->
+        <indexes>
+            <index columns="post_name"/>
+            <index columns="post_type,post_status,post_date,ID"/>
+            <index columns="post_status,post_date"/>
+        </indexes>
+
+        <id name="id" type="bigint" column="ID">
             <generator strategy="AUTO"/>
+            <options>
+                <option name="unsigned">true</option>
+            </options>
         </id>
 
-        <field name="date" nullable="false"  type="datetime" column="post_date" />
-        <field name="dateGmt" nullable="false"  type="datetime" column="post_date_gmt" />
-        <field name="content" nullable="false"  type="text" column="post_content" />
-        <field name="title" nullable="false"  type="text" column="post_title" />
-        <field name="excerpt" nullable="false"  type="text" column="post_excerpt" />
-        <field name="status" nullable="false"  type="string" length="20" column="post_status" />
-        <field name="commentStatus" nullable="false"  type="string" length="20" column="comment_status" />
-        <field name="pingStatus" nullable="false"  type="string" length="20" column="ping_status" />
-        <field name="password" nullable="false"  type="string" length="20" column="post_password" />
-        <field name="name" nullable="false"  type="string" length="200" column="post_name" />
-        <field name="toPing" nullable="false"  type="text" column="to_ping" />
-        <field name="pinged" nullable="false"  type="text" column="pinged" />
-        <field name="modified" nullable="false"  type="datetime" column="post_modified" />
-        <field name="modifiedGmt" nullable="false"  type="datetime" column="post_modified_gmt" />
-        <field name="contentFiltered" nullable="false"  type="text" column="post_content_filtered" />
-        <field name="guid" nullable="false"  type="string" length="255" column="guid" />
-        <field name="menuOrder" nullable="false"  type="integer" length="11" column="menu_order" />
-        <field name="type" nullable="false"  type="string" length="20" column="post_type" />
-        <field name="mimeType" nullable="false"  type="string" length="100" column="post_mime_type" />
-        <field name="commentCount" nullable="false"  type="bigint" length="20" column="comment_count" />
-        <field name="parent" column="post_parent" nullable="false" type="integer" length="11" />
+        <one-to-many field="metas" target-entity="Ekino\WordpressBundle\Entity\PostMeta" mapped-by="post" />
+        <one-to-many field="comments" target-entity="Ekino\WordpressBundle\Entity\Comment" mapped-by="post" />
+        <one-to-many field="termRelationships" target-entity="Ekino\WordpressBundle\Entity\TermRelationships" mapped-by="post" />
 
         <many-to-one field="author" target-entity="Ekino\WordpressBundle\Entity\User">
             <join-column name="post_author" referenced-column-name="ID" />
         </many-to-one>
-
-        <one-to-many field="metas" target-entity="Ekino\WordpressBundle\Entity\PostMeta" mapped-by="post" />
-
-        <one-to-many field="comments" target-entity="Ekino\WordpressBundle\Entity\Comment" mapped-by="post" />
-
-        <one-to-many field="termRelationships" target-entity="Ekino\WordpressBundle\Entity\TermRelationships" mapped-by="post" />
-
     </entity>
 </doctrine-mapping>

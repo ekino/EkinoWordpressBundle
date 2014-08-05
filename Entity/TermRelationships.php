@@ -10,6 +10,8 @@
 
 namespace Ekino\WordpressBundle\Entity;
 
+use Ekino\WordpressBundle\Model\TermRelationships as TermRelationshipsModel;
+
 /**
  * Class TermRelationships
  *
@@ -17,81 +19,7 @@ namespace Ekino\WordpressBundle\Entity;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class TermRelationships implements WordpressEntityInterface
+class TermRelationships extends TermRelationshipsModel
 {
 
-    /**
-     * @var TermTaxonomy
-     */
-    protected $taxonomy;
-
-    /**
-     * @var integer
-     */
-    protected $termOrder;
-
-    /**
-     * @var Post
-     */
-    protected $post;
-
-    /**
-     * @param Post $post
-     *
-     * @return TermRelationships
-     */
-    public function setPost(Post $post)
-    {
-        $this->post = $post;
-
-        return $this;
-    }
-
-    /**
-     * @return Post
-     */
-    public function getPost()
-    {
-        return $this->post;
-    }
-
-    /**
-     * @param int $termOrder
-     *
-     * @return TermRelationships
-     */
-    public function setTermOrder($termOrder)
-    {
-        $this->termOrder = $termOrder;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getTermOrder()
-    {
-        return $this->termOrder;
-    }
-
-    /**
-     * @param TermTaxonomy $taxonomy
-     *
-     * @return TermRelationships
-     */
-    public function setTaxonomy(TermTaxonomy $taxonomy)
-    {
-        $this->taxonomy = $taxonomy;
-
-        return $this;
-    }
-
-    /**
-     * @return TermTaxonomy
-     */
-    public function getTaxonomy()
-    {
-        return $this->taxonomy;
-    }
 }

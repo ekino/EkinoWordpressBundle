@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Ekino\WordpressBundle\Entity;
+namespace Ekino\WordpressBundle\Model;
 
 /**
  * WordpressEntityInterface is an interface that identifies EkinoWordpressBundle entities

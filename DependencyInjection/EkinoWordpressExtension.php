@@ -10,6 +10,7 @@
 
 namespace Ekino\WordpressBundle\DependencyInjection;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
@@ -60,6 +61,8 @@ class EkinoWordpressExtension extends Extension
             $container->setParameter('ekino.wordpress.i18n_cookie_name', $config['i18n_cookie_name']);
             $loader->load('i18n.xml');
         }
+
+        $container->setParameter($this->getAlias() . '.backend_type_orm', true);
     }
 
     /**
@@ -94,6 +97,10 @@ class EkinoWordpressExtension extends Extension
         $container->setDefinition($identifier, $serviceDefinition);
     }
 
+    /**
+     * @param ContainerBuilder $container
+     * @param EntityManagerInterface $em
+     */
     protected function loadEntityManager(ContainerBuilder $container, $em)
     {
         $reference = new Reference(sprintf('doctrine.orm.%s_entity_manager', $em));

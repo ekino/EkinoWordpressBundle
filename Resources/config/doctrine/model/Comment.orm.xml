@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <mapped-superclass name="Ekino\WordpressBundle\Model\Comment">
+        <field name="author" type="string" length="255" column="comment_author" />
+        <field name="authorEmail" type="string" length="100" column="comment_author_email">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+        <field name="authorUrl" type="string" length="200" column="comment_author_url">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+        <field name="authorIp" type="string" length="100" column="comment_author_IP">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+        <field name="date" type="datetime" column="comment_date">
+            <options>
+                <option name="default">0000-00-00 00:00:00</option>
+            </options>
+        </field>
+        <field name="dateGmt" type="datetime" column="comment_date_gmt">
+            <options>
+                <option name="default">0000-00-00 00:00:00</option>
+            </options>
+        </field>
+        <field name="content" type="text" column="comment_content"/>
+        <field name="karma" type="integer" length="11" column="comment_karma">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="approved" type="string" length="20" column="comment_approved">
+            <options>
+                <option name="default">1</option>
+            </options>
+        </field>
+        <field name="agent" type="string" length="255" column="comment_agent">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+        <field name="type" type="string" length="20" column="comment_type">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+        <field name="user" type="bigint" column="user_id">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="parent" type="bigint" column="comment_parent">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+    </mapped-superclass>
+</doctrine-mapping>

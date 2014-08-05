@@ -10,6 +10,8 @@
 
 namespace Ekino\WordpressBundle\Entity;
 
+use Ekino\WordpressBundle\Model\PostMeta as PostMetaModel;
+
 /**
  * Class PostMeta
  *
@@ -17,94 +19,7 @@ namespace Ekino\WordpressBundle\Entity;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class PostMeta implements WordpressEntityInterface
+class PostMeta extends PostMetaModel
 {
-    /**
-     * @var integer
-     */
-    protected $id;
 
-    /**
-     * @var Post
-     */
-    protected $post;
-
-    /**
-     * @var string
-     */
-    protected $key;
-
-    /**
-     * @var string
-     */
-    protected $value;
-
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param string $key
-     *
-     * @return PostMeta
-     */
-    public function setKey($key)
-    {
-        $this->key = $key;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getKey()
-    {
-        return $this->key;
-    }
-
-    /**
-     * @param Post $post
-     *
-     * @return PostMeta
-     */
-    public function setPost(Post $post)
-    {
-        $this->post = $post;
-
-        return $this;
-    }
-
-    /**
-     * @return Post
-     */
-    public function getPost()
-    {
-        return $this->post;
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return PostMeta
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getValue()
-    {
-        return $this->value;
-    }
 }
