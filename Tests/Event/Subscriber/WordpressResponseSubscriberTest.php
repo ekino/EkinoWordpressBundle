@@ -23,7 +23,7 @@ class WordpressResponseSubscriberTest extends \PHPUnit_Framework_TestCase
         $this->response = $this->getMockBuilder('Ekino\WordpressBundle\Wordpress\WordpressResponse')->disableOriginalConstructor()->getMock();
         $this->request = $this->getMockBuilder('Symfony\Component\HttpFoundation\Request')->disableOriginalConstructor()->getMock();
 
-        $this->subscriber = new WordpressResponseSubscriber();
+        $this->subscriber = new WordpressResponseSubscriber(array($this, 'getHeadersMock'));
     }
 
     public function testGetSubscribedEvents()
@@ -37,7 +37,7 @@ class WordpressResponseSubscriberTest extends \PHPUnit_Framework_TestCase
 
     public function testGetHttpHeadersCallback()
     {
-        $this->assertEquals('wp_get_http_headers', $this->subscriber->getHttpHeadersCallback());
+        $this->assertEquals(array($this, 'getHeadersMock'), $this->subscriber->getHttpHeadersCallback());
     }
 
     public function testOnKernelResponseNoWordpressResponse()
@@ -87,8 +87,6 @@ class WordpressResponseSubscriberTest extends \PHPUnit_Framework_TestCase
 
     public function testOnKernelResponseNo404()
     {
-        $subscriber = new WordpressResponseSubscriberMock();
-
         $this->event->expects($this->once())
             ->method('getRequest')
             ->will($this->returnValue($this->request));
@@ -107,13 +105,11 @@ class WordpressResponseSubscriberTest extends \PHPUnit_Framework_TestCase
             ->method('getUri')
             ->will($this->returnValue('http://wwww.test.com/random-test'));
 
-        $subscriber->onKernelResponse($this->event);
+        $this->subscriber->onKernelResponse($this->event);
     }
 
     public function testOnKernelResponse()
     {
-        $subscriber = new WordpressResponseSubscriberMock();
-
         $this->event->expects($this->once())
             ->method('getRequest')
             ->will($this->returnValue($this->request));
@@ -135,18 +131,15 @@ class WordpressResponseSubscriberTest extends \PHPUnit_Framework_TestCase
             ->method('setStatusCode')
             ->with($this->equalTo(404));
 
-        $subscriber->onKernelResponse($this->event);
-    }
-}
-
-final class WordpressResponseSubscriberMock extends WordpressResponseSubscriber
-{
-    public function getHttpHeadersCallback()
-    {
-        return array($this, 'getHeaders');
+        $this->subscriber->onKernelResponse($this->event);
     }
 
-    public function getHeaders($uri)
+    /**
+     * @param string $uri
+     *
+     * @return array
+     */
+    public function getHeadersMock($uri)
     {
         return array();
     }

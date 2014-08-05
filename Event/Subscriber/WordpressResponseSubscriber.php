@@ -11,14 +11,14 @@ use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 class WordpressResponseSubscriber implements EventSubscriberInterface
 {
     /**
-     * @var string
+     * @var string|array
      */
     protected $httpHeaderCallback;
 
     /**
-     * @param string $httpHeaderCallback
+     * @param string|array $httpHeaderCallback
      */
-    public function __construct($httpHeaderCallback = 'wp_get_http_headers')
+    public function __construct($httpHeaderCallback)
     {
         $this->httpHeaderCallback = $httpHeaderCallback;
     }
@@ -55,7 +55,7 @@ class WordpressResponseSubscriber implements EventSubscriberInterface
         }
 
         if ($wp_query->is_404()) {
-            $response->setStatusCode(WordpressResponse::HTTP_NOT_FOUND);
+            $response->setStatusCode(404);
         }
     }
 

@@ -21,6 +21,8 @@
 
         <service id="ekino.wordpress.response_subscriber" class="%ekino.wordpress.response_subscriber.class%">
             <tag name="kernel.event_subscriber" />
+
+            <argument>wp_get_http_headers</argument>
         </service>
 
     </services>
