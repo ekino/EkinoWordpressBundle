@@ -5,15 +5,20 @@
             repository-class="Ekino\WordpressBundle\Repository\CommentMetaRepository"
             change-tracking-policy="DEFERRED_IMPLICIT">
 
-        <id name="id" type="integer" column="meta_id">
+        <!-- Mapped super classes won't support indexes -->
+        <indexes>
+            <index columns="meta_key"/>
+        </indexes>
+
+        <id name="id" type="bigint" column="meta_id">
             <generator strategy="AUTO"/>
+            <options>
+                <option name="unsigned">true</option>
+            </options>
         </id>
 
-        <field name="key" nullable="true" type="string" length="255" column="meta_key" />
-        <field name="value" nullable="true" type="text" column="meta_value" />
-
         <many-to-one field="comment" target-entity="Ekino\WordpressBundle\Entity\Comment">
-            <join-column name="comment_id" referenced-column-name="comment_ID" />
+            <join-column name="comment_id" referenced-column-name="comment_ID" nullable="false" />
         </many-to-one>
 
     </entity>

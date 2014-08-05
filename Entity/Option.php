@@ -10,6 +10,8 @@
 
 namespace Ekino\WordpressBundle\Entity;
 
+use Ekino\WordpressBundle\Model\Option as OptionModel;
+
 /**
  * Class Option
  *
@@ -17,94 +19,6 @@ namespace Ekino\WordpressBundle\Entity;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class Option implements WordpressEntityInterface
+class Option extends OptionModel
 {
-    /**
-     * @var integer
-     */
-    protected $id;
-
-    /**
-     * @var string
-     */
-    protected $name;
-
-    /**
-     * @var string
-     */
-    protected $value;
-
-    /**
-     * @var string
-     */
-    protected $autoload;
-
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param string $autoload
-     *
-     * @return Option
-     */
-    public function setAutoload($autoload)
-    {
-        $this->autoload = $autoload;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAutoload()
-    {
-        return $this->autoload;
-    }
-
-    /**
-     * @param string $name
-     *
-     * @return Option
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $value
-     *
-     * @return Option
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getValue()
-    {
-        return $this->value;
-    }
 }

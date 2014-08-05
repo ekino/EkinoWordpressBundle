@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <mapped-superclass name="Ekino\WordpressBundle\Model\PostMeta">
+        <field name="key" type="string" length="255" column="meta_key" nullable="true" />
+        <field name="value" type="text" column="meta_value" nullable="true" />
+    </mapped-superclass>
+</doctrine-mapping>

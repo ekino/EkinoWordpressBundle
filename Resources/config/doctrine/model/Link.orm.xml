@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <mapped-superclass name="Ekino\WordpressBundle\Model\Link">
+        <field name="url" type="string" length="255" column="link_url">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+        <field name="name" type="string" length="255" column="link_name">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+        <field name="image" type="string" length="255" column="link_image">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+        <field name="target" type="string" length="25" column="link_target">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+        <field name="description" type="string" length="255" column="link_description">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+        <field name="visible" type="string" length="20" column="link_visible">
+            <options>
+                <option name="default">Y</option>
+            </options>
+        </field>
+        <field name="rating" type="integer" length="11" column="link_rating">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+        <field name="updated" type="datetime" column="link_updated">
+            <options>
+                <option name="default">0000-00-00 00:00:00</option>
+            </options>
+        </field>
+        <field name="rel" type="string" length="255" column="link_rel">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+        <field name="notes" type="string" length="16777215" column="link_notes" />
+        <field name="rss" type="string" length="255" column="link_rss">
+            <options>
+                <option name="default"/>
+            </options>
+        </field>
+    </mapped-superclass>
+</doctrine-mapping>

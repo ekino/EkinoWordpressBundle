@@ -10,6 +10,9 @@
 
 namespace Ekino\WordpressBundle;
 
+use Ekino\WordpressBundle\DependencyInjection\Compiler\RegisterMappingsPass;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -21,4 +24,25 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class EkinoWordpressBundle extends Bundle
 {
+    /**
+     * @param ContainerBuilder $container
+     */
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+
+        $this->addRegisterMappingPass($container);
+    }
+
+    /**
+     * @param ContainerBuilder $containerBuilder
+     */
+    public function addRegisterMappingPass(ContainerBuilder $containerBuilder)
+    {
+        $mappings = array(
+            realpath(__DIR__ . '/Resources/config/doctrine/model') => 'Ekino\WordpressBundle\Model',
+        );
+
+        $containerBuilder->addCompilerPass(RegisterMappingsPass::createOrmMappingDriver($mappings));
+    }
 }
