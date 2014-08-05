@@ -42,7 +42,7 @@ class WordpressResponseSubscriber implements EventSubscriberInterface
         }
 
         $callback = $this->getHttpHeadersCallback();
-        $wpHeaders = (array) $callback($event->getRequest()->getUri());
+        $wpHeaders = (array) call_user_func_array($callback, array($event->getRequest()->getUri()));
 
         foreach ($wpHeaders as $name => $value) {
             // TODO add cache headers support
