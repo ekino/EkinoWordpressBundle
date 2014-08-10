@@ -1,7 +1,7 @@
 EkinoWordpressBundle
 ====================
 
-[![Build Status](https://secure.travis-ci.org/ekino/EkinoWordpressBundle.png?branch=master)](http://travis-ci.org/ekino/EkinoWordpressBundle)
+[![Build Status](https://secure.travis-ci.org/ekino/EkinoWordpressBundle.png?branch=master)](http://travis-ci.org/ekino/EkinoWordpressBundle) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/e842da81-16e2-47ee-9966-5112bbe1ab9c/mini.png)](https://insight.sensiolabs.com/projects/e842da81-16e2-47ee-9966-5112bbe1ab9c)
 
 This bundle is used to bring some Symfony services into Wordpress and manipulates Wordpress using Symfony.
 
