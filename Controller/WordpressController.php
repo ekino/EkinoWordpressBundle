@@ -10,8 +10,8 @@
 
 namespace Ekino\WordpressBundle\Controller;
 
+use Ekino\WordpressBundle\Wordpress\WordpressResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Ekino\WordpressBundle\Wordpress\Wordpress;
 
 /**
