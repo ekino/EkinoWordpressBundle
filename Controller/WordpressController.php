@@ -12,8 +12,6 @@ namespace Ekino\WordpressBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Ekino\WordpressBundle\Wordpress\Wordpress;
-
 /**
  * Class WordpressController
  *
@@ -26,7 +24,7 @@ class WordpressController extends Controller
     /**
      * Wordpress catch-all route action
      *
-     * @return WordpressResponse
+     * @return \Ekino\WordpressBundle\Wordpress\WordpressResponse
      */
     public function catchAllAction()
     {
@@ -36,7 +34,7 @@ class WordpressController extends Controller
     /**
      * Returns Wordpress service
      *
-     * @return Wordpress
+     * @return \Ekino\WordpressBundle\Wordpress\Wordpress
      */
     protected function getWordpress()
     {
