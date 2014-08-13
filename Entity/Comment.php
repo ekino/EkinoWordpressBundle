@@ -22,4 +22,11 @@ use Ekino\WordpressBundle\Model\Comment as CommentModel;
 class Comment extends CommentModel
 {
 
+    public function __construct()
+    {
+       $this->date = new \DateTime("0000-00-00");
+       $this->dateGmt = new \DateTime("0000-00-00");
+    }
+
+
 }

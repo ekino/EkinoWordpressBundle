@@ -37,17 +37,17 @@ abstract class Comment implements WordpressEntityInterface, WordpressContentInte
     /**
      * @var string
      */
-    protected $authorEmail;
+    protected $authorEmail = "";
 
     /**
      * @var string
      */
-    protected $authorUrl;
+    protected $authorUrl = "";
 
     /**
      * @var string
      */
-    protected $authorIp;
+    protected $authorIp = "";
 
     /**
      * @var \DateTime
@@ -67,32 +67,32 @@ abstract class Comment implements WordpressEntityInterface, WordpressContentInte
     /**
      * @var integer
      */
-    protected $karma;
+    protected $karma = 0;
 
     /**
      * @var string
      */
-    protected $approved;
+    protected $approved = 1;
 
     /**
      * @var string
      */
-    protected $agent;
+    protected $agent = "";
 
     /**
      * @var string
      */
-    protected $type;
+    protected $type = "";
 
     /**
      * @var Comment
      */
-    protected $parent;
+    protected $parent = 0;
 
     /**
      * @var User
      */
-    protected $user;
+    protected $user = 0;
 
 
     /**
