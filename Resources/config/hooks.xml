@@ -23,6 +23,7 @@
             <tag name="kernel.event_subscriber" />
 
             <argument>wp_get_http_headers</argument>
+            <argument type="service" id="ekino.wordpress.wordpress"/>
         </service>
 
     </services>

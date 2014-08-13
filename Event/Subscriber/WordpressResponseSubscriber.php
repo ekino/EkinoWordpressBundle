@@ -2,6 +2,7 @@
 
 namespace Ekino\WordpressBundle\Event\Subscriber;
 
+use Ekino\WordpressBundle\Wordpress\Wordpress;
 use Ekino\WordpressBundle\Wordpress\WordpressResponse;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
@@ -16,11 +17,18 @@ class WordpressResponseSubscriber implements EventSubscriberInterface
     protected $httpHeaderCallback;
 
     /**
-     * @param string|array $httpHeaderCallback
+     * @var Wordpress
      */
-    public function __construct($httpHeaderCallback)
+    protected $wordpress;
+
+    /**
+     * @param string|array $httpHeaderCallback
+     * @param Wordpress $wordpress
+     */
+    public function __construct($httpHeaderCallback, Wordpress $wordpress)
     {
         $this->httpHeaderCallback = $httpHeaderCallback;
+        $this->wordpress = $wordpress;
     }
 
     /**
@@ -34,10 +42,7 @@ class WordpressResponseSubscriber implements EventSubscriberInterface
             return;
         }
 
-        /** @var \WP_Query|null $wp_query */
-        global $wp_query;
-
-        if (!$wp_query) {
+        if (!$wp_query = $this->wordpress->getWpQuery()) {
             return;
         }
 
@@ -47,7 +52,7 @@ class WordpressResponseSubscriber implements EventSubscriberInterface
         foreach ($wpHeaders as $name => $value) {
             // TODO add cache headers support
             if ($name == 'cache-control') {
-                //$response->setCache($this->parseCacheHeaders($value));
+                //$response->setCache($value);
                 continue;
             }
 
