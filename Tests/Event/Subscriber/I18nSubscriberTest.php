@@ -32,9 +32,18 @@ class RequestSubscriberTest extends \PHPUnit_Framework_TestCase
         $event = $this->getMockBuilder('Symfony\Component\HttpKernel\Event\GetResponseEvent')->disableOriginalConstructor()->getMock();
         $request = $this->getMockBuilder('Symfony\Component\HttpFoundation\Request')->disableOriginalConstructor()->getMock();
         $cookies = $this->getMockBuilder('Symfony\Component\HttpFoundation\ParameterBag')->disableOriginalConstructor()->getMock();
+        $session = $this->getMockBuilder('Symfony\Component\HttpFoundation\Session\Session')->disableOriginalConstructor()->getMock();
 
         $request->cookies = $cookies;
 
+        $session->expects($this->once())
+            ->method('get')
+            ->with($this->equalTo('_locale'))
+            ->will($this->returnValue($this->defaultLanguage));
+
+        $request->expects($this->once())
+            ->method('getSession')
+            ->will($this->returnValue($session));
         $event->expects($this->once())
             ->method('getRequest')
             ->will($this->returnValue($request));
@@ -44,6 +53,9 @@ class RequestSubscriberTest extends \PHPUnit_Framework_TestCase
             ->with($this->equalTo($this->cookieName), $this->equalTo($this->defaultLanguage))
             ->will($this->returnValue($this->defaultLanguage));
 
+        $session->expects($this->once())
+            ->method('set')
+            ->with($this->equalTo('_locale'), $this->equalTo($this->defaultLanguage));
         $request->expects($this->once())
             ->method('setLocale')
             ->with($this->equalTo($this->defaultLanguage));
@@ -56,18 +68,24 @@ class RequestSubscriberTest extends \PHPUnit_Framework_TestCase
         $event = $this->getMockBuilder('Symfony\Component\HttpKernel\Event\GetResponseEvent')->disableOriginalConstructor()->getMock();
         $request = $this->getMockBuilder('Symfony\Component\HttpFoundation\Request')->disableOriginalConstructor()->getMock();
         $cookies = $this->getMockBuilder('Symfony\Component\HttpFoundation\ParameterBag')->disableOriginalConstructor()->getMock();
+        $session = $this->getMockBuilder('Symfony\Component\HttpFoundation\Session\Session')->disableOriginalConstructor()->getMock();
 
         $request->cookies = $cookies;
 
+        $request->expects($this->once())
+            ->method('getSession')
+            ->will($this->returnValue($session));
         $event->expects($this->once())
             ->method('getRequest')
             ->will($this->returnValue($request));
 
         $cookies->expects($this->once())
             ->method('get')
-            ->with($this->equalTo($this->cookieName), $this->equalTo($this->defaultLanguage))
             ->will($this->returnValue('en'));
 
+        $session->expects($this->once())
+            ->method('set')
+            ->with($this->equalTo('_locale'), $this->equalTo('en'));
         $request->expects($this->once())
             ->method('setLocale')
             ->with($this->equalTo('en'));

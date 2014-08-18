@@ -34,7 +34,10 @@ class I18nSubscriber implements EventSubscriberInterface
     public function onKernelRequest(GetResponseEvent $event)
     {
         $request = $event->getRequest();
-        $locale = $request->cookies->get($this->wordpressI18nCookieName, $this->defaultLocale);
+        $session = $request->getSession();
+        $locale = $request->cookies->get($this->wordpressI18nCookieName, $session->get('_locale', $this->defaultLocale));
+
+        $session->set('_locale', $locale);
         $request->setLocale($locale);
     }
 
