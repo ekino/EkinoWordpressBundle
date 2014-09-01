@@ -2,7 +2,7 @@
 
 namespace Ekino\WordpressBundle\Twig\Extension;
 
-use Ekino\WordpressBundle\Entity\Post;
+use Ekino\WordpressBundle\Model\Post;
 use Ekino\WordpressBundle\Manager\PostManager;
 
 class PostExtension extends \Twig_Extension
