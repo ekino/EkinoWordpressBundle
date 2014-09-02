@@ -13,8 +13,17 @@
         >
     <testsuites>
         <testsuite name="Ekino\WordpressBundle">
-            <directory>./Tests/</directory>
+            <directory>./Tests</directory>
         </testsuite>
     </testsuites>
 
+    <filter>
+        <whitelist>
+            <directory>./</directory>
+            <exclude>
+                <directory>vendor</directory>
+                <directory>Tests</directory>
+            </exclude>
+        </whitelist>
+    </filter>
 </phpunit>
