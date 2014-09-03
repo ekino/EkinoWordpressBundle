@@ -19,6 +19,8 @@ namespace Ekino\WordpressBundle\Tests\Controller;
  */
 class WordpressControllerTest extends \PHPUnit_Framework_TestCase
 {
+    protected $wp_query;
+
     /**
      * @var \Ekino\WordpressBundle\Wordpress\Wordpress
      */

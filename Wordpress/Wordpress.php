@@ -103,6 +103,20 @@ class Wordpress
     }
 
     /**
+     * @return null|\WP_Query
+     */
+    public function getWpQuery()
+    {
+        global $wp_query;
+
+        if (null === $wp_query || !$wp_query instanceof \WP_Query) {
+            return null;
+        }
+
+        return $wp_query;
+    }
+
+    /**
      * Returns Wordpress directory if specified in configuration
      * otherwise returns default structure:
      *
