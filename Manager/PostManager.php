@@ -10,8 +10,6 @@
 
 namespace Ekino\WordpressBundle\Manager;
 
-use Ekino\WordpressBundle\Manager\BaseManager;
-
 /**
  * Class PostManager
  *
@@ -21,5 +19,6 @@ use Ekino\WordpressBundle\Manager\BaseManager;
  */
 class PostManager extends BaseManager
 {
-
+    const COMMENT_STATUS_OPEN = 'open';
+    const COMMENT_STATUS_CLOSED = 'closed';
 }
