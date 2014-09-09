@@ -79,7 +79,33 @@ security:
             entity: { class: Ekino\WordpressBundle\Entity\User, property: login }
 ```
 
-### 3) Update your Wordpress index.php file to load Symfony libraries
+### 3) Wrap code inside web/app.php and web/app_dev.php
+
+To avoid problem with some Wordpress plugin, you need to wrap code inside a function like this :
+```php
+<?php
+use Symfony\Component\HttpFoundation\Request;
+
+// change for app_dev.php
+function run(){
+    $loader = require_once __DIR__.'/../app/bootstrap.php.cache';
+
+    require_once __DIR__.'/../app/AppKernel.php';
+
+    $kernel = new AppKernel('dev', true);
+    $kernel->loadClassCache();
+    Request::enableHttpMethodParameterOverride();
+    $request = Request::createFromGlobals();
+    $response = $kernel->handle($request);
+    $response->send();
+    $kernel->terminate($request, $response);
+}
+run();
+```
+
+And now do the same for app.php
+
+### 4) Update your Wordpress index.php file to load Symfony libraries
 
 ```php
 <?php
@@ -134,7 +160,7 @@ $sfResponse->send();
 $sfKernel->terminate($sfRequest, $sfResponse);
 ```
 
-### 4) Edit .htaccess file on your Wordpress root project directory
+### 5) Edit .htaccess file on your Wordpress root project directory
 
 Put the following rules:
 

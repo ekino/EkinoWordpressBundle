@@ -394,4 +394,13 @@ abstract class User implements UserInterface, WordpressEntityInterface
     {
         return $this;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function __toString()
+    {
+        return $this->getUsername();
+    }
+
 }
