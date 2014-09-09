@@ -21,14 +21,14 @@ use Ekino\WordpressBundle\Model\Comment;
  */
 class CommentManager extends BaseManager
 {
-    const COMMENT_TYPE_PINGBACK = 'pingback';
-    const COMMENT_TYPE_TRACKBACK = 'trackback';
+    const TYPE_PINGBACK = 'pingback';
+    const TYPE_TRACKBACK = 'trackback';
 
-    const COMMENT_APPROVED_PENDING = 0;
-    const COMMENT_APPROVED_APPROVED = 1;
-    const COMMENT_APPROVED_POST_TRASHED = 'post-trashed';
-    const COMMENT_APPROVED_SPAM = 'spam';
-    const COMMENT_APPROVED_TRASH = 'trash';
+    const APPROVED_PENDING = 0;
+    const APPROVED_APPROVED = 1;
+    const APPROVED_POST_TRASHED = 'post-trashed';
+    const APPROVED_SPAM = 'spam';
+    const APPROVED_TRASH = 'trash';
 
     /**
      * @param Comment $comment
@@ -37,7 +37,7 @@ class CommentManager extends BaseManager
      */
     public function isPingback(Comment $comment)
     {
-        return static::COMMENT_TYPE_PINGBACK == $comment->getType();
+        return static::TYPE_PINGBACK == $comment->getType();
     }
 
     /**
@@ -47,6 +47,6 @@ class CommentManager extends BaseManager
      */
     public function isTrackback(Comment $comment)
     {
-        return static::COMMENT_TYPE_TRACKBACK == $comment->getType();
+        return static::TYPE_TRACKBACK == $comment->getType();
     }
 }
