@@ -9,6 +9,7 @@
  */
 
 namespace Ekino\WordpressBundle\Manager;
+
 use Ekino\WordpressBundle\Model\Post;
 
 /**
@@ -20,26 +21,6 @@ use Ekino\WordpressBundle\Model\Post;
  */
 class PostManager extends BaseManager
 {
-    const COMMENT_STATUS_OPEN = 'open';
-    const COMMENT_STATUS_CLOSED = 'closed';
-
-    // @see http://codex.wordpress.org/Post_Status
-    const STATUS_PUBLISHED  = 'publish';
-    const STATUS_FUTURE     = 'future';
-    const STATUS_DRAFT      = 'draft';
-    const STATUS_PENDING    = 'pending';
-    const STATUS_PRIVATE    = 'private';
-    const STATUS_TRASH      = 'trash';
-    const STATUS_AUTODRAFT  = 'auto-draft';
-    const STATUS_INHERIT    = 'inherit';
-
-    // @see http://codex.wordpress.org/Post_Types
-    const TYPE_POST         = 'post';
-    const TYPE_PAGE         = 'page';
-    const TYPE_ATTACHMENT   = 'attachment';
-    const TYPE_REVISION     = 'revision';
-    const TYPE_NAVIGATION   = 'nav_menu_item';
-
     /**
      * @param Post $post
      *
@@ -47,7 +28,7 @@ class PostManager extends BaseManager
      */
     public function isCommentingOpened(Post $post)
     {
-        return static::COMMENT_STATUS_OPEN == $post->getCommentStatus();
+        return Post::COMMENT_STATUS_OPEN == $post->getCommentStatus();
     }
 
     /**
