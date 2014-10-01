@@ -77,7 +77,7 @@ class Wordpress
 
         define('WP_USE_THEMES', true);
 
-        global $wp, $wp_the_query, $wp_query, $allowedentitynames;
+        global $wp, $wp_the_query, $wpdb, $wp_query, $allowedentitynames;
 
         $loader = $this->getWordpressDirectory() . 'wp-blog-header.php';
 

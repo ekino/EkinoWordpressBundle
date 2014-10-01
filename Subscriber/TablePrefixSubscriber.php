@@ -63,7 +63,7 @@ class TablePrefixSubscriber implements EventSubscriber
             return;
         }
 
-        if ($classMetadata->getReflectionClass()->implementsInterface('Ekino\\WordpressBundle\\Model\\WordpressEntityInterface')) {
+        if ($classMetadata->getReflectionClass() && $classMetadata->getReflectionClass()->implementsInterface('Ekino\\WordpressBundle\\Model\\WordpressEntityInterface')) {
             $classMetadata->setPrimaryTable(array('name' => $this->prefix . $classMetadata->getTableName()));
 
             foreach ($classMetadata->getAssociationMappings() as $fieldName => $mapping) {
