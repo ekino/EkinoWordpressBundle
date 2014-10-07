@@ -19,6 +19,15 @@ namespace Ekino\WordpressBundle\Model;
  */
 abstract class Comment implements WordpressEntityInterface, WordpressContentInterface
 {
+    const TYPE_PINGBACK = 'pingback';
+    const TYPE_TRACKBACK = 'trackback';
+
+    const APPROVED_PENDING = 0;
+    const APPROVED_APPROVED = 1;
+    const APPROVED_POST_TRASHED = 'post-trashed';
+    const APPROVED_SPAM = 'spam';
+    const APPROVED_TRASH = 'trash';
+
     /**
      * @var integer
      */
@@ -389,4 +398,19 @@ abstract class Comment implements WordpressEntityInterface, WordpressContentInte
         $this->dateGmt = new \DateTime("0000-00-00");
     }
 
+    /**
+     * @return bool
+     */
+    public function isPingback()
+    {
+        return static::TYPE_PINGBACK == $this->getType();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isTrackback()
+    {
+        return static::TYPE_TRACKBACK == $this->getType();
+    }
 }

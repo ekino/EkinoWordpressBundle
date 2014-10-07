@@ -10,6 +10,8 @@
 
 namespace Ekino\WordpressBundle\Manager;
 
+use Ekino\WordpressBundle\Model\Post;
+
 /**
  * Class PostManager
  *
@@ -19,6 +21,23 @@ namespace Ekino\WordpressBundle\Manager;
  */
 class PostManager extends BaseManager
 {
-    const COMMENT_STATUS_OPEN = 'open';
-    const COMMENT_STATUS_CLOSED = 'closed';
+    /**
+     * @param Post $post
+     *
+     * @return bool
+     */
+    public function isCommentingOpened(Post $post)
+    {
+        return Post::COMMENT_STATUS_OPEN == $post->getCommentStatus();
+    }
+
+    /**
+     * @param Post $post
+     *
+     * @return bool
+     */
+    public function hasComments(Post $post)
+    {
+        return 0 < $post->getCommentCount();
+    }
 }

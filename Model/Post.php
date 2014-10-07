@@ -22,6 +22,26 @@ use Doctrine\Common\Collections\Criteria;
  */
 abstract class Post implements WordpressEntityInterface, WordpressContentInterface
 {
+    const COMMENT_STATUS_OPEN = 'open';
+    const COMMENT_STATUS_CLOSED = 'closed';
+
+    // @see http://codex.wordpress.org/Post_Status
+    const STATUS_PUBLISHED = 'publish';
+    const STATUS_FUTURE = 'future';
+    const STATUS_DRAFT = 'draft';
+    const STATUS_PENDING = 'pending';
+    const STATUS_PRIVATE = 'private';
+    const STATUS_TRASH = 'trash';
+    const STATUS_AUTODRAFT = 'auto-draft';
+    const STATUS_INHERIT = 'inherit';
+
+    // @see http://codex.wordpress.org/Post_Types
+    const TYPE_POST = 'post';
+    const TYPE_PAGE = 'page';
+    const TYPE_ATTACHMENT = 'attachment';
+    const TYPE_REVISION = 'revision';
+    const TYPE_NAVIGATION = 'nav_menu_item';
+
     /**
      * @var integer
      */
