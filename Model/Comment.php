@@ -398,4 +398,19 @@ abstract class Comment implements WordpressEntityInterface, WordpressContentInte
         $this->dateGmt = new \DateTime("0000-00-00");
     }
 
+    /**
+     * @return bool
+     */
+    public function isPingback()
+    {
+        return static::TYPE_PINGBACK == $this->getType();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isTrackback()
+    {
+        return static::TYPE_TRACKBACK == $this->getType();
+    }
 }

@@ -10,8 +10,6 @@
 
 namespace Ekino\WordpressBundle\Manager;
 
-use Ekino\WordpressBundle\Model\Comment;
-
 /**
  * Class CommentManager
  *
@@ -21,23 +19,5 @@ use Ekino\WordpressBundle\Model\Comment;
  */
 class CommentManager extends BaseManager
 {
-    /**
-     * @param Comment $comment
-     *
-     * @return bool
-     */
-    public function isPingback(Comment $comment)
-    {
-        return Comment::TYPE_PINGBACK == $comment->getType();
-    }
 
-    /**
-     * @param Comment $comment
-     *
-     * @return bool
-     */
-    public function isTrackback(Comment $comment)
-    {
-        return Comment::TYPE_TRACKBACK == $comment->getType();
-    }
 }
