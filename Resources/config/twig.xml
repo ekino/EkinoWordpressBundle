@@ -5,12 +5,19 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
+        <parameter key="ekino.wordpress.twig.extension.comment.class">Ekino\WordpressBundle\Twig\Extension\CommentExtension</parameter>
         <parameter key="ekino.wordpress.twig.extension.option.class">Ekino\WordpressBundle\Twig\Extension\OptionExtension</parameter>
         <parameter key="ekino.wordpress.twig.extension.post.class">Ekino\WordpressBundle\Twig\Extension\PostExtension</parameter>
         <parameter key="ekino.wordpress.twig.extension.post_meta.class">Ekino\WordpressBundle\Twig\Extension\PostMetaExtension</parameter>
     </parameters>
 
     <services>
+        <service id="ekino.wordpress.twig.extension.comment" class="%ekino.wordpress.twig.extension.comment.class%">
+            <tag name="twig.extension" />
+
+            <argument type="service" id="ekino.wordpress.manager.comment" />
+        </service>
+
         <service id="ekino.wordpress.twig.extension.option" class="%ekino.wordpress.twig.extension.option.class%">
             <tag name="twig.extension" />
 
@@ -22,6 +29,7 @@
 
             <argument type="service" id="ekino.wordpress.manager.post" />
             <argument type="service" id="ekino.wordpress.twig.extension.option" />
+            <argument>%ekino.wordpress.cookie_hash%</argument>
         </service>
 
         <service id="ekino.wordpress.twig.extension.post_meta" class="%ekino.wordpress.twig.extension.post_meta.class%">

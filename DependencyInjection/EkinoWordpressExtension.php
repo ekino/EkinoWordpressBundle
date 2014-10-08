@@ -62,6 +62,8 @@ class EkinoWordpressExtension extends Extension
             $loader->load('i18n.xml');
         }
 
+        $container->setParameter('ekino.wordpress.cookie_hash', $config['cookie_hash']);
+
         $container->setParameter($this->getAlias() . '.backend_type_orm', true);
     }
 

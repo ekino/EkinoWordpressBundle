@@ -839,4 +839,11 @@ abstract class Post implements WordpressEntityInterface, WordpressContentInterfa
         return $taxonomy ? $taxonomy->getTerm() : null;
     }
 
+    /**
+     * @return bool
+     */
+    public function isCommentingOpened()
+    {
+        return static::COMMENT_STATUS_OPEN == $this->getCommentStatus();
+    }
 }

@@ -11,6 +11,7 @@
 namespace Ekino\WordpressBundle\Manager;
 
 use Ekino\WordpressBundle\Model\Post;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class PostManager
@@ -39,5 +40,35 @@ class PostManager extends BaseManager
     public function hasComments(Post $post)
     {
         return 0 < $post->getCommentCount();
+    }
+
+    /**
+     * @param Post $post
+     * @param Request $request
+     * @param string $cookieHash
+     *
+     * @return bool
+     */
+    public function isPasswordRequired(Post $post, Request $request, $cookieHash)
+    {
+        if (!$post->getPassword()) {
+            return false;
+        }
+
+        $cookies = $request->cookies;
+
+        if (!$cookies->has('wp-postpass_' . $cookieHash)) {
+            return true;
+        }
+
+        $hash = stripslashes($cookies->get('wp-postpass_' . $cookieHash));
+
+        if (0 !== strpos($hash, '$P$B')) {
+            return true;
+        }
+
+        $wpHasher = new \PasswordHash(8, true);
+
+        return !$wpHasher->CheckPassword($post->getPassword(), $hash);
     }
 }

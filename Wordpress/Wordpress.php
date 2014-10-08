@@ -12,8 +12,6 @@ namespace Ekino\WordpressBundle\Wordpress;
 
 use Symfony\Component\HttpKernel\KernelInterface;
 
-use Ekino\WordpressBundle\Wordpress\WordpressResponse;
-
 /**
  * Class Wordpress
  *
