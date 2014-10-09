@@ -5,6 +5,11 @@ namespace Ekino\WordpressBundle\Twig\Extension;
 use Ekino\WordpressBundle\Manager\CommentManager;
 use Ekino\WordpressBundle\Model\Comment;
 
+/**
+ * Provide native wordpress functions into twig
+ *
+ * @author Xavier Coureau <xav@takeatea.com>
+ */
 class CommentExtension extends \Twig_Extension
 {
     /**
@@ -30,6 +35,9 @@ class CommentExtension extends \Twig_Extension
         return 'ekino_wordpress_comment';
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getFunctions()
     {
         return array(
