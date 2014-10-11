@@ -18,13 +18,20 @@ class PostExtension extends \Twig_Extension
     protected $optionExtension;
 
     /**
+     * @var string|null
+     */
+    protected $cookieHash;
+
+    /**
      * @param PostManager $postManager
      * @param OptionExtension $optionExtension
+     * @param string|null $cookieHash
      */
-    public function __construct(PostManager $postManager, OptionExtension $optionExtension)
+    public function __construct(PostManager $postManager, OptionExtension $optionExtension, $cookieHash = null)
     {
         $this->postManager = $postManager;
         $this->optionExtension = $optionExtension;
+        $this->cookieHash = $cookieHash;
     }
 
     /**
@@ -41,7 +48,10 @@ class PostExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
+            new \Twig_SimpleFunction('wp_comments_open', array($this, 'isCommentingOpened')),
             new \Twig_SimpleFunction('wp_get_permalink', array($this, 'getPermalink')),
+            new \Twig_SimpleFunction('wp_have_comments', array($this, 'haveComments')),
+            new \Twig_SimpleFunction('wp_post_password_required', array($this, 'isPostPasswordRequired'), array('needs_context' => true)),
         );
     }
 
@@ -82,5 +92,44 @@ class PostExtension extends \Twig_Extension
         $permalinkStructure = str_replace('%postname%', $post->getName(), $permalinkStructure);
 
         return $permalinkStructure;
+    }
+
+    /**
+     * @param array $context
+     * @param Post $post
+     *
+     * @return bool
+     */
+    public function isPostPasswordRequired(array $context, Post $post)
+    {
+        if (null === $this->cookieHash) {
+            $this->cookieHash = '';
+
+            if ($siteUrlOption = $this->optionExtension->getOption('siteurl')) {
+                $this->cookieHash = md5($siteUrlOption->getValue());
+            }
+        }
+
+        return $this->postManager->isPasswordRequired($post, $context['app']->getRequest(), $this->cookieHash);
+    }
+
+    /**
+     * @param Post $post
+     *
+     * @return bool
+     */
+    public function isCommentingOpened(Post $post)
+    {
+        return $post->isCommentingOpened();
+    }
+
+    /**
+     * @param Post $post
+     *
+     * @return bool
+     */
+    public function haveComments(Post $post)
+    {
+        return 0 < $post->getCommentCount();
     }
 }

@@ -38,6 +38,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('wordpress_directory')->end()
                 ->scalarNode('entity_manager')->end()
                 ->booleanNode('load_twig_extension')->defaultFalse()->end()
+                ->booleanNode('cookie_hash')->defaultNull()->end()
                 ->scalarNode('i18n_cookie_name')->defaultFalse()->end()
             ->end()
         ;
