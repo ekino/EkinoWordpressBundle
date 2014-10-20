@@ -77,6 +77,15 @@ security:
     providers:
         main:
             entity: { class: Ekino\WordpressBundle\Entity\User, property: login }
+
+    # Example firewall for an area within a Symfony application protected by a WordPress login
+    firewalls:
+        secured_area:
+            pattern:    ^/admin
+            anonymous: ~
+
+    access_control:
+        - { path: ^/admin, roles: ROLE_WP_ADMINISTRATOR }
 ```
 
 ### 3) Wrap code inside web/app.php and web/app_dev.php
