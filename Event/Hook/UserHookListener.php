@@ -78,10 +78,11 @@ class UserHookListener
         $user = $this->userManager->find($wpUser->data->ID);
         $user->setWordpressRoles($wpUser->roles);
 
-        $token = new UsernamePasswordToken($user, $user->getPass(), 'secured_area', $user->getRoles());
+        $firewall = 'secured_area';
+        $token = new UsernamePasswordToken($user, $user->getPass(), $firewall, $user->getRoles());
         $this->securityContext->setToken($token);
 
-        $this->session->set('token', $token);
+        $this->session->set('_security_' . $firewall, serialize($token));
     }
 
     /**
