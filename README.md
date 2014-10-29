@@ -68,6 +68,8 @@ ekino_wordpress:
     table_prefix: wp_ # If you have a specific Wordpress table prefix
     wordpress_directory: /my/wordpress/directory # If you have a specific Wordpress directory structure
     load_twig_extension: true # If you want to enable native WordPress functions (ie : get_option() => wp_get_option())
+    security:
+        firewall_name: secured_area # This is the firewall default name
 ```
 
 Also optionally, if you want to use `UserHook` to authenticate on Symfony, you should add this configuration to your `app/security.yml`:
