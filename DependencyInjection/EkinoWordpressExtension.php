@@ -63,6 +63,7 @@ class EkinoWordpressExtension extends Extension
         }
 
         $container->setParameter('ekino.wordpress.cookie_hash', $config['cookie_hash']);
+        $container->setParameter('ekino.wordpress.firewall_name', $config['security']['firewall_name']);
 
         $container->setParameter($this->getAlias() . '.backend_type_orm', true);
     }

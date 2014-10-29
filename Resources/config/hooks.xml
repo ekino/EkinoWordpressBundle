@@ -17,6 +17,7 @@
             <argument type="service" id="logger" />
             <argument type="service" id="security.context" />
             <argument type="service" id="session" />
+            <argument>%ekino.wordpress.firewall_name%</argument>
         </service>
 
         <service id="ekino.wordpress.response_subscriber" class="%ekino.wordpress.response_subscriber.class%">

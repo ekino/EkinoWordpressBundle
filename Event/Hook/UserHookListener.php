@@ -49,19 +49,26 @@ class UserHookListener
     protected $session;
 
     /**
+     * @var string
+     */
+    protected $firewall;
+
+    /**
      * Constructor
      *
      * @param UserManager              $userManager     Wordpress bundle user manager
      * @param LoggerInterface          $logger          Symfony PSR logger
      * @param SecurityContextInterface $securityContext Symfony security context
      * @param SessionInterface         $session         Symfony session service
+     * @param string                   $firewall        EkinoWordpressBundle firewall name
      */
-    public function __construct(UserManager $userManager, LoggerInterface $logger, SecurityContextInterface $securityContext, SessionInterface $session)
+    public function __construct(UserManager $userManager, LoggerInterface $logger, SecurityContextInterface $securityContext, SessionInterface $session, $firewall)
     {
         $this->userManager     = $userManager;
         $this->logger          = $logger;
         $this->securityContext = $securityContext;
         $this->session         = $session;
+        $this->firewall        = $firewall;
     }
 
     /**
@@ -78,11 +85,10 @@ class UserHookListener
         $user = $this->userManager->find($wpUser->data->ID);
         $user->setWordpressRoles($wpUser->roles);
 
-        $firewall = 'secured_area';
-        $token = new UsernamePasswordToken($user, $user->getPass(), $firewall, $user->getRoles());
+        $token = new UsernamePasswordToken($user, $user->getPass(), $this->firewall, $user->getRoles());
         $this->securityContext->setToken($token);
 
-        $this->session->set('_security_' . $firewall, serialize($token));
+        $this->session->set('_security_' . $this->firewall, serialize($token));
     }
 
     /**

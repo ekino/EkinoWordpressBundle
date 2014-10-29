@@ -29,6 +29,15 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
+        /**
+        ->arrayNode('profiler')
+            ->addDefaultsIfNotSet()
+            ->fixXmlConfig('container_type', 'container_types')
+            ->children()
+                ->scalarNode('enabled')->defaultValue('%kernel.debug%')->end()
+            ->end()
+        ->end()
+         */
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('ekino_wordpress');
 
@@ -40,6 +49,13 @@ class Configuration implements ConfigurationInterface
                 ->booleanNode('load_twig_extension')->defaultFalse()->end()
                 ->booleanNode('cookie_hash')->defaultNull()->end()
                 ->scalarNode('i18n_cookie_name')->defaultFalse()->end()
+
+                ->arrayNode('security')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('firewall_name')->defaultValue('secured_area')->end()
+                    ->end()
+                ->end()
             ->end()
         ;
 
