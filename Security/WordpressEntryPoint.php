@@ -25,7 +25,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
-class WordPressEntryPoint implements AccessDeniedHandlerInterface, AuthenticationEntryPointInterface
+class WordpressEntryPoint implements AccessDeniedHandlerInterface, AuthenticationEntryPointInterface
 {
     /**
      * @var string URL to wp-login.php
