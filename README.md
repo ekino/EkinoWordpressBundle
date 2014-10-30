@@ -70,6 +70,7 @@ ekino_wordpress:
     load_twig_extension: true # If you want to enable native WordPress functions (ie : get_option() => wp_get_option())
     security:
         firewall_name: secured_area # This is the firewall default name
+        login_url: "/wp-login.php" # Absolute URL to the wordpress login page
 ```
 
 Also optionally, if you want to use `UserHook` to authenticate on Symfony, you should add this configuration to your `app/security.yml`:
@@ -84,6 +85,8 @@ security:
     firewalls:
         secured_area:
             pattern:    ^/admin
+            access_denied_handler: ekino.wordpress.security.entry_point
+            entry_point: ekino.wordpress.security.entry_point
             anonymous: ~
 
     access_control:
