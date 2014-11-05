@@ -28,5 +28,10 @@
             <argument type="service" id="security.context" />
         </service>
 
+        <!-- Security -->
+
+        <service id="ekino.wordpress.security.entry_point" class="Ekino\WordpressBundle\Security\WordpressEntryPoint" public="true">
+            <argument>%ekino.wordpress.login_url%</argument>
+        </service>
     </services>
 </container>

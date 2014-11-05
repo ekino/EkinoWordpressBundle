@@ -54,6 +54,7 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('firewall_name')->defaultValue('secured_area')->end()
+                        ->scalarNode('login_url')->defaultValue('/wp-login.php')->end()
                     ->end()
                 ->end()
             ->end()
