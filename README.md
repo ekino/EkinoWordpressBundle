@@ -180,6 +180,7 @@ Put the following rules:
 
 ```
 DirectoryIndex index.php
+IndexIgnore /symfony
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
