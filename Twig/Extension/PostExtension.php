@@ -2,13 +2,13 @@
 
 namespace Ekino\WordpressBundle\Twig\Extension;
 
-use Ekino\WordpressBundle\Model\Post;
+use Ekino\WordpressBundle\Entity\Post;
 use Ekino\WordpressBundle\Manager\PostManager;
 
 class PostExtension extends \Twig_Extension
 {
     /**
-     * @var \Ekino\WordpressBundle\Manager\PostManager
+     * @var PostManager
      */
     protected $postManager;
 
@@ -50,6 +50,7 @@ class PostExtension extends \Twig_Extension
         return array(
             new \Twig_SimpleFunction('wp_comments_open', array($this, 'isCommentingOpened')),
             new \Twig_SimpleFunction('wp_get_permalink', array($this, 'getPermalink')),
+            new \Twig_SimpleFunction('wp_get_the_post_thumbnail_url', array($this, 'getThumbnailUrl')),
             new \Twig_SimpleFunction('wp_have_comments', array($this, 'haveComments')),
             new \Twig_SimpleFunction('wp_post_password_required', array($this, 'isPostPasswordRequired'), array('needs_context' => true)),
         );
@@ -131,5 +132,15 @@ class PostExtension extends \Twig_Extension
     public function haveComments(Post $post)
     {
         return 0 < $post->getCommentCount();
+    }
+
+    /**
+     * @param Post $post
+     *
+     * @return string
+     */
+    public function getThumbnailUrl(Post $post)
+    {
+        return $this->postManager->getThumbnailPath($post);
     }
 }
