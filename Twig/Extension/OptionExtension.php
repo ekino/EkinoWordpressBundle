@@ -34,6 +34,7 @@ class OptionExtension extends \Twig_Extension
     {
         return array(
             new \Twig_SimpleFunction('wp_get_option', array($this, 'getOption')),
+            new \Twig_SimpleFunction('wp_is_active_sidebar', array($this, 'isActiveSidebar')),
         );
     }
 
@@ -48,5 +49,15 @@ class OptionExtension extends \Twig_Extension
         $option = $this->optionManager->findOneByOptionName($optionName);
 
         return $option ?: $defaultValue;
+    }
+
+    /**
+     * @param string $sidebarName
+     *
+     * @return bool
+     */
+    public function isActiveSidebar($sidebarName)
+    {
+        return $this->optionManager->isActiveSidebar($sidebarName);
     }
 }

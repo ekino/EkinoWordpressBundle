@@ -28,4 +28,22 @@ class OptionManager extends BaseManager
     {
         return $this->findOneBy(array('name' => $optionName));
     }
+
+    /**
+     * @param string $sidebarName
+     *
+     * @return bool
+     */
+    public function isActiveSidebar($sidebarName)
+    {
+        if (!$sidebarOption = $this->findOneByOptionName('sidebars_widgets')) {
+            return false;
+        }
+
+        if (false === ($sidebarOption = unserialize($sidebarOption->getValue()))) {
+            return false;
+        }
+
+        return isset($sidebarOption[$sidebarName]);
+    }
 }

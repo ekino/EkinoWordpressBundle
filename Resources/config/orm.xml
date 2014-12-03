@@ -54,6 +54,7 @@
         <service id="ekino.wordpress.manager.post" class="%ekino.wordpress.manager.post.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument>%ekino.wordpress.entity.post.class%</argument>
+            <argument type="service" id="ekino.wordpress.manager.post_meta"/>
         </service>
 
         <service id="ekino.wordpress.manager.post_meta" class="%ekino.wordpress.manager.post_meta.class%">

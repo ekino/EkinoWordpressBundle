@@ -10,7 +10,9 @@
 
 namespace Ekino\WordpressBundle\Manager;
 
-use Ekino\WordpressBundle\Model\Post;
+use Doctrine\ORM\EntityManager;
+use Ekino\WordpressBundle\Entity\Post;
+use Ekino\WordpressBundle\Repository\PostRepository;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -22,6 +24,28 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class PostManager extends BaseManager
 {
+    /**
+     * @var PostRepository
+     */
+    protected $repository;
+
+    /**
+     * @var PostMetaManager
+     */
+    protected $postMetaManager;
+
+    /**
+     * @param EntityManager $em
+     * @param string $class
+     * @param PostMetaManager $postMetaManager
+     */
+    public function __construct(EntityManager $em, $class, PostMetaManager $postMetaManager)
+    {
+        parent::__construct($em, $class);
+
+        $this->postMetaManager = $postMetaManager;
+    }
+
     /**
      * @param Post $post
      *
@@ -70,5 +94,24 @@ class PostManager extends BaseManager
         $wpHasher = new \PasswordHash(8, true);
 
         return !$wpHasher->CheckPassword($post->getPassword(), $hash);
+    }
+
+    /**
+     * @param Post $post
+     *
+     * @return string
+     */
+    public function getThumbnailPath(Post $post)
+    {
+        if (!$thumbnailPostMeta = $this->postMetaManager->getThumbnailPostId($post)) {
+            return '';
+        }
+
+        /** @var $post Post */
+        if (!$post = $this->find($thumbnailPostMeta->getValue())) {
+            return '';
+        }
+
+        return $post->getGuid();
     }
 }
