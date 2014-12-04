@@ -50,9 +50,7 @@ class WordpressResponseSubscriber implements EventSubscriberInterface
         $wpHeaders = (array) call_user_func_array($callback, array($event->getRequest()->getUri()));
 
         foreach ($wpHeaders as $name => $value) {
-            // TODO add cache headers support
             if ($name == 'cache-control') {
-                //$response->setCache($value);
                 continue;
             }
 
@@ -82,3 +80,4 @@ class WordpressResponseSubscriber implements EventSubscriberInterface
         );
     }
 }
+
