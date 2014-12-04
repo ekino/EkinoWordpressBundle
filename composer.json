@@ -29,11 +29,11 @@
     ],
     "require": {
         "php": ">=5.3.2",
-        "symfony/framework-bundle": "~2.2",
-        "symfony/security-bundle": "~2.2",
-        "symfony/monolog-bundle": "~2.2",
+        "symfony/framework-bundle": ">=2.2",
+        "symfony/security-bundle": ">=2.2",
+        "symfony/monolog-bundle": ">=2.2",
         "doctrine/doctrine-bundle": "~1.0",
-        "doctrine/orm": "~2.2",
+        "doctrine/orm": ">=2.2",
         "openwall/phpass": "0.3"
     },
     "suggest": {
