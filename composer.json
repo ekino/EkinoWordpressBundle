@@ -32,7 +32,7 @@
         "symfony/framework-bundle": ">=2.2",
         "symfony/security-bundle": ">=2.2",
         "symfony/monolog-bundle": ">=2.2",
-        "doctrine/doctrine-bundle": "~1.0",
+        "doctrine/doctrine-bundle": ">=1.0",
         "doctrine/orm": ">=2.2",
         "openwall/phpass": "0.3"
     },
