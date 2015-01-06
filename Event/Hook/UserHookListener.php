@@ -11,11 +11,9 @@
 namespace Ekino\WordpressBundle\Event\Hook;
 
 use Psr\Log\LoggerInterface;
-
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-
 use Ekino\WordpressBundle\Event\WordpressEvent;
 use Ekino\WordpressBundle\Manager\UserManager;
 
@@ -88,7 +86,7 @@ class UserHookListener
         $token = new UsernamePasswordToken($user, $user->getPass(), $this->firewall, $user->getRoles());
         $this->securityContext->setToken($token);
 
-        $this->session->set('_security_' . $this->firewall, serialize($token));
+        $this->session->set('_security_'.$this->firewall, serialize($token));
     }
 
     /**

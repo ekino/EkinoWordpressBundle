@@ -21,5 +21,4 @@ use Doctrine\ORM\EntityRepository;
  */
 class TermRelationshipsRepository extends EntityRepository
 {
-
 }

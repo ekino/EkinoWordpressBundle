@@ -20,5 +20,4 @@ use Ekino\WordpressBundle\Model\TermTaxonomy as TermTaxonomyModel;
  */
 class TermTaxonomy extends TermTaxonomyModel
 {
-
 }

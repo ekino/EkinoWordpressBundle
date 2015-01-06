@@ -12,7 +12,6 @@ namespace Ekino\WordpressBundle\Tests\Manager;
 
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityManager;
-
 use Ekino\WordpressBundle\Manager\PostMetaManager;
 use Ekino\WordpressBundle\Repository\PostMetaRepository;
 
@@ -88,6 +87,4 @@ class QueryMock extends AbstractQuery
     protected function _doExecute()
     {
     }
-
-
 }

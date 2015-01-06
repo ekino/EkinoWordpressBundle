@@ -15,7 +15,7 @@ use Ekino\WordpressBundle\Event\Subscriber\I18n\I18nSubscriber;
 /**
  * Class RequestSubscriberTest
  */
-class RequestSubscriberTest extends \PHPUnit_Framework_TestCase
+class I18nSubscriberTest extends \PHPUnit_Framework_TestCase
 {
     protected $defaultLanguage;
     protected $cookieName;

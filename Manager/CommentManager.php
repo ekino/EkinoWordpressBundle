@@ -19,5 +19,4 @@ namespace Ekino\WordpressBundle\Manager;
  */
 class CommentManager extends BaseManager
 {
-
 }

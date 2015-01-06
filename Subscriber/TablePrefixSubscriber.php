@@ -64,12 +64,12 @@ class TablePrefixSubscriber implements EventSubscriber
         }
 
         if ($classMetadata->getReflectionClass() && $classMetadata->getReflectionClass()->implementsInterface('Ekino\\WordpressBundle\\Model\\WordpressEntityInterface')) {
-            $classMetadata->setPrimaryTable(array('name' => $this->prefix . $classMetadata->getTableName()));
+            $classMetadata->setPrimaryTable(array('name' => $this->prefix.$classMetadata->getTableName()));
 
             foreach ($classMetadata->getAssociationMappings() as $fieldName => $mapping) {
                 if ($mapping['type'] == ClassMetadataInfo::MANY_TO_MANY) {
                     $mappedTableName = $classMetadata->associationMappings[$fieldName]['joinTable']['name'];
-                    $classMetadata->associationMappings[$fieldName]['joinTable']['name'] = $this->prefix . $mappedTableName;
+                    $classMetadata->associationMappings[$fieldName]['joinTable']['name'] = $this->prefix.$mappedTableName;
                 }
             }
         }

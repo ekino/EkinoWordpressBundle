@@ -77,7 +77,7 @@ class Wordpress
 
         global $wp, $wp_the_query, $wpdb, $wp_query, $allowedentitynames;
 
-        $loader = $this->getWordpressDirectory() . 'wp-blog-header.php';
+        $loader = $this->getWordpressDirectory().'wp-blog-header.php';
 
         if (!file_exists($loader)) {
             throw new \InvalidArgumentException(
@@ -108,7 +108,7 @@ class Wordpress
         global $wp_query;
 
         if (null === $wp_query || !$wp_query instanceof \WP_Query) {
-            return null;
+            return;
         }
 
         return $wp_query;
@@ -130,6 +130,6 @@ class Wordpress
     {
         $directory = $this->directory ?: sprintf('%s/../../', $this->kernel->getRootDir());
 
-        return '/' == substr($directory, -1) ? $directory : $directory . '/';
+        return '/' == substr($directory, -1) ? $directory : $directory.'/';
     }
 }

@@ -36,7 +36,6 @@ class BaseManager
      */
     protected $class;
 
-
     /**
      * Constructor
      *
@@ -57,7 +56,7 @@ class BaseManager
      */
     public function create()
     {
-        return new $this->class;
+        return new $this->class();
     }
 
     /**
@@ -160,7 +159,7 @@ class BaseManager
     /**
      * Delete the given entity
      *
-     * @param  object $entity An entity instance
+     * @param object $entity An entity instance
      */
     public function remove($entity)
     {

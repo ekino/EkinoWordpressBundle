@@ -53,10 +53,10 @@ class RegisterMappingsPass implements CompilerPassInterface
 
     /**
      * @param Definition $driver
-     * @param string $driverPattern
-     * @param array $namespaces
-     * @param string $enabledParameter
-     * @param string $fallbackManagerParameter
+     * @param string     $driverPattern
+     * @param array      $namespaces
+     * @param string     $enabledParameter
+     * @param string     $fallbackManagerParameter
      */
     public function __construct($driver, $driverPattern, $namespaces, $enabledParameter, $fallbackManagerParameter)
     {

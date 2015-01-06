@@ -40,7 +40,7 @@ class OptionExtension extends \Twig_Extension
 
     /**
      * @param string $optionName
-     * @param mixed $defaultValue
+     * @param mixed  $defaultValue
      *
      * @return mixed
      */

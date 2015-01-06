@@ -103,7 +103,6 @@ abstract class Comment implements WordpressEntityInterface, WordpressContentInte
      */
     protected $user = 0;
 
-
     /**
      * @return int
      */

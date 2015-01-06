@@ -23,7 +23,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  *
  * @author Jérôme Tamarelle <jerome@tamarelle.net>
  */
-class WordpressEntryPointTest extends \PHPUnit_Framework_TestCase
+class WordPressEntryPointTest extends \PHPUnit_Framework_TestCase
 {
     public function testEntryPoint()
     {

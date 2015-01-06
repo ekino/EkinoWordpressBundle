@@ -21,5 +21,4 @@ use Ekino\WordpressBundle\Model\Post as PostModel;
  */
 class Post extends PostModel
 {
-
 }

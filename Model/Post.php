@@ -705,7 +705,7 @@ abstract class Post implements WordpressEntityInterface, WordpressContentInterfa
             }
         }
 
-        return null;
+        return;
     }
 
     /**

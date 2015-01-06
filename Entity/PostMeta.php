@@ -21,5 +21,4 @@ use Ekino\WordpressBundle\Model\PostMeta as PostMetaModel;
  */
 class PostMeta extends PostMetaModel
 {
-
 }

@@ -21,5 +21,4 @@ use Ekino\WordpressBundle\Model\Comment as CommentModel;
  */
 class Comment extends CommentModel
 {
-
 }

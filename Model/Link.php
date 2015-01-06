@@ -84,7 +84,6 @@ abstract class Link implements WordpressEntityInterface
      */
     protected $rss;
 
-
     /**
      * @return int
      */

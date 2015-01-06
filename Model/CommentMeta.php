@@ -39,7 +39,6 @@ abstract class CommentMeta implements WordpressEntityInterface
      */
     protected $value;
 
-
     /**
      * @return int
      */
