@@ -23,9 +23,9 @@ class PostExtension extends \Twig_Extension
     protected $cookieHash;
 
     /**
-     * @param PostManager $postManager
+     * @param PostManager     $postManager
      * @param OptionExtension $optionExtension
-     * @param string|null $cookieHash
+     * @param string|null     $cookieHash
      */
     public function __construct(PostManager $postManager, OptionExtension $optionExtension, $cookieHash = null)
     {
@@ -78,7 +78,7 @@ class PostExtension extends \Twig_Extension
 
     /**
      * @param string $permalinkStructure
-     * @param Post $post
+     * @param Post   $post
      *
      * @return string
      */
@@ -97,7 +97,7 @@ class PostExtension extends \Twig_Extension
 
     /**
      * @param array $context
-     * @param Post $post
+     * @param Post  $post
      *
      * @return bool
      */

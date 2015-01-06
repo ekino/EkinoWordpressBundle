@@ -11,7 +11,6 @@
 namespace Ekino\WordpressBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
-
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -82,7 +81,6 @@ abstract class User implements UserInterface, WordpressEntityInterface
      * @var array
      */
     protected $roles;
-
 
     /**
      * Constructor
@@ -307,7 +305,7 @@ abstract class User implements UserInterface, WordpressEntityInterface
             }
         }
 
-        return null;
+        return;
     }
 
     /**
@@ -347,7 +345,7 @@ abstract class User implements UserInterface, WordpressEntityInterface
     public function setWordpressRoles(array $roles, $prefix = 'ROLE_WP_')
     {
         foreach ($roles as $key => $role) {
-            $roles[$key] = $prefix . strtoupper($role);
+            $roles[$key] = $prefix.strtoupper($role);
         }
 
         $this->setRoles($roles);
@@ -376,7 +374,7 @@ abstract class User implements UserInterface, WordpressEntityInterface
      */
     public function getSalt()
     {
-        return null;
+        return;
     }
 
     /**
@@ -402,5 +400,4 @@ abstract class User implements UserInterface, WordpressEntityInterface
     {
         return $this->getUsername();
     }
-
 }

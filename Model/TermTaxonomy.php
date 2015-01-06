@@ -207,5 +207,4 @@ abstract class TermTaxonomy implements WordpressEntityInterface
 
         return $this;
     }
-
 }

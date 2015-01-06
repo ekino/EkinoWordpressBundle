@@ -22,7 +22,7 @@ use Doctrine\ORM\EntityRepository;
 class PostMetaRepository extends EntityRepository
 {
     /**
-     * @param int $postId
+     * @param int    $postId
      * @param string $metaName
      *
      * @return \Doctrine\ORM\Query

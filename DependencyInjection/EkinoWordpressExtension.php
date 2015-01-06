@@ -66,7 +66,7 @@ class EkinoWordpressExtension extends Extension
         $container->setParameter('ekino.wordpress.firewall_name', $config['security']['firewall_name']);
         $container->setParameter('ekino.wordpress.login_url', $config['security']['login_url']);
 
-        $container->setParameter($this->getAlias() . '.backend_type_orm', true);
+        $container->setParameter($this->getAlias().'.backend_type_orm', true);
     }
 
     /**
@@ -102,7 +102,7 @@ class EkinoWordpressExtension extends Extension
     }
 
     /**
-     * @param ContainerBuilder $container
+     * @param ContainerBuilder       $container
      * @param EntityManagerInterface $em
      */
     protected function loadEntityManager(ContainerBuilder $container, $em)

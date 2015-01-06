@@ -40,9 +40,9 @@ class PostMetaExtension extends \Twig_Extension
     }
 
     /**
-     * @param int $postId
+     * @param int    $postId
      * @param string $metaName
-     * @param bool $fetchOneResult
+     * @param bool   $fetchOneResult
      *
      * @return array|\Ekino\WordpressBundle\Entity\PostMeta
      */

@@ -10,7 +10,6 @@
 
 namespace Ekino\WordpressBundle\Manager;
 
-use Ekino\WordpressBundle\Manager\BaseManager;
 
 /**
  * Class TermManager
@@ -21,5 +20,4 @@ use Ekino\WordpressBundle\Manager\BaseManager;
  */
 class TermManager extends BaseManager
 {
-
 }

@@ -17,5 +17,4 @@ namespace Ekino\WordpressBundle\Model;
  */
 interface WordpressEntityInterface
 {
-
 }

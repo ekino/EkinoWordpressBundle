@@ -10,7 +10,6 @@
 
 namespace Ekino\WordpressBundle\Manager;
 
-use Ekino\WordpressBundle\Manager\BaseManager;
 
 /**
  * Class UserManager
@@ -21,5 +20,4 @@ use Ekino\WordpressBundle\Manager\BaseManager;
  */
 class UserManager extends BaseManager
 {
-
 }

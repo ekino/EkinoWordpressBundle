@@ -29,9 +29,9 @@ class PostMetaManager extends BaseManager
     protected $repository;
 
     /**
-     * @param int $postId
+     * @param int    $postId
      * @param string $metaName
-     * @param bool $fetchOneResult
+     * @param bool   $fetchOneResult
      *
      * @return array|\Ekino\WordpressBundle\Entity\PostMeta
      */

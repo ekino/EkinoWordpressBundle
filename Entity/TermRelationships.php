@@ -21,5 +21,4 @@ use Ekino\WordpressBundle\Model\TermRelationships as TermRelationshipsModel;
  */
 class TermRelationships extends TermRelationshipsModel
 {
-
 }

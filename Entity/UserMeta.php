@@ -20,5 +20,4 @@ use Ekino\WordpressBundle\Model\UserMeta as UserMetaModel;
  */
 class UserMeta extends UserMetaModel
 {
-
 }

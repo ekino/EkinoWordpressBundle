@@ -246,7 +246,8 @@ class WordpressResponseSubscriberTest extends \PHPUnit_Framework_TestCase
     }
 }
 
-class WP_QueryMock {
+class WP_QueryMock
+{
     /**
      * @var bool
      */

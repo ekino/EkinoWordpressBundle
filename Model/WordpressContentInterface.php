@@ -7,10 +7,8 @@ namespace Ekino\WordpressBundle\Model;
  */
 interface WordpressContentInterface
 {
-
     /**
      * @return string
      */
     public function getContent();
-
 }

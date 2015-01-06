@@ -11,7 +11,6 @@
 namespace Ekino\WordpressBundle\Tests\Manager;
 
 use Doctrine\ORM\EntityManager;
-
 use Ekino\WordpressBundle\Manager\OptionManager;
 use Ekino\WordpressBundle\Repository\OptionRepository;
 

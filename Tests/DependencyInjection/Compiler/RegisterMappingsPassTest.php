@@ -27,7 +27,6 @@ class RegisterMappingsPassTest extends \PHPUnit_Framework_TestCase
         $this->enabledParameter = 'ekino_wordpress.backend_type_orm';
         $this->fallbackManagerParameter = 'doctrine.default_entity_manager';
 
-
         $this->compilerPass = new RegisterMappingsPass(
             $this->driver,
             $this->driverPattern,
@@ -55,7 +54,6 @@ class RegisterMappingsPassTest extends \PHPUnit_Framework_TestCase
     public function testProcessNoChainDriver()
     {
         $containerBuilder = $this->getMockBuilder('Symfony\Component\DependencyInjection\ContainerBuilder')->disableOriginalConstructor()->getMock();
-
 
         $containerBuilder->expects($this->exactly(3))
             ->method('hasParameter')

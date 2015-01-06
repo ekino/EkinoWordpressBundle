@@ -52,7 +52,7 @@ class PostExtensionTest extends \PHPUnit_Framework_TestCase
 
         $result = $this->postExtension->replacePostArguments($permalinkStructure, $post);
 
-        $this->assertEquals(date('/Y/m/d') . '/12-sample-post', $result);
+        $this->assertEquals(date('/Y/m/d').'/12-sample-post', $result);
     }
 
     public function testGetPermalinkNoPost()
@@ -91,6 +91,6 @@ class PostExtensionTest extends \PHPUnit_Framework_TestCase
             ->will($this->returnValue($permalinkOption));
 
         $result = $this->postExtension->getPermalink(12);
-        $this->assertEquals(date('/Y/m/d') . '/12-sample-post', $result);
+        $this->assertEquals(date('/Y/m/d').'/12-sample-post', $result);
     }
 }

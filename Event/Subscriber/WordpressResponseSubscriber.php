@@ -23,7 +23,7 @@ class WordpressResponseSubscriber implements EventSubscriberInterface
 
     /**
      * @param string|array $httpHeaderCallback
-     * @param Wordpress $wordpress
+     * @param Wordpress    $wordpress
      */
     public function __construct($httpHeaderCallback, Wordpress $wordpress)
     {
@@ -80,4 +80,3 @@ class WordpressResponseSubscriber implements EventSubscriberInterface
         );
     }
 }
-

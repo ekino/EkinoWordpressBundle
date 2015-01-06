@@ -21,5 +21,4 @@ use Ekino\WordpressBundle\Model\User as UserModel;
  */
 class User extends UserModel
 {
-
 }

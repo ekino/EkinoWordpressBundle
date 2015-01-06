@@ -21,5 +21,4 @@ use Ekino\WordpressBundle\Model\Term as TermModel;
  */
 class Term extends TermModel
 {
-
 }
