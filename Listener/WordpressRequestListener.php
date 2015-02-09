@@ -57,6 +57,10 @@ class WordpressRequestListener
      */
     protected function checkAuthentication(Request $request)
     {
+        if (!$request->hasPreviousSession()) {
+            return;
+        }
+
         $session = $request->getSession();
 
         if ($session->has('token')) {

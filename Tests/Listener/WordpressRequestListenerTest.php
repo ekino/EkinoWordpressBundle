@@ -75,6 +75,7 @@ class WordpressRequestListenerTest extends \PHPUnit_Framework_TestCase
 
         // Set up a request mock to give to GetResponseEvent class below
         $request = $this->getMock('\Symfony\Component\HttpFoundation\Request');
+        $request->expects($this->once())->method('hasPreviousSession')->will($this->returnValue(true));
         $request->expects($this->any())->method('getSession')->will($this->returnValue($this->getSession()));
 
         $getResponseEvent = new GetResponseEvent(
