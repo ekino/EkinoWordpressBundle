@@ -27,5 +27,10 @@
             <argument type="service" id="ekino.wordpress.wordpress"/>
         </service>
 
+        <service id="ekino.wordpress.metadata_subscriber" class="Ekino\WordpressBundle\Event\Subscriber\LoadMetadataSubscriber" public="false">
+            <argument>%ekino.wordpress.repositories%</argument>
+            <tag name="doctrine.event_subscriber"/>
+        </service>
+
     </services>
 </container>

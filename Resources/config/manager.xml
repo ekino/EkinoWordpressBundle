@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="ekino.wordpress.manager.comment_default" class="Ekino\WordpressBundle\Manager\CommentManager" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%ekino.wordpress.entity.comment.class%</argument>
+        </service>
+
+        <service id="ekino.wordpress.manager.comment_meta_default" class="Ekino\WordpressBundle\Manager\CommentMetaManager" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%ekino.wordpress.entity.comment_meta.class%</argument>
+        </service>
+
+        <service id="ekino.wordpress.manager.link_default" class="Ekino\WordpressBundle\Manager\LinkManager" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%ekino.wordpress.entity.link.class%</argument>
+        </service>
+
+        <service id="ekino.wordpress.manager.option_default" class="Ekino\WordpressBundle\Manager\OptionManager" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%ekino.wordpress.entity.option.class%</argument>
+        </service>
+
+        <service id="ekino.wordpress.manager.post_default" class="Ekino\WordpressBundle\Manager\PostManager" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%ekino.wordpress.entity.post.class%</argument>
+            <argument type="service" id="ekino.wordpress.manager.post_meta"/>
+        </service>
+
+        <service id="ekino.wordpress.manager.post_meta_default" class="Ekino\WordpressBundle\Manager\PostMetaManager" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%ekino.wordpress.entity.post_meta.class%</argument>
+        </service>
+
+        <service id="ekino.wordpress.manager.term_default" class="Ekino\WordpressBundle\Manager\TermManager" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%ekino.wordpress.entity.term.class%</argument>
+        </service>
+
+        <service id="ekino.wordpress.manager.term_relationships_default" class="Ekino\WordpressBundle\Manager\TermRelationshipsManager" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%ekino.wordpress.entity.term_relationships.class%</argument>
+        </service>
+
+        <service id="ekino.wordpress.manager.term_taxonomy_default" class="Ekino\WordpressBundle\Manager\TermTaxonomyManager" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%ekino.wordpress.entity.term_taxonomy.class%</argument>
+        </service>
+
+        <service id="ekino.wordpress.manager.user_default" class="Ekino\WordpressBundle\Manager\UserManager" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%ekino.wordpress.entity.user.class%</argument>
+        </service>
+
+        <service id="ekino.wordpress.manager.user_meta_default" class="Ekino\WordpressBundle\Manager\UserMetaManager" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%ekino.wordpress.entity.user_meta.class%</argument>
+        </service>
+
+    </services>
+</container>

@@ -26,6 +26,20 @@ use Symfony\Component\Config\FileLocator;
  */
 class EkinoWordpressExtension extends Extension
 {
+    protected static $entities = array(
+        'comment',
+        'comment_meta',
+        'link',
+        'option',
+        'post',
+        'post_meta',
+        'term',
+        'term_relationships',
+        'term_taxonomy',
+        'user',
+        'user_meta',
+    );
+
     /**
      * Loads configuration
      *
@@ -37,9 +51,13 @@ class EkinoWordpressExtension extends Extension
         $config = $this->processConfiguration(new Configuration(), $configs);
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('orm.xml');
+        $loader->load('manager.xml');
         $loader->load('services.xml');
         $loader->load('hooks.xml');
+
+        $container->setParameter('ekino.wordpress.repositories', $config['services']);
+        $this->loadEntities($container, $config['services']);
+        $this->loadManagers($container, $config['services']);
 
         if (isset($config['table_prefix'])) {
             $this->loadTablePrefix($container, $config['table_prefix']);
@@ -65,8 +83,29 @@ class EkinoWordpressExtension extends Extension
         $container->setParameter('ekino.wordpress.cookie_hash', $config['cookie_hash']);
         $container->setParameter('ekino.wordpress.firewall_name', $config['security']['firewall_name']);
         $container->setParameter('ekino.wordpress.login_url', $config['security']['login_url']);
-
         $container->setParameter($this->getAlias().'.backend_type_orm', true);
+    }
+
+    /**
+     * @param ContainerBuilder $container
+     * @param array            $config
+     */
+    protected function loadEntities(ContainerBuilder $container, $config)
+    {
+        foreach (static::$entities as $entityName) {
+            $container->setParameter(sprintf('ekino.wordpress.entity.%s.class', $entityName), $config[$entityName]['class']);
+        }
+    }
+
+    /**
+     * @param ContainerBuilder $container
+     * @param array            $config
+     */
+    protected function loadManagers(ContainerBuilder $container, $config)
+    {
+        foreach (static::$entities as $entityName) {
+            $container->setAlias(sprintf('ekino.wordpress.manager.%s', $entityName), $config[$entityName]['manager']);
+        }
     }
 
     /**
