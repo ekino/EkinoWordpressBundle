@@ -255,6 +255,36 @@ Simply use the `symfony()` method and call your custom service like that:
 $service = symfony('my.custom.symfony.service');
 ```
 
+# Override
+## Entities
+For every Wordpress entities, you can override the default classes. To do so, just add the following configuration in your `config.yml` (for `Post` entities):
+```yaml
+ekino_wordpress:
+    services:
+        post:
+            class: MyApp\AppBundle\Entity\Post
+```
+In order to avoid further troubles when creating a new instance (for example), remember to always use the manager to create a new entity (`$container->get('ekino.wordpress.manager.post')->create()`).
+
+## Managers
+You can use your own managers too. To customize it, register yours as services — should be marked as privates — as follow :
+```yaml
+ekino_wordpress:
+    services:
+        comment:
+            manager: my_custom_comment_service
+```
+Your manager will now be reachable using the usual command, IE from a controller : `$this->get('ekino.wordpress.manager.comment')`
+
+## Repositories
+Implementing your custom repository classes is as simple as follow :
+```yaml
+ekino_wordpress:
+    services:
+        comment_meta:
+            repository_class: MyApp\MyBundle\Repository\ORM\CustomCommentMetaRepository
+```
+
 # Extra
 ## Enable cross application I18n support
 

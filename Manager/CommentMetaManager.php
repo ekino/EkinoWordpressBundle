@@ -10,7 +10,6 @@
 
 namespace Ekino\WordpressBundle\Manager;
 
-
 /**
  * Class CommentMetaManager
  *

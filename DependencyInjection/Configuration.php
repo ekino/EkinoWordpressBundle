@@ -10,6 +10,7 @@
 
 namespace Ekino\WordpressBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -29,15 +30,6 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        /**
-        ->arrayNode('profiler')
-            ->addDefaultsIfNotSet()
-            ->fixXmlConfig('container_type', 'container_types')
-            ->children()
-                ->scalarNode('enabled')->defaultValue('%kernel.debug%')->end()
-            ->end()
-        ->end()
-         */
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('ekino_wordpress');
 
@@ -60,6 +52,111 @@ class Configuration implements ConfigurationInterface
             ->end()
         ;
 
+        $this->addServicesSection($rootNode);
+
         return $treeBuilder;
+    }
+
+    /**
+     * @param ArrayNodeDefinition $node
+     */
+    protected function addServicesSection(ArrayNodeDefinition $node)
+    {
+        $node
+            ->children()
+                ->arrayNode('services')
+                ->addDefaultsIfNotSet()
+                ->children()
+                    ->arrayNode('comment')
+                    ->addDefaultsIfNotSet()
+                        ->children()
+                            ->scalarNode('class')->cannotBeEmpty()->defaultValue('Ekino\WordpressBundle\Entity\Comment')->end()
+                            ->scalarNode('manager')->cannotBeEmpty()->defaultValue('ekino.wordpress.manager.comment_default')->end()
+                            ->scalarNode('repository_class')->cannotBeEmpty()->defaultValue('Doctrine\ORM\EntityRepository')->end()
+                        ->end()
+                    ->end()
+                    ->arrayNode('comment_meta')
+                    ->addDefaultsIfNotSet()
+                        ->children()
+                            ->scalarNode('class')->cannotBeEmpty()->defaultValue('Ekino\WordpressBundle\Entity\CommentMeta')->end()
+                            ->scalarNode('manager')->cannotBeEmpty()->defaultValue('ekino.wordpress.manager.comment_meta_default')->end()
+                            ->scalarNode('repository_class')->cannotBeEmpty()->defaultValue('Doctrine\ORM\EntityRepository')->end()
+                        ->end()
+                    ->end()
+                    ->arrayNode('link')
+                    ->addDefaultsIfNotSet()
+                        ->children()
+                            ->scalarNode('class')->cannotBeEmpty()->defaultValue('Ekino\WordpressBundle\Entity\Link')->end()
+                            ->scalarNode('manager')->cannotBeEmpty()->defaultValue('ekino.wordpress.manager.link_default')->end()
+                            ->scalarNode('repository_class')->cannotBeEmpty()->defaultValue('Doctrine\ORM\EntityRepository')->end()
+                        ->end()
+                    ->end()
+                    ->arrayNode('option')
+                    ->addDefaultsIfNotSet()
+                        ->children()
+                            ->scalarNode('class')->cannotBeEmpty()->defaultValue('Ekino\WordpressBundle\Entity\Option')->end()
+                            ->scalarNode('manager')->cannotBeEmpty()->defaultValue('ekino.wordpress.manager.option_default')->end()
+                            ->scalarNode('repository_class')->cannotBeEmpty()->defaultValue('Doctrine\ORM\EntityRepository')->end()
+                        ->end()
+                    ->end()
+                    ->arrayNode('post')
+                    ->addDefaultsIfNotSet()
+                        ->children()
+                            ->scalarNode('class')->cannotBeEmpty()->defaultValue('Ekino\WordpressBundle\Entity\Post')->end()
+                            ->scalarNode('manager')->cannotBeEmpty()->defaultValue('ekino.wordpress.manager.post_default')->end()
+                            ->scalarNode('repository_class')->cannotBeEmpty()->defaultValue('Doctrine\ORM\EntityRepository')->end()
+                        ->end()
+                    ->end()
+                    ->arrayNode('post_meta')
+                    ->addDefaultsIfNotSet()
+                        ->children()
+                            ->scalarNode('class')->cannotBeEmpty()->defaultValue('Ekino\WordpressBundle\Entity\PostMeta')->end()
+                            ->scalarNode('manager')->cannotBeEmpty()->defaultValue('ekino.wordpress.manager.post_meta_default')->end()
+                            ->scalarNode('repository_class')->cannotBeEmpty()->defaultValue('Doctrine\ORM\EntityRepository')->end()
+                        ->end()
+                    ->end()
+                    ->arrayNode('term')
+                    ->addDefaultsIfNotSet()
+                        ->children()
+                            ->scalarNode('class')->cannotBeEmpty()->defaultValue('Ekino\WordpressBundle\Entity\Term')->end()
+                            ->scalarNode('manager')->cannotBeEmpty()->defaultValue('ekino.wordpress.manager.term_default')->end()
+                            ->scalarNode('repository_class')->cannotBeEmpty()->defaultValue('Doctrine\ORM\EntityRepository')->end()
+                        ->end()
+                    ->end()
+                    ->arrayNode('term_relationships')
+                    ->addDefaultsIfNotSet()
+                        ->children()
+                            ->scalarNode('class')->cannotBeEmpty()->defaultValue('Ekino\WordpressBundle\Entity\TermRelationships')->end()
+                            ->scalarNode('manager')->cannotBeEmpty()->defaultValue('ekino.wordpress.manager.term_relationships_default')->end()
+                            ->scalarNode('repository_class')->cannotBeEmpty()->defaultValue('Doctrine\ORM\EntityRepository')->end()
+                        ->end()
+                    ->end()
+                    ->arrayNode('term_taxonomy')
+                    ->addDefaultsIfNotSet()
+                        ->children()
+                            ->scalarNode('class')->cannotBeEmpty()->defaultValue('Ekino\WordpressBundle\Entity\TermTaxonomy')->end()
+                            ->scalarNode('manager')->cannotBeEmpty()->defaultValue('ekino.wordpress.manager.term_taxonomy_default')->end()
+                            ->scalarNode('repository_class')->cannotBeEmpty()->defaultValue('Doctrine\ORM\EntityRepository')->end()
+                        ->end()
+                    ->end()
+                    ->arrayNode('user')
+                    ->addDefaultsIfNotSet()
+                        ->children()
+                            ->scalarNode('class')->cannotBeEmpty()->defaultValue('Ekino\WordpressBundle\Entity\User')->end()
+                            ->scalarNode('manager')->cannotBeEmpty()->defaultValue('ekino.wordpress.manager.user_default')->end()
+                            ->scalarNode('repository_class')->cannotBeEmpty()->defaultValue('Doctrine\ORM\EntityRepository')->end()
+                        ->end()
+                    ->end()
+                    ->arrayNode('user_meta')
+                    ->addDefaultsIfNotSet()
+                        ->children()
+                            ->scalarNode('class')->cannotBeEmpty()->defaultValue('Ekino\WordpressBundle\Entity\UserMata')->end()
+                            ->scalarNode('manager')->cannotBeEmpty()->defaultValue('ekino.wordpress.manager.user_meta_default')->end()
+                            ->scalarNode('repository_class')->cannotBeEmpty()->defaultValue('Doctrine\ORM\EntityRepository')->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
     }
 }
