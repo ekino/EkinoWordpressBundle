@@ -148,17 +148,17 @@ class EkinoWordpressExtension extends Extension
     {
         $reference = new Reference(sprintf('doctrine.orm.%s_entity_manager', $em));
 
-        $container->getDefinition('ekino.wordpress.manager.comment')->replaceArgument(0, $reference);
-        $container->getDefinition('ekino.wordpress.manager.comment_meta')->replaceArgument(0, $reference);
-        $container->getDefinition('ekino.wordpress.manager.link')->replaceArgument(0, $reference);
-        $container->getDefinition('ekino.wordpress.manager.option')->replaceArgument(0, $reference);
-        $container->getDefinition('ekino.wordpress.manager.post')->replaceArgument(0, $reference);
-        $container->getDefinition('ekino.wordpress.manager.post_meta')->replaceArgument(0, $reference);
-        $container->getDefinition('ekino.wordpress.manager.term')->replaceArgument(0, $reference);
-        $container->getDefinition('ekino.wordpress.manager.term_relationships')->replaceArgument(0, $reference);
-        $container->getDefinition('ekino.wordpress.manager.term_taxonomy')->replaceArgument(0, $reference);
-        $container->getDefinition('ekino.wordpress.manager.user')->replaceArgument(0, $reference);
-        $container->getDefinition('ekino.wordpress.manager.user_meta')->replaceArgument(0, $reference);
+        $container->findDefinition('ekino.wordpress.manager.comment')->replaceArgument(0, $reference);
+        $container->findDefinition('ekino.wordpress.manager.comment_meta')->replaceArgument(0, $reference);
+        $container->findDefinition('ekino.wordpress.manager.link')->replaceArgument(0, $reference);
+        $container->findDefinition('ekino.wordpress.manager.option')->replaceArgument(0, $reference);
+        $container->findDefinition('ekino.wordpress.manager.post')->replaceArgument(0, $reference);
+        $container->findDefinition('ekino.wordpress.manager.post_meta')->replaceArgument(0, $reference);
+        $container->findDefinition('ekino.wordpress.manager.term')->replaceArgument(0, $reference);
+        $container->findDefinition('ekino.wordpress.manager.term_relationships')->replaceArgument(0, $reference);
+        $container->findDefinition('ekino.wordpress.manager.term_taxonomy')->replaceArgument(0, $reference);
+        $container->findDefinition('ekino.wordpress.manager.user')->replaceArgument(0, $reference);
+        $container->findDefinition('ekino.wordpress.manager.user_meta')->replaceArgument(0, $reference);
     }
 
     /**
