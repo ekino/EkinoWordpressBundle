@@ -12,22 +12,15 @@ use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 class WordpressResponseSubscriber implements EventSubscriberInterface
 {
     /**
-     * @var string|array
-     */
-    protected $httpHeaderCallback;
-
-    /**
      * @var Wordpress
      */
     protected $wordpress;
 
     /**
-     * @param string|array $httpHeaderCallback
      * @param Wordpress    $wordpress
      */
-    public function __construct($httpHeaderCallback, Wordpress $wordpress)
+    public function __construct(Wordpress $wordpress)
     {
-        $this->httpHeaderCallback = $httpHeaderCallback;
         $this->wordpress = $wordpress;
     }
 
@@ -46,28 +39,9 @@ class WordpressResponseSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $callback = $this->getHttpHeadersCallback();
-        $wpHeaders = (array) call_user_func_array($callback, array($event->getRequest()->getUri()));
-
-        foreach ($wpHeaders as $name => $value) {
-            if ($name == 'cache-control') {
-                continue;
-            }
-
-            $response->headers->set($name, $value);
-        }
-
         if ($wp_query->is_404()) {
             $response->setStatusCode(404);
         }
-    }
-
-    /**
-     * @return string
-     */
-    public function getHttpHeadersCallback()
-    {
-        return $this->httpHeaderCallback;
     }
 
     /**
