@@ -150,7 +150,7 @@ class Configuration implements ConfigurationInterface
                     ->arrayNode('user_meta')
                     ->addDefaultsIfNotSet()
                         ->children()
-                            ->scalarNode('class')->cannotBeEmpty()->defaultValue('Ekino\WordpressBundle\Entity\UserMata')->end()
+                            ->scalarNode('class')->cannotBeEmpty()->defaultValue('Ekino\WordpressBundle\Entity\UserMeta')->end()
                             ->scalarNode('manager')->cannotBeEmpty()->defaultValue('ekino.wordpress.manager.user_meta_default')->end()
                             ->scalarNode('repository_class')->cannotBeEmpty()->defaultValue('Ekino\WordpressBundle\Repository\UserMetaRepository')->end()
                         ->end()
