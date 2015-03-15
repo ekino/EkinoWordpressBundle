@@ -26,6 +26,9 @@ use Symfony\Component\Config\FileLocator;
  */
 class EkinoWordpressExtension extends Extension
 {
+    /**
+     * @var array
+     */
     protected static $entities = array(
         'comment',
         'comment_meta',

@@ -17,9 +17,9 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 
 /**
- * Class EkinoWordpressExtension
+ * Class RegisterMappingsPass
  *
- * This is the bundle Symfony extension class
+ * This compiler pass registers the bundle schema with the Doctrine one
  *
  * @author Xavier Coureau <xav@takeatea.com>
  * @author David Buchmann <david@liip.ch>

@@ -11,6 +11,7 @@
 namespace Ekino\WordpressBundle\Entity;
 
 use Ekino\WordpressBundle\Model\TermTaxonomy as TermTaxonomyModel;
+
 /**
  * Class TermTaxonomy
  *

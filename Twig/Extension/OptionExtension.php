@@ -1,9 +1,22 @@
 <?php
+/*
+ * This file is part of the Ekino Wordpress package.
+ *
+ * (c) 2013 Ekino
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Ekino\WordpressBundle\Twig\Extension;
 
 use Ekino\WordpressBundle\Manager\OptionManager;
 
+/**
+ * Class OptionExtension
+ *
+ * This extension provides native Wordpress functions into Twig.
+ */
 class OptionExtension extends \Twig_Extension
 {
     /**

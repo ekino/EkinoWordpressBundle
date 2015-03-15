@@ -25,6 +25,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
+/**
+ * Class WordpressEntryPoint
+ *
+ * This is a Symfony security component entry point to manage Wordpress login.
+ */
 class WordpressEntryPoint implements AccessDeniedHandlerInterface, AuthenticationEntryPointInterface
 {
     /**
