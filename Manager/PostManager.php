@@ -114,4 +114,19 @@ class PostManager extends BaseManager
 
         return $post->getGuid();
     }
+    
+    /**
+     * @param \DateTime $date
+     * @return array
+     */
+    public function findByDate(\DateTime $date)
+    {
+        $qb = $this->repository->createQueryBuilder('c');
+        $qb->select('c')
+            ->where($qb->expr()->like('c.date', '?1'))
+            ->addOrderBy('c.id')
+            ->setParameter(1, '%' . $date->format('Y-m-d') . '%');
+
+        return $qb->getQuery()->getResult();
+    }
 }
