@@ -7,8 +7,8 @@
 
         <!-- Mapped super classes won't support indexes -->
         <indexes>
-            <index columns="user_login"/>
-            <index columns="user_nicename"/>
+            <index columns="user_login" name="user_login_key" />
+            <index columns="user_nicename" name="user_nicename" />
         </indexes>
 
         <id name="id" type="bigint" column="ID">

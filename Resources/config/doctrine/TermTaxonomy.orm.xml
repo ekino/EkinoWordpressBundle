@@ -7,10 +7,10 @@
 
         <!-- Mapped super classes won't support indexes -->
         <indexes>
-            <index columns="taxonomy"/>
+            <index columns="taxonomy" name="taxonomy" />
         </indexes>
         <unique-constraints>
-            <unique-constraint columns="term_id,taxonomy"/>
+            <unique-constraint columns="term_id,taxonomy" name="term_id_taxonomy" />
         </unique-constraints>
 
         <id name="id" type="bigint" column="term_taxonomy_id">

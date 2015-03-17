@@ -7,7 +7,7 @@
 
         <!-- Mapped super classes won't support indexes -->
         <indexes>
-            <index columns="link_visible"/>
+            <index columns="link_visible" name="link_visible" />
         </indexes>
 
         <id name="id" type="bigint" column="link_id">

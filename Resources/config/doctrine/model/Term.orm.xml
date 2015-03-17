@@ -6,7 +6,7 @@
                 <option name="default"/>
             </options>
         </field>
-        <field name="slug" type="string" length="200" column="slug" unique="true">
+        <field name="slug" type="string" length="200" column="slug">
             <options>
                 <option name="default"/>
             </options>
