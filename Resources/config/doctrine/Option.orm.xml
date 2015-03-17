@@ -5,6 +5,10 @@
             repository-class="Ekino\WordpressBundle\Repository\OptionRepository"
             change-tracking-policy="DEFERRED_IMPLICIT">
 
+        <unique-constraints>
+            <unique-constraint columns="option_name" name="option_name" />
+        </unique-constraints>
+
         <id name="id" type="bigint" column="option_id">
             <generator strategy="AUTO"/>
             <options>

@@ -3,8 +3,11 @@
     <entity name="Ekino\WordpressBundle\Entity\Comment" table="comments">
         <!-- Mapped super classes won't support indexes -->
         <indexes>
-            <index columns="comment_approved,comment_date_gmt"/>
-            <index columns="comment_date_gmt"/>
+            <index columns="comment_post_ID" name="comment_post_ID" />
+            <index columns="comment_approved,comment_date_gmt" name="comment_approved_date_gmt" />
+            <index columns="comment_date_gmt" name="comment_date_gmt" />
+            <index columns="comment_parent" name="comment_parent" />
+            <index columns="comment_author_email" name="comment_author_email" />
         </indexes>
 
         <id name="id" type="bigint" column="comment_ID">

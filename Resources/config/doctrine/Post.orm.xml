@@ -7,9 +7,10 @@
 
         <!-- Mapped super classes won't support indexes -->
         <indexes>
-            <index columns="post_name"/>
-            <index columns="post_type,post_status,post_date,ID"/>
-            <index columns="post_status,post_date"/>
+            <index columns="post_name" name="post_name" />
+            <index columns="post_type,post_status,post_date,ID" name="type_status_date" />
+            <index columns="post_parent" name="post_parent" />
+            <index columns="post_author" name="post_author" />
         </indexes>
 
         <id name="id" type="bigint" column="ID">
