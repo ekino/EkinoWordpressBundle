@@ -13,6 +13,7 @@ namespace Ekino\WordpressBundle\Manager;
 use Doctrine\ORM\EntityManager;
 use Ekino\WordpressBundle\Entity\Post;
 use Ekino\WordpressBundle\Repository\PostRepository;
+use Hautelook\Phpass\PasswordHash;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -91,7 +92,7 @@ class PostManager extends BaseManager
             return true;
         }
 
-        $wpHasher = new \PasswordHash(8, true);
+        $wpHasher = new PasswordHash(8, true);
 
         return !$wpHasher->CheckPassword($post->getPassword(), $hash);
     }
