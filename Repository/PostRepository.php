@@ -21,4 +21,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
+    /**
+     * @param \DateTime|null $date
+     * 
+     * @return array
+     * 
+     * @author Elvis Morales <elvismdev@gmail.com> & Leroy Ley <lele140686@gmail.com>
+     */
+    public function findByDate(\DateTime $date = null)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->where('p.date LIKE :date')
+            ->addOrderBy('p.date', 'DESC')
+            ->addOrderBy('p.id', 'DESC')
+            ->setParameter('date', $date->format('Y-m-d') . '%');
+
+        return $qb->getQuery()->getResult();
+    }
 }

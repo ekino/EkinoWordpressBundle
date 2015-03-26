@@ -36,8 +36,8 @@ class PostManager extends BaseManager
     protected $postMetaManager;
 
     /**
-     * @param EntityManager   $em
-     * @param string          $class
+     * @param EntityManager $em
+     * @param string $class
      * @param PostMetaManager $postMetaManager
      */
     public function __construct(EntityManager $em, $class, PostMetaManager $postMetaManager)
@@ -68,9 +68,9 @@ class PostManager extends BaseManager
     }
 
     /**
-     * @param Post    $post
+     * @param Post $post
      * @param Request $request
-     * @param string  $cookieHash
+     * @param string $cookieHash
      *
      * @return bool
      */
@@ -82,11 +82,11 @@ class PostManager extends BaseManager
 
         $cookies = $request->cookies;
 
-        if (!$cookies->has('wp-postpass_'.$cookieHash)) {
+        if (!$cookies->has('wp-postpass_' . $cookieHash)) {
             return true;
         }
 
-        $hash = stripslashes($cookies->get('wp-postpass_'.$cookieHash));
+        $hash = stripslashes($cookies->get('wp-postpass_' . $cookieHash));
 
         if (0 !== strpos($hash, '$P$B')) {
             return true;
@@ -114,5 +114,19 @@ class PostManager extends BaseManager
         }
 
         return $post->getGuid();
+    }
+
+    /**
+     * Returns posts for current date or a specified date.
+     *
+     * @param \DateTime|null $date
+     *
+     * @return array
+     */
+    public function findByDate(\DateTime $date = null)
+    {
+        $date = $date ? : new \DateTime();
+
+        return $this->repository->findByDate($date);
     }
 }
