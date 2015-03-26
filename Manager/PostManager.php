@@ -35,8 +35,8 @@ class PostManager extends BaseManager
     protected $postMetaManager;
 
     /**
-     * @param EntityManager   $em
-     * @param string          $class
+     * @param EntityManager $em
+     * @param string $class
      * @param PostMetaManager $postMetaManager
      */
     public function __construct(EntityManager $em, $class, PostMetaManager $postMetaManager)
@@ -67,9 +67,9 @@ class PostManager extends BaseManager
     }
 
     /**
-     * @param Post    $post
+     * @param Post $post
      * @param Request $request
-     * @param string  $cookieHash
+     * @param string $cookieHash
      *
      * @return bool
      */
@@ -81,11 +81,11 @@ class PostManager extends BaseManager
 
         $cookies = $request->cookies;
 
-        if (!$cookies->has('wp-postpass_'.$cookieHash)) {
+        if (!$cookies->has('wp-postpass_' . $cookieHash)) {
             return true;
         }
 
-        $hash = stripslashes($cookies->get('wp-postpass_'.$cookieHash));
+        $hash = stripslashes($cookies->get('wp-postpass_' . $cookieHash));
 
         if (0 !== strpos($hash, '$P$B')) {
             return true;
@@ -114,19 +114,18 @@ class PostManager extends BaseManager
 
         return $post->getGuid();
     }
-    
+
     /**
-     * @param \DateTime $date
+     * Returns posts for current date or a specified date.
+     *
+     * @param \DateTime|null $date
+     *
      * @return array
      */
-    public function findByDate(\DateTime $date)
+    public function findByDate(\DateTime $date = null)
     {
-        $qb = $this->repository->createQueryBuilder('c');
-        $qb->select('c')
-            ->where($qb->expr()->like('c.date', '?1'))
-            ->addOrderBy('c.id')
-            ->setParameter(1, '%' . $date->format('Y-m-d') . '%');
+        $date = $date ? : new \DateTime();
 
-        return $qb->getQuery()->getResult();
+        return $this->repository->findByDate($date);
     }
 }
