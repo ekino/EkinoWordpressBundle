@@ -23,8 +23,10 @@ class PostRepository extends EntityRepository
 {
     /**
      * @param \DateTime|null $date
+     * 
      * @return array
-     * @author Elvis Morales <elvismdev@gmail.com> Leroy Ley <lele140686@gmail.com> Vincent Composieux <composieux@ekino.com>
+     * 
+     * @author Elvis Morales <elvismdev@gmail.com> & Leroy Ley <lele140686@gmail.com>
      */
     public function findByDate(\DateTime $date = null)
     {
