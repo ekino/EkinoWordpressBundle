@@ -3,7 +3,7 @@
     "type": "library",
     "description": "A Symfony bundle to link Symfony with Wordpress",
     "keywords": ["ekino", "bundle", "symfony", "wordpress"],
-    "homepage": "http://github.com/ekino/wordpress-bundle",
+    "homepage": "http://github.com/ekino/EkinoWordpressBundle",
     "license": "MIT",
     "authors": [
         {
