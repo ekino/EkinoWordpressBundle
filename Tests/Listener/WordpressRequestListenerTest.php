@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContext;
 
@@ -35,9 +36,9 @@ class WordpressRequestListenerTest extends \PHPUnit_Framework_TestCase
     protected $listener;
 
     /**
-     * @var \Symfony\Component\Security\Core\SecurityContext
+     * @var \Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage
      */
-    protected $securityContext;
+    protected $tokenStorage;
 
     /**
      * Set up required mocks for WordpressRequestListener class
@@ -50,13 +51,12 @@ class WordpressRequestListenerTest extends \PHPUnit_Framework_TestCase
             $this->returnValue(serialize(array('administrator' => true)))
         );
 
-        // Set up a security context mock for listener mock below
-        $this->securityContext = $this->getSecurityContextMock();
+        $this->tokenStorage = new TokenStorage();
 
         $this->listener = $this->getMock(
             '\Ekino\WordpressBundle\Listener\WordpressRequestListener',
             array('getWordpressLoggedIdentifier'),
-            array($this->securityContext)
+            array($this->tokenStorage)
         );
     }
 
@@ -83,32 +83,14 @@ class WordpressRequestListenerTest extends \PHPUnit_Framework_TestCase
         );
 
         // Run onKernelRequest() method
-        $this->assertEquals(null, $this->securityContext->getToken(), 'Should returns no token');
+        $this->assertEquals(null, $this->tokenStorage->getToken(), 'Should returns no token');
 
         $user = new User();
         $token = new UsernamePasswordToken($user, $user->getPass(), 'secured_area', $user->getRoles());
         $getResponseEvent->getRequest()->getSession()->set('token', $token);
         $this->listener->onKernelRequest($getResponseEvent);
 
-        $this->assertEquals($token, $this->securityContext->getToken(), 'Should returns previous token initialized');
-    }
-
-    /**
-     * Returns a mock of Symfony security context service
-     *
-     * @return \Symfony\Component\Security\Core\SecurityContext
-     */
-    protected function getSecurityContextMock()
-    {
-        $authenticationManagerMock = $this->getMockBuilder('\Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface')
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $accessDecisionManagerMock = $this->getMockBuilder('\Symfony\Component\Security\Core\Authorization\AccessDecisionManagerInterface')
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        return new SecurityContext($authenticationManagerMock, $accessDecisionManagerMock);
+        $this->assertEquals($token, $this->tokenStorage->getToken(), 'Should returns previous token initialized');
     }
 
     /**

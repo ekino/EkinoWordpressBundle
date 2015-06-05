@@ -12,7 +12,7 @@ namespace Ekino\WordpressBundle\Event\Hook;
 
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Symfony\Component\Security\Core\SecurityContextInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Ekino\WordpressBundle\Event\WordpressEvent;
 use Ekino\WordpressBundle\Manager\UserManager;
@@ -37,9 +37,9 @@ class UserHookListener
     protected $logger;
 
     /**
-     * @var SecurityContextInterface
+     * @var TokenStorageInterface
      */
-    protected $securityContext;
+    protected $tokenStorage;
 
     /**
      * @var SessionInterface
@@ -54,19 +54,19 @@ class UserHookListener
     /**
      * Constructor
      *
-     * @param UserManager              $userManager     Wordpress bundle user manager
-     * @param LoggerInterface          $logger          Symfony PSR logger
-     * @param SecurityContextInterface $securityContext Symfony security context
-     * @param SessionInterface         $session         Symfony session service
-     * @param string                   $firewall        EkinoWordpressBundle firewall name
+     * @param UserManager           $userManager  Wordpress bundle user manager
+     * @param LoggerInterface       $logger       Symfony PSR logger
+     * @param TokenStorageInterface $tokenStorage Symfony security token storage
+     * @param SessionInterface      $session      Symfony session service
+     * @param string                $firewall     EkinoWordpressBundle firewall name
      */
-    public function __construct(UserManager $userManager, LoggerInterface $logger, SecurityContextInterface $securityContext, SessionInterface $session, $firewall)
+    public function __construct(UserManager $userManager, LoggerInterface $logger, TokenStorageInterface $tokenStorage, SessionInterface $session, $firewall)
     {
-        $this->userManager     = $userManager;
-        $this->logger          = $logger;
-        $this->securityContext = $securityContext;
-        $this->session         = $session;
-        $this->firewall        = $firewall;
+        $this->userManager  = $userManager;
+        $this->logger       = $logger;
+        $this->tokenStorage = $tokenStorage;
+        $this->session      = $session;
+        $this->firewall     = $firewall;
     }
 
     /**
@@ -84,7 +84,7 @@ class UserHookListener
         $user->setWordpressRoles($wpUser->roles);
 
         $token = new UsernamePasswordToken($user, $user->getPass(), $this->firewall, $user->getRoles());
-        $this->securityContext->setToken($token);
+        $this->tokenStorage->setToken($token);
 
         $this->session->set('_security_'.$this->firewall, serialize($token));
     }
@@ -99,6 +99,6 @@ class UserHookListener
     public function onLogout(WordpressEvent $event)
     {
         $this->session->clear();
-        $this->securityContext->setToken(null);
+        $this->tokenStorage->setToken(null);
     }
 }

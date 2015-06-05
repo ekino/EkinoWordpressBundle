@@ -12,7 +12,7 @@ namespace Ekino\WordpressBundle\Listener;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Symfony\Component\Security\Core\SecurityContextInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 /**
  * Class WordpressRequestListener
@@ -24,18 +24,18 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
 class WordpressRequestListener
 {
     /**
-     * @var SecurityContextInterface
+     * @var TokenStorageInterface
      */
-    protected $securityContext;
+    protected $tokenStorage;
 
     /**
      * Constructor
      *
-     * @param SecurityContextInterface $securityContext Symfony security context service
+     * @param TokenStorageInterface $tokenStorage Symfony security token storage
      */
-    public function __construct(SecurityContextInterface $securityContext)
+    public function __construct(TokenStorageInterface $tokenStorage)
     {
-        $this->securityContext = $securityContext;
+        $this->tokenStorage = $tokenStorage;
     }
 
     /**
@@ -65,7 +65,7 @@ class WordpressRequestListener
 
         if ($session->has('token')) {
             $token = $session->get('token');
-            $this->securityContext->setToken($token);
+            $this->tokenStorage->setToken($token);
         }
     }
 }

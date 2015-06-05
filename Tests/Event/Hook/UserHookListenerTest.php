@@ -30,9 +30,9 @@ class UserHookListenerTest extends \PHPUnit_Framework_TestCase
     protected $logger;
 
     /**
-     * @var \Symfony\Component\Security\Core\SecurityContextInterface
+     * @var \Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface
      */
-    protected $securityContext;
+    protected $tokenStorage;
 
     /**
      * @var \Symfony\Component\HttpFoundation\Session\SessionInterface
@@ -60,13 +60,13 @@ class UserHookListenerTest extends \PHPUnit_Framework_TestCase
 
         $this->logger = $this->getMock('Psr\Log\LoggerInterface');
 
-        $this->securityContext = $this->getMock('Symfony\Component\Security\Core\SecurityContextInterface');
+        $this->tokenStorage = $this->getMock('Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface');
 
         $this->session = $this->getMock('Symfony\Component\HttpFoundation\Session\SessionInterface');
 
         $this->firewall = 'secured_area';
 
-        $this->listener = new UserHookListener($this->userManager, $this->logger, $this->securityContext, $this->session, $this->firewall);
+        $this->listener = new UserHookListener($this->userManager, $this->logger, $this->tokenStorage, $this->session, $this->firewall);
     }
 
     /**
@@ -92,7 +92,7 @@ class UserHookListenerTest extends \PHPUnit_Framework_TestCase
 
         $this->userManager->expects($this->once())->method('find')->will($this->returnValue($user));
 
-        $this->securityContext->expects($this->once())->method('setToken');
+        $this->tokenStorage->expects($this->once())->method('setToken');
 
         // When - Then
         $this->listener->onLogin($event);
@@ -108,7 +108,7 @@ class UserHookListenerTest extends \PHPUnit_Framework_TestCase
 
         // When - Then
         $this->session->expects($this->once())->method('clear');
-        $this->securityContext->expects($this->once())->method('setToken')->with(null);
+        $this->tokenStorage->expects($this->once())->method('setToken')->with(null);
 
         $this->listener->onLogout($event);
     }
