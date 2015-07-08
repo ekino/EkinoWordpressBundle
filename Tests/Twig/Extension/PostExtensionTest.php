@@ -101,4 +101,40 @@ class PostExtensionTest extends \PHPUnit_Framework_TestCase
         $result = $this->postExtension->getPermalink(12);
         $this->assertEquals(date('/Y/m/d').'/12-sample-post', $result);
     }
+
+    public function testGetAbsolutePermalink()
+    {
+        $post = $this->getMock('Ekino\WordpressBundle\Entity\Post');
+        $permalinkOption = $this->getMock('Ekino\WordpressBundle\Entity\Option');
+        $homeOption = $this->getMock('Ekino\WordpressBundle\Entity\Option');
+
+        $post->expects($this->once())
+            ->method('getDate')
+            ->will($this->returnValue(new \DateTime()));
+        $post->expects($this->once())
+            ->method('getId')
+            ->will($this->returnValue('12'));
+        $post->expects($this->once())
+            ->method('getName')
+            ->will($this->returnValue('sample-post'));
+
+        $permalinkOption->expects($this->once())
+            ->method('getValue')
+            ->will($this->returnValue('/%year%/%monthnum%/%day%/%post_id%-%postname%'));
+        $homeOption->expects($this->once())
+            ->method('getValue')
+            ->will($this->returnValue('http://localhost/blog/'));
+        $this->postManager->expects($this->once())
+            ->method('find')
+            ->will($this->returnValue($post));
+        $this->optionExtension->expects($this->at(0))
+            ->method('getOption')
+            ->will($this->returnValue($permalinkOption));
+        $this->optionExtension->expects($this->at(1))
+            ->method('getOption')
+            ->will($this->returnValue($homeOption));
+
+        $result = $this->postExtension->getPermalink(12, true);
+        $this->assertEquals('http://localhost/blog' . date('/Y/m/d') . '/12-sample-post', $result);
+    }
 }
