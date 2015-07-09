@@ -70,8 +70,8 @@ class PostExtension extends \Twig_Extension
     }
 
     /**
-     * @param int|Post $postId
-     * @param bool $isAbsolute
+     * @param int|Post $postId     A Wordpress post identifier
+     * @param bool     $isAbsolute Determines if you want to retrieve an absolute URL
      *
      * @return string
      *
@@ -88,7 +88,8 @@ class PostExtension extends \Twig_Extension
         $permalinkStructure = $this->optionExtension->getOption('permalink_structure', '')->getValue();
 
         $relativeUrl = $this->replacePostArguments($permalinkStructure, $post);
-        if($isAbsolute) {
+
+        if ($isAbsolute) {
             $home = $this->optionExtension->getOption('home');
 
             return rtrim($home->getValue(), '/') . '/' . ltrim($relativeUrl, '/');
