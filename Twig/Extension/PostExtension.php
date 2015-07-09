@@ -70,13 +70,14 @@ class PostExtension extends \Twig_Extension
     }
 
     /**
-     * @param int|Post $postId
+     * @param int|Post $postId     A Wordpress post identifier
+     * @param bool     $isAbsolute Determines if you want to retrieve an absolute URL
      *
      * @return string
      *
      * @throws \UnexpectedValueException
      */
-    public function getPermalink($postId)
+    public function getPermalink($postId, $isAbsolute = false)
     {
         $post = $postId instanceof Post ? $postId : $this->postManager->find($postId);
 
@@ -86,7 +87,15 @@ class PostExtension extends \Twig_Extension
 
         $permalinkStructure = $this->optionExtension->getOption('permalink_structure', '')->getValue();
 
-        return $this->replacePostArguments($permalinkStructure, $post);
+        $relativeUrl = $this->replacePostArguments($permalinkStructure, $post);
+
+        if ($isAbsolute) {
+            $home = $this->optionExtension->getOption('home');
+
+            return rtrim($home->getValue(), '/') . '/' . ltrim($relativeUrl, '/');
+        }
+
+        return $relativeUrl;
     }
 
     /**
