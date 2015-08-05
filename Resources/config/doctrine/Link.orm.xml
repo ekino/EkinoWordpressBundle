@@ -2,7 +2,7 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
     <entity name="Ekino\WordpressBundle\Entity\Link"
             table="links"
-            repository-class="Ekino\WordpressBundle\Repository\CommentMetaRepository"
+            repository-class="Ekino\WordpressBundle\Repository\LinkRepository"
             change-tracking-policy="DEFERRED_IMPLICIT">
 
         <!-- Mapped super classes won't support indexes -->
