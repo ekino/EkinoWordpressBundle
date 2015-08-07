@@ -61,7 +61,7 @@ ekino_wordpress:
     resource: "@EkinoWordpressBundle/Resources/config/routing.xml"
 ```
 
-Optionnally, you can specify the following options in your `app/config.yml`:
+Optionally, you can specify the following options in your `app/config.yml`:
 
 ```yml
 ekino_wordpress:
@@ -334,7 +334,7 @@ class LanguageController extends Controller
 }
 ```
 
-## Handle with password protected post
+## Handling password protected posts
 If you use password protected posts and you have defined your own `COOKIEHASH` constant, you can provide it using the `cookie_hash` parameter in your `config.yml` file.
 You will then be able to use the `wp_post_password_required` twig function that behave exactly like `post_password_required` Wordpress function.
 
