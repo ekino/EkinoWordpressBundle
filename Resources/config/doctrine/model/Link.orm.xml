@@ -38,7 +38,7 @@
         </field>
         <field name="updated" type="datetime" column="link_updated">
             <options>
-                <option name="default">0000-00-00 00:00:00</option>
+                <option name="default">1970-01-01 00:00:00</option>
             </options>
         </field>
         <field name="rel" type="string" length="255" column="link_rel">

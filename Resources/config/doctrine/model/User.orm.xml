@@ -28,7 +28,7 @@
         </field>
         <field name="registered" type="datetime" column="user_registered">
             <options>
-                <option name="default">0000-00-00 00:00:00</option>
+                <option name="default">1970-01-01 00:00:00</option>
             </options>
         </field>
         <field name="activationKey" type="string" length="60" column="user_activation_key">

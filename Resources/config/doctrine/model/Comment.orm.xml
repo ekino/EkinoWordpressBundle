@@ -19,12 +19,12 @@
         </field>
         <field name="date" type="datetime" column="comment_date">
             <options>
-                <option name="default">0000-00-00 00:00:00</option>
+                <option name="default">1970-01-01 00:00:00</option>
             </options>
         </field>
         <field name="dateGmt" type="datetime" column="comment_date_gmt">
             <options>
-                <option name="default">0000-00-00 00:00:00</option>
+                <option name="default">1970-01-01 00:00:00</option>
             </options>
         </field>
         <field name="content" type="text" column="comment_content"/>
