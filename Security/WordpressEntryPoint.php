@@ -61,7 +61,14 @@ class WordpressEntryPoint implements AccessDeniedHandlerInterface, Authenticatio
         return $this->createRedirectResponse($request);
     }
 
-    private function createRedirectResponse($request)
+    /**
+     * Creates a redirect response from the given request.
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response|static
+     */
+    private function createRedirectResponse(Request $request)
     {
         $url = $this->loginUrl.'?'.http_build_query(array(
             'redirect_to' => $request->getUri(),

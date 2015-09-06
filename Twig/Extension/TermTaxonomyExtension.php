@@ -35,6 +35,9 @@ class TermTaxonomyExtension extends \Twig_Extension
         $this->optionManager = $optionManager;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getFunctions()
     {
         return array(
@@ -43,8 +46,8 @@ class TermTaxonomyExtension extends \Twig_Extension
     }
 
     /**
-     * @param TermTaxonomy $termTaxonomy
-     * @param string $type The link type. Can be "category" or "tag"
+     * @param TermTaxonomy $termTaxonomy A term taxonomy instance
+     * @param string       $type         The link type. Can be "category" or "tag"
      *
      * @return string
      */

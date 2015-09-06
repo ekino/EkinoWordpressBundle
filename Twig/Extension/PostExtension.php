@@ -36,9 +36,9 @@ class PostExtension extends \Twig_Extension
     protected $cookieHash;
 
     /**
-     * @param PostManager     $postManager
-     * @param OptionExtension $optionExtension
-     * @param string|null     $cookieHash
+     * @param PostManager     $postManager     A post manager instance
+     * @param OptionExtension $optionExtension A Twig option extension instance
+     * @param string|null     $cookieHash      A cookie has string
      */
     public function __construct(PostManager $postManager, OptionExtension $optionExtension, $cookieHash = null)
     {
@@ -56,7 +56,7 @@ class PostExtension extends \Twig_Extension
     }
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
     public function getFunctions()
     {

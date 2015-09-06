@@ -29,9 +29,9 @@ class PostMetaManager extends BaseManager
     protected $repository;
 
     /**
-     * @param int    $postId
-     * @param string $metaName
-     * @param bool   $fetchOneResult
+     * @param int    $postId         A post identifier
+     * @param string $metaName       A meta name
+     * @param bool   $fetchOneResult Use fetchOneOrNullResult() method instead of getResult()?
      *
      * @return array|\Ekino\WordpressBundle\Entity\PostMeta
      */

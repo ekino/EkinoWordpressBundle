@@ -43,7 +43,7 @@ class PostMetaExtension extends \Twig_Extension
     }
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
     public function getFunctions()
     {
@@ -53,9 +53,9 @@ class PostMetaExtension extends \Twig_Extension
     }
 
     /**
-     * @param int    $postId
-     * @param string $metaName
-     * @param bool   $fetchOneResult
+     * @param int    $postId         A post identifier
+     * @param string $metaName       A meta name
+     * @param bool   $fetchOneResult Use fetchOneOrNullResult() method instead of getResult()?
      *
      * @return array|\Ekino\WordpressBundle\Entity\PostMeta
      */
