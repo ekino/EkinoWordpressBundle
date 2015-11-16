@@ -65,11 +65,11 @@ Optionally, you can specify the following options in your `app/config.yml`:
 
 ```yml
 ekino_wordpress:
-    table_prefix: wp_ # If you have a specific Wordpress table prefix
-    wordpress_directory: /my/wordpress/directory # If you have a specific Wordpress directory structure
+    table_prefix: "wp_" # If you have a specific Wordpress table prefix
+    wordpress_directory: "/my/wordpress/directory" # If you have a specific Wordpress directory structure
     load_twig_extension: true # If you want to enable native WordPress functions (ie : get_option() => wp_get_option())
     security:
-        firewall_name: secured_area # This is the firewall default name
+        firewall_name: "secured_area" # This is the firewall default name
         login_url: "/wp-login.php" # Absolute URL to the wordpress login page
 ```
 
@@ -102,7 +102,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 // change for app_dev.php
 function run(){
-    $loader = require_once __DIR__.'/../app/bootstrap.php.cache';
+    $loader = require_once __DIR__.'/../var/bootstrap.php.cache';
 
     require_once __DIR__.'/../app/AppKernel.php';
 
@@ -147,7 +147,7 @@ function symfony($id)
     return $container->get($id);
 }
 
-$loader = require_once __DIR__.'/symfony/app/bootstrap.php.cache';
+$loader = require_once __DIR__.'/symfony/var/bootstrap.php.cache';
 
 // Load application kernel
 require_once __DIR__.'/symfony/app/AppKernel.php';
@@ -162,8 +162,6 @@ $sfContainer = $sfKernel->getContainer();
 if (true === $sfContainer->getParameter('kernel.debug', false)) {
     Debug::enable();
 }
-
-$sfContainer->enterScope('request');
 
 symfony($sfContainer);
 
