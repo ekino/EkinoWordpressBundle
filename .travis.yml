@@ -22,7 +22,11 @@ matrix:
     - php: hhvm
     - php: nightly
 
-before_script:
+before_install:
+  - composer self-update
+  - if [ "$SYMFONY_VERSION" = "2.8.*@dev" ] || [ "$SYMFONY_VERSION" = "3.0.*@dev" ]; then perl -pi -e 's/^}$/,"minimum-stability":"dev"}/' composer.json; fi;
+
+install:
   - composer require symfony/symfony:${SYMFONY_VERSION} --no-update
   - composer install --dev --prefer-source
 
