@@ -38,6 +38,11 @@ class Wordpress
     protected $directory;
 
     /**
+     * @var boolean
+     */
+    protected $alreadyInitialized;
+
+    /**
      * Constructor
      *
      * @param KernelInterface $kernel    Symfony kernel instance
@@ -75,19 +80,31 @@ class Wordpress
 
         define('WP_USE_THEMES', true);
 
-        global $wp, $wp_the_query, $wpdb, $wp_query, $allowedentitynames;
-
-        $loader = $this->getWordpressDirectory().'wp-blog-header.php';
-
-        if (!file_exists($loader)) {
-            throw new \InvalidArgumentException(
-                sprintf('Unable to find Wordpress loader in: "%s".', $loader)
-            );
-        }
-
-        require_once $loader;
+        $this->loadWordpress();
 
         return ob_get_clean();
+    }
+
+    /**
+     * Loads Wordpress.
+     */
+    public function loadWordpress()
+    {
+        if (!$this->alreadyInitialized) {
+            global $wp, $wp_the_query, $wpdb, $wp_query, $allowedentitynames;
+
+            $loader = $this->getWordpressDirectory() . 'wp-blog-header.php';
+
+            if (!file_exists($loader)) {
+                throw new \InvalidArgumentException(
+                    sprintf('Unable to find Wordpress loader in: "%s".', $loader)
+                );
+            }
+
+            require_once $loader;
+
+            $this->alreadyInitialized = true;
+        }
     }
 
     /**

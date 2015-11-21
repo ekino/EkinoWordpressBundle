@@ -10,6 +10,7 @@
 
 namespace Ekino\WordpressBundle\Listener;
 
+use Ekino\WordpressBundle\Wordpress\Wordpress;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -24,6 +25,11 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 class WordpressRequestListener
 {
     /**
+     * @var Wordpress
+     */
+    protected $wordpress;
+
+    /**
      * @var TokenStorageInterface
      */
     protected $tokenStorage;
@@ -31,10 +37,12 @@ class WordpressRequestListener
     /**
      * Constructor
      *
+     * @param Wordpress             $wordpress    A Wordpress service instance.
      * @param TokenStorageInterface $tokenStorage Symfony security token storage
      */
-    public function __construct(TokenStorageInterface $tokenStorage)
+    public function __construct(Wordpress $wordpress, TokenStorageInterface $tokenStorage)
     {
+        $this->wordpress    = $wordpress;
         $this->tokenStorage = $tokenStorage;
     }
 
@@ -46,6 +54,11 @@ class WordpressRequestListener
     public function onKernelRequest(GetResponseEvent $event)
     {
         $request = $event->getRequest();
+
+        // Loads Wordpress source code in order to allow use of WordPress functions in Symfony.
+        if ('ekino_wordpress_catchall' !== $request->attributes->get('_route')) {
+            $this->wordpress->loadWordpress();
+        }
 
         $this->checkAuthentication($request);
     }
