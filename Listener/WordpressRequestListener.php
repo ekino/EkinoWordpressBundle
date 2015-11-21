@@ -10,6 +10,7 @@
 
 namespace Ekino\WordpressBundle\Listener;
 
+use Ekino\WordpressBundle\Wordpress\Wordpress;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\Security\Core\SecurityContextInterface;
@@ -24,6 +25,11 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
 class WordpressRequestListener
 {
     /**
+     * @var Wordpress
+     */
+    protected $wordpress;
+
+    /**
      * @var SecurityContextInterface
      */
     protected $securityContext;
@@ -31,10 +37,12 @@ class WordpressRequestListener
     /**
      * Constructor
      *
-     * @param SecurityContextInterface $securityContext Symfony security context service
+     * @param Wordpress                $wordpress       A Wordpress service instance.
+     * @param SecurityContextInterface $securityContext A Symfony security context service instance.
      */
-    public function __construct(SecurityContextInterface $securityContext)
+    public function __construct(Wordpress $wordpress, SecurityContextInterface $securityContext)
     {
+        $this->wordpress       = $wordpress;
         $this->securityContext = $securityContext;
     }
 
@@ -46,6 +54,11 @@ class WordpressRequestListener
     public function onKernelRequest(GetResponseEvent $event)
     {
         $request = $event->getRequest();
+
+        // Loads Wordpress source code in order to allow use of WordPress functions in Symfony.
+        if ('ekino_wordpress_catchall' !== $request->attributes->get('_route')) {
+            $this->wordpress->loadWordpress();
+        }
 
         $this->checkAuthentication($request);
     }
