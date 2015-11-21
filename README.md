@@ -336,3 +336,18 @@ class LanguageController extends Controller
 If you use password protected posts and you have defined your own `COOKIEHASH` constant, you can provide it using the `cookie_hash` parameter in your `config.yml` file.
 You will then be able to use the `wp_post_password_required` twig function that behave exactly like `post_password_required` Wordpress function.
 
+## Display Wordpress theme into a Symfony Twig-rendered route
+
+You can display the WordPress header, sidebar and footer into your Symfony's Twig templates by using the following
+Twig functions available in this bundle:
+
+```jinja
+{{ wp_get_header() }}
+{{ wp_get_sidebar() }}
+
+<div id="main">
+    Your Twig code comes here
+</div>
+
+{{ wp_get_footer() }}
+```

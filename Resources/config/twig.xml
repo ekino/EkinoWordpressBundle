@@ -10,6 +10,7 @@
         <parameter key="ekino.wordpress.twig.extension.post.class">Ekino\WordpressBundle\Twig\Extension\PostExtension</parameter>
         <parameter key="ekino.wordpress.twig.extension.post_meta.class">Ekino\WordpressBundle\Twig\Extension\PostMetaExtension</parameter>
         <parameter key="ekino.wordpress.twig.extension.term_taxonomy.class">Ekino\WordpressBundle\Twig\Extension\TermTaxonomyExtension</parameter>
+        <parameter key="ekino.wordpress.twig.extension.theme.class">Ekino\WordpressBundle\Twig\Extension\ThemeExtension</parameter>
     </parameters>
 
     <services>
@@ -43,6 +44,10 @@
             <tag name="twig.extension" />
 
             <argument type="service" id="ekino.wordpress.manager.option" />
+        </service>
+
+        <service id="ekino.wordpress.twig.extension.theme" class="%ekino.wordpress.twig.extension.theme.class%">
+            <tag name="twig.extension" />
         </service>
 
     </services>
