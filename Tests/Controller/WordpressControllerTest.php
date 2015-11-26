@@ -63,7 +63,7 @@ class WordpressControllerTest extends \PHPUnit_Framework_TestCase
     {
         $kernel = $this->getKernelMock();
 
-        return $this->getMock('\Ekino\WordpressBundle\Wordpress\Wordpress', array('getContent'), array($kernel));
+        return $this->getMock('\Ekino\WordpressBundle\Wordpress\Wordpress', array('getContent'), array($kernel, array('wp_test_global1', 'wp_test_global2')));
     }
 
     /**

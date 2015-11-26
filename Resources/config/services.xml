@@ -10,6 +10,7 @@
 
         <service id="ekino.wordpress.wordpress" class="Ekino\WordpressBundle\Wordpress\Wordpress">
             <argument type="service" id="kernel" />
+            <argument />
         </service>
 
         <!-- Subscribers -->

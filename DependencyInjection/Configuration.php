@@ -42,6 +42,10 @@ class Configuration implements ConfigurationInterface
                 ->booleanNode('cookie_hash')->defaultNull()->end()
                 ->scalarNode('i18n_cookie_name')->defaultFalse()->end()
 
+                ->arrayNode('globals')
+                    ->prototype('scalar')->end()
+                ->end()
+
                 ->arrayNode('security')
                     ->addDefaultsIfNotSet()
                     ->children()

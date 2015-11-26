@@ -65,6 +65,9 @@ Optionnally, you can specify the following options in your `app/config.yml`:
 
 ```yml
 ekino_wordpress:
+    globals: # If you have some custom global variables that WordPress needs
+        - wp_global_variable_1
+        - wp_global_variable_2
     table_prefix: wp_ # If you have a specific Wordpress table prefix
     wordpress_directory: /my/wordpress/directory # If you have a specific Wordpress directory structure
     load_twig_extension: true # If you want to enable native WordPress functions (ie : get_option() => wp_get_option())

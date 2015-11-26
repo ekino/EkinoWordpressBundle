@@ -30,7 +30,7 @@ class WordpressResponseSubscriber implements EventSubscriberInterface
     protected $wordpress;
 
     /**
-     * @param Wordpress    $wordpress
+     * @param Wordpress $wordpress
      */
     public function __construct(Wordpress $wordpress)
     {

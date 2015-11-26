@@ -28,14 +28,19 @@ class Wordpress
     protected $kernel;
 
     /**
-     * @var WordpressResponse
+     * @var array
      */
-    protected $response;
+    protected $globals;
 
     /**
      * @var string
      */
     protected $directory;
+
+    /**
+     * @var WordpressResponse
+     */
+    protected $response;
 
     /**
      * @var boolean
@@ -46,11 +51,13 @@ class Wordpress
      * Constructor
      *
      * @param KernelInterface $kernel    Symfony kernel instance
+     * @param array           $globals   A Wordpress global variables array
      * @param string          $directory A wordpress directory (if specified in configuration)
      */
-    public function __construct(KernelInterface $kernel, $directory = null)
+    public function __construct(KernelInterface $kernel, array $globals, $directory = null)
     {
         $this->kernel    = $kernel;
+        $this->globals   = $globals;
         $this->directory = $directory;
     }
 
@@ -91,7 +98,9 @@ class Wordpress
     public function loadWordpress()
     {
         if (!$this->alreadyInitialized) {
-            global $wp, $wp_the_query, $wpdb, $wp_query, $allowedentitynames;
+            foreach ($this->globals as $globalVariable) {
+                global ${$globalVariable};
+            }
 
             $loader = $this->getWordpressDirectory() . 'wp-blog-header.php';
 

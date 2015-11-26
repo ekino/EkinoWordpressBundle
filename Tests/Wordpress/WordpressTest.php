@@ -81,8 +81,20 @@ class WordpressTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('InvalidArgumentException');
 
-        $wordpress = new Wordpress($this->getKernelMock(), '/a/path/that/does/not/exists');
+        $wordpress = new Wordpress($this->getKernelMock(), array('wp_test_global1', 'wp_test_global2'), '/a/path/that/does/not/exists');
         $wordpress->initialize();
+    }
+
+    public function testGlobalVariables()
+    {
+        // When
+        $this->wordpress->initialize();
+
+        // Then
+        $this->assertArrayHasKey('wp_test_global1', $GLOBALS);
+        $this->assertArrayHasKey('wp_test_global2', $GLOBALS);
+
+        $this->assertFalse(array_key_exists('wp_test_global3', $GLOBALS));
     }
 
     /**
@@ -94,7 +106,7 @@ class WordpressTest extends \PHPUnit_Framework_TestCase
     {
         $kernel = $this->getKernelMock();
 
-        return $this->getMock('\Ekino\WordpressBundle\Wordpress\Wordpress', array('getContent'), array($kernel));
+        return $this->getMock('\Ekino\WordpressBundle\Wordpress\Wordpress', array('getContent'), array($kernel, array('wp_test_global1', 'wp_test_global2')));
     }
 
     /**
