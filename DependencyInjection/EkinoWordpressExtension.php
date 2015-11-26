@@ -83,6 +83,10 @@ class EkinoWordpressExtension extends Extension
             $loader->load('i18n.xml');
         }
 
+        if (isset($config['globals'])) {
+            $this->loadWordpressGlobals($container, $config['globals']);
+        }
+
         $container->setParameter('ekino.wordpress.cookie_hash', $config['cookie_hash']);
         $container->setParameter('ekino.wordpress.firewall_name', $config['security']['firewall_name']);
         $container->setParameter('ekino.wordpress.login_url', $config['security']['login_url']);
@@ -112,7 +116,7 @@ class EkinoWordpressExtension extends Extension
     }
 
     /**
-     * Loads table prefix from configuration to doctrine table prefix subscriber event
+     * Loads table prefix from configuration to doctrine table prefix subscriber event.
      *
      * @param ContainerBuilder $container Symfony dependency injection container
      * @param string           $prefix    Wordpress table prefix
@@ -128,7 +132,7 @@ class EkinoWordpressExtension extends Extension
     }
 
     /**
-     * Loads Wordpress directory from configuration
+     * Loads Wordpress directory from configuration.
      *
      * @param ContainerBuilder $container Symfony dependency injection container
      * @param string           $directory Wordpress directory
@@ -144,6 +148,8 @@ class EkinoWordpressExtension extends Extension
     }
 
     /**
+     * Sets Doctrine entity manager for Wordpress.
+     *
      * @param ContainerBuilder       $container
      * @param EntityManagerInterface $em
      */
@@ -154,6 +160,20 @@ class EkinoWordpressExtension extends Extension
         foreach (static::$entities as $entityName) {
             $container->findDefinition(sprintf('ekino.wordpress.manager.%s', $entityName))->replaceArgument(0, $reference);
         }
+    }
+
+    /**
+     * Sets global variables array to load.
+     *
+     * @param ContainerBuilder $container
+     * @param array            $globals
+     */
+    protected function loadWordpressGlobals(ContainerBuilder $container, $globals)
+    {
+        $coreGlobals = array('wp', 'wp_the_query', 'wpdb', 'wp_query', 'allowedentitynames');
+        $globals     = array_merge($globals, $coreGlobals);
+
+        $container->findDefinition('ekino.wordpress.wordpress')->replaceArgument(1, $globals);
     }
 
     /**
