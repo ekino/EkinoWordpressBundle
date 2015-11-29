@@ -32,6 +32,22 @@ namespace {
     {
         echo 'wordpress footer';
     }
+
+    /**
+     * @return string
+     */
+    function _wp_admin_bar_init()
+    {
+        echo 'wordpress admin bar init';
+    }
+
+    /**
+     * @return string
+     */
+    function wp_admin_bar_render()
+    {
+        echo 'wordpress admin bar render';
+    }
 }
 
 namespace Ekino\WordpressBundle\Tests\Twig\Extension {
@@ -87,7 +103,7 @@ namespace Ekino\WordpressBundle\Tests\Twig\Extension {
             $this->extension->getHeader();
             $content = ob_get_clean();
 
-            $this->assertEquals('wordpress header', $content);
+            $this->assertEquals('wordpress headerwordpress admin bar initwordpress admin bar render', $content);
         }
 
         /**
