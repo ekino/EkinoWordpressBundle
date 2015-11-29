@@ -341,7 +341,7 @@ You will then be able to use the `wp_post_password_required` twig function that 
 
 ## Display Wordpress theme into a Symfony Twig-rendered route
 
-You can display the WordPress header, sidebar and footer into your Symfony's Twig templates by using the following
+You can display the WordPress header (with administration menu bar if available), sidebar and footer into your Symfony's Twig templates by using the following
 Twig functions available in this bundle:
 
 ```jinja

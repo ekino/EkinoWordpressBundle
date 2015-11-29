@@ -42,11 +42,14 @@ class ThemeExtension extends \Twig_Extension
     }
 
     /**
-     * Displays Wordpress theme header.
+     * Displays Wordpress theme header (and administration menu bar if available).
      */
     public function getHeader()
     {
         \get_header();
+
+        \_wp_admin_bar_init();
+        \wp_admin_bar_render();
     }
 
     /**
