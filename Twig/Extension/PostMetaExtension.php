@@ -49,6 +49,7 @@ class PostMetaExtension extends \Twig_Extension
     {
         return array(
             new \Twig_SimpleFunction('wp_get_post_meta', array($this, 'getPostMeta')),
+            new \Twig_SimpleFunction('wp_get_image_url_from_id', array($this, 'getImageUrlFromId')),
         );
     }
 
@@ -62,5 +63,13 @@ class PostMetaExtension extends \Twig_Extension
     public function getPostMeta($postId, $metaName, $fetchOneResult = false)
     {
         return $this->postMetaManager->getPostMeta($postId, $metaName, $fetchOneResult);
+    }
+
+    /**
+     * @param int    $imgId         An image identifier
+     */
+    public function getImageUrlFromId($imgId)
+    {
+        return \wp_get_attachment_url($imgId);
     }
 }
