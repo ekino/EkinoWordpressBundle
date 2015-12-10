@@ -41,6 +41,7 @@ class Configuration implements ConfigurationInterface
                 ->booleanNode('load_twig_extension')->defaultFalse()->end()
                 ->booleanNode('cookie_hash')->defaultNull()->end()
                 ->scalarNode('i18n_cookie_name')->defaultFalse()->end()
+                ->booleanNode('enable_wordpress_listener')->defaultTrue()->end()
 
                 ->arrayNode('globals')
                     ->prototype('scalar')->end()
