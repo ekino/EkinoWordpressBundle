@@ -83,6 +83,10 @@ class EkinoWordpressExtension extends Extension
             $loader->load('i18n.xml');
         }
 
+        if ($config['enable_wordpress_listener']) {
+            $loader->load('listener.xml');
+        }
+
         if (isset($config['globals'])) {
             $this->loadWordpressGlobals($container, $config['globals']);
         }
