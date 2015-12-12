@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Entity;
 use Ekino\WordpressBundle\Model\Post as PostModel;
 
 /**
- * Class Post
+ * Class Post.
  *
  * This is the Post entity
  *

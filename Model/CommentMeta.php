@@ -11,7 +11,7 @@
 namespace Ekino\WordpressBundle\Model;
 
 /**
- * Class CommentMeta
+ * Class CommentMeta.
  *
  * This is the CommentMeta entity
  *
@@ -20,7 +20,7 @@ namespace Ekino\WordpressBundle\Model;
 abstract class CommentMeta implements WordpressEntityInterface
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 

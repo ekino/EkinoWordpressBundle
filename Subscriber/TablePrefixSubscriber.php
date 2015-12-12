@@ -10,12 +10,12 @@
 
 namespace Ekino\WordpressBundle\Subscriber;
 
+use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
-use Doctrine\Common\EventSubscriber;
 
 /**
- * Class TablePrefixSubscriber
+ * Class TablePrefixSubscriber.
  *
  * Doctrine event to prefix tables
  *
@@ -24,14 +24,14 @@ use Doctrine\Common\EventSubscriber;
 class TablePrefixSubscriber implements EventSubscriber
 {
     /**
-     * Prefix value
+     * Prefix value.
      *
      * @var string
      */
     protected $prefix = '';
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param string $prefix
      */
@@ -41,17 +41,17 @@ class TablePrefixSubscriber implements EventSubscriber
     }
 
     /**
-     * Returns subscribed events
+     * Returns subscribed events.
      *
      * @return array
      */
     public function getSubscribedEvents()
     {
-        return array('loadClassMetadata');
+        return ['loadClassMetadata'];
     }
 
     /**
-     * Loads class metadata and updates table prefix name
+     * Loads class metadata and updates table prefix name.
      *
      * @param LoadClassMetadataEventArgs $args
      */
@@ -64,7 +64,7 @@ class TablePrefixSubscriber implements EventSubscriber
         }
 
         if ($classMetadata->getReflectionClass() && $classMetadata->getReflectionClass()->implementsInterface('Ekino\\WordpressBundle\\Model\\WordpressEntityInterface')) {
-            $classMetadata->setPrimaryTable(array('name' => $this->prefix.$classMetadata->getTableName()));
+            $classMetadata->setPrimaryTable(['name' => $this->prefix.$classMetadata->getTableName()]);
 
             foreach ($classMetadata->getAssociationMappings() as $fieldName => $mapping) {
                 if ($mapping['type'] == ClassMetadataInfo::MANY_TO_MANY) {

@@ -11,7 +11,7 @@
 namespace Ekino\WordpressBundle\Manager;
 
 /**
- * Class UserManager
+ * Class UserManager.
  *
  * This is the User entity manager
  *

@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * Class WordpressController
+ * Class WordpressController.
  *
  * This is the controller to render Wordpress content
  *
@@ -22,7 +22,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class WordpressController extends Controller
 {
     /**
-     * Wordpress catch-all route action
+     * Wordpress catch-all route action.
      *
      * @return \Ekino\WordpressBundle\Wordpress\WordpressResponse
      */
@@ -32,7 +32,7 @@ class WordpressController extends Controller
     }
 
     /**
-     * Returns Wordpress service
+     * Returns Wordpress service.
      *
      * @return \Ekino\WordpressBundle\Wordpress\Wordpress
      */

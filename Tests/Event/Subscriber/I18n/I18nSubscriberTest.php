@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Tests\Event\Subscriber\I18n;
 use Ekino\WordpressBundle\Event\Subscriber\I18n\I18nSubscriber;
 
 /**
- * Class RequestSubscriberTest
+ * Class RequestSubscriberTest.
  */
 class I18nSubscriberTest extends \PHPUnit_Framework_TestCase
 {
@@ -26,7 +26,7 @@ class I18nSubscriberTest extends \PHPUnit_Framework_TestCase
     protected $subscriber;
 
     /**
-     * Sets up a I18nSubscriber instance
+     * Sets up a I18nSubscriber instance.
      */
     protected function setUp()
     {
@@ -37,7 +37,7 @@ class I18nSubscriberTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests static getSubscribedEvents() method
+     * Tests static getSubscribedEvents() method.
      */
     public function testGetSubscribedEvents()
     {
@@ -45,7 +45,7 @@ class I18nSubscriberTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests onKernelRequest() method when no cookies are existing
+     * Tests onKernelRequest() method when no cookies are existing.
      */
     public function testOnKernelRequestNoExisingCookie()
     {
@@ -84,7 +84,7 @@ class I18nSubscriberTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests onKernelRequest() method
+     * Tests onKernelRequest() method.
      */
     public function testOnKernelRequest()
     {

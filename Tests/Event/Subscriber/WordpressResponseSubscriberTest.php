@@ -36,9 +36,9 @@ class WordpressResponseSubscriberTest extends \PHPUnit_Framework_TestCase
 
     public function testGetSubscribedEvents()
     {
-        $expected = array(
-            KernelEvents::RESPONSE => array('onKernelResponse'),
-        );
+        $expected = [
+            KernelEvents::RESPONSE => ['onKernelResponse'],
+        ];
 
         $this->assertEquals($expected, WordpressResponseSubscriber::getSubscribedEvents());
     }

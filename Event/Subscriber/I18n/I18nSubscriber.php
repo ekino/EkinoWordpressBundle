@@ -10,12 +10,12 @@
 
 namespace Ekino\WordpressBundle\Event\Subscriber\I18n;
 
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
- * Class I18nSubscriber
+ * Class I18nSubscriber.
  *
  * This class allows to inject the Wordpress locale cookie value into the Symfony request.
  */
@@ -32,7 +32,7 @@ class I18nSubscriber implements EventSubscriberInterface
     protected $wordpressI18nCookieName;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param string $defaultLocale
      * @param string $wordpressI18nCookieName
@@ -61,9 +61,9 @@ class I18nSubscriber implements EventSubscriberInterface
      */
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
             // must be registered before the default Locale listener
-            KernelEvents::REQUEST => array(array('onKernelRequest', 17)),
-        );
+            KernelEvents::REQUEST => [['onKernelRequest', 17]],
+        ];
     }
 }

@@ -15,7 +15,7 @@ use Ekino\WordpressBundle\Manager\OptionManager;
 use Ekino\WordpressBundle\Repository\OptionRepository;
 
 /**
- * Class OptionManagerTest
+ * Class OptionManagerTest.
  *
  * @author Xavier Coureau <xav.is@2cool4school.fr>
  */
@@ -37,7 +37,7 @@ class OptionManagerTest extends \PHPUnit_Framework_TestCase
     protected $manager;
 
     /**
-     * Sets up a OptionManager instance
+     * Sets up a OptionManager instance.
      */
     protected function setUp()
     {
@@ -51,13 +51,13 @@ class OptionManagerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test that the repository is called with the correct argument
+     * Test that the repository is called with the correct argument.
      */
     public function testFindOneByName()
     {
         $this->repository->expects($this->once())
             ->method('findOneBy')
-            ->with($this->equalTo(array('name' => 'test')));
+            ->with($this->equalTo(['name' => 'test']));
 
         $this->manager->findOneByOptionName('test');
     }

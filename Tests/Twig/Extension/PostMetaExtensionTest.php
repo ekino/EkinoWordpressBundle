@@ -7,18 +7,20 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace {
     function wp_get_attachment_url($imgId)
     {
         return 'http://www.exemple.com/image.jpg';
     }
 }
+
 namespace Ekino\WordpressBundle\Tests\Twig\Extension {
 
     use Ekino\WordpressBundle\Twig\Extension\PostMetaExtension;
 
     /**
-     * Class PostMetaExtensionTest
+     * Class PostMetaExtensionTest.
      *
      * @author Xavier Coureau <xav.is@2cool4school.fr>
      */
@@ -45,7 +47,7 @@ namespace Ekino\WordpressBundle\Tests\Twig\Extension {
         }
 
         /**
-         *   Get test name
+         *   Get test name.
          */
         public function testGetName()
         {
@@ -53,7 +55,7 @@ namespace Ekino\WordpressBundle\Tests\Twig\Extension {
         }
 
         /**
-         *   Get test functions
+         *   Get test functions.
          */
         public function testGetFunctions()
         {
@@ -61,7 +63,7 @@ namespace Ekino\WordpressBundle\Tests\Twig\Extension {
         }
 
         /**
-         * Check the correct result for an existing option
+         * Check the correct result for an existing option.
          */
         public function testGetPostMeta()
         {
@@ -76,7 +78,7 @@ namespace Ekino\WordpressBundle\Tests\Twig\Extension {
         }
 
         /**
-         *  Check getImageUrlFromId method
+         *  Check getImageUrlFromId method.
          */
         public function testGetImageUrlFromId()
         {

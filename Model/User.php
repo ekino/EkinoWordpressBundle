@@ -14,7 +14,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * Class User
+ * Class User.
  *
  * This is the User entity
  *
@@ -23,7 +23,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 abstract class User implements UserInterface, WordpressEntityInterface
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
@@ -63,7 +63,7 @@ abstract class User implements UserInterface, WordpressEntityInterface
     protected $activationKey;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $status;
 
@@ -83,7 +83,7 @@ abstract class User implements UserInterface, WordpressEntityInterface
     protected $roles;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -291,7 +291,7 @@ abstract class User implements UserInterface, WordpressEntityInterface
     }
 
     /**
-     * Returns user meta value from a meta key name
+     * Returns user meta value from a meta key name.
      *
      * @param string $name
      *
@@ -317,7 +317,7 @@ abstract class User implements UserInterface, WordpressEntityInterface
     }
 
     /**
-     * Sets user roles
+     * Sets user roles.
      *
      * @param array|string $roles
      *
@@ -326,7 +326,7 @@ abstract class User implements UserInterface, WordpressEntityInterface
     public function setRoles($roles)
     {
         if (!is_array($roles)) {
-            $roles = array($roles);
+            $roles = [$roles];
         }
 
         $this->roles = $roles;
@@ -335,7 +335,7 @@ abstract class User implements UserInterface, WordpressEntityInterface
     }
 
     /**
-     * Sets Wordpress user roles by prefixing them
+     * Sets Wordpress user roles by prefixing them.
      *
      * @param array  $roles  An array of roles
      * @param string $prefix A role prefix
@@ -358,7 +358,7 @@ abstract class User implements UserInterface, WordpressEntityInterface
      */
     public function getRoles()
     {
-        return $this->roles ? $this->roles : array();
+        return $this->roles ? $this->roles : [];
     }
 
     /**

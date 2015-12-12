@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Entity;
 use Ekino\WordpressBundle\Model\UserMeta as UserMetaModel;
 
 /**
- * Class UserMeta
+ * Class UserMeta.
  *
  * This is the UserMeta entity
  *

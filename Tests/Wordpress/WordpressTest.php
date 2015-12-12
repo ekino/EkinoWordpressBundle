@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Tests\Wordpress;
 use Ekino\WordpressBundle\Wordpress\Wordpress;
 
 /**
- * Class WordpressTest
+ * Class WordpressTest.
  *
  * This is the test class for the Wordpress class
  *
@@ -27,14 +27,14 @@ class WordpressTest extends \PHPUnit_Framework_TestCase
     protected $wordpress;
 
     /**
-     * This is the fake content returned by Wordpress class
+     * This is the fake content returned by Wordpress class.
      *
      * @var string
      */
     protected $content;
 
     /**
-     * Set up Wordpress class
+     * Set up Wordpress class.
      */
     protected function setUp()
     {
@@ -48,7 +48,7 @@ class WordpressTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests Wordpress initialize() method
+     * Tests Wordpress initialize() method.
      *
      * Should return content of Wordpress
      */
@@ -60,7 +60,7 @@ class WordpressTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests Wordpress getResponse() method
+     * Tests Wordpress getResponse() method.
      *
      * Should return a WordpressResponse instance and fake content initialized
      */
@@ -75,13 +75,13 @@ class WordpressTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Returns an exception when specified Wordpress directory is not found
+     * Returns an exception when specified Wordpress directory is not found.
      */
     public function testExceptionWhenDirectoryNotFound()
     {
         $this->setExpectedException('InvalidArgumentException');
 
-        $wordpress = new Wordpress($this->getKernelMock(), array('wp_test_global1', 'wp_test_global2'), '/a/path/that/does/not/exists');
+        $wordpress = new Wordpress($this->getKernelMock(), ['wp_test_global1', 'wp_test_global2'], '/a/path/that/does/not/exists');
         $wordpress->initialize();
     }
 
@@ -98,7 +98,7 @@ class WordpressTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Returns a mock of Wordpress class
+     * Returns a mock of Wordpress class.
      *
      * @return \Ekino\WordpressBundle\Wordpress\Wordpress
      */
@@ -106,11 +106,11 @@ class WordpressTest extends \PHPUnit_Framework_TestCase
     {
         $kernel = $this->getKernelMock();
 
-        return $this->getMock('\Ekino\WordpressBundle\Wordpress\Wordpress', array('getContent'), array($kernel, array('wp_test_global1', 'wp_test_global2')));
+        return $this->getMock('\Ekino\WordpressBundle\Wordpress\Wordpress', ['getContent'], [$kernel, ['wp_test_global1', 'wp_test_global2']]);
     }
 
     /**
-     * Returns a mock of Symfony kernel
+     * Returns a mock of Symfony kernel.
      *
      * @return \Symfony\Component\HttpKernel\Kernel
      */

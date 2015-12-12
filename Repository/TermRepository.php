@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class TermRepository
+ * Class TermRepository.
  *
  * This is the repository of the Term entity
  *

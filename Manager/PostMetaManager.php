@@ -15,7 +15,7 @@ use Ekino\WordpressBundle\Entity\PostMeta;
 use Ekino\WordpressBundle\Repository\PostMetaRepository;
 
 /**
- * Class PostMetaManager
+ * Class PostMetaManager.
  *
  * This is the PostMeta entity manager
  *

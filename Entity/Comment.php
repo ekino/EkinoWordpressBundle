@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Entity;
 use Ekino\WordpressBundle\Model\Comment as CommentModel;
 
 /**
- * Class Comment
+ * Class Comment.
  *
  * This is the Comment entity
  *

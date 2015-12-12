@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Entity;
 use Ekino\WordpressBundle\Model\User as UserModel;
 
 /**
- * Class User
+ * Class User.
  *
  * This is the User entity
  *

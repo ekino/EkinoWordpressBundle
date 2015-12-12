@@ -11,7 +11,7 @@
 namespace Ekino\WordpressBundle\Model;
 
 /**
- * Class PostMeta
+ * Class PostMeta.
  *
  * This is the PostMeta entity
  *
@@ -20,7 +20,7 @@ namespace Ekino\WordpressBundle\Model;
 abstract class PostMeta implements WordpressEntityInterface
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 

@@ -16,7 +16,7 @@ use Ekino\WordpressBundle\Manager\PostMetaManager;
 use Ekino\WordpressBundle\Repository\PostMetaRepository;
 
 /**
- * Class PostMetaManagerTest
+ * Class PostMetaManagerTest.
  *
  * @author Xavier Coureau <xav.is@2cool4school.fr>
  */
@@ -38,7 +38,7 @@ class PostMetaManagerTest extends \PHPUnit_Framework_TestCase
     protected $manager;
 
     /**
-     * Sets up a PostMetaManager instance
+     * Sets up a PostMetaManager instance.
      */
     protected function setUp()
     {

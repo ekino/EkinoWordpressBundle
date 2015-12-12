@@ -11,7 +11,7 @@
 namespace Ekino\WordpressBundle\Twig\Extension;
 
 /**
- * Class ThemeExtension
+ * Class ThemeExtension.
  *
  * This extension provides native Wordpress theme integration into Symfony.
  *
@@ -34,11 +34,11 @@ class ThemeExtension extends \Twig_Extension
      */
     public function getFunctions()
     {
-        return array(
-            new \Twig_SimpleFunction('wp_get_header', array($this, 'getHeader'), array('is_safe' => array('html'))),
-            new \Twig_SimpleFunction('wp_get_sidebar', array($this, 'getSidebar'), array('is_safe' => array('html'))),
-            new \Twig_SimpleFunction('wp_get_footer', array($this, 'getFooter'), array('is_safe' => array('html'))),
-        );
+        return [
+            new \Twig_SimpleFunction('wp_get_header', [$this, 'getHeader'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('wp_get_sidebar', [$this, 'getSidebar'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('wp_get_footer', [$this, 'getFooter'], ['is_safe' => ['html']]),
+        ];
     }
 
     /**

@@ -13,12 +13,12 @@ namespace Ekino\WordpressBundle\Event\Subscriber;
 use Ekino\WordpressBundle\Wordpress\Wordpress;
 use Ekino\WordpressBundle\Wordpress\WordpressResponse;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 
 /**
- * Class WordpressResponseSubscriber
+ * Class WordpressResponseSubscriber.
  *
  * This listener allows to manage Wordpress response into Symfony.
  */
@@ -62,8 +62,8 @@ class WordpressResponseSubscriber implements EventSubscriberInterface
      */
     public static function getSubscribedEvents()
     {
-        return array(
-            KernelEvents::RESPONSE => array('onKernelResponse'),
-        );
+        return [
+            KernelEvents::RESPONSE => ['onKernelResponse'],
+        ];
     }
 }

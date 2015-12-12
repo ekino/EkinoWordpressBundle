@@ -10,7 +10,7 @@
 
 namespace Ekino\WordpressBundle\Security;
 
-/**
+/*
  * Class WordPressEntryPoint
  *
  * This class can be used in the firewall configuration to redirect
@@ -18,15 +18,15 @@ namespace Ekino\WordpressBundle\Security;
  *
  * @author Jérôme Tamarelle <jerome@tamarelle.net>
  */
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Http\Authorization\AccessDeniedHandlerInterface;
 use Symfony\Component\Security\Http\EntryPoint\AuthenticationEntryPointInterface;
-use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
- * Class WordpressEntryPoint
+ * Class WordpressEntryPoint.
  *
  * This is a Symfony security component entry point to manage Wordpress login.
  */
@@ -70,10 +70,10 @@ class WordpressEntryPoint implements AccessDeniedHandlerInterface, Authenticatio
      */
     private function createRedirectResponse(Request $request)
     {
-        $url = $this->loginUrl.'?'.http_build_query(array(
+        $url = $this->loginUrl.'?'.http_build_query([
             'redirect_to' => $request->getUri(),
-            'reauth' => 0,
-        ));
+            'reauth'      => 0,
+        ]);
 
         return RedirectResponse::create($url, 302);
     }

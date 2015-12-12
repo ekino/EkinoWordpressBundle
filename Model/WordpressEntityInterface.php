@@ -11,7 +11,7 @@
 namespace Ekino\WordpressBundle\Model;
 
 /**
- * WordpressEntityInterface is an interface that identifies EkinoWordpressBundle entities
+ * WordpressEntityInterface is an interface that identifies EkinoWordpressBundle entities.
  *
  * @author Vincent Composieux <vincent.composieux@gmail.com>
  */

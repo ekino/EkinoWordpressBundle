@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Tests\Entity;
 use Ekino\WordpressBundle\Entity\Link;
 
 /**
- * Class LinkTest
+ * Class LinkTest.
  *
  * This is the Wordpress link entity test
  *
@@ -22,7 +22,7 @@ use Ekino\WordpressBundle\Entity\Link;
 class LinkTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Test entity getters & setters
+     * Test entity getters & setters.
      */
     public function testGettersSetters()
     {

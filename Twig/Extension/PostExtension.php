@@ -14,7 +14,7 @@ use Ekino\WordpressBundle\Entity\Post;
 use Ekino\WordpressBundle\Manager\PostManager;
 
 /**
- * Class PostExtension
+ * Class PostExtension.
  *
  * This extension provides native Wordpress functions into Twig.
  */
@@ -60,22 +60,22 @@ class PostExtension extends \Twig_Extension
      */
     public function getFunctions()
     {
-        return array(
-            new \Twig_SimpleFunction('wp_comments_open', array($this, 'isCommentingOpened')),
-            new \Twig_SimpleFunction('wp_get_permalink', array($this, 'getPermalink')),
-            new \Twig_SimpleFunction('wp_get_the_post_thumbnail_url', array($this, 'getThumbnailUrl')),
-            new \Twig_SimpleFunction('wp_have_comments', array($this, 'haveComments')),
-            new \Twig_SimpleFunction('wp_post_password_required', array($this, 'isPostPasswordRequired'), array('needs_context' => true)),
-        );
+        return [
+            new \Twig_SimpleFunction('wp_comments_open', [$this, 'isCommentingOpened']),
+            new \Twig_SimpleFunction('wp_get_permalink', [$this, 'getPermalink']),
+            new \Twig_SimpleFunction('wp_get_the_post_thumbnail_url', [$this, 'getThumbnailUrl']),
+            new \Twig_SimpleFunction('wp_have_comments', [$this, 'haveComments']),
+            new \Twig_SimpleFunction('wp_post_password_required', [$this, 'isPostPasswordRequired'], ['needs_context' => true]),
+        ];
     }
 
     /**
      * @param int|Post $postId     A Wordpress post identifier
      * @param bool     $isAbsolute Determines if you want to retrieve an absolute URL
      *
-     * @return string
-     *
      * @throws \UnexpectedValueException
+     *
+     * @return string
      */
     public function getPermalink($postId, $isAbsolute = false)
     {
@@ -92,7 +92,7 @@ class PostExtension extends \Twig_Extension
         if ($isAbsolute) {
             $home = $this->optionExtension->getOption('home');
 
-            return rtrim($home->getValue(), '/') . '/' . ltrim($relativeUrl, '/');
+            return rtrim($home->getValue(), '/').'/'.ltrim($relativeUrl, '/');
         }
 
         return $relativeUrl;

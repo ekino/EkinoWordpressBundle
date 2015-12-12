@@ -11,7 +11,7 @@
 namespace Ekino\WordpressBundle\Model;
 
 /**
- * Class Comment
+ * Class Comment.
  *
  * This is the Comment entity
  *
@@ -29,7 +29,7 @@ abstract class Comment implements WordpressEntityInterface, WordpressContentInte
     const APPROVED_TRASH = 'trash';
 
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
@@ -46,17 +46,17 @@ abstract class Comment implements WordpressEntityInterface, WordpressContentInte
     /**
      * @var string
      */
-    protected $authorEmail = "";
+    protected $authorEmail = '';
 
     /**
      * @var string
      */
-    protected $authorUrl = "";
+    protected $authorUrl = '';
 
     /**
      * @var string
      */
-    protected $authorIp = "";
+    protected $authorIp = '';
 
     /**
      * @var \DateTime
@@ -74,7 +74,7 @@ abstract class Comment implements WordpressEntityInterface, WordpressContentInte
     protected $content;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $karma = 0;
 
@@ -86,12 +86,12 @@ abstract class Comment implements WordpressEntityInterface, WordpressContentInte
     /**
      * @var string
      */
-    protected $agent = "";
+    protected $agent = '';
 
     /**
      * @var string
      */
-    protected $type = "";
+    protected $type = '';
 
     /**
      * @var Comment
@@ -393,8 +393,8 @@ abstract class Comment implements WordpressEntityInterface, WordpressContentInte
 
     public function __construct()
     {
-        $this->date = new \DateTime("@0");
-        $this->dateGmt = new \DateTime("@0");
+        $this->date = new \DateTime('@0');
+        $this->dateGmt = new \DateTime('@0');
     }
 
     /**

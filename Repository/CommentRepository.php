@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class CommentRepository
+ * Class CommentRepository.
  *
  * This is the repository of the Comment entity
  *

@@ -11,7 +11,7 @@
 namespace Ekino\WordpressBundle\Model;
 
 /**
- * Class Option
+ * Class Option.
  *
  * This is the Option entity
  *
@@ -20,7 +20,7 @@ namespace Ekino\WordpressBundle\Model;
 abstract class Option implements WordpressEntityInterface
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 

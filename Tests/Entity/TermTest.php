@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Tests\Entity;
 use Ekino\WordpressBundle\Entity\Term;
 
 /**
- * Class TermTest
+ * Class TermTest.
  *
  * This is the Wordpress term entity test
  *
@@ -22,7 +22,7 @@ use Ekino\WordpressBundle\Entity\Term;
 class TermTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Test entity getters & setters
+     * Test entity getters & setters.
      */
     public function testGettersSetters()
     {

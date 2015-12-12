@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Manager;
 use Doctrine\ORM\EntityManager;
 
 /**
- * Class BaseManager
+ * Class BaseManager.
  *
  * This is the base manager
  *
@@ -37,20 +37,20 @@ class BaseManager
     protected $class;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param EntityManager $em    Entity manager
      * @param string        $class Class name
      */
     public function __construct(EntityManager $em, $class)
     {
-        $this->class      = $class;
-        $this->em         = $em;
+        $this->class = $class;
+        $this->em = $em;
         $this->repository = $em->getRepository($this->class);
     }
 
     /**
-     * Returns a new non-managed entity
+     * Returns a new non-managed entity.
      *
      * @return mixed
      */
@@ -60,9 +60,9 @@ class BaseManager
     }
 
     /**
-     * Returns a "fresh" entity by identifier
+     * Returns a "fresh" entity by identifier.
      *
-     * @param integer $id Entity identifier
+     * @param int $id Entity identifier
      *
      * @return object
      */
@@ -72,9 +72,9 @@ class BaseManager
     }
 
     /**
-     * Returns an entity by id
+     * Returns an entity by id.
      *
-     * @param integer $id Entity id
+     * @param int $id Entity id
      *
      * @return object
      */
@@ -84,7 +84,7 @@ class BaseManager
     }
 
     /**
-     * Returns all entities of the child class
+     * Returns all entities of the child class.
      *
      * @return array
      */
@@ -94,7 +94,7 @@ class BaseManager
     }
 
     /**
-     * Returns entities found for given criteria
+     * Returns entities found for given criteria.
      *
      * @param array $criteria
      *
@@ -106,7 +106,7 @@ class BaseManager
     }
 
     /**
-     * Returns entity found for given criteria
+     * Returns entity found for given criteria.
      *
      * @param array $criteria
      *
@@ -118,7 +118,7 @@ class BaseManager
     }
 
     /**
-     * Flush persisted entities
+     * Flush persisted entities.
      */
     public function flush()
     {
@@ -126,7 +126,7 @@ class BaseManager
     }
 
     /**
-     * Refresh persisted entities
+     * Refresh persisted entities.
      */
     public function refresh($entity)
     {
@@ -142,7 +142,7 @@ class BaseManager
     }
 
     /**
-     * Persist the given entity
+     * Persist the given entity.
      *
      * @param mixed $entity  An entity instance
      * @param bool  $doFlush Also flush  entity manager?
@@ -157,7 +157,7 @@ class BaseManager
     }
 
     /**
-     * Delete the given entity
+     * Delete the given entity.
      *
      * @param object $entity An entity instance
      */
@@ -168,7 +168,7 @@ class BaseManager
     }
 
     /**
-     * Returns entity repository
+     * Returns entity repository.
      *
      * @return \Doctrine\ORM\EntityRepository|EntityRepository
      */

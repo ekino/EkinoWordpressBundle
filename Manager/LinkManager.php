@@ -11,7 +11,7 @@
 namespace Ekino\WordpressBundle\Manager;
 
 /**
- * Class LinkManager
+ * Class LinkManager.
  *
  * This is the Link entity manager
  *

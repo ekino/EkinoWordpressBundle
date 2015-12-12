@@ -11,7 +11,7 @@
 namespace Ekino\WordpressBundle\Model;
 
 /**
- * Interface WordpressContentInterface
+ * Interface WordpressContentInterface.
  */
 interface WordpressContentInterface
 {

@@ -11,7 +11,7 @@
 namespace Ekino\WordpressBundle\Tests\Controller;
 
 /**
- * Class WordpressControllerTest
+ * Class WordpressControllerTest.
  *
  * This is the Wordpress bundle controller test
  *
@@ -27,7 +27,7 @@ class WordpressControllerTest extends \PHPUnit_Framework_TestCase
     protected $wordpress;
 
     /**
-     * Set up required mocks for Wordpress controller class
+     * Set up required mocks for Wordpress controller class.
      */
     protected function setUp()
     {
@@ -42,11 +42,11 @@ class WordpressControllerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test catchAllAction() method
+     * Test catchAllAction() method.
      */
     public function testCatchAllAction()
     {
-        $controller = $this->getMock('\Ekino\WordpressBundle\Controller\WordpressController', array('getWordpress'));
+        $controller = $this->getMock('\Ekino\WordpressBundle\Controller\WordpressController', ['getWordpress']);
         $controller->expects($this->any())->method('getWordpress')->will($this->returnValue($this->wordpress));
 
         $response = $controller->catchAllAction();
@@ -55,7 +55,7 @@ class WordpressControllerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Returns a mock of Wordpress class
+     * Returns a mock of Wordpress class.
      *
      * @return \Ekino\WordpressBundle\Wordpress\Wordpress
      */
@@ -63,11 +63,11 @@ class WordpressControllerTest extends \PHPUnit_Framework_TestCase
     {
         $kernel = $this->getKernelMock();
 
-        return $this->getMock('\Ekino\WordpressBundle\Wordpress\Wordpress', array('getContent'), array($kernel, array('wp_test_global1', 'wp_test_global2')));
+        return $this->getMock('\Ekino\WordpressBundle\Wordpress\Wordpress', ['getContent'], [$kernel, ['wp_test_global1', 'wp_test_global2']]);
     }
 
     /**
-     * Returns a mock of Symfony kernel
+     * Returns a mock of Symfony kernel.
      *
      * @return \Symfony\Component\HttpKernel\Kernel
      */

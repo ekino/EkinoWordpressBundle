@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Entity;
 use Ekino\WordpressBundle\Model\Term as TermModel;
 
 /**
- * Class Term
+ * Class Term.
  *
  * This is the Term entity
  *

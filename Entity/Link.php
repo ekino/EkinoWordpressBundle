@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Entity;
 use Ekino\WordpressBundle\Model\Link as LinkModel;
 
 /**
- * Class Link
+ * Class Link.
  *
  * This is the Link entity
  *

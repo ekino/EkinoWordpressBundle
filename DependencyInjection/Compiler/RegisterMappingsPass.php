@@ -11,13 +11,13 @@
 
 namespace Ekino\WordpressBundle\DependencyInjection\Compiler;
 
+use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
-use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 
 /**
- * Class RegisterMappingsPass
+ * Class RegisterMappingsPass.
  *
  * This compiler pass registers the bundle schema with the Doctrine one
  *
@@ -82,20 +82,20 @@ class RegisterMappingsPass implements CompilerPassInterface
         $chainDriverDef = $container->getDefinition($chainDriverDefService);
 
         foreach ($this->namespaces as $namespace) {
-            $chainDriverDef->addMethodCall('addDriver', array($this->driver, $namespace));
+            $chainDriverDef->addMethodCall('addDriver', [$this->driver, $namespace]);
         }
     }
 
     /**
      * @param ContainerBuilder $container
      *
-     * @return string
-     *
      * @throws \Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException
+     *
+     * @return string
      */
     protected function getChainDriverServiceName(ContainerBuilder $container)
     {
-        foreach (array('ekino_wordpress.model_manager_name', $this->fallbackManagerParameter) as $param) {
+        foreach (['ekino_wordpress.model_manager_name', $this->fallbackManagerParameter] as $param) {
             if ($container->hasParameter($param)) {
                 $name = $container->getParameter($param);
                 if ($name) {
@@ -114,10 +114,10 @@ class RegisterMappingsPass implements CompilerPassInterface
      */
     public static function createOrmMappingDriver(array $mappings)
     {
-        $arguments = array($mappings, '.orm.xml');
+        $arguments = [$mappings, '.orm.xml'];
         $locator = new Definition('Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator', $arguments);
-        $driver = new Definition('Doctrine\ORM\Mapping\Driver\XmlDriver', array($locator));
+        $driver = new Definition('Doctrine\ORM\Mapping\Driver\XmlDriver', [$locator]);
 
-        return new RegisterMappingsPass($driver, 'doctrine.orm.%s_metadata_driver', $mappings, 'ekino_wordpress.backend_type_orm', 'doctrine.default_entity_manager');
+        return new self($driver, 'doctrine.orm.%s_metadata_driver', $mappings, 'ekino_wordpress.backend_type_orm', 'doctrine.default_entity_manager');
     }
 }

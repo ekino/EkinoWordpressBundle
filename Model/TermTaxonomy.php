@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Class TermTaxonomy
+ * Class TermTaxonomy.
  *
  * This is the TermTaxonomy entity
  *
@@ -22,7 +22,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 abstract class TermTaxonomy implements WordpressEntityInterface
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
@@ -52,12 +52,12 @@ abstract class TermTaxonomy implements WordpressEntityInterface
     protected $relationships;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $count;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -113,7 +113,7 @@ abstract class TermTaxonomy implements WordpressEntityInterface
     }
 
     /**
-     * @param integer $parent
+     * @param int $parent
      *
      * @return TermTaxonomy
      */
@@ -125,7 +125,7 @@ abstract class TermTaxonomy implements WordpressEntityInterface
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getParent()
     {

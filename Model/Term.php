@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Class Term
+ * Class Term.
  *
  * This is the Term entity
  *
@@ -22,7 +22,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 abstract class Term implements WordpressEntityInterface
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
@@ -37,7 +37,7 @@ abstract class Term implements WordpressEntityInterface
     protected $slug;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $group;
 
@@ -47,7 +47,7 @@ abstract class Term implements WordpressEntityInterface
     protected $taxonomies;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {

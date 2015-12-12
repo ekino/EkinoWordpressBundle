@@ -14,7 +14,7 @@ use Ekino\WordpressBundle\Entity\TermRelationships;
 use Ekino\WordpressBundle\Entity\TermTaxonomy;
 
 /**
- * Class TermRelationshipsTest
+ * Class TermRelationshipsTest.
  *
  * This is the Wordpress term relationships entity test
  *
@@ -23,7 +23,7 @@ use Ekino\WordpressBundle\Entity\TermTaxonomy;
 class TermRelationshipsTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Test entity getters & setters
+     * Test entity getters & setters.
      */
     public function testGettersSetters()
     {

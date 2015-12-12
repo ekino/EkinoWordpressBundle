@@ -22,7 +22,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 /**
- * Class WordpressRequestListenerTest
+ * Class WordpressRequestListenerTest.
  *
  * This is the test class for the WordpressRequestListener that initializes the Wordpress application
  *
@@ -46,14 +46,14 @@ class WordpressRequestListenerTest extends \PHPUnit_Framework_TestCase
     protected $tokenStorage;
 
     /**
-     * Set up required mocks for WordpressRequestListener class
+     * Set up required mocks for WordpressRequestListener class.
      */
     protected function setUp()
     {
         // Set up a fake User to be returned by UserManager mocked below
-        $userMock = $this->getMock('\Ekino\WordpressBundle\Entity\User', array('getMetaValue'));
+        $userMock = $this->getMock('\Ekino\WordpressBundle\Entity\User', ['getMetaValue']);
         $userMock->expects($this->any())->method('getMetaValue')->will(
-            $this->returnValue(serialize(array('administrator' => true)))
+            $this->returnValue(serialize(['administrator' => true]))
         );
 
         $this->wordpress = $this->getMockBuilder('\Ekino\WordpressBundle\Wordpress\Wordpress')
@@ -64,8 +64,8 @@ class WordpressRequestListenerTest extends \PHPUnit_Framework_TestCase
 
         $this->listener = $this->getMock(
             '\Ekino\WordpressBundle\Listener\WordpressRequestListener',
-            array('getWordpressLoggedIdentifier'),
-            array($this->wordpress, $this->tokenStorage)
+            ['getWordpressLoggedIdentifier'],
+            [$this->wordpress, $this->tokenStorage]
         );
     }
 
@@ -156,7 +156,7 @@ class WordpressRequestListenerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Returns a Symfony session service
+     * Returns a Symfony session service.
      *
      * @return \Symfony\Component\HttpFoundation\Session\Session
      */

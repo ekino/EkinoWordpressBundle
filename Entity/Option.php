@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Entity;
 use Ekino\WordpressBundle\Model\Option as OptionModel;
 
 /**
- * Class Option
+ * Class Option.
  *
  * This is the Option entity
  *

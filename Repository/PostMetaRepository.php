@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class PostMetaRepository
+ * Class PostMetaRepository.
  *
  * This is the repository of the PostMeta entity
  *

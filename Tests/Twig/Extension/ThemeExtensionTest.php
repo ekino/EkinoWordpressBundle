@@ -55,7 +55,7 @@ namespace Ekino\WordpressBundle\Tests\Twig\Extension {
     use Ekino\WordpressBundle\Twig\Extension\ThemeExtension;
 
     /**
-     * Class ThemeExtensionTest
+     * Class ThemeExtensionTest.
      *
      * @author Vincent Composieux <vincent.composieux@gmail.com>
      */

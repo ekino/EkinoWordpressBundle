@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Event;
 use Symfony\Component\EventDispatcher\Event;
 
 /**
- * Class WordpressEvent
+ * Class WordpressEvent.
  *
  * This is the Wordpress event class
  *
@@ -27,17 +27,17 @@ class WordpressEvent extends Event
     protected $parameters;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param array $parameters
      */
-    public function __construct(array $parameters = array())
+    public function __construct(array $parameters = [])
     {
         $this->parameters = $parameters;
     }
 
     /**
-     * Returns if parameter gor given index position exists
+     * Returns if parameter gor given index position exists.
      *
      * @param mixed $index
      *
@@ -49,13 +49,13 @@ class WordpressEvent extends Event
     }
 
     /**
-     * Returns a parameter of given index position
+     * Returns a parameter of given index position.
      *
      * @param mixed $index
      *
-     * @return mixed
-     *
      * @throws \InvalidArgumentException
+     *
+     * @return mixed
      */
     public function getParameter($index)
     {
@@ -67,7 +67,7 @@ class WordpressEvent extends Event
     }
 
     /**
-     * Adds a parameter
+     * Adds a parameter.
      *
      * @param mixed $value
      *

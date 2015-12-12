@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class TermTaxonomyRepository
+ * Class TermTaxonomyRepository.
  *
  * This is the repository of the TermTaxonomy entity
  *

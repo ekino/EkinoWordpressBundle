@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 
 /**
- * Class LoadMetadataSubscriber
+ * Class LoadMetadataSubscriber.
  */
 class LoadMetadataSubscriber implements EventSubscriber
 {
@@ -38,9 +38,9 @@ class LoadMetadataSubscriber implements EventSubscriber
      */
     public function getSubscribedEvents()
     {
-        return array(
+        return [
             'loadClassMetadata',
-        );
+        ];
     }
 
     /**
@@ -61,7 +61,7 @@ class LoadMetadataSubscriber implements EventSubscriber
     }
 
     /**
-     * Transform a mapped superclass into entity if needed
+     * Transform a mapped superclass into entity if needed.
      *
      * @param ClassMetadataInfo $metadata
      */
@@ -129,11 +129,11 @@ class LoadMetadataSubscriber implements EventSubscriber
     {
         return in_array(
             $type,
-            array(
+            [
                 ClassMetadataInfo::MANY_TO_MANY,
                 ClassMetadataInfo::ONE_TO_MANY,
                 ClassMetadataInfo::ONE_TO_ONE,
-            ),
+            ],
             true
         );
     }

@@ -11,7 +11,7 @@
 namespace Ekino\WordpressBundle\Manager;
 
 /**
- * Class CommentMetaManager
+ * Class CommentMetaManager.
  *
  * This is the CommentMeta entity manager
  *

@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Tests\Entity;
 use Ekino\WordpressBundle\Entity\Option;
 
 /**
- * Class OptionTest
+ * Class OptionTest.
  *
  * This is the Wordpress option entity test
  *
@@ -22,7 +22,7 @@ use Ekino\WordpressBundle\Entity\Option;
 class OptionTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Test entity getters & setters
+     * Test entity getters & setters.
      */
     public function testGettersSetters()
     {

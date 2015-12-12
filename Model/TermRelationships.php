@@ -11,7 +11,7 @@
 namespace Ekino\WordpressBundle\Model;
 
 /**
- * Class TermRelationships
+ * Class TermRelationships.
  *
  * This is the TermRelationships entity
  *
@@ -25,7 +25,7 @@ abstract class TermRelationships implements WordpressEntityInterface
     protected $taxonomy;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $termOrder;
 

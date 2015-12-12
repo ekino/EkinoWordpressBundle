@@ -11,7 +11,7 @@
 namespace Ekino\WordpressBundle\Manager;
 
 /**
- * Class TermRelationshipsManager
+ * Class TermRelationshipsManager.
  *
  * This is the TermRelationships entity manager
  *

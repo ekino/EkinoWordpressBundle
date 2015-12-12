@@ -11,7 +11,7 @@
 namespace Ekino\WordpressBundle\Manager;
 
 /**
- * Class OptionManager
+ * Class OptionManager.
  *
  * This is the Option entity manager
  *
@@ -26,7 +26,7 @@ class OptionManager extends BaseManager
      */
     public function findOneByOptionName($optionName)
     {
-        return $this->findOneBy(array('name' => $optionName));
+        return $this->findOneBy(['name' => $optionName]);
     }
 
     /**

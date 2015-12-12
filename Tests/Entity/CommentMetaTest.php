@@ -14,7 +14,7 @@ use Ekino\WordpressBundle\Entity\Comment;
 use Ekino\WordpressBundle\Entity\CommentMeta;
 
 /**
- * Class CommentMetaTest
+ * Class CommentMetaTest.
  *
  * This is the Wordpress comment meta entity test
  *
@@ -23,7 +23,7 @@ use Ekino\WordpressBundle\Entity\CommentMeta;
 class CommentMetaTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Test entity getters & setters
+     * Test entity getters & setters.
      */
     public function testGettersSetters()
     {

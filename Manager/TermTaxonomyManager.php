@@ -11,7 +11,7 @@
 namespace Ekino\WordpressBundle\Manager;
 
 /**
- * Class TermTaxonomyManager
+ * Class TermTaxonomyManager.
  *
  * This is the TermTaxonomy entity manager
  *

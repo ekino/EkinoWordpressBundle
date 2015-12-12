@@ -11,7 +11,7 @@
 namespace Ekino\WordpressBundle\Manager;
 
 /**
- * Class UserMetaManager
+ * Class UserMetaManager.
  *
  * This is the UserMeta entity manager
  *

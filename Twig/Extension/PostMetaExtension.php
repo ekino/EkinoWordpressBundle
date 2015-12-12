@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Twig\Extension;
 use Ekino\WordpressBundle\Manager\PostMetaManager;
 
 /**
- * Class PostMetaExtension
+ * Class PostMetaExtension.
  *
  * This extension provides native Wordpress functions into Twig.
  */
@@ -47,10 +47,10 @@ class PostMetaExtension extends \Twig_Extension
      */
     public function getFunctions()
     {
-        return array(
-            new \Twig_SimpleFunction('wp_get_post_meta', array($this, 'getPostMeta')),
-            new \Twig_SimpleFunction('wp_get_image_url_from_id', array($this, 'getImageUrlFromId')),
-        );
+        return [
+            new \Twig_SimpleFunction('wp_get_post_meta', [$this, 'getPostMeta']),
+            new \Twig_SimpleFunction('wp_get_image_url_from_id', [$this, 'getImageUrlFromId']),
+        ];
     }
 
     /**
@@ -66,7 +66,7 @@ class PostMetaExtension extends \Twig_Extension
     }
 
     /**
-     * @param int    $imgId         An image identifier
+     * @param int $imgId An image identifier
      */
     public function getImageUrlFromId($imgId)
     {

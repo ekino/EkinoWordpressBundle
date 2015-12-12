@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Tests\Event;
 use Ekino\WordpressBundle\Event\WordpressEvent;
 
 /**
- * Class WordpressEventTest
+ * Class WordpressEventTest.
  *
  * This is the test class for the Wordpress event class
  *
@@ -22,13 +22,13 @@ use Ekino\WordpressBundle\Event\WordpressEvent;
 class WordpressEventTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Tests WordpressEvent constructor parameters
+     * Tests WordpressEvent constructor parameters.
      *
      * Should return correct parameters
      */
     public function testConstructorParameters()
     {
-        $event = new WordpressEvent(array('my-key' => 'my-value'));
+        $event = new WordpressEvent(['my-key' => 'my-value']);
 
         $this->assertTrue($event->hasParameter('my-key'), 'Should return true because my-key value exists');
         $this->assertFalse($event->hasParameter(1), 'Should return false because only my-key value was added');
@@ -36,7 +36,7 @@ class WordpressEventTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests WordpressEvent addParameter() method
+     * Tests WordpressEvent addParameter() method.
      *
      * Should return correct parameters
      */

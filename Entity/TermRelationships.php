@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Entity;
 use Ekino\WordpressBundle\Model\TermRelationships as TermRelationshipsModel;
 
 /**
- * Class TermRelationships
+ * Class TermRelationships.
  *
  * This is the TermRelationships entity
  *

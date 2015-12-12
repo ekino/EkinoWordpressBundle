@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Tests\Twig\Extension;
 use Ekino\WordpressBundle\Twig\Extension\OptionExtension;
 
 /**
- * Class OptionExtensionTest
+ * Class OptionExtensionTest.
  *
  * @author Xavier Coureau <xav.is@2cool4school.fr>
  */
@@ -50,7 +50,7 @@ class OptionExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Check the correct result for an existing option
+     * Check the correct result for an existing option.
      */
     public function testGetOption()
     {
@@ -66,7 +66,7 @@ class OptionExtensionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Check the usage of default return value for a non existing option
+     * Check the usage of default return value for a non existing option.
      */
     public function testGetOptionUndefined()
     {

@@ -16,7 +16,7 @@ use Ekino\WordpressBundle\Entity\PostMeta;
 use Ekino\WordpressBundle\Entity\User;
 
 /**
- * Class PostTest
+ * Class PostTest.
  *
  * This is the Wordpress post entity test
  *
@@ -25,7 +25,7 @@ use Ekino\WordpressBundle\Entity\User;
 class PostTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Test entity getters & setters
+     * Test entity getters & setters.
      */
     public function testGettersSetters()
     {

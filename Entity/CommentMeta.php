@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Entity;
 use Ekino\WordpressBundle\Model\CommentMeta as CommentMetaModel;
 
 /**
- * Class CommentMeta
+ * Class CommentMeta.
  *
  * This is the CommentMeta entity
  *

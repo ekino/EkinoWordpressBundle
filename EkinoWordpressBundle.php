@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Class EkinoWordpressBundle
+ * Class EkinoWordpressBundle.
  *
  * This is the main Symfony bundle class
  *
@@ -38,9 +38,9 @@ class EkinoWordpressBundle extends Bundle
      */
     public function addRegisterMappingPass(ContainerBuilder $containerBuilder)
     {
-        $mappings = array(
+        $mappings = [
             realpath(__DIR__.'/Resources/config/doctrine/model') => 'Ekino\WordpressBundle\Model',
-        );
+        ];
 
         $containerBuilder->addCompilerPass(RegisterMappingsPass::createOrmMappingDriver($mappings));
     }

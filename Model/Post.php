@@ -14,7 +14,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
- * Class Post
+ * Class Post.
  *
  * This is the Post entity
  *
@@ -43,7 +43,7 @@ abstract class Post implements WordpressEntityInterface, WordpressContentInterfa
     const TYPE_NAVIGATION = 'nav_menu_item';
 
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
@@ -128,7 +128,7 @@ abstract class Post implements WordpressEntityInterface, WordpressContentInterfa
     protected $contentFiltered;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $parent = 0;
 
@@ -138,7 +138,7 @@ abstract class Post implements WordpressEntityInterface, WordpressContentInterfa
     protected $guid;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $menuOrder;
 
@@ -153,7 +153,7 @@ abstract class Post implements WordpressEntityInterface, WordpressContentInterfa
     protected $mimeType;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $commentCount;
 
@@ -173,7 +173,7 @@ abstract class Post implements WordpressEntityInterface, WordpressContentInterfa
     protected $termRelationships;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -451,7 +451,7 @@ abstract class Post implements WordpressEntityInterface, WordpressContentInterfa
     }
 
     /**
-     * @param integer $parent
+     * @param int $parent
      *
      * @return Post
      */
@@ -463,7 +463,7 @@ abstract class Post implements WordpressEntityInterface, WordpressContentInterfa
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getParent()
     {
@@ -690,7 +690,7 @@ abstract class Post implements WordpressEntityInterface, WordpressContentInterfa
     }
 
     /**
-     * Returns user meta value from a meta key name
+     * Returns user meta value from a meta key name.
      *
      * @param string $name
      *
@@ -803,7 +803,7 @@ abstract class Post implements WordpressEntityInterface, WordpressContentInterfa
         $terms = new ArrayCollection();
         $taxonomies = $this->getTaxonomiesByType($type);
 
-        /** @var TermTaxonomy $taxonomy */
+        /* @var TermTaxonomy $taxonomy */
         if ($taxonomies !== null) {
             foreach ($taxonomies as $taxonomy) {
                 $terms[] = $taxonomy->getTerm();

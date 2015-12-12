@@ -15,7 +15,7 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
- * Configuration
+ * Configuration.
  *
  * This class generates configuration settings tree
  *
@@ -24,7 +24,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 class Configuration implements ConfigurationInterface
 {
     /**
-     * Builds configuration tree
+     * Builds configuration tree.
      *
      * @return \Symfony\Component\Config\Definition\Builder\TreeBuilder A tree builder instance
      */
@@ -54,8 +54,7 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('login_url')->defaultValue('/wp-login.php')->end()
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
 
         $this->addServicesSection($rootNode);
 
@@ -161,7 +160,6 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-            ->end()
-        ;
+            ->end();
     }
 }

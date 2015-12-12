@@ -11,7 +11,7 @@
 namespace Ekino\WordpressBundle\Model;
 
 /**
- * Class Link
+ * Class Link.
  *
  * This is the Link entity
  *
@@ -20,7 +20,7 @@ namespace Ekino\WordpressBundle\Model;
 abstract class Link implements WordpressEntityInterface
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 
@@ -55,12 +55,12 @@ abstract class Link implements WordpressEntityInterface
     protected $visible;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $owner;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $rating;
 

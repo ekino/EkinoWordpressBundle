@@ -14,7 +14,7 @@ use Ekino\WordpressBundle\Manager\CommentManager;
 use Ekino\WordpressBundle\Model\Comment;
 
 /**
- * Class CommentExtension
+ * Class CommentExtension.
  *
  * This extension provides native Wordpress functions into Twig.
  *
@@ -50,9 +50,9 @@ class CommentExtension extends \Twig_Extension
      */
     public function getFunctions()
     {
-        return array(
-            new \Twig_SimpleFunction('wp_get_comment_author_link', array($this, 'getCommentAuthorLink'), array('is_safe' => array('html'))),
-        );
+        return [
+            new \Twig_SimpleFunction('wp_get_comment_author_link', [$this, 'getCommentAuthorLink'], ['is_safe' => ['html']]),
+        ];
     }
 
     /**

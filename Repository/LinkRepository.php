@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class LinkRepository
+ * Class LinkRepository.
  *
  * This is the repository of the Link entity
  *

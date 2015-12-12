@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Wordpress;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 /**
- * Class Wordpress
+ * Class Wordpress.
  *
  * This is the main application class that initializes Wordpress application
  * to retrieve the content and returns a Wordpress response
@@ -43,12 +43,12 @@ class Wordpress
     protected $response;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $alreadyInitialized;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param KernelInterface $kernel    Symfony kernel instance
      * @param array           $globals   A Wordpress global variables array
@@ -56,13 +56,13 @@ class Wordpress
      */
     public function __construct(KernelInterface $kernel, array $globals, $directory = null)
     {
-        $this->kernel    = $kernel;
-        $this->globals   = $globals;
+        $this->kernel = $kernel;
+        $this->globals = $globals;
         $this->directory = $directory;
     }
 
     /**
-     * Initializes Wordpress
+     * Initializes Wordpress.
      *
      * @return $this
      */
@@ -75,11 +75,11 @@ class Wordpress
     }
 
     /**
-     * Returns Wordpress content
-     *
-     * @return string
+     * Returns Wordpress content.
      *
      * @throws \InvalidArgumentException if Wordpress loader cannot be found
+     *
+     * @return string
      */
     public function getContent()
     {
@@ -102,7 +102,7 @@ class Wordpress
                 global ${$globalVariable};
             }
 
-            $loader = $this->getWordpressDirectory() . 'wp-blog-header.php';
+            $loader = $this->getWordpressDirectory().'wp-blog-header.php';
 
             if (!file_exists($loader)) {
                 throw new \InvalidArgumentException(
@@ -117,7 +117,7 @@ class Wordpress
     }
 
     /**
-     * Returns Wordpress content response
+     * Returns Wordpress content response.
      *
      * @return WordpressResponse
      */
@@ -142,7 +142,7 @@ class Wordpress
 
     /**
      * Returns Wordpress directory if specified in configuration
-     * otherwise returns default structure:
+     * otherwise returns default structure:.
      *
      * wordpress
      *     |- symfony <-- Symfony application must be installed on Wordpress root directory by default

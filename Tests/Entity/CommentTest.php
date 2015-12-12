@@ -15,7 +15,7 @@ use Ekino\WordpressBundle\Entity\Post;
 use Ekino\WordpressBundle\Entity\User;
 
 /**
- * Class CommentTest
+ * Class CommentTest.
  *
  * This is the Wordpress comment entity test
  *
@@ -24,7 +24,7 @@ use Ekino\WordpressBundle\Entity\User;
 class CommentTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Test entity getters & setters
+     * Test entity getters & setters.
      */
     public function testGettersSetters()
     {

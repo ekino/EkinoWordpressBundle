@@ -11,14 +11,14 @@
 namespace Ekino\WordpressBundle\DependencyInjection;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-use Symfony\Component\Config\FileLocator;
 
 /**
- * Class EkinoWordpressExtension
+ * Class EkinoWordpressExtension.
  *
  * This is the bundle Symfony extension class
  *
@@ -29,7 +29,7 @@ class EkinoWordpressExtension extends Extension
     /**
      * @var array
      */
-    protected static $entities = array(
+    protected static $entities = [
         'comment',
         'comment_meta',
         'link',
@@ -41,10 +41,10 @@ class EkinoWordpressExtension extends Extension
         'term_taxonomy',
         'user',
         'user_meta',
-    );
+    ];
 
     /**
-     * Loads configuration
+     * Loads configuration.
      *
      * @param array            $configs   A configuration array
      * @param ContainerBuilder $container Symfony container builder
@@ -130,7 +130,7 @@ class EkinoWordpressExtension extends Extension
         $identifier = 'ekino.wordpress.subscriber.table_prefix_subscriber';
 
         $serviceDefinition = $container->getDefinition($identifier);
-        $serviceDefinition->setArguments(array($prefix));
+        $serviceDefinition->setArguments([$prefix]);
 
         $container->setDefinition($identifier, $serviceDefinition);
     }
@@ -174,14 +174,14 @@ class EkinoWordpressExtension extends Extension
      */
     protected function loadWordpressGlobals(ContainerBuilder $container, $globals)
     {
-        $coreGlobals = array('wp', 'wp_the_query', 'wpdb', 'wp_query', 'allowedentitynames');
-        $globals     = array_merge($globals, $coreGlobals);
+        $coreGlobals = ['wp', 'wp_the_query', 'wpdb', 'wp_query', 'allowedentitynames'];
+        $globals = array_merge($globals, $coreGlobals);
 
         $container->findDefinition('ekino.wordpress.wordpress')->replaceArgument(1, $globals);
     }
 
     /**
-     * Returns bundle alias name
+     * Returns bundle alias name.
      *
      * @return string
      */

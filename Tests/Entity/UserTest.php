@@ -15,7 +15,7 @@ use Ekino\WordpressBundle\Entity\User;
 use Ekino\WordpressBundle\Entity\UserMeta;
 
 /**
- * Class UserTest
+ * Class UserTest.
  *
  * This is the Wordpress user entity test
  *
@@ -24,7 +24,7 @@ use Ekino\WordpressBundle\Entity\UserMeta;
 class UserTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Test entity getters & setters
+     * Test entity getters & setters.
      */
     public function testGettersSetters()
     {
@@ -65,28 +65,28 @@ class UserTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test setting classic Symfony roles
+     * Test setting classic Symfony roles.
      */
     public function testSymfonyRoles()
     {
-        $roles = array('ROLE_ADMINISTRATOR');
+        $roles = ['ROLE_ADMINISTRATOR'];
 
         $user = new User();
         $user->setRoles($roles);
 
-        $this->assertEquals(array('ROLE_ADMINISTRATOR'), $user->getRoles());
+        $this->assertEquals(['ROLE_ADMINISTRATOR'], $user->getRoles());
     }
 
     /**
-     * Test setting Wordpress roles and should return Symfony roles
+     * Test setting Wordpress roles and should return Symfony roles.
      */
     public function testWordpressRoles()
     {
-        $wordpressRoles = array('author');
+        $wordpressRoles = ['author'];
 
         $user = new User();
         $user->setWordpressRoles($wordpressRoles);
 
-        $this->assertEquals(array('ROLE_WP_AUTHOR'), $user->getRoles());
+        $this->assertEquals(['ROLE_WP_AUTHOR'], $user->getRoles());
     }
 }

@@ -135,6 +135,6 @@ class PostExtensionTest extends \PHPUnit_Framework_TestCase
             ->will($this->returnValue($homeOption));
 
         $result = $this->postExtension->getPermalink(12, true);
-        $this->assertEquals('http://localhost/blog' . date('/Y/m/d') . '/12-sample-post', $result);
+        $this->assertEquals('http://localhost/blog'.date('/Y/m/d').'/12-sample-post', $result);
     }
 }

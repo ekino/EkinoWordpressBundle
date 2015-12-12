@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Tests\Event\Hook;
 use Ekino\WordpressBundle\Event\Hook\UserHookListener;
 
 /**
- * Class UserHookListenerTest
+ * Class UserHookListenerTest.
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
@@ -50,7 +50,7 @@ class UserHookListenerTest extends \PHPUnit_Framework_TestCase
     protected $listener;
 
     /**
-     * Sets up a UserHookListener instance
+     * Sets up a UserHookListener instance.
      */
     protected function setUp()
     {
@@ -70,7 +70,7 @@ class UserHookListenerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests onLogin() method
+     * Tests onLogin() method.
      */
     public function testOnLogin()
     {
@@ -80,7 +80,7 @@ class UserHookListenerTest extends \PHPUnit_Framework_TestCase
 
         $wpUser = new \stdClass();
         $wpUser->data = $wpUserData;
-        $wpUser->roles = array('administrator');
+        $wpUser->roles = ['administrator'];
 
         $event = $this->getMock('Ekino\WordpressBundle\Event\WordpressEvent');
         $event->expects($this->once())->method('getParameter')->will($this->returnValue($wpUser));
@@ -88,7 +88,7 @@ class UserHookListenerTest extends \PHPUnit_Framework_TestCase
         $user = $this->getMock('Ekino\WordpressBundle\Entity\User');
         $user->expects($this->once())->method('setWordpressRoles')->with($wpUser->roles);
         $user->expects($this->once())->method('getPass')->will($this->returnValue(1234));
-        $user->expects($this->once())->method('getRoles')->will($this->returnValue(array('ROLE_WP_ADMINISTRATOR')));
+        $user->expects($this->once())->method('getRoles')->will($this->returnValue(['ROLE_WP_ADMINISTRATOR']));
 
         $this->userManager->expects($this->once())->method('find')->will($this->returnValue($user));
 
@@ -99,7 +99,7 @@ class UserHookListenerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests onLogout() method
+     * Tests onLogout() method.
      */
     public function testOnLogout()
     {

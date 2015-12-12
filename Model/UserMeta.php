@@ -11,7 +11,7 @@
 namespace Ekino\WordpressBundle\Model;
 
 /**
- * Class UserMeta
+ * Class UserMeta.
  *
  * This is the UserMeta entity
  *
@@ -20,7 +20,7 @@ namespace Ekino\WordpressBundle\Model;
 abstract class UserMeta implements WordpressEntityInterface
 {
     /**
-     * @var integer
+     * @var int
      */
     protected $id;
 

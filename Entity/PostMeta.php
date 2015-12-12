@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Entity;
 use Ekino\WordpressBundle\Model\PostMeta as PostMetaModel;
 
 /**
- * Class PostMeta
+ * Class PostMeta.
  *
  * This is the PostMeta entity
  *

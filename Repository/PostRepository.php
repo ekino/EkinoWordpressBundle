@@ -13,7 +13,7 @@ namespace Ekino\WordpressBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class PostRepository
+ * Class PostRepository.
  *
  * This is the repository of the Post entity
  *
@@ -34,7 +34,7 @@ class PostRepository extends EntityRepository
             ->where('p.date LIKE :date')
             ->addOrderBy('p.date', 'DESC')
             ->addOrderBy('p.id', 'DESC')
-            ->setParameter('date', $date->format('Y-m-d') . '%');
+            ->setParameter('date', $date->format('Y-m-d').'%');
 
         return $qb->getQuery()->getResult();
     }

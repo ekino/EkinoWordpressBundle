@@ -10,15 +10,15 @@
 
 namespace Ekino\WordpressBundle\Event\Hook;
 
-use Psr\Log\LoggerInterface;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Ekino\WordpressBundle\Event\WordpressEvent;
 use Ekino\WordpressBundle\Manager\UserManager;
+use Psr\Log\LoggerInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 /**
- * Class UserHookListener
+ * Class UserHookListener.
  *
  * This is a hook class that catch some user events fired by Wordpress
  *
@@ -52,7 +52,7 @@ class UserHookListener
     protected $firewall;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param UserManager           $userManager  Wordpress bundle user manager
      * @param LoggerInterface       $logger       Symfony PSR logger
@@ -62,15 +62,15 @@ class UserHookListener
      */
     public function __construct(UserManager $userManager, LoggerInterface $logger, TokenStorageInterface $tokenStorage, SessionInterface $session, $firewall)
     {
-        $this->userManager  = $userManager;
-        $this->logger       = $logger;
+        $this->userManager = $userManager;
+        $this->logger = $logger;
         $this->tokenStorage = $tokenStorage;
-        $this->session      = $session;
-        $this->firewall     = $firewall;
+        $this->session = $session;
+        $this->firewall = $firewall;
     }
 
     /**
-     * Wordpress user login hook method
+     * Wordpress user login hook method.
      *
      * @param WordpressEvent $event
      *
@@ -90,7 +90,7 @@ class UserHookListener
     }
 
     /**
-     * Wordpress user log out hook method
+     * Wordpress user log out hook method.
      *
      * @param WordpressEvent $event
      *
