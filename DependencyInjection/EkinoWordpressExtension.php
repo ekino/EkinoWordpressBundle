@@ -53,6 +53,9 @@ class EkinoWordpressExtension extends Extension
     {
         $config = $this->processConfiguration(new Configuration(), $configs);
 
+        $container->setParameter('ekino.wordpress.install_directory', $config['wordpress_directory'] ?: $container->getParameter('kernel.root_dir').'/../../');
+        $this->loadWordpressGlobals($container, $config['globals']);
+
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('manager.xml');
         $loader->load('services.xml');
@@ -64,10 +67,6 @@ class EkinoWordpressExtension extends Extension
 
         if (isset($config['table_prefix'])) {
             $this->loadTablePrefix($container, $config['table_prefix']);
-        }
-
-        if (isset($config['wordpress_directory'])) {
-            $this->loadWordpressDirectory($container, $config['wordpress_directory']);
         }
 
         if (isset($config['entity_manager'])) {
@@ -85,10 +84,6 @@ class EkinoWordpressExtension extends Extension
 
         if ($config['enable_wordpress_listener']) {
             $loader->load('listener.xml');
-        }
-
-        if (isset($config['globals'])) {
-            $this->loadWordpressGlobals($container, $config['globals']);
         }
 
         $container->setParameter('ekino.wordpress.cookie_hash', $config['cookie_hash']);
@@ -136,22 +131,6 @@ class EkinoWordpressExtension extends Extension
     }
 
     /**
-     * Loads Wordpress directory from configuration.
-     *
-     * @param ContainerBuilder $container Symfony dependency injection container
-     * @param string           $directory Wordpress directory
-     */
-    protected function loadWordpressDirectory(ContainerBuilder $container, $directory)
-    {
-        $identifier = 'ekino.wordpress.wordpress';
-
-        $serviceDefinition = $container->getDefinition($identifier);
-        $serviceDefinition->addArgument($directory);
-
-        $container->setDefinition($identifier, $serviceDefinition);
-    }
-
-    /**
      * Sets Doctrine entity manager for Wordpress.
      *
      * @param ContainerBuilder       $container
@@ -177,7 +156,7 @@ class EkinoWordpressExtension extends Extension
         $coreGlobals = ['wp', 'wp_the_query', 'wpdb', 'wp_query', 'allowedentitynames'];
         $globals = array_merge($globals, $coreGlobals);
 
-        $container->findDefinition('ekino.wordpress.wordpress')->replaceArgument(1, $globals);
+        $container->setParameter('ekino.wordpress.globals', $globals);
     }
 
     /**

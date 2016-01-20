@@ -9,8 +9,8 @@
         <!-- Services -->
 
         <service id="ekino.wordpress.wordpress" class="Ekino\WordpressBundle\Wordpress\Wordpress">
-            <argument type="service" id="kernel" />
-            <argument />
+            <argument>%ekino.wordpress.install_directory%</argument>
+            <argument>%ekino.wordpress.globals%</argument>
         </service>
 
         <!-- Subscribers -->

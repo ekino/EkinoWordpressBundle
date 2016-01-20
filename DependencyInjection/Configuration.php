@@ -36,7 +36,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('table_prefix')->end()
-                ->scalarNode('wordpress_directory')->end()
+                ->scalarNode('wordpress_directory')->defaultNull()->end()
                 ->scalarNode('entity_manager')->end()
                 ->booleanNode('load_twig_extension')->defaultFalse()->end()
                 ->booleanNode('cookie_hash')->defaultNull()->end()
@@ -44,7 +44,7 @@ class Configuration implements ConfigurationInterface
                 ->booleanNode('enable_wordpress_listener')->defaultTrue()->end()
 
                 ->arrayNode('globals')
-                    ->prototype('scalar')->end()
+                    ->prototype('scalar')->defaultValue([])->end()
                 ->end()
 
                 ->arrayNode('security')

@@ -81,7 +81,7 @@ class WordpressTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('InvalidArgumentException');
 
-        $wordpress = new Wordpress($this->getKernelMock(), ['wp_test_global1', 'wp_test_global2'], '/a/path/that/does/not/exists');
+        $wordpress = new Wordpress('/a/path/that/does/not/exists', ['wp_test_global1', 'wp_test_global2']);
         $wordpress->initialize();
     }
 
@@ -104,20 +104,6 @@ class WordpressTest extends \PHPUnit_Framework_TestCase
      */
     protected function getWordpressMock()
     {
-        $kernel = $this->getKernelMock();
-
-        return $this->getMock('\Ekino\WordpressBundle\Wordpress\Wordpress', ['getContent'], [$kernel, ['wp_test_global1', 'wp_test_global2']]);
-    }
-
-    /**
-     * Returns a mock of Symfony kernel.
-     *
-     * @return \Symfony\Component\HttpKernel\Kernel
-     */
-    protected function getKernelMock()
-    {
-        return $this->getMockBuilder('\Symfony\Component\HttpKernel\Kernel')
-            ->disableOriginalConstructor()
-            ->getMock();
+        return $this->getMock('\Ekino\WordpressBundle\Wordpress\Wordpress', ['getContent'], [__DIR__, ['wp_test_global1', 'wp_test_global2']]);
     }
 }
