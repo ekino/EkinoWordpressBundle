@@ -1,6 +1,6 @@
 {
     "name": "ekino/wordpress-bundle",
-    "type": "library",
+    "type": "symfony-bundle",
     "description": "A Symfony bundle to link Symfony with Wordpress",
     "keywords": ["ekino", "bundle", "symfony", "wordpress"],
     "homepage": "http://github.com/ekino/EkinoWordpressBundle",

@@ -10,8 +10,6 @@
 
 namespace Ekino\WordpressBundle\Wordpress;
 
-use Symfony\Component\HttpKernel\KernelInterface;
-
 /**
  * Class Wordpress.
  *
@@ -23,19 +21,14 @@ use Symfony\Component\HttpKernel\KernelInterface;
 class Wordpress
 {
     /**
-     * @var KernelInterface
+     * @var string
      */
-    protected $kernel;
+    protected $wordpressDirectory;
 
     /**
      * @var array
      */
     protected $globals;
-
-    /**
-     * @var string
-     */
-    protected $directory;
 
     /**
      * @var WordpressResponse
@@ -45,20 +38,16 @@ class Wordpress
     /**
      * @var bool
      */
-    protected $alreadyInitialized;
+    protected $alreadyInitialized = false;
 
     /**
-     * Constructor.
-     *
-     * @param KernelInterface $kernel    Symfony kernel instance
-     * @param array           $globals   A Wordpress global variables array
-     * @param string          $directory A wordpress directory (if specified in configuration)
+     * @param string $wordpressDirectory The wordpress directory installation
+     * @param array  $globals            A Wordpress global variables array
      */
-    public function __construct(KernelInterface $kernel, array $globals, $directory = null)
+    public function __construct($wordpressDirectory, array $globals)
     {
-        $this->kernel = $kernel;
         $this->globals = $globals;
-        $this->directory = $directory;
+        $this->wordpressDirectory = $wordpressDirectory;
     }
 
     /**
@@ -154,8 +143,6 @@ class Wordpress
      */
     protected function getWordpressDirectory()
     {
-        $directory = $this->directory ?: sprintf('%s/../../', $this->kernel->getRootDir());
-
-        return '/' == substr($directory, -1) ? $directory : $directory.'/';
+        return '/' == substr($this->wordpressDirectory, -1) ? $this->wordpressDirectory : $this->wordpressDirectory.'/';
     }
 }
