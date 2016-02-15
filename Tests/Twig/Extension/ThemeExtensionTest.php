@@ -41,7 +41,7 @@ namespace {
      */
     function get_template_part($slug, $name = null)
     {
-        echo 'wordpress template part ' . $slug . ($name ? ' ' . $name : '');
+        echo 'wordpress template part ' . $slug . ($name ? '-' . $name : '');
     }
 
     /**
