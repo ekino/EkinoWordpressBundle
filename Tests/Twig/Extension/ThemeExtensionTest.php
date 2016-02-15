@@ -34,6 +34,17 @@ namespace {
     }
 
     /**
+     * @param string $slug          The slug name for the generic template.
+     * @param string|null $name     The name of the specialised template.
+     *
+     * @return string
+     */
+    function get_template_part($slug, $name = null)
+    {
+        echo 'wordpress template part ' . $slug . ($name ? '-' . $name : '');
+    }
+
+    /**
      * @return string
      */
     function _wp_admin_bar_init()
@@ -128,6 +139,18 @@ namespace Ekino\WordpressBundle\Tests\Twig\Extension {
             $content = ob_get_clean();
 
             $this->assertEquals('wordpress footer', $content);
+        }
+
+        /**
+         * Tests the getTemplatePart() method (Twig function: wp_get_template_part()).
+         */
+        public function testGetTemplatePart()
+        {
+            ob_start();
+            $this->extension->getTemplatePart('content', 'page');
+            $content = ob_get_clean();
+
+            $this->assertEquals('wordpress template part content-page', $content);
         }
     }
 }
