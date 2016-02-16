@@ -17,15 +17,26 @@ Here are some features:
 
 ## Installation
 
-### 1) Install Symfony into your Wordpress project
+Idea of this installation tutorial is to have WordPress rendered by web root with the following architecture:
 
-Install your Wordpress project and/or get into your root project directory and install symfony like this:
+```
+project
+|-- wordpress (web root)
+|-- symfony (not available over HTTP)
+```
 
-`php composer.phar create-project symfony/framework-standard-edition symfony/`
+### 1) Install Symfony and WordPress
+
+Install your Wordpress project in a `wordpress` directory by unzipping the latest WordPress sources from https://www.wordpress.org.
+Install Symfony using composer (for instance, or new Symfony Installer tool) in a `symfony` directory:
+
+```
+$ php composer.phar create-project symfony/framework-standard-edition symfony/
+```
 
 ### 2) Install ekino/wordpress-bundle into Symfony's project
 
-After, edit `symfony/composer.json` file to add this bundle package:
+Edit `symfony/composer.json` file to add this bundle package:
 
 ```yml
 "require": {
@@ -61,7 +72,7 @@ ekino_wordpress:
     resource: "@EkinoWordpressBundle/Resources/config/routing.xml"
 ```
 
-Optionally, you can specify the following options in your `app/config.yml`:
+Edit your configuration and specify the following options in your `app/config.yml`:
 
 ```yml
 ekino_wordpress:
@@ -69,7 +80,7 @@ ekino_wordpress:
         - wp_global_variable_1
         - wp_global_variable_2
     table_prefix: "wp_" # If you have a specific Wordpress table prefix
-    wordpress_directory: "/my/wordpress/directory" # If you have a specific Wordpress directory structure
+    wordpress_directory: "%kernel.root_dir%/../../wordpress"
     load_twig_extension: true # If you want to enable native WordPress functions (ie : get_option() => wp_get_option())
     enable_wordpress_listener: false # If you want to disable the WordPress request listener
     security:
@@ -77,7 +88,7 @@ ekino_wordpress:
         login_url: "/wp-login.php" # Absolute URL to the wordpress login page
 ```
 
-Also optionally, if you want to use `UserHook` to authenticate on Symfony, you should add this configuration to your `app/security.yml`:
+Also optionally, if you want to use `UserHook` to authenticate on Symfony, you should add this configuration to your `symfony/app/security.yml`:
 
 ```yml
 security:
@@ -97,33 +108,7 @@ security:
         - { path: ^/admin, roles: ROLE_WP_ADMINISTRATOR }
 ```
 
-### 3) Wrap code inside web/app.php and web/app_dev.php
-
-To avoid problem with some Wordpress plugin, you need to wrap code inside a function like this :
-```php
-<?php
-use Symfony\Component\HttpFoundation\Request;
-
-// change for app_dev.php
-function run(){
-    $loader = require_once __DIR__.'/../var/bootstrap.php.cache';
-
-    require_once __DIR__.'/../app/AppKernel.php';
-
-    $kernel = new AppKernel('dev', true);
-    $kernel->loadClassCache();
-    Request::enableHttpMethodParameterOverride();
-    $request = Request::createFromGlobals();
-    $response = $kernel->handle($request);
-    $response->send();
-    $kernel->terminate($request, $response);
-}
-run();
-```
-
-And now do the same for app.php
-
-### 4) Update your Wordpress index.php file to load Symfony libraries
+### 3) Update your WordPress index.php file to load Symfony libraries
 
 ```php
 <?php
@@ -151,10 +136,10 @@ function symfony($id)
     return $container->get($id);
 }
 
-$loader = require_once __DIR__.'/symfony/var/bootstrap.php.cache';
+$loader = require_once __DIR__.'/../symfony/var/bootstrap.php.cache';
 
 // Load application kernel
-require_once __DIR__.'/symfony/app/AppKernel.php';
+require_once __DIR__.'/../symfony/app/AppKernel.php';
 
 $sfKernel = new AppKernel('dev', true);
 $sfKernel->loadClassCache();
@@ -176,13 +161,37 @@ $sfResponse->send();
 $sfKernel->terminate($sfRequest, $sfResponse);
 ```
 
-### 5) Edit .htaccess file on your Wordpress root project directory
+### 4) In the case you expose Symfony only
+
+To avoid problem with some Wordpress plugin, you need to wrap `web/app.php` code inside a function like this:
+
+```php
+<?php
+use Symfony\Component\HttpFoundation\Request;
+
+// change for app_dev.php
+function run(){
+    $loader = require_once __DIR__.'/../var/bootstrap.php.cache';
+
+    require_once __DIR__.'/../app/AppKernel.php';
+
+    $kernel = new AppKernel('dev', true);
+    $kernel->loadClassCache();
+    Request::enableHttpMethodParameterOverride();
+    $request = Request::createFromGlobals();
+    $response = $kernel->handle($request);
+    $response->send();
+    $kernel->terminate($request, $response);
+}
+run();
+```
+
+### 5) Edit .htaccess file on your WordPress root project directory
 
 Put the following rules:
 
 ```
 DirectoryIndex index.php
-IndexIgnore /symfony
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
@@ -247,7 +256,7 @@ $postManager->save($post);
 
 ---
 
-## Use in Wordpress
+## Use in WordPress
 
 ### Call a service from Symfony container
 
