@@ -38,4 +38,21 @@ class PostRepository extends EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    /**
+     * @param string $category
+     *
+     * @return array
+     *
+     * @author Guillaume Leclercq <g.leclercq12@gmail.com>
+     */
+    public function findByCategory($category)
+    {
+        return $this->createQueryBuilder('p')
+            ->leftJoin('Ekino\WordpressBundle\Entity\TermRelationships', 'tr', 'WITH', 'p.id = tr.post')
+            ->leftJoin('Ekino\WordpressBundle\Entity\Term', 't', 'WITH', 't.id = tr.taxonomy')
+            ->where('t.name = :category')
+            ->setParameter('category', $category)
+            ->getQuery()->getResult();
+    }
 }
