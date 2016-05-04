@@ -13,6 +13,7 @@ namespace Ekino\WordpressBundle\Tests\Manager;
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityManager;
 use Ekino\WordpressBundle\Manager\PostManager;
+use Ekino\WordpressBundle\Manager\PostMetaManager;
 use Ekino\WordpressBundle\Repository\PostRepository;
 
 /**
@@ -38,6 +39,11 @@ class PostManagerTest extends \PHPUnit_Framework_TestCase
     protected $manager;
 
     /**
+     * @var PostMetaManager
+     */
+    protected $postMetaManager;
+
+    /**
      * Sets up a PostManager instance
      */
     protected function setUp()
@@ -48,7 +54,8 @@ class PostManagerTest extends \PHPUnit_Framework_TestCase
             ->method('getRepository')
             ->will($this->returnValue($this->repository));
 
-        $this->manager = new PostManager($this->entityManager, 'Ekino\WordpressBundle\Entity\Post');
+        $this->postMetaManager = new PostMetaManager($this->entityManager, 'Ekino\WordpressBundle\Entity\PostMeta');
+        $this->manager = new PostManager($this->entityManager, 'Ekino\WordpressBundle\Entity\Post', $this->postMetaManager);
     }
 
     public function testFindByCategory()
