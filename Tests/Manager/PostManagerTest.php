@@ -60,38 +60,10 @@ class PostManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testFindByCategory()
     {
-        $query = $this->getMockBuilder('Ekino\WordpressBundle\Tests\Manager\QueryPostMock')->disableOriginalConstructor()->getMock();
         $this->repository->expects($this->once())
             ->method('findByCategory')
-            ->will($this->returnValue($query));
-
-        $query->expects($this->once())
-            ->method('getResult');
+            ->will($this->returnValue('test'));
 
         $this->manager->findByCategory('test');
-    }
-}
-
-class QueryPostMock extends AbstractQuery
-{
-    /**
-     * Gets the SQL query that corresponds to this query object.
-     * The returned SQL syntax depends on the connection driver that is used
-     * by this query object at the time of this method call.
-     *
-     * @return string SQL query
-     */
-    public function getSQL()
-    {
-        return '';
-    }
-
-    /**
-     * Executes the query and returns a the resulting Statement object.
-     *
-     * @return \Doctrine\DBAL\Driver\Statement The executed database statement that holds the results.
-     */
-    protected function _doExecute()
-    {
     }
 }
