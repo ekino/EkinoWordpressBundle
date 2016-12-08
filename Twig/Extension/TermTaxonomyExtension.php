@@ -57,7 +57,7 @@ class TermTaxonomyExtension extends \Twig_Extension
         $output = [$termTaxonomy->getTerm()->getSlug()];
 
         while ($parent = $termTaxonomy->getParent()) {
-            $output[] = $parent->getSlug();
+            $output[] = $parent->getTerm()->getSlug();
             $termTaxonomy = $parent;
         }
 
