@@ -46,7 +46,9 @@ class WordpressControllerTest extends \PHPUnit_Framework_TestCase
      */
     public function testCatchAllAction()
     {
-        $controller = $this->getMock('\Ekino\WordpressBundle\Controller\WordpressController', ['getWordpress']);
+        $controller = $this->getMockBuilder('\Ekino\WordpressBundle\Controller\WordpressController')
+            ->setMethods(['getWordpress'])
+            ->getMock();
         $controller->expects($this->any())->method('getWordpress')->will($this->returnValue($this->wordpress));
 
         $response = $controller->catchAllAction();
@@ -63,7 +65,10 @@ class WordpressControllerTest extends \PHPUnit_Framework_TestCase
     {
         $kernel = $this->getKernelMock();
 
-        return $this->getMock('\Ekino\WordpressBundle\Wordpress\Wordpress', ['getContent'], [$kernel, ['wp_test_global1', 'wp_test_global2']]);
+        return $this->getMockBuilder('\Ekino\WordpressBundle\Wordpress\Wordpress')
+            ->setMethods(['getContent'])
+            ->setConstructorArgs([$kernel, ['wp_test_global1', 'wp_test_global2']])
+            ->getMock();
     }
 
     /**

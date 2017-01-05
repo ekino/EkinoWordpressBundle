@@ -51,7 +51,9 @@ class WordpressRequestListenerTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         // Set up a fake User to be returned by UserManager mocked below
-        $userMock = $this->getMock('\Ekino\WordpressBundle\Entity\User', ['getMetaValue']);
+        $userMock = $this->getMockBuilder('\Ekino\WordpressBundle\Entity\User')
+            ->setMethods(['getMetaValue'])
+            ->getMock();
         $userMock->expects($this->any())->method('getMetaValue')->will(
             $this->returnValue(serialize(['administrator' => true]))
         );
@@ -62,11 +64,10 @@ class WordpressRequestListenerTest extends \PHPUnit_Framework_TestCase
 
         $this->tokenStorage = new TokenStorage();
 
-        $this->listener = $this->getMock(
-            '\Ekino\WordpressBundle\Listener\WordpressRequestListener',
-            ['getWordpressLoggedIdentifier'],
-            [$this->wordpress, $this->tokenStorage]
-        );
+        $this->listener = $this->getMockBuilder('\Ekino\WordpressBundle\Listener\WordpressRequestListener')
+            ->setMethods(['getWordpressLoggedIdentifier'])
+            ->setConstructorArgs([$this->wordpress, $this->tokenStorage])
+            ->getMock();
     }
 
     /**
@@ -87,7 +88,7 @@ class WordpressRequestListenerTest extends \PHPUnit_Framework_TestCase
         $token = new UsernamePasswordToken($user, $user->getPass(), 'secured_area', $user->getRoles());
 
         // Set up a request mock to give to GetResponseEvent class below
-        $session = $this->getMock('\Symfony\Component\HttpFoundation\Session\Session');
+        $session = $this->getMockBuilder('\Symfony\Component\HttpFoundation\Session\Session')->getMock();
         $session->expects($this->any())->method('getName')->will($this->returnValue('session_test'));
         $session->expects($this->any())->method('has')->with($this->equalTo('token'))->will($this->returnValue(true));
         $session->expects($this->any())->method('get')->with($this->equalTo('token'))->will($this->returnValue($token));
@@ -100,8 +101,10 @@ class WordpressRequestListenerTest extends \PHPUnit_Framework_TestCase
         // Ensure Wordpress is loaded as route is not the catch all route.
         $this->wordpress->expects($this->once())->method('loadWordpress');
 
+        $httpKernelMock = $this->getMockBuilder('\Symfony\Component\HttpKernel\HttpKernelInterface')->getMock();
+
         $getResponseEvent = new GetResponseEvent(
-            $this->getMock('\Symfony\Component\HttpKernel\HttpKernelInterface'), $request, HttpKernelInterface::MASTER_REQUEST
+            $httpKernelMock, $request, HttpKernelInterface::MASTER_REQUEST
         );
 
         // Run onKernelRequest() method
@@ -130,7 +133,7 @@ class WordpressRequestListenerTest extends \PHPUnit_Framework_TestCase
         $token = new UsernamePasswordToken($user, $user->getPass(), 'secured_area', $user->getRoles());
 
         // Set up a request mock to give to GetResponseEvent class below
-        $session = $this->getMock('\Symfony\Component\HttpFoundation\Session\Session');
+        $session = $this->getMockBuilder('\Symfony\Component\HttpFoundation\Session\Session')->getMock();
         $session->expects($this->any())->method('getName')->will($this->returnValue('session_test'));
         $session->expects($this->any())->method('has')->with($this->equalTo('token'))->will($this->returnValue(true));
         $session->expects($this->any())->method('get')->with($this->equalTo('token'))->will($this->returnValue($token));
@@ -143,8 +146,10 @@ class WordpressRequestListenerTest extends \PHPUnit_Framework_TestCase
         // Ensure Wordpress is loaded as route is not the catch all route.
         $this->wordpress->expects($this->never())->method('loadWordpress');
 
+        $httpKernelMock = $this->getMockBuilder('\Symfony\Component\HttpKernel\HttpKernelInterface')->getMock();
+
         $getResponseEvent = new GetResponseEvent(
-            $this->getMock('\Symfony\Component\HttpKernel\HttpKernelInterface'), $request, HttpKernelInterface::MASTER_REQUEST
+            $httpKernelMock, $request, HttpKernelInterface::MASTER_REQUEST
         );
 
         // Run onKernelRequest() method

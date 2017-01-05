@@ -67,7 +67,7 @@ namespace Ekino\WordpressBundle\Tests\Twig\Extension {
          */
         public function testGetPostMeta()
         {
-            $postMeta = $this->getMock('Ekino\WordpressBundle\Entity\PostMeta');
+            $postMeta = $this->getMockBuilder('Ekino\WordpressBundle\Entity\PostMeta')->getMock();
             $this->postMetaManager->expects($this->once())
                 ->method('getPostMeta')
                 ->with($this->equalTo(12), $this->equalTo('meta-test'), $this->equalTo(true))

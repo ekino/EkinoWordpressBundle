@@ -52,8 +52,7 @@ class WordpressResponseSubscriberTest extends \PHPUnit_Framework_TestCase
             ->method('getResponse')
             ->will($this->returnValue($response));
 
-        $response->expects($this->never())
-            ->method('getUri');
+        $response->expects($this->never())->method('setStatusCode');
 
         $this->subscriber->onKernelResponse($event);
     }
@@ -67,8 +66,7 @@ class WordpressResponseSubscriberTest extends \PHPUnit_Framework_TestCase
             ->method('getRequestType')
             ->will($this->returnValue(HttpKernelInterface::SUB_REQUEST));
 
-        $this->response->expects($this->never())
-            ->method('getUri');
+        $this->response->expects($this->never())->method('setStatusCode');
 
         $this->subscriber->onKernelResponse($this->event);
     }

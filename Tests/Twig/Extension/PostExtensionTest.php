@@ -47,7 +47,7 @@ class PostExtensionTest extends \PHPUnit_Framework_TestCase
     public function testReplacePostArguments()
     {
         $permalinkStructure = '/%year%/%monthnum%/%day%/%post_id%-%postname%';
-        $post = $this->getMock('Ekino\WordpressBundle\Entity\Post');
+        $post = $this->getMockBuilder('Ekino\WordpressBundle\Entity\Post')->getMock();
         $post->expects($this->once())
             ->method('getDate')
             ->will($this->returnValue(new \DateTime()));
@@ -75,8 +75,8 @@ class PostExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function testGetPermalink()
     {
-        $post = $this->getMock('Ekino\WordpressBundle\Entity\Post');
-        $permalinkOption = $this->getMock('Ekino\WordpressBundle\Entity\Option');
+        $post = $this->getMockBuilder('Ekino\WordpressBundle\Entity\Post')->getMock();
+        $permalinkOption = $this->getMockBuilder('Ekino\WordpressBundle\Entity\Option')->getMock();
 
         $post->expects($this->once())
             ->method('getDate')
@@ -104,9 +104,9 @@ class PostExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function testGetAbsolutePermalink()
     {
-        $post = $this->getMock('Ekino\WordpressBundle\Entity\Post');
-        $permalinkOption = $this->getMock('Ekino\WordpressBundle\Entity\Option');
-        $homeOption = $this->getMock('Ekino\WordpressBundle\Entity\Option');
+        $post = $this->getMockBuilder('Ekino\WordpressBundle\Entity\Post')->getMock();
+        $permalinkOption = $this->getMockBuilder('Ekino\WordpressBundle\Entity\Option')->getMock();
+        $homeOption = $this->getMockBuilder('Ekino\WordpressBundle\Entity\Option')->getMock();
 
         $post->expects($this->once())
             ->method('getDate')

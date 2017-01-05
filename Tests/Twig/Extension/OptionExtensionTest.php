@@ -54,7 +54,7 @@ class OptionExtensionTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetOption()
     {
-        $optionMock = $this->getMock('Ekino\WordpressBundle\Entity\Option');
+        $optionMock = $this->getMockBuilder('Ekino\WordpressBundle\Entity\Option')->getMock();
 
         $this->optionManager->expects($this->once())
             ->method('findOneByOptionName')

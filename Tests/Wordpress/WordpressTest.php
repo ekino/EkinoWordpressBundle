@@ -104,6 +104,9 @@ class WordpressTest extends \PHPUnit_Framework_TestCase
      */
     protected function getWordpressMock()
     {
-        return $this->getMock('\Ekino\WordpressBundle\Wordpress\Wordpress', ['getContent'], [__DIR__, ['wp_test_global1', 'wp_test_global2']]);
+        return $this->getMockBuilder('\Ekino\WordpressBundle\Wordpress\Wordpress')
+            ->setMethods(['getContent'])
+            ->setConstructorArgs([__DIR__, ['wp_test_global1', 'wp_test_global2']])
+            ->getMock();
     }
 }

@@ -58,11 +58,11 @@ class UserHookListenerTest extends \PHPUnit_Framework_TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->logger = $this->getMock('Psr\Log\LoggerInterface');
+        $this->logger = $this->getMockBuilder('Psr\Log\LoggerInterface')->getMock();
 
-        $this->tokenStorage = $this->getMock('Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface');
+        $this->tokenStorage = $this->getMockBuilder('Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface')->getMock();
 
-        $this->session = $this->getMock('Symfony\Component\HttpFoundation\Session\SessionInterface');
+        $this->session = $this->getMockBuilder('Symfony\Component\HttpFoundation\Session\SessionInterface')->getMock();
 
         $this->firewall = 'secured_area';
 
@@ -82,10 +82,10 @@ class UserHookListenerTest extends \PHPUnit_Framework_TestCase
         $wpUser->data = $wpUserData;
         $wpUser->roles = ['administrator'];
 
-        $event = $this->getMock('Ekino\WordpressBundle\Event\WordpressEvent');
+        $event = $this->getMockBuilder('Ekino\WordpressBundle\Event\WordpressEvent')->getMock();
         $event->expects($this->once())->method('getParameter')->will($this->returnValue($wpUser));
 
-        $user = $this->getMock('Ekino\WordpressBundle\Entity\User');
+        $user = $this->getMockBuilder('Ekino\WordpressBundle\Entity\User')->getMock();
         $user->expects($this->once())->method('setWordpressRoles')->with($wpUser->roles);
         $user->expects($this->once())->method('getPass')->will($this->returnValue(1234));
         $user->expects($this->once())->method('getRoles')->will($this->returnValue(['ROLE_WP_ADMINISTRATOR']));
@@ -104,7 +104,7 @@ class UserHookListenerTest extends \PHPUnit_Framework_TestCase
     public function testOnLogout()
     {
         // Given
-        $event = $this->getMock('Ekino\WordpressBundle\Event\WordpressEvent');
+        $event = $this->getMockBuilder('Ekino\WordpressBundle\Event\WordpressEvent')->getMock();
 
         // When - Then
         $this->session->expects($this->once())->method('clear');
