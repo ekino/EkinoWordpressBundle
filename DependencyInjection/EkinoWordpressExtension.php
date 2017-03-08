@@ -138,6 +138,8 @@ class EkinoWordpressExtension extends Extension
      */
     protected function loadEntityManager(ContainerBuilder $container, $em)
     {
+        $container->setParameter('ekino_wordpress.model_manager_name', $em);
+
         $reference = new Reference(sprintf('doctrine.orm.%s_entity_manager', $em));
 
         foreach (static::$entities as $entityName) {
