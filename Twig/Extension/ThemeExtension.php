@@ -45,9 +45,9 @@ class ThemeExtension extends \Twig_Extension
     /**
      * Displays Wordpress theme header (and administration menu bar if available).
      */
-    public function getHeader()
+    public function getHeader($name = null)
     {
-        \get_header();
+        \get_header($name);
 
         \_wp_admin_bar_init();
         \wp_admin_bar_render();
@@ -56,17 +56,17 @@ class ThemeExtension extends \Twig_Extension
     /**
      * Displays Wordpress theme sidebar.
      */
-    public function getSidebar()
+    public function getSidebar($name = null)
     {
-        \get_sidebar();
+        \get_sidebar($name);
     }
 
     /**
      * Displays Wordpress theme footer.
      */
-    public function getFooter()
+    public function getFooter($name = null)
     {
-        \get_footer();
+        \get_footer($name);
     }
 
     /**
