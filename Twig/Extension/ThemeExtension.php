@@ -44,6 +44,8 @@ class ThemeExtension extends \Twig_Extension
 
     /**
      * Displays Wordpress theme header (and administration menu bar if available).
+     *
+     * @param string|null $name
      */
     public function getHeader($name = null)
     {
@@ -55,6 +57,8 @@ class ThemeExtension extends \Twig_Extension
 
     /**
      * Displays Wordpress theme sidebar.
+     *
+     * @param string|null $name
      */
     public function getSidebar($name = null)
     {
@@ -63,6 +67,8 @@ class ThemeExtension extends \Twig_Extension
 
     /**
      * Displays Wordpress theme footer.
+     *
+     * @param string|null $name
      */
     public function getFooter($name = null)
     {
@@ -71,6 +77,9 @@ class ThemeExtension extends \Twig_Extension
 
     /**
      * Displays a Wordpress theme template part.
+     *
+     * @param string $name
+     * @param string|null $name
      */
     public function getTemplatePart($slug, $name = null)
     {
