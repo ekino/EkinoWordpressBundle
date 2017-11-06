@@ -78,7 +78,7 @@ class ThemeExtension extends \Twig_Extension
     /**
      * Displays a Wordpress theme template part.
      *
-     * @param string $name
+     * @param string $slug
      * @param string|null $name
      */
     public function getTemplatePart($slug, $name = null)
