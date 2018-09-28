@@ -27,7 +27,7 @@
         </many-to-one>
 
         <many-to-one field="parent" target-entity="Ekino\WordpressBundle\Entity\TermTaxonomy">
-            <join-column name="parent" referenced-column-name="term_taxonomy_id" nullable="false" />
+            <join-column name="parent" referenced-column-name="term_taxonomy_id" nullable="true" />
         </many-to-one>
     </entity>
 </doctrine-mapping>
