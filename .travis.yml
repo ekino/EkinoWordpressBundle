@@ -5,6 +5,8 @@ php:
   - 5.6
   - 7.0
   - 7.1
+  - 7.2
+  - 7.3
   - hhvm
 
 cache:
@@ -19,11 +21,9 @@ matrix:
     - php: 5.6
       env: SYMFONY_VERSION=2.8.*
     - php: 5.6
-      env: SYMFONY_VERSION=3.0.*
+      env: SYMFONY_VERSION=3.4.*
     - php: 5.6
-      env: SYMFONY_VERSION=3.1.*@dev
-    - php: 5.6
-      env: SYMFONY_VERSION=3.2.*@dev
+      env: SYMFONY_VERSION=4.4.*
   allow_failures:
     - php: hhvm
 
