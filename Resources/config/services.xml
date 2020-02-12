@@ -12,6 +12,7 @@
             <argument>%ekino.wordpress.install_directory%</argument>
             <argument>%ekino.wordpress.globals%</argument>
         </service>
+        <service id="Ekino\WordpressBundle\Wordpress\Wordpress" alias="ekino.wordpress.wordpress"/>
 
         <!-- Subscribers -->
 
@@ -20,11 +21,13 @@
 
             <argument />
         </service>
+        <service id="Ekino\WordpressBundle\Subscriber\TablePrefixSubscriber" alias="ekino.wordpress.subscriber.table_prefix_subscriber"/>
 
         <!-- Security -->
 
         <service id="ekino.wordpress.security.entry_point" class="Ekino\WordpressBundle\Security\WordpressEntryPoint" public="true">
             <argument>%ekino.wordpress.login_url%</argument>
         </service>
+        <service id="Ekino\WordpressBundle\Security\WordpressEntryPoint" alias="ekino.wordpress.security.entry_point"/>
     </services>
 </container>
