@@ -37,6 +37,7 @@ matrix:
 before_install:
   - if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then echo "memory_limit=4G" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini; fi;
   - if [ "$DEPENDENCIES" != "" ]; then composer require --no-update $DEPENDENCIES; fi;
+  - if [ "DEPENDENCIES" = "symfony/lts:^4" ]; then perl -pi -e 's/^}$/,"minimum-stability":"dev"}/' composer.json; fi;
 
 install:
   - composer update --prefer-dist --no-interaction
@@ -46,3 +47,6 @@ script: vendor/bin/phpunit
 notifications:
   email:
     - composieux@ekino.com
+
+# Because of PHP 5.5
+dist: trusty
