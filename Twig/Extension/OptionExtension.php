@@ -11,13 +11,15 @@
 namespace Ekino\WordpressBundle\Twig\Extension;
 
 use Ekino\WordpressBundle\Manager\OptionManager;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 /**
  * Class OptionExtension.
  *
  * This extension provides native Wordpress functions into Twig.
  */
-class OptionExtension extends \Twig_Extension
+class OptionExtension extends AbstractExtension
 {
     /**
      * @var OptionManager
@@ -46,8 +48,8 @@ class OptionExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('wp_get_option', [$this, 'getOption']),
-            new \Twig_SimpleFunction('wp_is_active_sidebar', [$this, 'isActiveSidebar']),
+            new TwigFunction('wp_get_option', [$this, 'getOption']),
+            new TwigFunction('wp_is_active_sidebar', [$this, 'isActiveSidebar']),
         ];
     }
 

@@ -12,6 +12,8 @@ namespace Ekino\WordpressBundle\Twig\Extension;
 
 use Ekino\WordpressBundle\Manager\CommentManager;
 use Ekino\WordpressBundle\Model\Comment;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 /**
  * Class CommentExtension.
@@ -20,7 +22,7 @@ use Ekino\WordpressBundle\Model\Comment;
  *
  * @author Xavier Coureau <xav@takeatea.com>
  */
-class CommentExtension extends \Twig_Extension
+class CommentExtension extends AbstractExtension
 {
     /**
      * @var CommentManager
@@ -51,7 +53,7 @@ class CommentExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('wp_get_comment_author_link', [$this, 'getCommentAuthorLink'], ['is_safe' => ['html']]),
+            new TwigFunction('wp_get_comment_author_link', [$this, 'getCommentAuthorLink'], ['is_safe' => ['html']]),
         ];
     }
 
