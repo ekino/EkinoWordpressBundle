@@ -8,7 +8,7 @@
 
         <!-- Services -->
 
-        <service id="ekino.wordpress.wordpress" class="Ekino\WordpressBundle\Wordpress\Wordpress">
+        <service id="ekino.wordpress.wordpress" class="Ekino\WordpressBundle\Wordpress\Wordpress" public="true">
             <argument>%ekino.wordpress.install_directory%</argument>
             <argument>%ekino.wordpress.globals%</argument>
         </service>
@@ -16,7 +16,7 @@
 
         <!-- Subscribers -->
 
-        <service id="ekino.wordpress.subscriber.table_prefix_subscriber" class="Ekino\WordpressBundle\Subscriber\TablePrefixSubscriber">
+        <service id="ekino.wordpress.subscriber.table_prefix_subscriber" class="Ekino\WordpressBundle\Subscriber\TablePrefixSubscriber" public="true">
             <tag name="doctrine.event_subscriber" />
 
             <argument />
