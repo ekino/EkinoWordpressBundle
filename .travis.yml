@@ -40,7 +40,7 @@ before_install:
   - if [ "DEPENDENCIES" = "symfony/lts:^4" ]; then perl -pi -e 's/^}$/,"minimum-stability":"dev"}/' composer.json; fi;
 
 install:
-  - composer update --prefer-dist --no-interaction
+  - composer update --dev --prefer-source --no-interaction
 
 script: vendor/bin/phpunit
 
