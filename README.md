@@ -82,7 +82,7 @@ ekino_wordpress:
     table_prefix: "wp_" # If you have a specific Wordpress table prefix
     wordpress_directory: "%kernel.root_dir%/../../wordpress"
     load_twig_extension: true # If you want to enable native WordPress functions (ie : get_option() => wp_get_option())
-    enable_wordpress_listener: false # If you want to disable the WordPress request listener
+    enable_wordpress_listener: true # If you want to disable the WordPress request listener
     security:
         firewall_name: "secured_area" # This is the firewall default name
         login_url: "/wp-login.php" # Absolute URL to the wordpress login page
@@ -364,3 +364,5 @@ Twig functions available in this bundle:
 
 {{ wp_get_footer() }}
 ```
+
+You can see an example for [TwentyTwenty theme](Resources/docs/twig_example.md).
