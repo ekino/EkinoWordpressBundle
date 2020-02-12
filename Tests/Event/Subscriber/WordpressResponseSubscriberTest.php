@@ -14,7 +14,7 @@ use Ekino\WordpressBundle\Event\Subscriber\WordpressResponseSubscriber;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
 
-class WordpressResponseSubscriberTest extends \PHPUnit_Framework_TestCase
+class WordpressResponseSubscriberTest extends \PHPUnit\Framework\TestCase
 {
     protected $event;
     protected $response;

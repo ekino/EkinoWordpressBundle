@@ -19,7 +19,7 @@ use Ekino\WordpressBundle\Entity\Term;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class TermTest extends \PHPUnit_Framework_TestCase
+class TermTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test entity getters & setters.

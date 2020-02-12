@@ -21,7 +21,7 @@ use Ekino\WordpressBundle\Repository\PostRepository;
  *
  * @author Guillaume Leclercq <g.leclercq12@gmail.com>
  */
-class PostManagerTest extends \PHPUnit_Framework_TestCase
+class PostManagerTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var EntityManager

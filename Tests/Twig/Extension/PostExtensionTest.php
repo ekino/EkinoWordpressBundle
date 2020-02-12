@@ -11,8 +11,9 @@
 namespace Ekino\WordpressBundle\Tests\Twig\Extension;
 
 use Ekino\WordpressBundle\Twig\Extension\PostExtension;
+use PHPUnit\Framework\TestCase;
 
-class PostExtensionTest extends \PHPUnit_Framework_TestCase
+class PostExtensionTest extends TestCase
 {
     protected $postManager;
     protected $optionExtension;
@@ -69,7 +70,7 @@ class PostExtensionTest extends \PHPUnit_Framework_TestCase
             ->method('find')
             ->will($this->returnValue(false));
 
-        $this->setExpectedException('\UnexpectedValueException');
+        $this->expectException(\UnexpectedValueException::class);
         $this->postExtension->getPermalink(12);
     }
 

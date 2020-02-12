@@ -20,7 +20,7 @@ use Ekino\WordpressBundle\Entity\PostMeta;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class PostMetaTest extends \PHPUnit_Framework_TestCase
+class PostMetaTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test entity getters & setters.

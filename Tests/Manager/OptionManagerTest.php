@@ -19,7 +19,7 @@ use Ekino\WordpressBundle\Repository\OptionRepository;
  *
  * @author Xavier Coureau <xav.is@2cool4school.fr>
  */
-class OptionManagerTest extends \PHPUnit_Framework_TestCase
+class OptionManagerTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var EntityManager

@@ -70,7 +70,7 @@ namespace Ekino\WordpressBundle\Tests\Twig\Extension {
      *
      * @author Vincent Composieux <vincent.composieux@gmail.com>
      */
-    class ThemeExtensionTest extends \PHPUnit_Framework_TestCase
+    class ThemeExtensionTest extends \PHPUnit\Framework\TestCase
     {
         /**
          * @var ThemeExtension

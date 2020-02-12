@@ -19,7 +19,7 @@ use Ekino\WordpressBundle\Entity\Option;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class OptionTest extends \PHPUnit_Framework_TestCase
+class OptionTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test entity getters & setters.

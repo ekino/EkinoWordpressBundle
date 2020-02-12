@@ -22,7 +22,7 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
  *
  * @author Jérôme Tamarelle <jerome@tamarelle.net>
  */
-class WordPressEntryPointTest extends \PHPUnit_Framework_TestCase
+class WordPressEntryPointTest extends \PHPUnit\Framework\TestCase
 {
     public function testEntryPoint()
     {

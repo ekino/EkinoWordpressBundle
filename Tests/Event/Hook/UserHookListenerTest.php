@@ -17,7 +17,7 @@ use Ekino\WordpressBundle\Event\Hook\UserHookListener;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class UserHookListenerTest extends \PHPUnit_Framework_TestCase
+class UserHookListenerTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var \Ekino\WordpressBundle\Manager\UserManager

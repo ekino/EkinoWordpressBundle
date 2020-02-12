@@ -19,7 +19,7 @@ use Ekino\WordpressBundle\Event\WordpressEvent;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class WordpressEventTest extends \PHPUnit_Framework_TestCase
+class WordpressEventTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Tests WordpressEvent constructor parameters.

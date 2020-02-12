@@ -17,7 +17,7 @@ use Ekino\WordpressBundle\Twig\Extension\OptionExtension;
  *
  * @author Xavier Coureau <xav.is@2cool4school.fr>
  */
-class OptionExtensionTest extends \PHPUnit_Framework_TestCase
+class OptionExtensionTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var \PHPUnit_Framework_MockObject_MockObject

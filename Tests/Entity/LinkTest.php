@@ -19,7 +19,7 @@ use Ekino\WordpressBundle\Entity\Link;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class LinkTest extends \PHPUnit_Framework_TestCase
+class LinkTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test entity getters & setters.

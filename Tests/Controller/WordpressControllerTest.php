@@ -17,7 +17,7 @@ namespace Ekino\WordpressBundle\Tests\Controller;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class WordpressControllerTest extends \PHPUnit_Framework_TestCase
+class WordpressControllerTest extends \PHPUnit\Framework\TestCase
 {
     protected $wp_query;
 

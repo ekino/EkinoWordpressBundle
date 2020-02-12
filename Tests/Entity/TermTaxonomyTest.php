@@ -20,7 +20,7 @@ use Ekino\WordpressBundle\Entity\TermTaxonomy;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class TermTaxonomyTest extends \PHPUnit_Framework_TestCase
+class TermTaxonomyTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test entity getters & setters.

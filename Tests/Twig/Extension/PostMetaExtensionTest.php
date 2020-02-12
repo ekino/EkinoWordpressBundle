@@ -24,7 +24,7 @@ namespace Ekino\WordpressBundle\Tests\Twig\Extension {
      *
      * @author Xavier Coureau <xav.is@2cool4school.fr>
      */
-    class PostMetaExtensionTest extends \PHPUnit_Framework_TestCase
+    class PostMetaExtensionTest extends \PHPUnit\Framework\TestCase
     {
         /**
          * @var \PHPUnit_Framework_MockObject_MockObject
