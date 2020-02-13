@@ -20,7 +20,7 @@ use Ekino\WordpressBundle\Repository\PostMetaRepository;
  *
  * @author Xavier Coureau <xav.is@2cool4school.fr>
  */
-class PostMetaManagerTest extends \PHPUnit_Framework_TestCase
+class PostMetaManagerTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var EntityManager

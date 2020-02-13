@@ -20,8 +20,9 @@
         "doctrine/orm": "^2.2",
         "hautelook/phpass": "0.3"
     },
-    "suggest": {
-        "twig/twig": ""
+    "require-dev": {
+        "phpunit/phpunit": "^4.5|^5.7|^6.5|^7.0",
+        "twig/twig": "^1.41.0|^2.0|^3.0"
     },
     "autoload": {
         "psr-4": { "Ekino\\WordpressBundle\\": "" }

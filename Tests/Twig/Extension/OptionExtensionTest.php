@@ -17,7 +17,7 @@ use Ekino\WordpressBundle\Twig\Extension\OptionExtension;
  *
  * @author Xavier Coureau <xav.is@2cool4school.fr>
  */
-class OptionExtensionTest extends \PHPUnit_Framework_TestCase
+class OptionExtensionTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var \PHPUnit_Framework_MockObject_MockObject
@@ -31,7 +31,7 @@ class OptionExtensionTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        if (!class_exists('\Twig_Extension')) {
+        if (!class_exists('\Twig\Extension\AbstractExtension')) {
             $this->markTestSkipped('Twig is not enabled');
         }
 
@@ -46,7 +46,7 @@ class OptionExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function testGetFunctions()
     {
-        $this->assertContainsOnly('\Twig_SimpleFunction', $this->extension->getFunctions());
+        $this->assertContainsOnly('\Twig\TwigFunction', $this->extension->getFunctions());
     }
 
     /**

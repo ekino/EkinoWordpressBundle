@@ -70,7 +70,7 @@ namespace Ekino\WordpressBundle\Tests\Twig\Extension {
      *
      * @author Vincent Composieux <vincent.composieux@gmail.com>
      */
-    class ThemeExtensionTest extends \PHPUnit_Framework_TestCase
+    class ThemeExtensionTest extends \PHPUnit\Framework\TestCase
     {
         /**
          * @var ThemeExtension
@@ -82,7 +82,7 @@ namespace Ekino\WordpressBundle\Tests\Twig\Extension {
          */
         protected function setUp()
         {
-            if (!class_exists('\Twig_Extension')) {
+            if (!class_exists('\Twig\Extension\AbstractExtension')) {
                 $this->markTestSkipped('Twig is not enabled');
             }
 
@@ -102,7 +102,7 @@ namespace Ekino\WordpressBundle\Tests\Twig\Extension {
          */
         public function testGetFunctions()
         {
-            $this->assertContainsOnly('\Twig_SimpleFunction', $this->extension->getFunctions());
+            $this->assertContainsOnly('\Twig\TwigFunction', $this->extension->getFunctions());
         }
 
         /**

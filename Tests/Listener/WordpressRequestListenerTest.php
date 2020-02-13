@@ -28,7 +28,7 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class WordpressRequestListenerTest extends \PHPUnit_Framework_TestCase
+class WordpressRequestListenerTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var \Ekino\WordpressBundle\Listener\WordpressRequestListener

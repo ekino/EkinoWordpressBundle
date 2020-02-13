@@ -12,13 +12,15 @@ namespace Ekino\WordpressBundle\Twig\Extension;
 
 use Ekino\WordpressBundle\Entity\Post;
 use Ekino\WordpressBundle\Manager\PostManager;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 /**
  * Class PostExtension.
  *
  * This extension provides native Wordpress functions into Twig.
  */
-class PostExtension extends \Twig_Extension
+class PostExtension extends AbstractExtension
 {
     /**
      * @var PostManager
@@ -61,11 +63,11 @@ class PostExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('wp_comments_open', [$this, 'isCommentingOpened']),
-            new \Twig_SimpleFunction('wp_get_permalink', [$this, 'getPermalink']),
-            new \Twig_SimpleFunction('wp_get_the_post_thumbnail_url', [$this, 'getThumbnailUrl']),
-            new \Twig_SimpleFunction('wp_have_comments', [$this, 'haveComments']),
-            new \Twig_SimpleFunction('wp_post_password_required', [$this, 'isPostPasswordRequired'], ['needs_context' => true]),
+            new TwigFunction('wp_comments_open', [$this, 'isCommentingOpened']),
+            new TwigFunction('wp_get_permalink', [$this, 'getPermalink']),
+            new TwigFunction('wp_get_the_post_thumbnail_url', [$this, 'getThumbnailUrl']),
+            new TwigFunction('wp_have_comments', [$this, 'haveComments']),
+            new TwigFunction('wp_post_password_required', [$this, 'isPostPasswordRequired'], ['needs_context' => true]),
         ];
     }
 

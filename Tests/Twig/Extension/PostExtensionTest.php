@@ -11,8 +11,9 @@
 namespace Ekino\WordpressBundle\Tests\Twig\Extension;
 
 use Ekino\WordpressBundle\Twig\Extension\PostExtension;
+use PHPUnit\Framework\TestCase;
 
-class PostExtensionTest extends \PHPUnit_Framework_TestCase
+class PostExtensionTest extends TestCase
 {
     protected $postManager;
     protected $optionExtension;
@@ -24,7 +25,7 @@ class PostExtensionTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        if (!class_exists('\Twig_Extension')) {
+        if (!class_exists('\Twig\Extension\AbstractExtension')) {
             $this->markTestSkipped('Twig is not enabled');
         }
 
@@ -41,7 +42,7 @@ class PostExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function testGetFunctions()
     {
-        $this->assertContainsOnly('\Twig_SimpleFunction', $this->postExtension->getFunctions());
+        $this->assertContainsOnly('\Twig\TwigFunction', $this->postExtension->getFunctions());
     }
 
     public function testReplacePostArguments()
@@ -69,7 +70,15 @@ class PostExtensionTest extends \PHPUnit_Framework_TestCase
             ->method('find')
             ->will($this->returnValue(false));
 
-        $this->setExpectedException('\UnexpectedValueException');
+        /*
+         * Deprecated PHPunit method of 4.x
+         */
+        if (false === method_exists($this, 'expectException')) {
+            $this->setExpectedException('UnexpectedValueException');
+        } else {
+            $this->expectException(\UnexpectedValueException::class);
+        }
+
         $this->postExtension->getPermalink(12);
     }
 

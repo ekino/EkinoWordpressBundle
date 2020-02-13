@@ -22,7 +22,7 @@ use Ekino\WordpressBundle\Entity\User;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class PostTest extends \PHPUnit_Framework_TestCase
+class PostTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test entity getters & setters.

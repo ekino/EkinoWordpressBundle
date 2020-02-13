@@ -24,7 +24,7 @@ namespace Ekino\WordpressBundle\Tests\Twig\Extension {
      *
      * @author Xavier Coureau <xav.is@2cool4school.fr>
      */
-    class PostMetaExtensionTest extends \PHPUnit_Framework_TestCase
+    class PostMetaExtensionTest extends \PHPUnit\Framework\TestCase
     {
         /**
          * @var \PHPUnit_Framework_MockObject_MockObject
@@ -38,7 +38,7 @@ namespace Ekino\WordpressBundle\Tests\Twig\Extension {
 
         protected function setUp()
         {
-            if (!class_exists('\Twig_Extension')) {
+            if (!class_exists('\Twig\Extension\AbstractExtension')) {
                 $this->markTestSkipped('Twig is not enabled');
             }
 
@@ -59,7 +59,7 @@ namespace Ekino\WordpressBundle\Tests\Twig\Extension {
          */
         public function testGetFunctions()
         {
-            $this->assertContainsOnly('\Twig_SimpleFunction', $this->extension->getFunctions());
+            $this->assertContainsOnly('\Twig\TwigFunction', $this->extension->getFunctions());
         }
 
         /**

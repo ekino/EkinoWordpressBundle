@@ -20,7 +20,7 @@ use Ekino\WordpressBundle\Entity\UserMeta;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class UserMetaTest extends \PHPUnit_Framework_TestCase
+class UserMetaTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test entity getters & setters.

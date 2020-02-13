@@ -20,7 +20,7 @@ use Ekino\WordpressBundle\Entity\CommentMeta;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class CommentMetaTest extends \PHPUnit_Framework_TestCase
+class CommentMetaTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test entity getters & setters.

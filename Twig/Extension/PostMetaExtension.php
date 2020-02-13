@@ -11,13 +11,15 @@
 namespace Ekino\WordpressBundle\Twig\Extension;
 
 use Ekino\WordpressBundle\Manager\PostMetaManager;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 /**
  * Class PostMetaExtension.
  *
  * This extension provides native Wordpress functions into Twig.
  */
-class PostMetaExtension extends \Twig_Extension
+class PostMetaExtension extends AbstractExtension
 {
     /**
      * @var PostMetaManager
@@ -48,8 +50,8 @@ class PostMetaExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('wp_get_post_meta', [$this, 'getPostMeta']),
-            new \Twig_SimpleFunction('wp_get_image_url_from_id', [$this, 'getImageUrlFromId']),
+            new TwigFunction('wp_get_post_meta', [$this, 'getPostMeta']),
+            new TwigFunction('wp_get_image_url_from_id', [$this, 'getImageUrlFromId']),
         ];
     }
 

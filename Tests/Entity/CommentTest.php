@@ -21,7 +21,7 @@ use Ekino\WordpressBundle\Entity\User;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class CommentTest extends \PHPUnit_Framework_TestCase
+class CommentTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test entity getters & setters.

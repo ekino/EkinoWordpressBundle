@@ -19,7 +19,7 @@ use Ekino\WordpressBundle\Wordpress\Wordpress;
  *
  * @author Vincent Composieux <composieux@ekino.com>
  */
-class WordpressTest extends \PHPUnit_Framework_TestCase
+class WordpressTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var \Ekino\WordpressBundle\Wordpress\Wordpress
@@ -79,7 +79,14 @@ class WordpressTest extends \PHPUnit_Framework_TestCase
      */
     public function testExceptionWhenDirectoryNotFound()
     {
-        $this->setExpectedException('InvalidArgumentException');
+        /*
+         * Deprecated PHPunit method of 4.x
+         */
+        if (false === method_exists($this, 'expectException')) {
+            $this->setExpectedException('InvalidArgumentException');
+        } else {
+            $this->expectException(\InvalidArgumentException::class);
+        }
 
         $wordpress = new Wordpress('/a/path/that/does/not/exists', ['wp_test_global1', 'wp_test_global2']);
         $wordpress->initialize();
