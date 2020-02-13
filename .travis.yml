@@ -26,11 +26,15 @@ matrix:
     - php: 7.1
       env: DEPENDENCIES="symfony/lts:^3"
     - php: 7.2
-      env: DEPENDENCIES="symfony/lts:^4"
+      env: DEPENDENCIES="symfony/lts:^3"
     - php: 7.3
-      env: DEPENDENCIES="symfony/lts:^4"
+      env: DEPENDENCIES="symfony/lts:^3"
+    - php: 7.2
+      env: DEPENDENCIES="symfony/symfony:4.4"
+    - php: 7.3
+      env: DEPENDENCIES="symfony/symfony:4.4"
     - php: 7.4
-      env: DEPENDENCIES="symfony/lts:^4"
+      env: DEPENDENCIES="symfony/symfony:4.4"
   allow_failures:
     - php: hhvm
 

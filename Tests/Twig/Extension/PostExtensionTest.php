@@ -70,7 +70,15 @@ class PostExtensionTest extends TestCase
             ->method('find')
             ->will($this->returnValue(false));
 
-        $this->expectException(\UnexpectedValueException::class);
+        /*
+         * Deprecated PHPunit method of 4.x
+         */
+        if (false === method_exists($this, 'expectException')) {
+            $this->setExpectedException('UnexpectedValueException');
+        } else {
+            $this->expectException(\UnexpectedValueException::class);
+        }
+
         $this->postExtension->getPermalink(12);
     }
 

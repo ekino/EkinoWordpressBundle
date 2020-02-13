@@ -79,7 +79,14 @@ class WordpressTest extends \PHPUnit\Framework\TestCase
      */
     public function testExceptionWhenDirectoryNotFound()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        /*
+         * Deprecated PHPunit method of 4.x
+         */
+        if (false === method_exists($this, 'expectException')) {
+            $this->setExpectedException('InvalidArgumentException');
+        } else {
+            $this->expectException(\InvalidArgumentException::class);
+        }
 
         $wordpress = new Wordpress('/a/path/that/does/not/exists', ['wp_test_global1', 'wp_test_global2']);
         $wordpress->initialize();
