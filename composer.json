@@ -16,7 +16,7 @@
         "symfony/framework-bundle": "^2.6|^3.0|^4.0",
         "symfony/security-bundle": "^2.6|^3.0|^4.0",
         "symfony/monolog-bundle": "^2.2|^3.0|^4.0",
-        "doctrine/doctrine-bundle": "^1.0",
+        "doctrine/doctrine-bundle": "^2.1",
         "doctrine/orm": "^2.2",
         "hautelook/phpass": "0.3"
     },
